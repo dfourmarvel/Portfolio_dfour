@@ -123,6 +123,10 @@ textarea {
   font: inherit;
 }
 
+[hidden] {
+  display: none !important;
+}
+
 .page-shell {
   width: min(100% - 2rem, var(--max-width));
   margin: 0 auto;
@@ -989,7 +993,8 @@ textarea {
 }
 
 .filter-btn:hover,
-.filter-btn.active {
+.filter-btn.active,
+.filter-btn[aria-pressed="true"] {
   transform: translateY(-1px);
   border-color: var(--line-strong);
   background: rgba(82, 227, 255, 0.12);
@@ -1331,8 +1336,10 @@ textarea {
   }
 
   .hero {
+    min-height: 32rem;
     padding: 3.5rem 0 2.75rem;
-    background-position: 58% center;
+    background-position: center top;
+    background-size: cover;
   }
 
   .hero .hero-text {

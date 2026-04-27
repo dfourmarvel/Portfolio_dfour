@@ -1,26 +1,28 @@
-// Project filtering functionality
-document.addEventListener('DOMContentLoaded', function() {
-  const filterButtons = document.querySelectorAll('.filter-btn');
-  const projectCards = document.querySelectorAll('.project-card');
+const filterButtons = document.querySelectorAll(".filter-btn");
+const projectCards = document.querySelectorAll(".project-card");
 
-  filterButtons.forEach(button => {
-    button.addEventListener('click', () => {
-      // Remove active class from all buttons
-      filterButtons.forEach(btn => btn.classList.remove('active'));
-      // Add active class to clicked button
-      button.classList.add('active');
+if (filterButtons.length && projectCards.length) {
+  const setActiveFilter = (selectedButton) => {
+    filterButtons.forEach((button) => {
+      const isActive = button === selectedButton;
+      button.classList.toggle("active", isActive);
+      button.setAttribute("aria-pressed", String(isActive));
+    });
+  };
 
-      const filterValue = button.getAttribute('data-filter');
+  const applyProjectFilter = (filterValue) => {
+    projectCards.forEach((card) => {
+      const categories = (card.getAttribute("data-category") || "").split(" ");
+      const shouldShow = filterValue === "all" || categories.includes(filterValue);
+      card.hidden = !shouldShow;
+    });
+  };
 
-      projectCards.forEach(card => {
-        const categories = card.getAttribute('data-category').split(' ');
-
-        if (filterValue === 'all' || categories.includes(filterValue)) {
-          card.style.display = 'block';
-        } else {
-          card.style.display = 'none';
-        }
-      });
+  filterButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const filterValue = button.getAttribute("data-filter") || "all";
+      setActiveFilter(button);
+      applyProjectFilter(filterValue);
     });
   });
-});
+}

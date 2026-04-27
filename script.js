@@ -2,7 +2,6 @@ const menuToggle = document.querySelector(".menu-toggle");
 const navMenu = document.querySelector(".nav-menu");
 const navLinks = document.querySelectorAll(".nav-menu a");
 const header = document.querySelector(".site-header");
-const sections = document.querySelectorAll("main section[id]");
 const revealItems = document.querySelectorAll(".reveal");
 const yearElement = document.getElementById("year");
 const themeToggle = document.querySelector(".theme-toggle");
@@ -19,6 +18,22 @@ const THEMES = {
 if (yearElement) {
   yearElement.textContent = new Date().getFullYear();
 }
+
+const readStoredTheme = () => {
+  try {
+    return localStorage.getItem(THEME_KEY);
+  } catch {
+    return null;
+  }
+};
+
+const persistTheme = (theme) => {
+  try {
+    localStorage.setItem(THEME_KEY, theme);
+  } catch {
+    // Ignore storage failures and keep the in-memory theme change.
+  }
+};
 
 const closeMenu = () => {
   if (!menuToggle || !navMenu) {
@@ -39,6 +54,28 @@ if (menuToggle && navMenu) {
   navLinks.forEach((link) => {
     link.addEventListener("click", closeMenu);
   });
+
+  document.addEventListener("click", (event) => {
+    if (!navMenu.classList.contains("is-open")) {
+      return;
+    }
+
+    const target = event.target;
+
+    if (
+      target instanceof Node &&
+      !navMenu.contains(target) &&
+      !menuToggle.contains(target)
+    ) {
+      closeMenu();
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      closeMenu();
+    }
+  });
 }
 
 const setTheme = (theme) => {
@@ -58,7 +95,7 @@ const setTheme = (theme) => {
 };
 
 if (themeToggle) {
-  const savedTheme = localStorage.getItem(THEME_KEY) || "dark";
+  const savedTheme = readStoredTheme() || "dark";
   setTheme(savedTheme);
 
   themeToggle.addEventListener("click", () => {
@@ -66,7 +103,7 @@ if (themeToggle) {
       ? "dark"
       : "light";
 
-    localStorage.setItem(THEME_KEY, nextTheme);
+    persistTheme(nextTheme);
     setTheme(nextTheme);
   });
 }
@@ -101,37 +138,6 @@ if ("IntersectionObserver" in window) {
   revealItems.forEach((item) => {
     revealObserver.observe(item);
   });
-
-  if (currentPath === "" || currentPath.endsWith("Portfolio_dfour")) {
-    const sectionObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) {
-            return;
-          }
-
-          const activeId = entry.target.getAttribute("id");
-
-          navLinks.forEach((link) => {
-            const href = link.getAttribute("href");
-            const isHashLink = href === `#${activeId}`;
-
-            if (isHashLink) {
-              link.classList.add("active");
-            }
-          });
-        });
-      },
-      {
-        rootMargin: "-35% 0px -45% 0px",
-        threshold: 0
-      }
-    );
-
-    sections.forEach((section) => {
-      sectionObserver.observe(section);
-    });
-  }
 } else {
   revealItems.forEach((item) => {
     item.classList.add("is-visible");
