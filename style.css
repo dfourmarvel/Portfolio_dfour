@@ -23,23 +23,23 @@
 }
 
 .light-theme {
-  --bg: #edf5ff;
-  --bg-soft: #dfeaf9;
-  --bg-elevated: rgba(255, 255, 255, 0.86);
-  --surface: rgba(255, 255, 255, 0.8);
-  --surface-strong: rgba(250, 253, 255, 0.98);
+  --bg: #f4f8fd;
+  --bg-soft: #e5edf7;
+  --bg-elevated: rgba(255, 255, 255, 0.94);
+  --surface: rgba(255, 255, 255, 0.92);
+  --surface-strong: rgba(255, 255, 255, 0.98);
   --surface-bright: rgba(255, 255, 255, 1);
-  --text: #081522;
-  --muted: #4d6278;
-  --line: rgba(20, 154, 200, 0.16);
-  --line-strong: rgba(20, 154, 200, 0.34);
-  --primary: #007db3;
-  --primary-deep: #00557a;
-  --accent: #008f63;
-  --accent-deep: #006d4d;
-  --warning: #9a6500;
-  --shadow: 0 24px 70px rgba(38, 68, 98, 0.14);
-  --glow: 0 0 0 1px rgba(0, 125, 179, 0.1), 0 0 24px rgba(0, 125, 179, 0.08);
+  --text: #102030;
+  --muted: #354a60;
+  --line: rgba(20, 154, 200, 0.22);
+  --line-strong: rgba(20, 154, 200, 0.4);
+  --primary: #005f8b;
+  --primary-deep: #004460;
+  --accent: #0a7a58;
+  --accent-deep: #085b42;
+  --warning: #875400;
+  --shadow: 0 24px 60px rgba(38, 68, 98, 0.12);
+  --glow: 0 0 0 1px rgba(0, 95, 139, 0.08), 0 0 24px rgba(0, 95, 139, 0.06);
 }
 
 *,
@@ -101,6 +101,12 @@ body::after {
     linear-gradient(90deg, rgba(0, 125, 179, 0.08) 1px, transparent 1px);
 }
 
+.light-theme body::after {
+  background:
+    linear-gradient(180deg, rgba(0, 95, 139, 0.03), transparent 28%),
+    radial-gradient(circle at center, transparent 58%, rgba(58, 85, 112, 0.08) 100%);
+}
+
 img {
   display: block;
   max-width: 100%;
@@ -148,6 +154,15 @@ textarea {
   background: rgba(4, 14, 25, 0.94);
   border-color: var(--line-strong);
   box-shadow: 0 20px 50px rgba(2, 10, 20, 0.35);
+}
+
+.light-theme .navbar {
+  background: rgba(255, 255, 255, 0.88);
+}
+
+.light-theme .site-header.scrolled .navbar {
+  background: rgba(255, 255, 255, 0.97);
+  box-shadow: 0 20px 45px rgba(58, 85, 112, 0.16);
 }
 
 .brand {
@@ -461,6 +476,13 @@ textarea {
     radial-gradient(circle at top right, rgba(82, 227, 255, 0.18), transparent 30%),
     linear-gradient(145deg, rgba(11, 30, 50, 0.98), rgba(8, 20, 36, 0.96));
   border-color: rgba(82, 227, 255, 0.28);
+}
+
+.light-theme .panel-card-accent {
+  background:
+    radial-gradient(circle at top right, rgba(0, 95, 139, 0.14), transparent 30%),
+    linear-gradient(145deg, rgba(255, 255, 255, 0.98), rgba(235, 244, 252, 0.98));
+  border-color: rgba(0, 95, 139, 0.2);
 }
 
 .panel-card h2 {
