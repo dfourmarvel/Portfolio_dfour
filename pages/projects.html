@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects - Daniel Dela Dzikunu | Portfolio</title>
+  <meta name="description" content="Explore cybersecurity and tech projects by Daniel Dela Dzikunu, including labs, simulations, and learning exercises.">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="site-header" id="top">
+      <nav class="navbar">
+        <a class="brand" href="../index.html">
+          <span class="brand-mark">DD</span>
+          <span class="brand-text">Daniel Dela Dzikunu</span>
+        </a>
+
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Open navigation menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <div class="nav-menu" id="nav-menu">
+          <a href="../index.html">Home</a>
+          <a href="about.html">About</a>
+          <a href="projects.html">Projects</a>
+          <a href="skills.html">Skills</a>
+          <a href="blog.html">Blog</a>
+          <a href="contact.html">Contact</a>
+        </div>
+
+        <button class="theme-toggle" type="button" aria-label="Toggle theme">
+          <span class="theme-toggle-label">Mode</span>
+          <span class="theme-icon" aria-hidden="true">&#9790;</span>
+        </button>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero reveal">
+        <div class="hero-copy">
+          <h1>My Projects</h1>
+          <p class="hero-text">
+            Educational cybersecurity labs, simulations, and learning exercises demonstrating practical application of security concepts.
+          </p>
+        </div>
+      </section>
+
+      <section class="content-section reveal">
+        <div class="section-heading">
+          <p class="section-tag">Project Categories</p>
+          <h2>Filter by Focus Area</h2>
+        </div>
+
+        <div class="filter-buttons">
+          <button class="filter-btn active" data-filter="all">All Projects</button>
+          <button class="filter-btn" data-filter="cybersecurity">Cybersecurity</button>
+          <button class="filter-btn" data-filter="networking">Networking</button>
+          <button class="filter-btn" data-filter="lab">Labs</button>
+          <button class="filter-btn" data-filter="simulation">Simulations</button>
+        </div>
+      </section>
+
+      <section class="content-section reveal">
+        <div class="projects-grid">
+          <article class="project-card" data-category="cybersecurity lab">
+            <div class="project-header">
+              <h3>Packet Analysis Lab</h3>
+              <span class="project-category">Cybersecurity Lab</span>
+            </div>
+            <p class="project-description">
+              Analyzed network traffic captures using Wireshark to identify protocols, detect anomalies, and understand data flow patterns in a controlled lab environment.
+            </p>
+            <div class="project-tools">
+              <span>Wireshark</span>
+              <span>Network Analysis</span>
+              <span>Protocol Inspection</span>
+            </div>
+            <div class="project-learnings">
+              <strong>What I Learned:</strong> Deepened understanding of network protocols, traffic analysis techniques, and the importance of monitoring network communications.
+            </div>
+            <a href="projects/packet-analysis.html" class="project-link">View Details</a>
+          </article>
+
+          <article class="project-card" data-category="networking simulation">
+            <div class="project-header">
+              <h3>Network Scanning Simulation</h3>
+              <span class="project-category">Networking Simulation</span>
+            </div>
+            <p class="project-description">
+              Simulated ethical network scanning techniques to identify open ports and services, demonstrating reconnaissance methods in a virtual lab setup.
+            </p>
+            <div class="project-tools">
+              <span>Nmap</span>
+              <span>VirtualBox</span>
+              <span>Kali Linux</span>
+            </div>
+            <div class="project-learnings">
+              <strong>What I Learned:</strong> Gained practical experience with network scanning tools and the importance of ethical boundaries in cybersecurity testing.
+            </div>
+            <span class="project-link project-link-disabled">Case study in progress</span>
+          </article>
+
+          <article class="project-card" data-category="cybersecurity lab">
+            <div class="project-header">
+              <h3>Log Analysis Exercise</h3>
+              <span class="project-category">Cybersecurity Lab</span>
+            </div>
+            <p class="project-description">
+              Examined system and security logs to identify suspicious activities, failed login attempts, and potential security incidents.
+            </p>
+            <div class="project-tools">
+              <span>Log Files</span>
+              <span>Text Analysis</span>
+              <span>Pattern Recognition</span>
+            </div>
+            <div class="project-learnings">
+              <strong>What I Learned:</strong> Developed skills in log interpretation, incident detection, and the value of comprehensive logging for security monitoring.
+            </div>
+            <span class="project-link project-link-disabled">Case study in progress</span>
+          </article>
+
+          <article class="project-card" data-category="cybersecurity simulation">
+            <div class="project-header">
+              <h3>Threat Modeling Case Study</h3>
+              <span class="project-category">Cybersecurity Simulation</span>
+            </div>
+            <p class="project-description">
+              Applied threat modeling frameworks to analyze a hypothetical healthcare system, identifying potential vulnerabilities and mitigation strategies.
+            </p>
+            <div class="project-tools">
+              <span>STRIDE Framework</span>
+              <span>Risk Assessment</span>
+              <span>Mitigation Planning</span>
+            </div>
+            <div class="project-learnings">
+              <strong>What I Learned:</strong> Understanding of systematic threat identification and the intersection of healthcare data security with cybersecurity principles.
+            </div>
+            <span class="project-link project-link-disabled">Case study in progress</span>
+          </article>
+
+          <article class="project-card" data-category="networking lab">
+            <div class="project-header">
+              <h3>Basic Network Configuration</h3>
+              <span class="project-category">Networking Lab</span>
+            </div>
+            <p class="project-description">
+              Set up and configured a small network topology using virtual machines, implementing basic security measures and connectivity testing.
+            </p>
+            <div class="project-tools">
+              <span>Virtual Networking</span>
+              <span>IP Configuration</span>
+              <span>Firewall Basics</span>
+            </div>
+            <div class="project-learnings">
+              <strong>What I Learned:</strong> Fundamentals of network architecture, IP addressing, and basic security configurations in isolated environments.
+            </div>
+            <span class="project-link project-link-disabled">Case study in progress</span>
+          </article>
+
+          <article class="project-card" data-category="cybersecurity research">
+            <div class="project-header">
+              <h3>Cybersecurity in Healthcare</h3>
+              <span class="project-category">Research</span>
+            </div>
+            <p class="project-description">
+              Researched current challenges and best practices for securing healthcare systems, focusing on patient data protection and medical device security.
+            </p>
+            <div class="project-tools">
+              <span>Literature Review</span>
+              <span>Case Studies</span>
+              <span>Regulatory Frameworks</span>
+            </div>
+            <div class="project-learnings">
+              <strong>What I Learned:</strong> The unique security challenges in healthcare environments and the importance of compliance with standards like HIPAA.
+            </div>
+            <span class="project-link project-link-disabled">Case study in progress</span>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>Daniel Dela Dzikunu Portfolio</p>
+      <p>&copy; <span id="year"></span> Crafted with purpose and curiosity.</p>
+    </footer>
+  </div>
+
+  <script src="../script.js"></script>
+  <script src="../projects.js"></script>
+</body>
+</html>

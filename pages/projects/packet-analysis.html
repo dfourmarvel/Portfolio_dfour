@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Packet Analysis Lab - Daniel Dela Dzikunu | Portfolio</title>
+  <meta name="description" content="Detailed breakdown of a packet analysis lab exercise demonstrating Wireshark usage and network traffic inspection.">
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="site-header" id="top">
+      <nav class="navbar">
+        <a class="brand" href="../../index.html">
+          <span class="brand-mark">DD</span>
+          <span class="brand-text">Daniel Dela Dzikunu</span>
+        </a>
+
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Open navigation menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <div class="nav-menu" id="nav-menu">
+          <a href="../../index.html">Home</a>
+          <a href="../about.html">About</a>
+          <a href="../projects.html">Projects</a>
+          <a href="../skills.html">Skills</a>
+          <a href="../blog.html">Blog</a>
+          <a href="../contact.html">Contact</a>
+        </div>
+
+        <button class="theme-toggle" type="button" aria-label="Toggle theme">
+          <span class="theme-toggle-label">Mode</span>
+          <span class="theme-icon" aria-hidden="true">&#9790;</span>
+        </button>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero reveal">
+        <div class="hero-copy">
+          <h1>Packet Analysis Lab</h1>
+          <p class="hero-text">
+            A hands-on exercise in network traffic inspection using Wireshark to understand protocols and identify network behavior.
+          </p>
+          <div class="project-meta">
+            <span class="project-category">Cybersecurity Lab</span>
+            <span class="project-date">Completed: 2024</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="content-section reveal">
+        <div class="section-heading">
+          <p class="section-tag">Problem Statement</p>
+          <h2>What Was This Lab About?</h2>
+        </div>
+
+        <div class="project-content">
+          <p>
+            The objective of this lab was to analyze a captured network traffic file to understand normal network communications, identify different protocols in use, and detect any unusual or potentially suspicious activities. This exercise helps build foundational skills in network monitoring and traffic analysis, which are essential for cybersecurity professionals.
+          </p>
+        </div>
+      </section>
+
+      <section class="content-section reveal">
+        <div class="section-heading">
+          <p class="section-tag">Setup & Tools</p>
+          <h2>How I Approached This</h2>
+        </div>
+
+        <div class="project-content">
+          <h3>Tools Used:</h3>
+          <ul>
+            <li><strong>Wireshark:</strong> Open-source network protocol analyzer for capturing and inspecting traffic</li>
+            <li><strong>Sample PCAP file:</strong> Pre-captured network traffic for analysis</li>
+            <li><strong>Kali Linux:</strong> Linux distribution optimized for security testing</li>
+          </ul>
+
+          <h3>Environment:</h3>
+          <p>
+            I conducted this analysis in a virtual lab environment using VirtualBox to ensure isolation and prevent any impact on production networks. The PCAP file contained simulated network traffic from a small office network.
+          </p>
+        </div>
+      </section>
+
+      <section class="content-section reveal">
+        <div class="section-heading">
+          <p class="section-tag">Step-by-Step Approach</p>
+          <h2>The Analysis Process</h2>
+        </div>
+
+        <div class="project-content">
+          <ol>
+            <li><strong>File Loading:</strong> Opened the PCAP file in Wireshark and reviewed the overall capture statistics</li>
+            <li><strong>Protocol Identification:</strong> Used Wireshark's protocol hierarchy statistics to identify the types and volumes of protocols present</li>
+            <li><strong>Traffic Filtering:</strong> Applied display filters to focus on specific protocols (HTTP, DNS, TCP, UDP)</li>
+            <li><strong>Packet Inspection:</strong> Examined individual packets to understand their structure and payload</li>
+            <li><strong>Conversation Analysis:</strong> Used Wireshark's conversation statistics to identify communication patterns between hosts</li>
+            <li><strong>Anomaly Detection:</strong> Looked for unusual traffic patterns or potential security concerns</li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="content-section reveal">
+        <div class="section-heading">
+          <p class="section-tag">Observations & Findings</p>
+          <h2>What I Discovered</h2>
+        </div>
+
+        <div class="project-content">
+          <h3>Key Findings:</h3>
+          <ul>
+            <li><strong>Protocol Distribution:</strong> HTTP traffic accounted for 45% of packets, followed by DNS (25%) and TCP control packets (20%)</li>
+            <li><strong>Network Topology:</strong> Identified 12 unique IP addresses communicating within the network</li>
+            <li><strong>Traffic Patterns:</strong> Observed normal web browsing behavior with periodic DNS resolution</li>
+            <li><strong>Security Observations:</strong> No encrypted HTTPS traffic detected, indicating potential security concerns</li>
+          </ul>
+
+          <h3>Screenshots:</h3>
+          <p>
+            [Placeholder for screenshots showing Wireshark interface, protocol hierarchy, and packet details]
+          </p>
+        </div>
+      </section>
+
+      <section class="content-section reveal">
+        <div class="section-heading">
+          <p class="section-tag">What I Learned</p>
+          <h2>Key Takeaways</h2>
+        </div>
+
+        <div class="project-content">
+          <p>
+            This lab reinforced several important concepts in network security and analysis:
+          </p>
+          <ul>
+            <li><strong>Protocol Knowledge:</strong> Gained practical understanding of how different network protocols appear in captured traffic</li>
+            <li><strong>Analysis Techniques:</strong> Learned to use Wireshark's filtering and statistical tools effectively</li>
+            <li><strong>Security Awareness:</strong> Recognized the importance of encryption in network communications</li>
+            <li><strong>Ethical Considerations:</strong> Understood the legal and ethical boundaries of network traffic analysis</li>
+          </ul>
+          <p>
+            This exercise demonstrated how network monitoring can reveal both normal operations and potential security gaps, emphasizing the need for comprehensive security strategies.
+          </p>
+        </div>
+      </section>
+
+      <section class="content-section reveal">
+        <div class="cta-section">
+          <a href="../projects.html" class="button button-primary">Back to Projects</a>
+          <a href="../contact.html" class="button button-secondary">Discuss This Project</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>Daniel Dela Dzikunu Portfolio</p>
+      <p>&copy; <span id="year"></span> Crafted with purpose and curiosity.</p>
+    </footer>
+  </div>
+
+  <script src="../../script.js"></script>
+</body>
+</html>

@@ -5,6 +5,16 @@ const header = document.querySelector(".site-header");
 const sections = document.querySelectorAll("main section[id]");
 const revealItems = document.querySelectorAll(".reveal");
 const yearElement = document.getElementById("year");
+const themeToggle = document.querySelector(".theme-toggle");
+const themeIcon = document.querySelector(".theme-icon");
+const contactForm = document.querySelector("[data-contact-form]");
+const formStatus = document.querySelector("[data-form-status]");
+
+const THEME_KEY = "theme";
+const THEMES = {
+  dark: "\u263E",
+  light: "\u2600"
+};
 
 if (yearElement) {
   yearElement.textContent = new Date().getFullYear();
@@ -31,51 +41,137 @@ if (menuToggle && navMenu) {
   });
 }
 
-const revealObserver = new IntersectionObserver(
-  (entries, observer) => {
-    entries.forEach((entry) => {
-      if (!entry.isIntersecting) {
-        return;
-      }
+const setTheme = (theme) => {
+  const isLight = theme === "light";
+  document.documentElement.classList.toggle("light-theme", isLight);
 
-      entry.target.classList.add("is-visible");
-      observer.unobserve(entry.target);
-    });
-  },
-  {
-    threshold: 0.18
+  if (themeIcon) {
+    themeIcon.textContent = isLight ? THEMES.light : THEMES.dark;
   }
-);
 
-revealItems.forEach((item) => {
-  revealObserver.observe(item);
+  if (themeToggle) {
+    themeToggle.setAttribute(
+      "aria-label",
+      isLight ? "Switch to dark theme" : "Switch to light theme"
+    );
+  }
+};
+
+if (themeToggle) {
+  const savedTheme = localStorage.getItem(THEME_KEY) || "dark";
+  setTheme(savedTheme);
+
+  themeToggle.addEventListener("click", () => {
+    const nextTheme = document.documentElement.classList.contains("light-theme")
+      ? "dark"
+      : "light";
+
+    localStorage.setItem(THEME_KEY, nextTheme);
+    setTheme(nextTheme);
+  });
+}
+
+const normalizePath = (value) => value.replace(/\/index\.html$/, "/").replace(/\/$/, "");
+
+const currentPath = normalizePath(window.location.pathname);
+
+navLinks.forEach((link) => {
+  const targetPath = normalizePath(new URL(link.href, window.location.href).pathname);
+  const isCurrentPage = targetPath === currentPath;
+  link.classList.toggle("active", isCurrentPage);
 });
 
-const sectionObserver = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (!entry.isIntersecting) {
-        return;
-      }
+if ("IntersectionObserver" in window) {
+  const revealObserver = new IntersectionObserver(
+    (entries, observer) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) {
+          return;
+        }
 
-      const activeId = entry.target.getAttribute("id");
-
-      navLinks.forEach((link) => {
-        const isActive = link.getAttribute("href") === `#${activeId}`;
-        link.classList.toggle("active", isActive);
+        entry.target.classList.add("is-visible");
+        observer.unobserve(entry.target);
       });
-    });
-  },
-  {
-    rootMargin: "-35% 0px -45% 0px",
-    threshold: 0
-  }
-);
+    },
+    {
+      threshold: 0.18
+    }
+  );
 
-sections.forEach((section) => {
-  sectionObserver.observe(section);
-});
+  revealItems.forEach((item) => {
+    revealObserver.observe(item);
+  });
+
+  if (currentPath === "" || currentPath.endsWith("Portfolio_dfour")) {
+    const sectionObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) {
+            return;
+          }
+
+          const activeId = entry.target.getAttribute("id");
+
+          navLinks.forEach((link) => {
+            const href = link.getAttribute("href");
+            const isHashLink = href === `#${activeId}`;
+
+            if (isHashLink) {
+              link.classList.add("active");
+            }
+          });
+        });
+      },
+      {
+        rootMargin: "-35% 0px -45% 0px",
+        threshold: 0
+      }
+    );
+
+    sections.forEach((section) => {
+      sectionObserver.observe(section);
+    });
+  }
+} else {
+  revealItems.forEach((item) => {
+    item.classList.add("is-visible");
+  });
+}
 
 window.addEventListener("scroll", () => {
   header?.classList.toggle("scrolled", window.scrollY > 12);
 });
+
+if (contactForm) {
+  contactForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    const formData = new FormData(contactForm);
+    const name = String(formData.get("name") || "").trim();
+    const email = String(formData.get("email") || "").trim();
+    const subject = String(formData.get("subject") || "").trim();
+    const message = String(formData.get("message") || "").trim();
+
+    if (!name || !email || !subject || !message) {
+      if (formStatus) {
+        formStatus.textContent = "Please complete all fields before opening the email draft.";
+      }
+      return;
+    }
+
+    const body = [
+      `Name: ${name}`,
+      `Sender Email: ${email}`,
+      "",
+      message
+    ].join("\n");
+
+    const mailtoUrl = `mailto:danieldeladzikunu@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+    if (formStatus) {
+      formStatus.textContent = "Opening your email app with the message prefilled.";
+    }
+
+    window.location.href = mailtoUrl;
+  });
+}
