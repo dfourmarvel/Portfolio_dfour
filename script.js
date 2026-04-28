@@ -1,3 +1,5 @@
+document.documentElement.classList.add("js");
+
 const menuToggle = document.querySelector(".menu-toggle");
 const navMenu = document.querySelector(".nav-menu");
 const navLinks = document.querySelectorAll(".nav-menu a");
@@ -6,8 +8,6 @@ const revealItems = document.querySelectorAll(".reveal");
 const yearElement = document.getElementById("year");
 const themeToggle = document.querySelector(".theme-toggle");
 const themeIcon = document.querySelector(".theme-icon");
-const contactForm = document.querySelector("[data-contact-form]");
-const formStatus = document.querySelector("[data-form-status]");
 
 const THEME_KEY = "theme";
 const THEMES = {
@@ -147,37 +147,3 @@ if ("IntersectionObserver" in window) {
 window.addEventListener("scroll", () => {
   header?.classList.toggle("scrolled", window.scrollY > 12);
 });
-
-if (contactForm) {
-  contactForm.addEventListener("submit", (event) => {
-    event.preventDefault();
-
-    const formData = new FormData(contactForm);
-    const name = String(formData.get("name") || "").trim();
-    const email = String(formData.get("email") || "").trim();
-    const subject = String(formData.get("subject") || "").trim();
-    const message = String(formData.get("message") || "").trim();
-
-    if (!name || !email || !subject || !message) {
-      if (formStatus) {
-        formStatus.textContent = "Please complete all fields before opening the email draft.";
-      }
-      return;
-    }
-
-    const body = [
-      `Name: ${name}`,
-      `Sender Email: ${email}`,
-      "",
-      message
-    ].join("\n");
-
-    const mailtoUrl = `mailto:danieldeladzikunu@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-
-    if (formStatus) {
-      formStatus.textContent = "Opening your email app with the message prefilled.";
-    }
-
-    window.location.href = mailtoUrl;
-  });
-}
