@@ -925,6 +925,16 @@ textarea {
   border-bottom: none;
 }
 
+.certificate-summary {
+  margin: 0 0 1rem;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.certificate-link {
+  margin-top: 1.1rem;
+}
+
 .skill-level {
   display: grid;
   gap: 0.45rem;
