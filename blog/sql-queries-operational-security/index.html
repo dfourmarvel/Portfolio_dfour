@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Querying like a security analyst — Daniel Dela Dzikunu</title>
+  <meta name="description" content="200 machines, 80 overdue updates, one faulty endpoint — operational decisions driven by MariaDB queries.">
+  <meta property="og:title" content="Querying like a security analyst">
+  <meta property="og:image" content="https://danieldeladzikunu.vercel.app/assets/images/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='14' fill='%230a0e0c'/><text x='50' y='68' text-anchor='middle' font-size='52' font-family='monospace' font-weight='bold' fill='%233df5a5'>DD</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&family=JetBrains+Mono:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+</head>
+<body data-ac="green">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="wrap">
+    <nav class="site-nav" aria-label="Main navigation">
+      <a class="brand" href="/"><span class="beat" aria-hidden="true">♥</span> daniel@portfolio<span>:~$</span></a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle navigation menu">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-menu" id="nav-menu">
+        <a href="/medicine/">medicine</a>
+        <a href="/cybersecurity/">cybersecurity</a>
+        <a href="/web-development/">web-dev</a>
+        <a href="/graphic-design/">design</a>
+        <a href="/certifications/">certs</a>
+        <a href="/blog/" aria-current="page">blog</a>
+        <a href="/#contact">contact</a>
+        <a class="cv-btn" href="/cv.pdf" target="_blank" rel="noopener">CV ↓</a>
+      </div>
+    </nav>
+
+    <header class="page-hero">
+      <span class="crumb">blog</span>
+      <h1>Querying like a security analyst</h1>
+      <p class="post-meta">
+        <span>May 29, 2026</span>
+        <span class="tag-pill">sql</span>
+        <span>google cybersecurity certificate lab</span>
+      </p>
+    </header>
+
+    <main id="main">
+      <section style="padding-top: 40px;">
+        <article class="post-body reveal">
+        <p>The scenario: act as a security analyst tasked with querying an organisation's database to support real operational decisions — identifying machines due for OS updates, locating employees in specific departments, and tracing a machine fault to its owner.</p>
+        <p>Tools used: MariaDB | Techniques: WHERE, LIKE, % wildcard</p>
+        <p>Some of the tasks I worked through:</p>
+        <ul><li>Retrieved a full inventory of 200 organisation machines</li><li>Isolated 80 devices running OS 2 — flagged for urgent updates</li><li>Pulled employee lists for Finance and Sales departments to support a policy rollout</li><li>Identified the exact employee behind a faulty machine in South-109 using a targeted query, then expanded the search to the entire South building using LIKE with wildcards</li></ul>
+        <p>What stood out to me most was how much precision matters. A poorly written query in a real SOC environment could mean missing a compromised endpoint entirely.</p>
+        <p>If you are also on a cybersecurity learning path, feel free to connect — always open to exchanging notes.</p>
+        </article>
+        <div class="post-foot">
+          <a href="/blog/">← all write-ups</a>
+          <a href="https://www.linkedin.com/in/dfour/" target="_blank" rel="noreferrer">originally shared on LinkedIn ↗</a>
+          <a href="/cybersecurity/">the cybersecurity lab →</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span>© 2026 Daniel Dela Dzikunu</span>
+      <span>built by hand · no template</span>
+    </footer>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="/js/main.js"></script>
+</body>
+</html>

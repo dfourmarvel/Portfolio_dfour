@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Where it started: auditing Linux file permissions — Daniel Dela Dzikunu</title>
+  <meta name="description" content="My first formally documented lab — finding over-permissive files and locking them down with chmod.">
+  <meta property="og:title" content="Where it started: auditing Linux file permissions">
+  <meta property="og:image" content="https://danieldeladzikunu.vercel.app/assets/images/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='14' fill='%230a0e0c'/><text x='50' y='68' text-anchor='middle' font-size='52' font-family='monospace' font-weight='bold' fill='%233df5a5'>DD</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&family=JetBrains+Mono:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+</head>
+<body data-ac="green">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="wrap">
+    <nav class="site-nav" aria-label="Main navigation">
+      <a class="brand" href="/"><span class="beat" aria-hidden="true">♥</span> daniel@portfolio<span>:~$</span></a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle navigation menu">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-menu" id="nav-menu">
+        <a href="/medicine/">medicine</a>
+        <a href="/cybersecurity/">cybersecurity</a>
+        <a href="/web-development/">web-dev</a>
+        <a href="/graphic-design/">design</a>
+        <a href="/certifications/">certs</a>
+        <a href="/blog/" aria-current="page">blog</a>
+        <a href="/#contact">contact</a>
+        <a class="cv-btn" href="/cv.pdf" target="_blank" rel="noopener">CV ↓</a>
+      </div>
+    </nav>
+
+    <header class="page-hero">
+      <span class="crumb">blog</span>
+      <h1>Where it started: auditing Linux file permissions</h1>
+      <p class="post-meta">
+        <span>May 22, 2026</span>
+        <span class="tag-pill">linux</span>
+        <span>google cybersecurity certificate lab</span>
+      </p>
+    </header>
+
+    <main id="main">
+      <section style="padding-top: 40px;">
+        <article class="post-body reveal">
+        <p>I am excited to share a milestone in my cybersecurity journey! While this isn't my first hands-on lab, it is the very first one I have formally documented as part of my progress toward the Google Cybersecurity Professional Certificate.</p>
+        <p>In this lab, I stepped into the role of a security analyst tasked with auditing and securing a research team's Linux development environment to align it with strict organizational data protection policies.</p>
+        <p>The Mission: Eliminating Authorization Vulnerabilities</p>
+        <p>Operating within a Bash terminal, I used commands like ls -al to uncover hidden files and analyze the 10-character permission strings of the environment's directories and assets. I quickly identified several over-permissive write access issues and hidden file exposures that violated our compliance standards.</p>
+        <p>The Fix: Applying Least Privilege</p>
+        <p>To bring the environment to a secure state, I systematically modified file modes using the chmod command to enforce the Principle of Least Privilege:</p>
+        <p>Public Write Access Revoked: Discovered that project_k.txt allowed write permissions for anyone (-rw-rw-rw-). I executed chmod o-w project_k.txt to strip public write authorization.</p>
+        <p>Securing Hidden Assets: Located a hidden file, .project_x.txt, with improper permissions. Through targeted commands like chmod g+r,g-w, I transitioned it to a secure, read-only state for both the user and the group (-r--r-----).</p>
+        <p>Directory Isolation: Inspected the drafts directory, which initially allowed execute-only access to the group (drwx--x---). By running chmod g-x drafts, I completely restricted entry to the owner alone (drwx------).</p>
+        <p>The Takeaway</p>
+        <p>Linux file permissions are a fundamental pillar of access control. Successfully auditing these permissions and resolving vulnerabilities silently and effectively via the CLI was an incredibly rewarding experience. Documenting this process has reinforced how critical the principle of least privilege is to keeping organizational data safe.</p>
+        </article>
+        <div class="post-foot">
+          <a href="/blog/">← all write-ups</a>
+          <a href="https://www.linkedin.com/in/dfour/" target="_blank" rel="noreferrer">originally shared on LinkedIn ↗</a>
+          <a href="/cybersecurity/">the cybersecurity lab →</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span>© 2026 Daniel Dela Dzikunu</span>
+      <span>built by hand · no template</span>
+    </footer>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="/js/main.js"></script>
+</body>
+</html>

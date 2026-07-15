@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Two files. Same content. Different hashes. — Daniel Dela Dzikunu</title>
+  <meta name="description" content="Why visual inspection is not integrity verification — sha256sum and cmp expose the difference.">
+  <meta property="og:title" content="Two files. Same content. Different hashes.">
+  <meta property="og:image" content="https://danieldeladzikunu.vercel.app/assets/images/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='14' fill='%230a0e0c'/><text x='50' y='68' text-anchor='middle' font-size='52' font-family='monospace' font-weight='bold' fill='%233df5a5'>DD</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&family=JetBrains+Mono:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+</head>
+<body data-ac="green">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="wrap">
+    <nav class="site-nav" aria-label="Main navigation">
+      <a class="brand" href="/"><span class="beat" aria-hidden="true">♥</span> daniel@portfolio<span>:~$</span></a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle navigation menu">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-menu" id="nav-menu">
+        <a href="/medicine/">medicine</a>
+        <a href="/cybersecurity/">cybersecurity</a>
+        <a href="/web-development/">web-dev</a>
+        <a href="/graphic-design/">design</a>
+        <a href="/certifications/">certs</a>
+        <a href="/blog/" aria-current="page">blog</a>
+        <a href="/#contact">contact</a>
+        <a class="cv-btn" href="/cv.pdf" target="_blank" rel="noopener">CV ↓</a>
+      </div>
+    </nav>
+
+    <header class="page-hero">
+      <span class="crumb">blog</span>
+      <h1>Two files. Same content. Different hashes.</h1>
+      <p class="post-meta">
+        <span>Jun 11, 2026</span>
+        <span class="tag-pill">file integrity</span>
+        <span>google cybersecurity certificate lab</span>
+      </p>
+    </header>
+
+    <main id="main">
+      <section style="padding-top: 40px;">
+        <article class="post-body reveal">
+        <p>Two files. Same content on screen. Completely different hash values.</p>
+        <p>That's the scenario I worked through in this lab — and it's exactly the kind of deception a malicious program uses to hide in plain sight.</p>
+        <p>Here's what I did to expose the difference:</p>
+        <p>Used cat to display both files — they printed the exact same EICAR antivirus test string, indistinguishable to the naked eye</p>
+        <p>Ran sha256sum on each file — the digests were entirely different: 131f95c5... vs 2558ba9a...</p>
+        <p>Redirected both hash values into separate files using the &gt;&gt; operator</p>
+        <p>Used cmp for a byte-level comparison, which confirmed the mismatch at character 1, line 1</p>
+        <p>Key takeaway: visual inspection of file contents is not integrity verification. A threat actor can swap out a legitimate binary, preserve its readable output, and leave no obvious trace — unless you're hashing.</p>
+        <p>sha256sum doesn't care what the file looks like. It cares what the file is.</p>
+        </article>
+        <div class="post-foot">
+          <a href="/blog/">← all write-ups</a>
+          <a href="https://www.linkedin.com/in/dfour/" target="_blank" rel="noreferrer">originally shared on LinkedIn ↗</a>
+          <a href="/cybersecurity/">the cybersecurity lab →</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span>© 2026 Daniel Dela Dzikunu</span>
+      <span>built by hand · no template</span>
+    </footer>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="/js/main.js"></script>
+</body>
+</html>

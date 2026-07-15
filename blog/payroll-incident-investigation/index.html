@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The payroll transfer nobody sent — Daniel Dela Dzikunu</title>
+  <meta name="description" content="Tracing a fraudulent transaction to a contractor whose account outlived his contract by four years.">
+  <meta property="og:title" content="The payroll transfer nobody sent">
+  <meta property="og:image" content="https://danieldeladzikunu.vercel.app/assets/images/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='14' fill='%230a0e0c'/><text x='50' y='68' text-anchor='middle' font-size='52' font-family='monospace' font-weight='bold' fill='%233df5a5'>DD</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&family=JetBrains+Mono:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+</head>
+<body data-ac="green">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="wrap">
+    <nav class="site-nav" aria-label="Main navigation">
+      <a class="brand" href="/"><span class="beat" aria-hidden="true">♥</span> daniel@portfolio<span>:~$</span></a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle navigation menu">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-menu" id="nav-menu">
+        <a href="/medicine/">medicine</a>
+        <a href="/cybersecurity/">cybersecurity</a>
+        <a href="/web-development/">web-dev</a>
+        <a href="/graphic-design/">design</a>
+        <a href="/certifications/">certs</a>
+        <a href="/blog/" aria-current="page">blog</a>
+        <a href="/#contact">contact</a>
+        <a class="cv-btn" href="/cv.pdf" target="_blank" rel="noopener">CV ↓</a>
+      </div>
+    </nav>
+
+    <header class="page-hero">
+      <span class="crumb">blog</span>
+      <h1>The payroll transfer nobody sent</h1>
+      <p class="post-meta">
+        <span>Jun 16, 2026</span>
+        <span class="tag-pill">access control</span>
+        <span>google cybersecurity certificate lab</span>
+      </p>
+    </header>
+
+    <main id="main">
+      <section style="padding-top: 40px;">
+        <article class="post-body reveal">
+        <p>A payroll transfer went to an unknown bank account. The finance manager didn't make a mistake. So who did?</p>
+        <p>That was the scenario in my latest Google Cybersecurity Certificate lab — a Payroll Incident Investigation that placed me as the first cybersecurity hire at a growing business. My job: trace the transaction, identify the threat actor, and close the gaps that made it all possible.</p>
+        <p>The investigation began with an event log. A payroll event was recorded on October 3, 2023, at 8:29:57 AM from IP address 152.207.255.255, under the account Legal\Administrator, on a machine flagged as Up2-NoGud. One cross-reference against the employee directory and the source came into focus — Robert Taylor Jr., a legal contractor whose end date was December 27, 2019. His IP matched the log exactly. A man whose contract had expired nearly four years prior had just initiated a fraudulent payroll transfer, because nobody had ever deactivated his account.</p>
+        <p>But the ghost account was only half the story. Pulling up the employee directory revealed something more systemic: every single person in the organization — full-time staff, part-time workers, seasonal employees, and external contractors alike — carried Admin authorization. A graphic designer. A seasonal sales associate. A manufacturer with no end date on file. All holding the same access level as the owner. The business hadn't just failed to offboard one contractor; it had built an environment where a breach from any direction was almost inevitable.</p>
+        <p>The takeaway is that access control is not a technical setting you configure once — it's an organizational discipline you enforce continuously. The Principle of Least Privilege and Role-Based Access Control exist precisely to prevent a single expired account from becoming an open door to financial systems. Pair those frameworks with strict offboarding protocols and MFA enforced enterprise-wide, and this incident never reaches the bank statement.</p>
+        <p>In medicine, every person who touches a patient's record must have a documented, role-specific reason for that access. When that discipline breaks down, people get harmed. Cybersecurity is no different — the only thing that changes is what ends up at risk.</p>
+        </article>
+        <div class="post-foot">
+          <a href="/blog/">← all write-ups</a>
+          <a href="https://www.linkedin.com/in/dfour/" target="_blank" rel="noreferrer">originally shared on LinkedIn ↗</a>
+          <a href="/cybersecurity/">the cybersecurity lab →</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span>© 2026 Daniel Dela Dzikunu</span>
+      <span>built by hand · no template</span>
+    </footer>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="/js/main.js"></script>
+</body>
+</html>
