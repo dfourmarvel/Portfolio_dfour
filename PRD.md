@@ -138,13 +138,12 @@ Listed first among the domains. Launches light on content — designed so it doe
   | med-match-gh | Vercel | Next.js/TS + Supabase app. Do **not** expose real user data in screenshots. |
   | Bible-quiz | needs deploy | Vanilla JS game. |
   | Menstrual-health-game | needs deploy | Cross-listed in Medicine. |
+  | Mothers-Day | needs deploy | Personal tribute site. Contains photos/audio of Daniel's mother — Daniel has confirmed this content is already public and approved including it. |
   | This portfolio (v2) | itself | "The site you're on" — meta-project with its own write-up. |
-- **Excluded: Mothers-Day** — contains real personal photos/audio of Daniel's mother;
-  not published without an explicit later decision.
 - Each project card: screenshot/preview, name, one-liner, stack tags, **Live demo**
   button + **GitHub** button, click-through to detail page.
-- **Prerequisite task:** deploy Bible-quiz and Menstrual-health-game (Vercel) so live
-  demo links work. Part of the build plan, before launch.
+- **Prerequisite task:** deploy Bible-quiz, Menstrual-health-game, and Mothers-Day
+  (Vercel) so live demo links work. Part of the build plan, before launch.
 
 ### 5.5 Graphic Design section (`/graphic-design/`)
 
@@ -183,9 +182,7 @@ Listed first among the domains. Launches light on content — designed so it doe
   - **Email:** `danieldeladzikunu@gmail.com` **[confirm — see Open Items]**
   - **LinkedIn:** linkedin.com/in/danieldeladzikunu4
   - **GitHub:** github.com/dfourmarvel
-  - **WhatsApp/phone: OPTIONAL, OFF by default.** Publishing a number exposes it to
-    scrapers/spam permanently (a `wa.me` link reveals the number too). Decide at build
-    time; default is to omit.
+  - **No phone/WhatsApp** — decided against publishing a number (scraper/spam exposure).
 - Email gets a one-click copy-to-clipboard interaction in addition to `mailto:`.
 
 ### 5.9 Detail pages (projects & labs) — the two-layer model
@@ -290,8 +287,8 @@ This is a headline requirement: the site must feel **alive and impressive**.
 - **Performance:** Lighthouse ≥ 90 on Performance/A11y/Best Practices/SEO (mobile).
   Optimized images (WebP/AVIF with fallbacks, lazy-loading below the fold).
 - **Privacy:** no analytics at launch; no real user data from med-match-gh in any
-  screenshot; Mothers-Day assets never referenced; email exposed deliberately, phone
-  omitted by default.
+  screenshot; email exposed deliberately, phone/WhatsApp never published. Mothers-Day
+  is showcased with Daniel's explicit approval (content already public).
 - **Repo hygiene:** v2 replaces v1 in this repo on `main` (v1 remains in git history).
   Update README and CLAUDE.md to describe v2.
 
@@ -302,7 +299,7 @@ This is a headline requirement: the site must feel **alive and impressive**.
 ### Exists now
 - Cisco certificate PDF (in repo).
 - Lab documentation in `cybersecurity-labs` repo.
-- Web projects: med-match-gh, Bible-quiz, Menstrual-health-game (code complete; two need deploying).
+- Web projects: med-match-gh, Bible-quiz, Menstrual-health-game, Mothers-Day (code complete; three need deploying).
 - LinkedIn posts (labs + blood donation).
 - Social profiles: GitHub `dfourmarvel`, LinkedIn `danieldeladzikunu4`.
 
@@ -320,9 +317,8 @@ This is a headline requirement: the site must feel **alive and impressive**.
 
 1. **Public email:** site currently uses `danieldeladzikunu@gmail.com`. Confirm this
    is the address to publish.
-2. **WhatsApp/phone on contact block:** default OFF; Daniel to decide at build time.
-3. **Which labs are publish-ready:** review `cybersecurity-labs` together during build.
-4. **Header/footer sharing mechanism** (manual copies vs. tiny JS include): decide at
+2. **Which labs are publish-ready:** review `cybersecurity-labs` together during build.
+3. **Header/footer sharing mechanism** (manual copies vs. tiny JS include): decide at
    build start.
 
 ## 11. Build plan (phases)
@@ -330,7 +326,7 @@ This is a headline requirement: the site must feel **alive and impressive**.
 1. **Design mockups** — 2–3 animated homepage directions, reviewed live in browser → Daniel picks one (+1 iteration round).
 2. **Core build** — homepage + shared layout/nav/footer + animation system in the chosen direction.
 3. **Sections** — the four domain pages + certifications + blog, with detail-page template.
-4. **Content pass** — real project/lab write-ups, blog posts, imagery; deploy Bible-quiz & Menstrual-health-game for live demos.
+4. **Content pass** — real project/lab write-ups, blog posts, imagery; deploy Bible-quiz, Menstrual-health-game & Mothers-Day for live demos.
 5. **Polish & QA** — responsive pass, accessibility audit, Lighthouse, OG images, cross-browser.
 6. **Launch** — deploy to Vercel, verify everything live, update README/CLAUDE.md.
 
