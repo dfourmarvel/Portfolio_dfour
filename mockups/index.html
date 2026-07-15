@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Design Mockups — Pick a Direction</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    min-height: 100vh; display: grid; place-items: center;
+    background: #0b0b0e; color: #e8e8ee; font-family: system-ui, sans-serif; padding: 40px 20px;
+  }
+  .box { max-width: 720px; width: 100%; }
+  h1 { font-size: 28px; margin-bottom: 6px; }
+  p.sub { color: #8b8b9c; margin-bottom: 34px; }
+  a.card {
+    display: block; text-decoration: none; color: inherit; border: 1px solid #26262e;
+    border-radius: 12px; padding: 24px 26px; margin-bottom: 14px; transition: transform .2s, border-color .2s;
+  }
+  a.card:hover { transform: translateX(6px); }
+  a.card h2 { font-size: 19px; margin-bottom: 4px; }
+  a.card p { color: #8b8b9c; font-size: 14.5px; }
+  a.card .chip { display: inline-block; font-size: 11px; letter-spacing: .1em; padding: 3px 10px; border-radius: 100px; margin-bottom: 12px; }
+  .f { border-color: #3df5a5; } .f:hover { border-color: #ff6b81; } .f .chip { background: rgba(255,107,129,.14); color: #ff6b81; }
+  .a:hover { border-color: #3df5a5; } .a .chip { background: rgba(61,245,165,.12); color: #3df5a5; }
+  .b:hover { border-color: #8b5cf6; } .b .chip { background: rgba(139,92,246,.15); color: #a78bfa; }
+  .c:hover { border-color: #ffb224; } .c .chip { background: rgba(255,178,36,.12); color: #ffb224; }
+</style>
+</head>
+<body>
+  <div class="box">
+    <h1>Portfolio v2 — Design Mockups</h1>
+    <p class="sub">Three directions for the same homepage. Scroll each one all the way down — the animations are the point.</p>
+
+    <a class="card f" href="mockup-final.html">
+      <span class="chip">FINAL CANDIDATE</span>
+      <h2>Vital Terminal</h2>
+      <p>A's terminal foundation + B's per-domain colors + medicine woven in: ECG heartbeat strip, vitals in the terminal, rose/green/cyan/amber domain cards.</p>
+    </a>
+
+    <a class="card a" href="mockup-a-terminal.html">
+      <span class="chip">MOCKUP A</span>
+      <h2>Ghost Terminal</h2>
+      <p>Refined hacker DNA — phosphor green on near-black, typing terminal hero, grid + scanline atmosphere, monospace details.</p>
+    </a>
+
+    <a class="card b" href="mockup-b-neon.html">
+      <span class="chip">MOCKUP B</span>
+      <h2>Neon Pulse</h2>
+      <p>Modern & glowing — drifting gradient orbs, glass cards, a different accent color per domain, big centered gradient name.</p>
+    </a>
+
+    <a class="card c" href="mockup-c-editorial.html">
+      <span class="chip">MOCKUP C</span>
+      <h2>Signal Amber</h2>
+      <p>Editorial & bold — warm black with amber, oversized stacked typography, marquee strip, magazine-style index rows.</p>
+    </a>
+  </div>
+</body>
+</html>

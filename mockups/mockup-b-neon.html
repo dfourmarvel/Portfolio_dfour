@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mockup B — Neon Pulse | Daniel Dela Dzikunu</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #07070f;
+    --card: rgba(255,255,255,0.035);
+    --card-line: rgba(255,255,255,0.09);
+    --text: #eceaf6;
+    --dim: #8c8aa5;
+    --violet: #8b5cf6;
+    --cyan: #22d3ee;
+    --rose: #fb7185;
+    --amber: #fbbf24;
+    --sans: "Space Grotesk", system-ui, sans-serif;
+    --mono: "IBM Plex Mono", monospace;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--text); font-family: var(--sans); line-height: 1.6; overflow-x: hidden; }
+  a { color: inherit; text-decoration: none; }
+
+  /* floating gradient orbs */
+  .orb { position: fixed; border-radius: 50%; filter: blur(90px); opacity: .35; z-index: 0; pointer-events: none; }
+  .orb-1 { width: 480px; height: 480px; background: var(--violet); top: -140px; left: -100px; }
+  .orb-2 { width: 420px; height: 420px; background: var(--cyan); top: 30%; right: -160px; opacity: .22; }
+  .orb-3 { width: 380px; height: 380px; background: var(--rose); bottom: -140px; left: 20%; opacity: .18; }
+  .noise { position: fixed; inset: 0; z-index: 1; pointer-events: none; opacity: .5;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='0.85' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.04 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  .wrap { position: relative; z-index: 2; max-width: 1160px; margin: 0 auto; padding: 0 24px; }
+
+  /* NAV */
+  nav { display: flex; justify-content: space-between; align-items: center; padding: 24px 0; }
+  .brand { font-weight: 700; font-size: 19px; letter-spacing: -.02em; }
+  .brand em { font-style: normal; background: linear-gradient(90deg, var(--violet), var(--cyan)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .nav-links { display: flex; gap: 28px; align-items: center; font-size: 14.5px; }
+  .nav-links a { color: var(--dim); transition: color .2s; }
+  .nav-links a:hover { color: var(--text); }
+  .cv-btn {
+    color: var(--text) !important; padding: 9px 20px; border-radius: 100px; position: relative;
+    background: linear-gradient(var(--bg), var(--bg)) padding-box,
+                linear-gradient(90deg, var(--violet), var(--cyan)) border-box;
+    border: 1.5px solid transparent; transition: box-shadow .25s;
+  }
+  .cv-btn:hover { box-shadow: 0 0 28px rgba(139,92,246,.5); }
+
+  /* HERO */
+  .hero { padding: 110px 0 130px; text-align: center; }
+  .eyebrow {
+    font-family: var(--mono); font-size: 13px; color: var(--dim); letter-spacing: .18em;
+    text-transform: uppercase; margin-bottom: 28px;
+  }
+  .eyebrow b { color: var(--cyan); font-weight: 500; }
+  .hero h1 {
+    font-size: clamp(52px, 9vw, 108px); font-weight: 700; letter-spacing: -.045em; line-height: .98;
+  }
+  .hero h1 .grad {
+    background: linear-gradient(92deg, var(--violet) 0%, var(--cyan) 50%, var(--rose) 100%);
+    background-size: 200% 100%;
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+    animation: shift 6s ease-in-out infinite alternate;
+  }
+  @keyframes shift { to { background-position: 100% 0; } }
+  .hero h1 .word { display: inline-block; overflow: hidden; vertical-align: bottom; }
+  .hero h1 .word span { display: inline-block; }
+  .hero p.lede { max-width: 620px; margin: 34px auto 44px; color: var(--dim); font-size: 18px; }
+  .hero p.lede b { color: var(--text); font-weight: 500; }
+  .cta-row { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+  .btn { padding: 15px 32px; border-radius: 100px; font-weight: 500; font-size: 15.5px; transition: transform .2s, box-shadow .25s; }
+  .btn-primary { background: linear-gradient(90deg, var(--violet), var(--cyan)); color: #05050c; font-weight: 700; }
+  .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 12px 40px rgba(34,211,238,.4); }
+  .btn-ghost { border: 1px solid var(--card-line); color: var(--dim); }
+  .btn-ghost:hover { color: var(--text); border-color: var(--dim); }
+
+  /* SECTIONS */
+  section { padding: 90px 0; }
+  .sec-head { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 46px; flex-wrap: wrap; gap: 8px; }
+  .sec-head h2 { font-size: clamp(30px, 4.5vw, 46px); font-weight: 700; letter-spacing: -.03em; }
+  .sec-head .n { font-family: var(--mono); color: var(--dim); font-size: 13px; }
+
+  /* DOMAIN PORTALS 2x2 */
+  .portal-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .portal {
+    --ac: var(--violet);
+    position: relative; border-radius: 20px; padding: 38px 32px; min-height: 250px;
+    background: var(--card); border: 1px solid var(--card-line); overflow: hidden;
+    display: flex; flex-direction: column; justify-content: flex-end;
+    transition: transform .3s cubic-bezier(.22,1,.36,1), border-color .3s;
+  }
+  .portal::before {
+    content: ""; position: absolute; width: 340px; height: 340px; border-radius: 50%;
+    background: var(--ac); filter: blur(80px); opacity: 0; top: -120px; right: -100px;
+    transition: opacity .4s;
+  }
+  .portal:hover { transform: translateY(-8px) scale(1.01); border-color: var(--ac); }
+  .portal:hover::before { opacity: .28; }
+  .portal .num { position: absolute; top: 26px; left: 32px; font-family: var(--mono); font-size: 13px; color: var(--dim); }
+  .portal .num b { color: var(--ac); font-weight: 500; }
+  .portal h3 { font-size: clamp(24px, 3vw, 34px); font-weight: 700; letter-spacing: -.02em; position: relative; }
+  .portal p { color: var(--dim); font-size: 15px; margin-top: 8px; position: relative; }
+  .portal .stat { font-family: var(--mono); font-size: 12.5px; color: var(--ac); margin-top: 18px; position: relative; }
+  .portal .go {
+    position: absolute; top: 24px; right: 26px; width: 40px; height: 40px; border-radius: 50%;
+    border: 1px solid var(--card-line); display: grid; place-items: center; font-size: 17px;
+    color: var(--dim); transition: all .3s;
+  }
+  .portal:hover .go { background: var(--ac); color: #05050c; border-color: var(--ac); transform: rotate(45deg); }
+  .p-med { --ac: var(--rose); }
+  .p-cyber { --ac: var(--cyan); }
+  .p-web { --ac: var(--violet); }
+  .p-design { --ac: var(--amber); }
+
+  /* FEATURED */
+  .feat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .feat {
+    border-radius: 18px; background: var(--card); border: 1px solid var(--card-line);
+    padding: 28px; transition: transform .3s, border-color .3s;
+  }
+  .feat:hover { transform: translateY(-6px); border-color: rgba(255,255,255,.25); }
+  .feat .tag { font-family: var(--mono); font-size: 11.5px; letter-spacing: .12em; color: var(--cyan); }
+  .feat h3 { margin: 14px 0 8px; font-size: 19px; }
+  .feat p { color: var(--dim); font-size: 14.5px; }
+
+  /* CERTS */
+  .cert-row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .cert { border-radius: 18px; background: var(--card); border: 1px solid var(--card-line); padding: 30px; }
+  .cert .status { font-family: var(--mono); font-size: 12px; letter-spacing: .1em; }
+  .cert.done .status { color: var(--cyan); }
+  .cert.progress .status { color: var(--amber); }
+  .cert h3 { font-size: 19px; margin: 12px 0 18px; }
+  .bar { height: 7px; border-radius: 4px; background: rgba(255,255,255,.07); overflow: hidden; }
+  .bar i { display: block; height: 100%; width: 0; border-radius: 4px; background: linear-gradient(90deg, var(--violet), var(--cyan)); }
+  .cert .frac { font-family: var(--mono); font-size: 12.5px; color: var(--dim); margin-top: 12px; }
+
+  /* BLOG */
+  .post {
+    display: flex; justify-content: space-between; align-items: center; gap: 20px;
+    padding: 26px 22px; border-radius: 16px; border: 1px solid transparent;
+    transition: background .25s, border-color .25s;
+  }
+  .post:hover { background: var(--card); border-color: var(--card-line); }
+  .post h3 { font-size: 18px; font-weight: 500; }
+  .post .date { font-family: var(--mono); font-size: 12.5px; color: var(--dim); white-space: nowrap; }
+
+  /* CONTACT */
+  .contact {
+    text-align: center; border-radius: 28px; border: 1px solid var(--card-line);
+    background: radial-gradient(ellipse 80% 120% at 50% 0%, rgba(139,92,246,.14), transparent 60%), var(--card);
+    padding: 90px 24px; margin-bottom: 40px;
+  }
+  .contact h2 { font-size: clamp(32px, 5vw, 54px); letter-spacing: -.03em; margin-bottom: 14px; }
+  .contact p { color: var(--dim); margin-bottom: 40px; }
+  .email-chip {
+    display: inline-flex; align-items: center; gap: 14px; font-family: var(--mono);
+    font-size: clamp(14px, 2.5vw, 18px); padding: 17px 28px; border-radius: 100px;
+    background: linear-gradient(var(--bg), var(--bg)) padding-box,
+                linear-gradient(90deg, var(--violet), var(--cyan)) border-box;
+    border: 1.5px solid transparent; color: var(--text); cursor: pointer; transition: box-shadow .25s;
+  }
+  .email-chip:hover { box-shadow: 0 0 36px rgba(34,211,238,.35); }
+  .email-chip .copy { font-size: 12px; color: var(--cyan); }
+  .contact .socials { display: flex; gap: 22px; justify-content: center; margin-top: 30px; font-size: 14px; }
+  .contact .socials a { color: var(--dim); border-bottom: 1px solid transparent; }
+  .contact .socials a:hover { color: var(--text); border-color: var(--cyan); }
+
+  footer { padding: 26px 0 40px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; color: var(--dim); font-size: 13.5px; font-family: var(--mono); }
+
+  /* hidden-until-animated only applies when JS confirms animations will run */
+  body.anim .reveal { opacity: 0; transform: translateY(36px); }
+
+  @media (max-width: 820px) {
+    .nav-links a:not(.cv-btn) { display: none; }
+    .portal-grid, .feat-grid, .cert-row { grid-template-columns: 1fr; }
+    .hero { padding: 70px 0 90px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; }
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+  }
+</style>
+</head>
+<body>
+<div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div>
+<div class="noise"></div>
+
+<div class="wrap">
+  <nav>
+    <a class="brand" href="#">Daniel<em>.</em></a>
+    <div class="nav-links">
+      <a href="#portals">Medicine</a>
+      <a href="#portals">Cybersecurity</a>
+      <a href="#portals">Web Dev</a>
+      <a href="#portals">Design</a>
+      <a href="#blog">Blog</a>
+      <a class="cv-btn" href="#">Download CV</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <p class="eyebrow reveal-hero">Medicine <b>×</b> Cybersecurity <b>×</b> Code <b>×</b> Design</p>
+    <h1>
+      <span class="word"><span>Daniel</span></span>
+      <span class="word"><span>Dela</span></span><br>
+      <span class="word"><span class="grad">Dzikunu</span></span>
+    </h1>
+    <p class="lede reveal-hero">Medical student on the surgery track, building <b>real cybersecurity skills</b> lab by lab — and shipping <b>websites, games, and designs</b> along the way.</p>
+    <div class="cta-row reveal-hero">
+      <a class="btn btn-primary" href="#portals">Explore my work</a>
+      <a class="btn btn-ghost" href="#contact">Get in touch</a>
+    </div>
+  </header>
+
+  <section id="portals">
+    <div class="sec-head reveal"><h2>What I do</h2><span class="n">001 — DOMAINS</span></div>
+    <div class="portal-grid">
+      <a class="portal p-med reveal" href="#">
+        <span class="num"><b>01</b> / MEDICINE</span>
+        <span class="go">↗</span>
+        <h3>Medicine &amp; Health</h3>
+        <p>Med student headed for surgery — specialty open. Community health education and health-focused projects.</p>
+        <span class="stat">BLOOD DONATION EDU · HEALTH GAME</span>
+      </a>
+      <a class="portal p-cyber reveal" href="#">
+        <span class="num"><b>02</b> / CYBERSECURITY</span>
+        <span class="go">↗</span>
+        <h3>Cybersecurity</h3>
+        <p>Documented labs: packet analysis, Linux, network security. Wireshark · tcpdump · Kali.</p>
+        <span class="stat">GOOGLE CERT 5/8 · CISCO ✓</span>
+      </a>
+      <a class="portal p-web reveal" href="#">
+        <span class="num"><b>03</b> / WEB DEV</span>
+        <span class="go">↗</span>
+        <h3>Web Development</h3>
+        <p>Apps and games in vanilla JS and Next.js/TypeScript — live demos for everything.</p>
+        <span class="stat">5 PROJECTS · ALL OPEN SOURCE</span>
+      </a>
+      <a class="portal p-design reveal" href="#">
+        <span class="num"><b>04</b> / DESIGN</span>
+        <span class="go">↗</span>
+        <h3>Graphic Design</h3>
+        <p>Posters made for real events and causes — a visual gallery.</p>
+        <span class="stat">SELECTED POSTERS</span>
+      </a>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head reveal"><h2>Featured</h2><span class="n">002 — SELECTED WORK</span></div>
+    <div class="feat-grid">
+      <article class="feat reveal">
+        <span class="tag">CYBERSECURITY LAB</span>
+        <h3>Packet Analysis with Wireshark</h3>
+        <p>Capturing and dissecting live network traffic — full methodology write-up.</p>
+      </article>
+      <article class="feat reveal">
+        <span class="tag">WEB APP</span>
+        <h3>med-match</h3>
+        <p>Next.js + TypeScript + Supabase app built for medical students.</p>
+      </article>
+      <article class="feat reveal">
+        <span class="tag">HEALTH × GAME</span>
+        <h3>Menstrual Health Game</h3>
+        <p>A game that teaches menstrual health — playable in the browser.</p>
+      </article>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head reveal"><h2>Certifications</h2><span class="n">003 — VERIFIED</span></div>
+    <div class="cert-row">
+      <div class="cert done reveal">
+        <span class="status">✓ COMPLETED</span>
+        <h3>Cisco — Introduction to Cybersecurity</h3>
+        <div class="bar"><i data-w="100%"></i></div>
+        <p class="frac">Certificate available</p>
+      </div>
+      <div class="cert progress reveal">
+        <span class="status">◐ IN PROGRESS</span>
+        <h3>Google Cybersecurity Certificate</h3>
+        <div class="bar"><i data-w="62.5%"></i></div>
+        <p class="frac">5 / 8 courses complete</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="blog">
+    <div class="sec-head reveal"><h2>Latest write-ups</h2><span class="n">004 — BLOG</span></div>
+    <a class="post reveal" href="#"><h3>Teaching blood donation in my community</h3><span class="date">JUN 2026</span></a>
+    <a class="post reveal" href="#"><h3>What tcpdump taught me about reading raw traffic</h3><span class="date">MAY 2026</span></a>
+    <a class="post reveal" href="#"><h3>Setting up a safe Kali Linux lab in VirtualBox</h3><span class="date">APR 2026</span></a>
+  </section>
+
+  <section id="contact" style="padding-top: 40px;">
+    <div class="contact reveal">
+      <h2>Let's talk.</h2>
+      <p>Open to conversations about medicine, security, or anything I've built.</p>
+      <button class="email-chip" id="email-chip">
+        danieldeladzikunu@gmail.com <span class="copy" id="copy-label">COPY</span>
+      </button>
+      <div class="socials">
+        <a href="https://github.com/dfourmarvel">GitHub</a>
+        <a href="https://www.linkedin.com/in/danieldeladzikunu4/">LinkedIn</a>
+      </div>
+    </div>
+    <footer>
+      <span>© 2026 Daniel Dela Dzikunu</span>
+      <span>Built by hand — no template</span>
+    </footer>
+  </section>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script>
+  const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  if (!reduced && window.gsap) {
+    document.body.classList.add("anim");
+    gsap.registerPlugin(ScrollTrigger);
+    document.addEventListener("visibilitychange", () => { if (!document.hidden) ScrollTrigger.refresh(); });
+
+    /* hero: masked word rise */
+    gsap.from(".hero .word span", { yPercent: 110, duration: 1.1, ease: "power4.out", stagger: .12, delay: .15 });
+    gsap.utils.toArray(".reveal-hero").forEach((el, i) => {
+      gsap.fromTo(el, { y: 24, opacity: 0 }, { y: 0, opacity: 1, duration: .9, ease: "power3.out", delay: .8 + i * .15 });
+    });
+
+    /* orbs drift */
+    gsap.to(".orb-1", { x: 60, y: 40, duration: 9, ease: "sine.inOut", yoyo: true, repeat: -1 });
+    gsap.to(".orb-2", { x: -50, y: 60, duration: 11, ease: "sine.inOut", yoyo: true, repeat: -1 });
+    gsap.to(".orb-3", { x: 40, y: -50, duration: 10, ease: "sine.inOut", yoyo: true, repeat: -1 });
+
+    /* scroll reveals */
+    gsap.utils.toArray(".reveal").forEach(el => {
+      gsap.to(el, { y: 0, opacity: 1, duration: .85, ease: "power3.out",
+        scrollTrigger: { trigger: el, start: "top 88%" } });
+    });
+
+    /* progress bars */
+    document.querySelectorAll(".bar i").forEach(bar => {
+      gsap.to(bar, { width: bar.dataset.w, duration: 1.3, ease: "power2.out",
+        scrollTrigger: { trigger: bar, start: "top 90%" } });
+    });
+  } else {
+    document.querySelectorAll(".reveal, .reveal-hero").forEach(el => { el.style.opacity = 1; el.style.transform = "none"; });
+    document.querySelectorAll(".bar i").forEach(bar => bar.style.width = bar.dataset.w);
+  }
+
+  document.getElementById("email-chip").addEventListener("click", async () => {
+    try {
+      await navigator.clipboard.writeText("danieldeladzikunu@gmail.com");
+      document.getElementById("copy-label").textContent = "COPIED ✓";
+      setTimeout(() => document.getElementById("copy-label").textContent = "COPY", 1800);
+    } catch (e) {}
+  });
+</script>
+</body>
+</html>

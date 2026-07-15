@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mockup A — Ghost Terminal | Daniel Dela Dzikunu</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&family=JetBrains+Mono:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0e0c;
+    --bg-raise: #0e1512;
+    --bg-card: #101815;
+    --line: #1d2b25;
+    --text: #d7e4dd;
+    --text-dim: #7d9188;
+    --green: #3df5a5;
+    --green-dim: rgba(61, 245, 165, 0.14);
+    --cyan: #52e3ff;
+    --mono: "JetBrains Mono", ui-monospace, monospace;
+    --sans: "Inter", system-ui, sans-serif;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+  /* faint grid + scanline atmosphere */
+  body::before {
+    content: "";
+    position: fixed; inset: 0; z-index: 0; pointer-events: none;
+    background-image:
+      linear-gradient(rgba(61,245,165,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(61,245,165,0.03) 1px, transparent 1px);
+    background-size: 48px 48px;
+    mask-image: radial-gradient(ellipse 90% 70% at 50% 0%, black 30%, transparent 75%);
+  }
+  body::after {
+    content: "";
+    position: fixed; inset: 0; z-index: 50; pointer-events: none;
+    background: repeating-linear-gradient(0deg, rgba(0,0,0,0.09) 0 1px, transparent 1px 3px);
+    opacity: .5;
+  }
+  .wrap { position: relative; z-index: 1; max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+  a { color: inherit; text-decoration: none; }
+
+  /* NAV */
+  nav {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 22px 0; border-bottom: 1px solid var(--line);
+  }
+  .brand { font-family: var(--mono); font-weight: 600; color: var(--green); font-size: 15px; }
+  .brand span { color: var(--text-dim); }
+  .nav-links { display: flex; gap: 26px; align-items: center; font-family: var(--mono); font-size: 13px; }
+  .nav-links a { color: var(--text-dim); transition: color .2s; position: relative; }
+  .nav-links a:hover { color: var(--green); }
+  .nav-links a::before { content: "./"; opacity: 0; transition: opacity .2s; color: var(--green); }
+  .nav-links a:hover::before { opacity: 1; }
+  .cv-btn {
+    font-family: var(--mono); font-size: 13px; color: var(--green) !important;
+    border: 1px solid var(--green); padding: 8px 16px; border-radius: 4px;
+    transition: background .2s, box-shadow .2s;
+  }
+  .cv-btn:hover { background: var(--green-dim); box-shadow: 0 0 24px rgba(61,245,165,.25); }
+  .cv-btn::before { display: none; }
+
+  /* HERO */
+  .hero { padding: 90px 0 110px; }
+  .terminal {
+    width: min(520px, 100%); background: var(--bg-card); border: 1px solid var(--line);
+    border-radius: 8px; overflow: hidden; margin-bottom: 48px;
+    box-shadow: 0 24px 60px rgba(0,0,0,.5);
+  }
+  .term-bar { display: flex; gap: 7px; padding: 11px 14px; border-bottom: 1px solid var(--line); background: var(--bg-raise); }
+  .term-bar i { width: 11px; height: 11px; border-radius: 50%; background: #2a3a33; }
+  .term-bar i:first-child { background: #ff5f57; opacity: .7; }
+  .term-bar i:nth-child(2) { background: #febc2e; opacity: .7; }
+  .term-bar i:nth-child(3) { background: #28c840; opacity: .7; }
+  .term-body { padding: 18px; font-family: var(--mono); font-size: 13.5px; min-height: 118px; }
+  .term-body .ln { display: block; }
+  .prompt { color: var(--green); }
+  .cmd { color: var(--text); }
+  .out { color: var(--text-dim); }
+  .cursor { display: inline-block; width: 8px; height: 15px; background: var(--green); vertical-align: -2px; animation: blink 1s steps(1) infinite; }
+  @keyframes blink { 50% { opacity: 0; } }
+
+  .hero h1 {
+    font-size: clamp(44px, 7.5vw, 84px); font-weight: 800; letter-spacing: -0.03em;
+    line-height: 1.02;
+  }
+  .hero h1 .accent { color: var(--green); text-shadow: 0 0 40px rgba(61,245,165,.4); }
+  .hero .sub {
+    font-family: var(--mono); color: var(--text-dim); margin: 26px 0 38px; font-size: 15px;
+  }
+  .hero .sub b { color: var(--cyan); font-weight: 400; }
+  .cta-row { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; }
+  .btn {
+    font-family: var(--mono); font-size: 14px; padding: 14px 26px; border-radius: 4px;
+    transition: transform .2s, box-shadow .2s, background .2s;
+  }
+  .btn-solid { background: var(--green); color: #06110c; font-weight: 600; }
+  .btn-solid:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(61,245,165,.35); }
+  .btn-ghost { border: 1px solid var(--line); color: var(--text-dim); }
+  .btn-ghost:hover { border-color: var(--green); color: var(--green); }
+  .socials { margin-left: auto; display: flex; gap: 18px; font-family: var(--mono); font-size: 13px; }
+  .socials a { color: var(--text-dim); border-bottom: 1px dashed var(--line); }
+  .socials a:hover { color: var(--green); border-color: var(--green); }
+
+  /* SECTION SHARED */
+  section { padding: 84px 0; border-top: 1px solid var(--line); }
+  .sec-label { font-family: var(--mono); font-size: 13px; color: var(--green); margin-bottom: 10px; }
+  .sec-label::before { content: "// "; color: var(--text-dim); }
+  h2 { font-size: clamp(28px, 4vw, 40px); font-weight: 800; letter-spacing: -0.02em; margin-bottom: 42px; }
+
+  /* DOMAIN PORTALS */
+  .portal {
+    display: grid; grid-template-columns: 90px 1fr auto; gap: 24px; align-items: center;
+    padding: 34px 26px; border: 1px solid var(--line); border-radius: 8px; margin-bottom: 14px;
+    background: var(--bg-card); position: relative; overflow: hidden; cursor: pointer;
+    transition: border-color .25s, transform .25s;
+  }
+  .portal::before {
+    content: ""; position: absolute; inset: 0;
+    background: linear-gradient(90deg, var(--green-dim), transparent 60%);
+    transform: translateX(-101%); transition: transform .45s cubic-bezier(.22,1,.36,1);
+  }
+  .portal:hover { border-color: var(--green); transform: translateX(6px); }
+  .portal:hover::before { transform: translateX(0); }
+  .portal .idx { font-family: var(--mono); color: var(--text-dim); font-size: 14px; position: relative; }
+  .portal h3 { font-size: clamp(20px, 3vw, 28px); font-weight: 800; position: relative; }
+  .portal p { color: var(--text-dim); font-size: 14.5px; margin-top: 6px; position: relative; }
+  .portal .meta { text-align: right; font-family: var(--mono); font-size: 12.5px; color: var(--green); position: relative; white-space: nowrap; }
+  .portal .meta small { display: block; color: var(--text-dim); margin-top: 4px; }
+  .portal .arrow { font-family: var(--mono); color: var(--text-dim); transition: color .2s, transform .2s; display: inline-block; margin-top: 8px; }
+  .portal:hover .arrow { color: var(--green); transform: translateX(5px); }
+
+  /* FEATURED */
+  .feat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .feat {
+    background: var(--bg-card); border: 1px solid var(--line); border-radius: 8px; padding: 26px;
+    transition: border-color .25s, transform .25s;
+  }
+  .feat:hover { border-color: var(--cyan); transform: translateY(-6px); }
+  .feat .tag { font-family: var(--mono); font-size: 11.5px; color: var(--cyan); }
+  .feat h3 { margin: 12px 0 8px; font-size: 18px; font-weight: 700; }
+  .feat p { color: var(--text-dim); font-size: 14px; }
+
+  /* CERTS */
+  .cert-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .cert { background: var(--bg-card); border: 1px solid var(--line); border-radius: 8px; padding: 26px; }
+  .cert .status { font-family: var(--mono); font-size: 12px; color: var(--green); }
+  .cert h3 { font-size: 17px; margin: 10px 0 14px; }
+  .bar { height: 6px; background: var(--line); border-radius: 3px; overflow: hidden; }
+  .bar i { display: block; height: 100%; width: 0; background: linear-gradient(90deg, var(--green), var(--cyan)); border-radius: 3px; }
+  .cert .frac { font-family: var(--mono); font-size: 12px; color: var(--text-dim); margin-top: 10px; }
+
+  /* BLOG */
+  .post { display: flex; justify-content: space-between; gap: 20px; padding: 22px 4px; border-bottom: 1px solid var(--line); transition: padding-left .25s; }
+  .post:hover { padding-left: 14px; }
+  .post:hover h3 { color: var(--green); }
+  .post h3 { font-size: 17px; font-weight: 600; transition: color .2s; }
+  .post .date { font-family: var(--mono); font-size: 12.5px; color: var(--text-dim); white-space: nowrap; }
+
+  /* CONTACT */
+  .contact { text-align: center; padding: 110px 0; }
+  .contact h2 { margin-bottom: 14px; }
+  .contact p { color: var(--text-dim); margin-bottom: 36px; }
+  .email-chip {
+    display: inline-flex; align-items: center; gap: 14px; font-family: var(--mono);
+    font-size: clamp(14px, 2.5vw, 19px); border: 1px solid var(--line); border-radius: 6px;
+    padding: 16px 24px; background: var(--bg-card); cursor: pointer; color: var(--text);
+    transition: border-color .2s, box-shadow .2s;
+  }
+  .email-chip:hover { border-color: var(--green); box-shadow: 0 0 30px rgba(61,245,165,.18); }
+  .email-chip .copy { color: var(--green); font-size: 12px; }
+  .contact .socials { justify-content: center; margin: 28px 0 0; }
+
+  footer { border-top: 1px solid var(--line); padding: 30px 0; font-family: var(--mono); font-size: 12.5px; color: var(--text-dim); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+
+  /* hidden-until-animated only applies when JS confirms animations will run */
+  body.anim .reveal { opacity: 0; transform: translateY(30px); }
+
+  @media (max-width: 760px) {
+    .nav-links a:not(.cv-btn) { display: none; }
+    .portal { grid-template-columns: 1fr; gap: 8px; }
+    .portal .meta { text-align: left; }
+    .feat-grid, .cert-row { grid-template-columns: 1fr; }
+    .socials { margin-left: 0; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; }
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <nav>
+    <a class="brand" href="#">daniel@portfolio<span>:~$</span></a>
+    <div class="nav-links">
+      <a href="#medicine">medicine</a>
+      <a href="#cyber">cybersecurity</a>
+      <a href="#webdev">web-dev</a>
+      <a href="#design">design</a>
+      <a href="#blog">blog</a>
+      <a class="cv-btn" href="#">CV ↓</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="terminal">
+      <div class="term-bar"><i></i><i></i><i></i></div>
+      <div class="term-body" id="term"></div>
+    </div>
+    <h1 id="hero-title">Daniel Dela<br><span class="accent">Dzikunu</span></h1>
+    <p class="sub reveal" id="hero-sub">medical student <b>×</b> cybersecurity <b>×</b> builder — studying medicine, documenting security labs, and shipping things I design and code.</p>
+    <div class="cta-row reveal" id="hero-cta">
+      <a class="btn btn-solid" href="#portals">explore my work</a>
+      <a class="btn btn-ghost" href="#contact">get in touch</a>
+      <div class="socials">
+        <a href="https://github.com/dfourmarvel">github</a>
+        <a href="https://www.linkedin.com/in/danieldeladzikunu4/">linkedin</a>
+      </div>
+    </div>
+  </header>
+
+  <section id="portals">
+    <p class="sec-label">domains</p>
+    <h2 class="reveal">Four things I do.</h2>
+
+    <a class="portal reveal" id="medicine" href="#">
+      <span class="idx">01</span>
+      <div>
+        <h3>Medicine &amp; Health</h3>
+        <p>First-year medical student headed for surgery — specialty deliberately undecided. Community health education and health-focused builds.</p>
+      </div>
+      <div class="meta">2 projects<small>blood donation · health game</small><span class="arrow">cd medicine →</span></div>
+    </a>
+
+    <a class="portal reveal" id="cyber" href="#">
+      <span class="idx">02</span>
+      <div>
+        <h3>Cybersecurity</h3>
+        <p>Hands-on labs in packet analysis, Linux, and network security. Wireshark, tcpdump, Kali — documented step by step.</p>
+      </div>
+      <div class="meta">labs + 2 certs<small>google cert: 5/8 courses</small><span class="arrow">cd cybersecurity →</span></div>
+    </a>
+
+    <a class="portal reveal" id="webdev" href="#">
+      <span class="idx">03</span>
+      <div>
+        <h3>Web Development</h3>
+        <p>Websites and games built with vanilla JS and Next.js/TypeScript — all live, all open source.</p>
+      </div>
+      <div class="meta">5 projects<small>incl. this site</small><span class="arrow">cd web-dev →</span></div>
+    </a>
+
+    <a class="portal reveal" id="design" href="#">
+      <span class="idx">04</span>
+      <div>
+        <h3>Graphic Design</h3>
+        <p>Poster design — visual work made for real events and causes.</p>
+      </div>
+      <div class="meta">gallery<small>selected posters</small><span class="arrow">cd design →</span></div>
+    </a>
+  </section>
+
+  <section>
+    <p class="sec-label">featured</p>
+    <h2 class="reveal">Hand-picked work.</h2>
+    <div class="feat-grid">
+      <article class="feat reveal">
+        <span class="tag">CYBERSECURITY LAB</span>
+        <h3>Packet Analysis with Wireshark</h3>
+        <p>Capturing and dissecting live network traffic — full methodology write-up.</p>
+      </article>
+      <article class="feat reveal">
+        <span class="tag">WEB APP</span>
+        <h3>med-match</h3>
+        <p>Next.js + TypeScript + Supabase app built for medical students.</p>
+      </article>
+      <article class="feat reveal">
+        <span class="tag">HEALTH × GAME</span>
+        <h3>Menstrual Health Game</h3>
+        <p>A game that teaches menstrual health — playable in the browser.</p>
+      </article>
+    </div>
+  </section>
+
+  <section>
+    <p class="sec-label">certifications</p>
+    <h2 class="reveal">Verified, in writing.</h2>
+    <div class="cert-row">
+      <div class="cert reveal">
+        <span class="status">[✓] COMPLETED</span>
+        <h3>Cisco — Introduction to Cybersecurity</h3>
+        <div class="bar"><i data-w="100%"></i></div>
+        <p class="frac">certificate available</p>
+      </div>
+      <div class="cert reveal">
+        <span class="status">[~] IN PROGRESS</span>
+        <h3>Google Cybersecurity Certificate</h3>
+        <div class="bar"><i data-w="62.5%"></i></div>
+        <p class="frac">5 / 8 courses complete</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="blog">
+    <p class="sec-label">blog</p>
+    <h2 class="reveal">Latest write-ups.</h2>
+    <a class="post reveal" href="#"><h3>Teaching blood donation in my community</h3><span class="date">2026-06</span></a>
+    <a class="post reveal" href="#"><h3>What tcpdump taught me about reading raw traffic</h3><span class="date">2026-05</span></a>
+    <a class="post reveal" href="#"><h3>Setting up a safe Kali Linux lab in VirtualBox</h3><span class="date">2026-04</span></a>
+  </section>
+
+  <section class="contact" id="contact">
+    <p class="sec-label" style="text-align:center">contact</p>
+    <h2 class="reveal">Say hello.</h2>
+    <p class="reveal">Open to conversations about medicine, security, or anything I've built.</p>
+    <button class="email-chip reveal" id="email-chip">
+      danieldeladzikunu@gmail.com <span class="copy" id="copy-label">[copy]</span>
+    </button>
+    <div class="socials reveal">
+      <a href="https://github.com/dfourmarvel">github</a>
+      <a href="https://www.linkedin.com/in/danieldeladzikunu4/">linkedin</a>
+    </div>
+  </section>
+
+  <footer>
+    <span>© 2026 Daniel Dela Dzikunu</span>
+    <span>built by hand · no template</span>
+  </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script>
+  const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* terminal typing */
+  const term = document.getElementById("term");
+  const script = [
+    { type: "cmd", text: "whoami" },
+    { type: "out", text: "medical student · cybersecurity · builder" },
+    { type: "cmd", text: "ls ./work" },
+    { type: "out", text: "medicine/  cybersecurity/  web-dev/  design/" },
+  ];
+  function renderLine(kind, text) {
+    const ln = document.createElement("span");
+    ln.className = "ln";
+    if (kind === "cmd") ln.innerHTML = `<span class="prompt">daniel@portfolio:~$</span> <span class="cmd">${text}</span>`;
+    else ln.innerHTML = `<span class="out">${text}</span>`;
+    term.appendChild(ln);
+    return ln;
+  }
+  async function typeScript() {
+    for (const line of script) {
+      if (line.type === "cmd") {
+        const ln = document.createElement("span");
+        ln.className = "ln";
+        ln.innerHTML = `<span class="prompt">daniel@portfolio:~$</span> <span class="cmd"></span>`;
+        term.appendChild(ln);
+        const target = ln.querySelector(".cmd");
+        for (const ch of line.text) {
+          target.textContent += ch;
+          await new Promise(r => setTimeout(r, 55));
+        }
+        await new Promise(r => setTimeout(r, 250));
+      } else {
+        renderLine("out", line.text);
+        await new Promise(r => setTimeout(r, 350));
+      }
+    }
+    const c = document.createElement("span");
+    c.innerHTML = `<span class="prompt">daniel@portfolio:~$</span> <span class="cursor"></span>`;
+    term.appendChild(c);
+  }
+  if (reduced) {
+    script.forEach(l => renderLine(l.type, l.text));
+  } else {
+    typeScript();
+  }
+
+  /* GSAP entrances */
+  if (!reduced && window.gsap) {
+    document.body.classList.add("anim");
+    gsap.registerPlugin(ScrollTrigger);
+    document.addEventListener("visibilitychange", () => { if (!document.hidden) ScrollTrigger.refresh(); });
+    gsap.from("#hero-title", { y: 60, opacity: 0, duration: 1, ease: "power3.out", delay: .3 });
+    gsap.to("#hero-sub", { y: 0, opacity: 1, duration: .8, ease: "power3.out", delay: .7 });
+    gsap.to("#hero-cta", { y: 0, opacity: 1, duration: .8, ease: "power3.out", delay: .95 });
+    gsap.utils.toArray("section .reveal").forEach((el, i) => {
+      gsap.to(el, {
+        y: 0, opacity: 1, duration: .8, ease: "power3.out",
+        scrollTrigger: { trigger: el, start: "top 88%" },
+      });
+    });
+    document.querySelectorAll(".bar i").forEach(bar => {
+      gsap.to(bar, {
+        width: bar.dataset.w, duration: 1.2, ease: "power2.out",
+        scrollTrigger: { trigger: bar, start: "top 90%" },
+      });
+    });
+  } else {
+    document.querySelectorAll(".reveal").forEach(el => { el.style.opacity = 1; el.style.transform = "none"; });
+    document.querySelectorAll(".bar i").forEach(bar => bar.style.width = bar.dataset.w);
+  }
+
+  /* copy email */
+  const chip = document.getElementById("email-chip");
+  chip.addEventListener("click", async () => {
+    try {
+      await navigator.clipboard.writeText("danieldeladzikunu@gmail.com");
+      document.getElementById("copy-label").textContent = "[copied ✓]";
+      setTimeout(() => document.getElementById("copy-label").textContent = "[copy]", 1800);
+    } catch (e) {}
+  });
+</script>
+</body>
+</html>
