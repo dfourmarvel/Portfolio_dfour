@@ -21,5 +21,5 @@ Daniel Dela Dzikunu's personal portfolio, v2 ("Vital Terminal" design). Vanilla 
 - Animation contract: content must never be stuck invisible. Hidden-until-animated styles are gated on `body.anim`, which `js/main.js` adds only after confirming GSAP will run. Respect `prefers-reduced-motion` in any new animation.
 - Nav/footer are duplicated across all pages (deliberate no-build tradeoff) — a nav change means editing every `index.html` + `404.html`.
 - Domain accent colors: medicine=rose, cybersecurity=green, web-dev=cyan, design=amber. Keep new components on this system.
-- Course certificates: `certifications/index.html` has commented `cert-slot` placeholders — swap in `<a class="cert-link">` links as Daniel provides PDFs in `assets/certificates/`.
+- Course certificates live in `assets/certificates/` (named `google-NN-course-name.pdf`) and are linked per-course in `certifications/index.html`; follow the same pattern when courses 6–8 complete.
 - Content must reflect Daniel's real work — check `cybersecurity-labs` and other project repos when updating sections. No invented projects, stats, or post titles.
