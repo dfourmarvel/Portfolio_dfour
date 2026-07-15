@@ -3,281 +3,206 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Daniel Dela Dzikunu | Portfolio</title>
-  <meta name="description" content="Daniel Dela Dzikunu | Medical student building practical cybersecurity skills through labs, coursework, and documented technical work.">
-  <meta name="keywords" content="cybersecurity, healthcare security, networking, packet analysis, Linux, medical student">
-  <meta property="og:title" content="Daniel Dela Dzikunu | Portfolio">
-  <meta property="og:description" content="Medical student building practical cybersecurity skills through labs, coursework, and documented technical work.">
-  <meta property="og:image" content="assets/images/hero-med-cyber.jpg">
+  <title>Daniel Dela Dzikunu — Medicine × Cybersecurity × Code × Design</title>
+  <meta name="description" content="Daniel Dela Dzikunu: medical student on the surgery track, building hands-on cybersecurity skills lab by lab, and shipping web projects and designs along the way.">
+  <link rel="canonical" href="https://danieldeladzikunu.vercel.app/">
+  <meta property="og:title" content="Daniel Dela Dzikunu — Medicine × Cybersecurity × Code × Design">
+  <meta property="og:description" content="Medical student building real cybersecurity skills, web projects, and designs — all documented here.">
   <meta property="og:type" content="website">
+  <meta property="og:url" content="https://danieldeladzikunu.vercel.app/">
+  <meta property="og:image" content="https://danieldeladzikunu.vercel.app/assets/images/og.png">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Daniel Dela Dzikunu | Portfolio">
-  <meta name="twitter:description" content="Medical student building practical cybersecurity skills through labs, coursework, and documented technical work.">
-  <meta name="twitter:image" content="assets/images/hero-med-cyber.jpg">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90' font-weight='bold' fill='%2352e3ff'>DD</text></svg>">
+  <meta name="twitter:title" content="Daniel Dela Dzikunu — Medicine × Cybersecurity × Code × Design">
+  <meta name="twitter:description" content="Medical student building real cybersecurity skills, web projects, and designs — all documented here.">
+  <meta name="twitter:image" content="https://danieldeladzikunu.vercel.app/assets/images/og.png">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='14' fill='%230a0e0c'/><text x='50' y='68' text-anchor='middle' font-size='52' font-family='monospace' font-weight='bold' fill='%233df5a5'>DD</text></svg>">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "Person",
     "name": "Daniel Dela Dzikunu",
-    "jobTitle": ["Medical Student", "Cybersecurity Learner"],
-    "url": "https://yoursite.com",
+    "jobTitle": ["Medical Student", "Cybersecurity Learner", "Web Developer"],
+    "email": "mailto:danieldeladzikunu@gmail.com",
     "sameAs": ["https://github.com/dfourmarvel", "https://www.linkedin.com/in/danieldeladzikunu4/"]
   }
   </script>
-  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&family=JetBrains+Mono:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
 </head>
 <body>
-  <div class="page-shell">
-    <header class="site-header" id="top">
-      <nav class="navbar">
-        <a class="brand" href="#top">
-          <span class="brand-mark">DD</span>
-          <span class="brand-text">Daniel Dela Dzikunu</span>
-        </a>
+  <a class="skip-link" href="#main">Skip to content</a>
 
-        <button
-          class="menu-toggle"
-          type="button"
-          aria-expanded="false"
-          aria-controls="nav-menu"
-          aria-label="Open navigation menu"
-        >
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
+  <div class="wrap">
+    <nav class="site-nav" aria-label="Main navigation">
+      <a class="brand" href="/"><span class="beat" aria-hidden="true">♥</span> daniel@portfolio<span>:~$</span></a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle navigation menu">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-menu" id="nav-menu">
+        <a href="/medicine/">medicine</a>
+        <a href="/cybersecurity/">cybersecurity</a>
+        <a href="/web-development/">web-dev</a>
+        <a href="/graphic-design/">design</a>
+        <a href="/certifications/">certs</a>
+        <a href="/blog/">blog</a>
+        <a href="/#contact">contact</a>
+        <span class="cv-btn is-soon" title="CV coming soon">CV ↓ <span class="soon">[soon]</span></span>
+      </div>
+    </nav>
 
-        <div class="nav-menu" id="nav-menu">
-          <a href="index.html">Home</a>
-          <a href="pages/about.html">About</a>
-          <a href="pages/projects.html">Projects</a>
-          <a href="pages/skills.html">Skills</a>
-          <a href="pages/certifications.html">Certifications</a>
-          <a href="pages/contact.html">Contact</a>
+    <header class="hero">
+      <div class="hero-grid">
+        <div>
+          <h1>Daniel Dela<br><span class="accent">Dzikunu</span></h1>
+          <p class="sub reveal"><b class="hl-rose">medicine</b> × <b class="hl-green">cybersecurity</b> × <b class="hl-cyan">code</b> × <b class="hl-amber">design</b> — medical student on the surgery track, building real security skills lab by lab, and shipping what I imagine.</p>
+          <div class="cta-row reveal">
+            <a class="btn btn-solid" href="#domains">explore my work</a>
+            <a class="btn btn-ghost" href="#contact">get in touch</a>
+          </div>
+          <div class="socials reveal" style="margin-top: 28px;">
+            <a href="https://github.com/dfourmarvel" target="_blank" rel="noreferrer">github</a>
+            <a href="https://www.linkedin.com/in/danieldeladzikunu4/" target="_blank" rel="noreferrer">linkedin</a>
+          </div>
         </div>
 
-        <button class="theme-toggle" type="button" aria-label="Toggle theme">
-          <span class="theme-toggle-label">Mode</span>
-          <span class="theme-icon" aria-hidden="true">&#9790;</span>
-        </button>
-      </nav>
+        <div class="terminal" aria-hidden="true">
+          <div class="term-bar"><i></i><i></i><i></i><span class="term-title">vitals — bash</span></div>
+          <div class="term-body" id="term"></div>
+        </div>
+      </div>
+
+      <div class="ecg-strip" aria-hidden="true">
+        <span class="ecg-label">MONITOR — <b>patient: portfolio</b> · status: alive</span>
+        <span class="ecg-bpm" id="bpm">♥ 72 bpm</span>
+        <svg viewBox="0 0 1200 90" preserveAspectRatio="none">
+          <path class="ecg-path" pathLength="2000" d="M0,55 L80,55 L95,48 L110,55 L150,55 L160,62 L172,18 L184,78 L196,55 L230,55 L250,45 L270,55 L380,55 L395,48 L410,55 L450,55 L460,62 L472,18 L484,78 L496,55 L530,55 L550,45 L570,55 L680,55 L695,48 L710,55 L750,55 L760,62 L772,18 L784,78 L796,55 L830,55 L850,45 L870,55 L980,55 L995,48 L1010,55 L1050,55 L1060,62 L1072,18 L1084,78 L1096,55 L1130,55 L1150,45 L1170,55 L1200,55" />
+        </svg>
+      </div>
     </header>
 
-    <main>
-      <section class="hero reveal">
-        <div class="hero-inner">
-          <div class="hero-copy">
-            <p class="eyebrow">Medical Student | Cybersecurity Learner | Health-Tech Focus</p>
-            <h1>Medical student exploring cybersecurity and secure healthcare systems</h1>
-            <p class="hero-text">
-              I'm Daniel Dela Dzikunu, a medical student building practical cybersecurity skills through hands-on labs and structured coursework. My current focus is networking fundamentals, packet analysis, and Linux systems.
-            </p>
-            <p class="hero-text">
-              This portfolio brings together the work I am doing, the certifications I have started earning, and the direction I am building toward in cybersecurity and healthcare technology.
-            </p>
-            <div class="hero-actions">
-              <a class="button button-primary" href="pages/projects.html">View Projects</a>
-              <a class="button button-secondary" href="pages/contact.html">Get in Touch</a>
-            </div>
-            <div class="social-strip" aria-label="Social links">
-              <a class="social-pill" href="https://github.com/dfourmarvel" target="_blank" rel="noreferrer">GitHub</a>
-              <a class="social-pill" href="https://www.linkedin.com/in/danieldeladzikunu4/" target="_blank" rel="noreferrer">LinkedIn</a>
-            </div>
+    <main id="main">
+      <section id="domains">
+        <p class="sec-label">domains</p>
+        <h2 class="reveal">Four things I do.</h2>
+
+        <a class="portal p-med reveal" href="/medicine/">
+          <span class="idx">01</span>
+          <div>
+            <h3>Medicine &amp; Health</h3>
+            <p>First-year medical student headed for surgery — specialty deliberately undecided. Community health education and health-focused builds.</p>
           </div>
+          <div class="meta">2 projects<small>blood donation · health game</small><span class="arrow">cd medicine →</span></div>
+        </a>
 
-          <aside class="hero-panel">
-            <div class="panel-card panel-card-accent">
-              <p class="panel-label">Current Focus</p>
-              <h2>Focused on networking, Linux, and security fundamentals</h2>
-              <ul class="terminal-list">
-                <li><span class="terminal-key">TRACK</span><span>Cisco Introduction to Cybersecurity completed; Google Cybersecurity in progress</span></li>
-                <li><span class="terminal-key">TOOLS</span><span>Wireshark, tcpdump, Kali Linux (VirtualBox lab setup)</span></li>
-                <li><span class="terminal-key">NEXT</span><span>Lab documentation, certification progress, and technical writeups</span></li>
-              </ul>
-            </div>
-
-            <div class="stats-grid">
-              <article class="stat-card">
-                <strong>LABS</strong>
-                <span>Hands-on practice in packet analysis, traffic inspection, and small lab exercises.</span>
-              </article>
-              <article class="stat-card">
-                <strong>MED</strong>
-                <span>Medical training that strengthens discipline, observation, and structured problem-solving.</span>
-              </article>
-              <article class="stat-card">
-                <strong>PATH</strong>
-                <span>Focused on building real competence before moving into more advanced work.</span>
-              </article>
-            </div>
-          </aside>
-        </div>
-      </section>
-
-      <section class="content-section reveal" id="highlights">
-        <div class="section-heading">
-          <p class="section-tag">Current Work</p>
-          <h2>Current focus</h2>
-        </div>
-
-        <div class="card-grid">
-          <article class="feature-card">
-            <h3>Network & Packet Analysis</h3>
-            <p>
-              Building practical understanding of networks through Wireshark, tcpdump, and hands-on traffic inspection.
-            </p>
-          </article>
-
-          <article class="feature-card">
-            <h3>Linux & Security Tools</h3>
-            <p>
-              Learning Linux fundamentals and security tools through structured lab work in a Kali Linux virtual environment.
-            </p>
-          </article>
-
-          <article class="feature-card">
-            <h3>Certification Path</h3>
-            <p>
-              Building from Cisco's Introduction to Cybersecurity into the Google Cybersecurity Certificate, with Security+ planned later.
-            </p>
-          </article>
-        </div>
-      </section>
-
-      <section class="content-section reveal" id="certifications">
-        <div class="section-heading">
-          <p class="section-tag">Certifications</p>
-          <h2>Certifications and coursework</h2>
-        </div>
-
-        <div class="card-grid">
-          <article class="feature-card">
-            <h3>Cisco Introduction to Cybersecurity</h3>
-            <p>
-              Completed foundational coursework covering online threats, cyber attacks, data protection, and the role of cybersecurity professionals.
-            </p>
-            <p class="card-note">Status: Completed</p>
-            <a class="button button-secondary certificate-link" href="assets/certificates/cisco-introduction-to-cybersecurity-certificate.pdf" target="_blank" rel="noopener">View certificate</a>
-          </article>
-
-          <article class="feature-card">
-            <h3>Google Cybersecurity Certificate</h3>
-            <p>
-              Structured coursework covering security concepts, incident detection, and foundational tools.
-            </p>
-            <p class="card-note">Status: In progress</p>
-          </article>
-
-          <article class="feature-card">
-            <h3>CompTIA Security+</h3>
-            <p>
-              Planned as a next step after more work in labs, fundamentals, and technical review.
-            </p>
-            <p class="card-note">Status: Planned</p>
-          </article>
-
-        </div>
-      </section>
-
-      <section class="content-section reveal" id="skills-preview">
-        <div class="section-heading">
-          <p class="section-tag">Skills Preview</p>
-          <h2>Core skills</h2>
-        </div>
-
-        <div class="skills-grid">
-          <div class="skill-category">
+        <a class="portal p-cyber reveal" href="/cybersecurity/">
+          <span class="idx">02</span>
+          <div>
             <h3>Cybersecurity</h3>
-            <ul>
-              <li>Network Traffic Analysis (Wireshark, tcpdump)</li>
-              <li>Basic Linux Usage (Kali Linux in VirtualBox)</li>
-              <li>Security Fundamentals (Cisco Intro + Google Cybersecurity in progress)</li>
-              <li>Understanding of Threat Detection Concepts</li>
-            </ul>
+            <p>Hands-on labs in packet analysis, Linux, and network security. Wireshark, tcpdump, Kali — documented step by step.</p>
           </div>
-          <div class="skill-category">
-            <h3>Healthcare Insight</h3>
-            <ul>
-              <li>Foundational Medical Sciences</li>
-              <li>Clinical Thinking (early-stage)</li>
-              <li>Interest in Neurosurgery</li>
-              <li>Ethical Awareness in Patient Care</li>
-            </ul>
+          <div class="meta">labs + 2 certs<small>google cert: 5/8 courses</small><span class="arrow">cd cybersecurity →</span></div>
+        </a>
+
+        <a class="portal p-web reveal" href="/web-development/">
+          <span class="idx">03</span>
+          <div>
+            <h3>Web Development</h3>
+            <p>Websites and games built with vanilla JS and Next.js/TypeScript — all live, all on GitHub.</p>
           </div>
-          <div class="skill-category">
-            <h3>Professional Strengths</h3>
-            <ul>
-              <li>Disciplined study habits</li>
-              <li>Analytical Thinking</li>
-              <li>Attention to Detail</li>
-              <li>Willingness to Start Small and Improve</li>
-            </ul>
+          <div class="meta">5 projects<small>incl. this site</small><span class="arrow">cd web-dev →</span></div>
+        </a>
+
+        <a class="portal p-design reveal" href="/graphic-design/">
+          <span class="idx">04</span>
+          <div>
+            <h3>Graphic Design</h3>
+            <p>Poster design — visual work made for real events and causes.</p>
+          </div>
+          <div class="meta">gallery<small>selected posters</small><span class="arrow">cd design →</span></div>
+        </a>
+      </section>
+
+      <section>
+        <p class="sec-label">featured</p>
+        <h2 class="reveal">Hand-picked work.</h2>
+        <div class="feat-grid">
+          <a class="feat f-cyber reveal" href="/cybersecurity/">
+            <span class="tag">CYBERSECURITY LAB</span>
+            <h3>Packet Analysis with Wireshark</h3>
+            <p>Capturing and dissecting live network traffic — full methodology write-up.</p>
+          </a>
+          <a class="feat f-web reveal" href="/web-development/">
+            <span class="tag">WEB APP</span>
+            <h3>med-match</h3>
+            <p>Next.js + TypeScript + Supabase app built for medical students.</p>
+          </a>
+          <a class="feat f-med reveal" href="/medicine/">
+            <span class="tag">HEALTH × GAME</span>
+            <h3>Menstrual Health Game</h3>
+            <p>A game that teaches menstrual health — playable in the browser.</p>
+          </a>
+        </div>
+      </section>
+
+      <section>
+        <p class="sec-label">certifications</p>
+        <h2 class="reveal">Verified, in writing.</h2>
+        <div class="cert-row">
+          <div class="cert reveal">
+            <span class="status">[✓] COMPLETED</span>
+            <h3>Cisco — Introduction to Cybersecurity</h3>
+            <div class="bar"><i data-w="100%"></i></div>
+            <p class="frac">certificate available</p>
+            <a class="cert-link" href="/assets/certificates/cisco-introduction-to-cybersecurity-certificate.pdf" target="_blank" rel="noopener">view certificate →</a>
+          </div>
+          <div class="cert reveal">
+            <span class="status">[~] IN PROGRESS</span>
+            <h3>Google Cybersecurity Certificate</h3>
+            <div class="bar"><i data-w="62.5%"></i></div>
+            <p class="frac">5 / 8 courses complete</p>
+            <a class="cert-link" href="/certifications/">course breakdown →</a>
           </div>
         </div>
       </section>
 
-      <section class="content-section content-section-highlight reveal" id="about">
-        <div class="section-heading">
-          <p class="section-tag">About</p>
-          <h2>Background and direction</h2>
-        </div>
-
-        <div class="about-grid">
-          <article class="info-card">
-            <h3>Medical Journey</h3>
-            <p>
-              I am currently in my first year of medical school, with a strong interest in neurosurgery. My training has shaped the way I approach complex problems, careful observation, and long-term work.
-            </p>
-          </article>
-
-          <article class="info-card">
-            <h3>Cybersecurity Path</h3>
-            <p>
-              Alongside medicine, I am developing cybersecurity skills from the ground up. I have started with networking fundamentals and packet analysis, using tools like Wireshark and tcpdump in a controlled lab environment.
-            </p>
-          </article>
-
-          <article class="info-card">
-            <h3>Core Approach</h3>
-            <p>
-              My goal is to build competence step by step, document what I learn, and publish stronger project evidence as my experience grows.
-            </p>
-          </article>
-        </div>
-
-        <div class="cta-section">
-          <a class="button button-primary" href="pages/about.html">About Me</a>
+      <section id="blog-preview">
+        <p class="sec-label">blog</p>
+        <h2 class="reveal">Latest write-ups.</h2>
+        <a class="post reveal" href="/blog/">
+          <h3>Teaching blood donation in my community</h3>
+          <span class="meta-col"><span class="date">2026-06</span><span class="cat cat-med">medicine</span></span>
+        </a>
+        <div class="pending reveal" style="margin-top: 22px;">
+          <p class="status-line">tail -f ./blog</p>
+          <p>Lab write-ups from the Google Cybersecurity Certificate are being imported from LinkedIn — landing here soon.</p>
         </div>
       </section>
 
-      <section class="content-section contact-section reveal" id="contact">
-        <div class="section-heading">
-          <p class="section-tag">Contact</p>
-          <h2>Let's connect</h2>
-        </div>
-
-        <div class="contact-card">
-          <p>
-            I am currently focused on building my cybersecurity skills while continuing my medical education. If you have advice, learning resources, or relevant opportunities, I would be glad to connect.
-          </p>
-          <div class="contact-actions">
-            <a class="button button-primary" href="pages/contact.html">Get in Touch</a>
-            <a class="button button-secondary" href="pages/projects.html">View Projects</a>
-          </div>
-          <div class="social-strip" aria-label="Contact links">
-            <a class="social-pill" href="mailto:danieldeladzikunu@gmail.com">Email</a>
-            <a class="social-pill" href="https://github.com/dfourmarvel" target="_blank" rel="noreferrer">GitHub</a>
-            <a class="social-pill" href="https://www.linkedin.com/in/danieldeladzikunu4/" target="_blank" rel="noreferrer">LinkedIn</a>
-          </div>
+      <section class="contact" id="contact">
+        <p class="sec-label" style="text-align:center">contact</p>
+        <h2 class="reveal">Say hello.</h2>
+        <p class="reveal">Open to conversations about medicine, security, or anything I've built.</p>
+        <button class="email-chip reveal" id="email-chip" type="button" aria-label="Copy email address">
+          danieldeladzikunu@gmail.com <span class="copy" id="copy-label">[copy]</span>
+        </button>
+        <div class="socials reveal">
+          <a href="mailto:danieldeladzikunu@gmail.com">email</a>
+          <a href="https://github.com/dfourmarvel" target="_blank" rel="noreferrer">github</a>
+          <a href="https://www.linkedin.com/in/danieldeladzikunu4/" target="_blank" rel="noreferrer">linkedin</a>
         </div>
       </section>
     </main>
 
+    <footer class="site-footer">
+      <span>© 2026 Daniel Dela Dzikunu</span>
+      <span>built by hand · no template</span>
+    </footer>
   </div>
 
-  <a class="quick-contact" href="pages/contact.html">Get in Touch</a>
-
-  <script src="script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="/js/main.js"></script>
 </body>
 </html>

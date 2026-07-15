@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Web Development — Daniel Dela Dzikunu</title>
+  <meta name="description" content="Daniel Dela Dzikunu's web projects: apps and games built with vanilla JavaScript and Next.js/TypeScript — live demos and open source.">
+  <meta property="og:image" content="https://danieldeladzikunu.vercel.app/assets/images/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='14' fill='%230a0e0c'/><text x='50' y='68' text-anchor='middle' font-size='52' font-family='monospace' font-weight='bold' fill='%233df5a5'>DD</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&family=JetBrains+Mono:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+</head>
+<body data-ac="cyan">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="wrap">
+    <nav class="site-nav" aria-label="Main navigation">
+      <a class="brand" href="/"><span class="beat" aria-hidden="true">♥</span> daniel@portfolio<span>:~$</span></a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle navigation menu">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-menu" id="nav-menu">
+        <a href="/medicine/">medicine</a>
+        <a href="/cybersecurity/">cybersecurity</a>
+        <a href="/web-development/" aria-current="page">web-dev</a>
+        <a href="/graphic-design/">design</a>
+        <a href="/certifications/">certs</a>
+        <a href="/blog/">blog</a>
+        <a href="/#contact">contact</a>
+        <span class="cv-btn is-soon" title="CV coming soon">CV ↓ <span class="soon">[soon]</span></span>
+      </div>
+    </nav>
+
+    <header class="page-hero">
+      <span class="crumb">web-dev</span>
+      <h1>Web <span class="accent">Development</span></h1>
+      <p class="lede reveal">Websites, apps, and games — vanilla HTML/CSS/JS where it's enough, Next.js/TypeScript where it isn't. Every project runs live: click in and use it.</p>
+    </header>
+
+    <main id="main">
+      <section>
+        <p class="sec-label">projects</p>
+        <h2 class="reveal">Built and shipped.</h2>
+
+        <div class="feat-grid">
+          <article class="feat f-web reveal">
+            <span class="tag">NEXT.JS · TYPESCRIPT · SUPABASE</span>
+            <h3>med-match</h3>
+            <p>App that helps aspiring physicians find their specialty — my biggest build so far.</p>
+            <div class="feat-links">
+              <a href="https://medmatchgh.vercel.app" target="_blank" rel="noreferrer">live demo →</a>
+              <a href="https://github.com/dfourmarvel/med-match-gh" target="_blank" rel="noreferrer">github →</a>
+            </div>
+          </article>
+          <article class="feat f-web reveal">
+            <span class="tag">VANILLA JS · GAME</span>
+            <h3>Bible Quiz</h3>
+            <p>A quiz game built in vanilla JavaScript.</p>
+            <div class="feat-links">
+              <a href="https://biblequizgame.vercel.app" target="_blank" rel="noreferrer">play it →</a>
+              <a href="https://github.com/dfourmarvel/Bible-quiz" target="_blank" rel="noreferrer">github →</a>
+            </div>
+          </article>
+          <article class="feat f-web reveal">
+            <span class="tag">VANILLA JS · HEALTH × GAME</span>
+            <h3>Menstrual Health Game</h3>
+            <p>Snakes &amp; Ladders reimagined to teach menstrual health — cross-listed under medicine.</p>
+            <div class="feat-links">
+              <a href="https://menstrualhealthawareness.vercel.app" target="_blank" rel="noreferrer">play it →</a>
+              <a href="https://github.com/dfourmarvel/Menstrual-health-game" target="_blank" rel="noreferrer">github →</a>
+            </div>
+          </article>
+          <article class="feat f-web reveal">
+            <span class="tag">VANILLA JS · TRIBUTE</span>
+            <h3>Mothers-Day</h3>
+            <p>An interactive tribute site for my mother — gallery, timeline, and animations.</p>
+            <div class="feat-links">
+              <a href="https://josephineyabat.vercel.app" target="_blank" rel="noreferrer">visit it →</a>
+              <a href="https://github.com/dfourmarvel/Mothers-Day" target="_blank" rel="noreferrer">github →</a>
+            </div>
+          </article>
+          <article class="feat f-web reveal">
+            <span class="tag">VANILLA JS · GSAP</span>
+            <h3>This Portfolio</h3>
+            <p>The site you're on — designed and built by hand, no template.</p>
+            <div class="feat-links">
+              <a href="https://github.com/dfourmarvel/Portfolio_dfour" target="_blank" rel="noreferrer">github →</a>
+            </div>
+          </article>
+        </div>
+
+        <div class="pending reveal" style="margin-top: 22px;">
+          <p class="status-line">git log ./write-ups --incoming</p>
+          <p>Every project above is live. Next up: a full write-up page for each — the problem, the build, and what I learned along the way.</p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span>© 2026 Daniel Dela Dzikunu</span>
+      <span>built by hand · no template</span>
+    </footer>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="/js/main.js"></script>
+</body>
+</html>

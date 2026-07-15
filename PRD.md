@@ -315,11 +315,11 @@ This is a headline requirement: the site must feel **alive and impressive**.
 
 ## 10. Open items
 
-1. **Public email:** site currently uses `danieldeladzikunu@gmail.com`. Confirm this
-   is the address to publish.
+1. ~~Public email~~ — CONFIRMED: `danieldeladzikunu@gmail.com`.
 2. **Which labs are publish-ready:** review `cybersecurity-labs` together during build.
-3. **Header/footer sharing mechanism** (manual copies vs. tiny JS include): decide at
-   build start.
+3. ~~Header/footer sharing mechanism~~ — DECIDED: static duplication across pages (no build step).
+4. **Google cert courses:** site lists the 8 course names with the first 5 marked complete —
+   Daniel to confirm the exact 5 and provide the per-course certificate PDFs.
 
 ## 11. Build plan (phases)
 
