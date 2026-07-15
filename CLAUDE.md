@@ -22,4 +22,6 @@ Daniel Dela Dzikunu's personal portfolio, v2 ("Vital Terminal" design). Vanilla 
 - Nav/footer are duplicated across all pages (deliberate no-build tradeoff) — a nav change means editing every `index.html` + `404.html`.
 - Domain accent colors: medicine=rose, cybersecurity=green, web-dev=cyan, design=amber. Keep new components on this system.
 - Course certificates live in `assets/certificates/` (named `google-NN-course-name.pdf`) and are linked per-course in `certifications/index.html`; follow the same pattern when courses 6–8 complete.
+- `cv.pdf` is generated from `cv-source.html` (deliberately excludes Daniel's phone number — never add it). Regenerate after edits with:
+  `chrome --headless --disable-gpu --no-pdf-header-footer --print-to-pdf=cv.pdf cv-source.html`
 - Content must reflect Daniel's real work — check `cybersecurity-labs` and other project repos when updating sections. No invented projects, stats, or post titles.
