@@ -386,6 +386,28 @@ h2 { font-size: clamp(28px, 4vw, 40px); font-weight: 800; letter-spacing: -0.02e
 .lab-list { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
 @media (max-width: 700px) { .lab-list { grid-template-columns: 1fr; } }
 
+/* lab topic filter — chips are built in js/main.js from each card's .tag text,
+   so adding a lab needs no filter edit. Ships [hidden]; JS reveals it. */
+.lab-filter { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 22px; }
+.lab-filter .lf-label { font-family: var(--mono); font-size: 12px; color: var(--text-dim); margin-right: 2px; }
+.lab-filter button {
+  font-family: var(--mono); font-size: 12px; color: var(--text-dim);
+  background: transparent; border: 1px solid var(--line); border-radius: 999px;
+  padding: 9px 14px; cursor: pointer;
+  transition: color 0.2s, border-color 0.2s, background 0.2s;
+}
+.lab-filter button:hover { color: var(--green); border-color: var(--green); }
+.lab-filter button[aria-pressed="true"] { color: var(--bg); background: var(--green); border-color: var(--green); }
+.lab-filter button i { font-style: normal; opacity: 0.65; margin-left: 6px; }
+/* attribute selectors outrank .feat's display:block */
+.lab-filter[hidden], .feat[hidden] { display: none; }
+/* wrapping all 8 chips costs ~5 rows on a phone — scroll them instead so the labs stay up */
+@media (max-width: 700px) {
+  .lab-filter { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; padding-bottom: 4px; }
+  .lab-filter::-webkit-scrollbar { display: none; }
+  .lab-filter button, .lab-filter .lf-label { flex: 0 0 auto; }
+}
+
 /* reveal system — hidden state only applies once JS confirms animation will run */
 body.anim .reveal { opacity: 0; transform: translateY(30px); }
 

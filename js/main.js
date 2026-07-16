@@ -119,6 +119,78 @@ if (!reduced && window.gsap) {
   document.querySelectorAll(".bar i").forEach((bar) => (bar.style.width = bar.dataset.w));
 }
 
+/* ---------- lab topic filter (cybersecurity page) ---------- */
+const labFilter = document.getElementById("lab-filter");
+const labList = document.querySelector(".lab-list");
+if (labFilter && labList) {
+  const cards = [...labList.querySelectorAll(".feat")];
+  const status = document.getElementById("lab-filter-status");
+  const slug = (s) => s.trim().toLowerCase().replace(/\s+/g, "-");
+
+  /* Topics come from each card's own .tag text, so a new lab shows up in the
+     filter automatically and the chips can never drift from the card labels. */
+  const topics = new Map();
+  cards.forEach((card) => {
+    const label = card.querySelector(".tag").textContent.trim().toLowerCase();
+    const id = slug(label);
+    card.dataset.topic = id;
+    const seen = topics.get(id);
+    if (seen) seen.count++;
+    else topics.set(id, { label, count: 1 });
+  });
+
+  const chips = [{ id: "all", label: "all", count: cards.length }].concat(
+    [...topics.entries()]
+      .sort((a, b) => b[1].count - a[1].count || a[1].label.localeCompare(b[1].label))
+      .map(([id, t]) => ({ id, label: t.label, count: t.count }))
+  );
+
+  labFilter.innerHTML =
+    '<span class="lf-label" aria-hidden="true">filter:</span>' +
+    chips
+      .map(
+        (c, i) =>
+          `<button type="button" data-topic="${c.id}" aria-pressed="${i === 0}">${c.label}<i>${c.count}</i></button>`
+      )
+      .join("");
+  labFilter.hidden = false; // only expose the control once it's wired up
+
+  /* Filtering reflows the list, and a ScrollTrigger.refresh() after that will reset
+     any un-fired reveal back to opacity 0 — stranding a card that is on screen.
+     So retire the cards' reveal entirely on first use rather than fight it. */
+  let settled = false;
+  const settleCards = () => {
+    if (settled) return;
+    settled = true;
+    if (window.gsap && window.ScrollTrigger) {
+      gsap.killTweensOf(cards);
+      ScrollTrigger.getAll().forEach((st) => {
+        if (cards.includes(st.trigger)) st.kill();
+      });
+    }
+    cards.forEach((card) => {
+      card.style.opacity = 1;
+      card.style.transform = "none";
+    });
+  };
+
+  const buttons = [...labFilter.querySelectorAll("button")];
+  labFilter.addEventListener("click", (e) => {
+    const btn = e.target.closest("button[data-topic]");
+    if (!btn) return;
+    settleCards();
+    let shown = 0;
+    cards.forEach((card) => {
+      const match = btn.dataset.topic === "all" || card.dataset.topic === btn.dataset.topic;
+      card.hidden = !match;
+      if (match) shown++;
+    });
+    buttons.forEach((b) => b.setAttribute("aria-pressed", String(b === btn)));
+    status.textContent = `${shown} lab${shown === 1 ? "" : "s"} shown`;
+    if (window.ScrollTrigger) ScrollTrigger.refresh(); // everything below the list moved
+  });
+}
+
 /* ---------- copy email ---------- */
 const chip = document.getElementById("email-chip");
 if (chip) {
