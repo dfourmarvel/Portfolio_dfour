@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payroll Incident: Access Controls Worksheet — Daniel Dela Dzikunu</title>
+  <meta name="description" content="A formal authorization/authentication worksheet tracing a fraudulent payroll transfer to systemic over-privileging.">
+  <meta property="og:title" content="Payroll Incident: Access Controls Worksheet">
+  <meta property="og:image" content="https://danieldeladzikunu.vercel.app/assets/images/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='14' fill='%230a0e0c'/><text x='50' y='68' text-anchor='middle' font-size='52' font-family='monospace' font-weight='bold' fill='%233df5a5'>DD</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&family=JetBrains+Mono:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+</head>
+<body data-ac="green">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="wrap">
+    <nav class="site-nav" aria-label="Main navigation">
+      <a class="brand" href="/"><span class="beat" aria-hidden="true">♥</span> daniel@portfolio<span>:~$</span></a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle navigation menu">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-menu" id="nav-menu">
+        <a href="/medicine/">medicine</a>
+        <a href="/cybersecurity/" aria-current="page">cybersecurity</a>
+        <a href="/web-development/">web-dev</a>
+        <a href="/graphic-design/">design</a>
+        <a href="/certifications/">certs</a>
+        <a href="/blog/">blog</a>
+        <a href="/#contact">contact</a>
+        <a class="cv-btn" href="/cv.pdf" target="_blank" rel="noopener">CV ↓</a>
+      </div>
+    </nav>
+
+    <header class="page-hero">
+      <span class="crumb">cybersecurity / labs</span>
+      <h1>Payroll Incident: Access Controls Worksheet</h1>
+      <p class="lede reveal">A formal authorization/authentication worksheet tracing a fraudulent payroll transfer to systemic over-privileging.</p>
+      <div class="lab-tools reveal"><span class="tool">Event log analysis</span><span class="tool">RBAC</span><span class="tool">Principle of least privilege</span><span class="tool">Account lifecycle management</span></div>
+    </header>
+
+    <main id="main">
+      <section style="padding-top: 40px;">
+        <article class="lab-body reveal">
+        <p>A payroll transfer went to an unknown account. The formal access-controls worksheet below documents the event, the root-cause issue, and the recommended remediation — the structured deliverable behind the incident narrative.</p>
+        <h3>The event</h3>
+        <p>Category: <b>Authorization / Authentication</b>. Caused by Legal staff, occurring <b>10/03/2023 at 8:29:57 AM</b> from a device flagged <code>Up2-NoGud</code>.</p>
+        <figure class="lab-fig"><img src="/assets/lab-figures/payroll-02.png" alt="Payroll event log" loading="lazy"><figcaption><b>Figure 1</b> — The raw event log entry — a payroll event from Legal\Administrator, IP 152.207.255.255, on the flagged machine Up2-NoGud.</figcaption></figure>
+        <h3>The underlying issue</h3>
+        <p>The company operates under a highly vulnerable access model where <b>administrative privileges are universally granted to all personnel</b> — including part-time workers and external contractors — regardless of role. This severe over-privileging is compounded by a total failure in account lifecycle management: a contractor whose contract expired <b>years earlier</b> retained active administrative access to critical infrastructure.</p>
+        <figure class="lab-fig"><img src="/assets/lab-figures/payroll-01.png" alt="Employee directory showing universal admin access" loading="lazy"><figcaption><b>Figure 2</b> — The employee directory — every account, from graphic designer to seasonal sales associate, holds Admin authorization. Robert Taylor Jr., a legal contractor whose contract ended 12/27/2019, still shows Admin status.</figcaption></figure>
+        <h3>Recommendation</h3>
+        <ul><li>Enforce the <b>Principle of Least Privilege</b> — revoke administrative rights from all standard users, contractors, and part-time staff, granting only the minimum access their role requires.</li><li>Transition the network architecture to a <b>Role-Based Access Control (RBAC)</b> framework, tying permissions to documented business functions rather than convenience.</li><li>Establish strict identity-management protocols that mandate <b>immediate disabling</b> of temporary, part-time, and contract accounts the day employment ends.</li><li>Conduct a full security audit of remaining administrative accounts, <b>rotate credentials immediately</b>, and enforce <b>MFA</b> enterprise-wide.</li></ul>
+        <div class="verdict"><p class="v-label">root cause</p><p>Not a technical exploit — a ghost account. A contract that ended in 2019 still carried live admin access in 2023, inside an organization where every role, regardless of seniority, was already over-privileged by default. The fix is organizational discipline, not a patch.</p></div>
+        </article>
+        <div class="post-foot"><a href="/blog/payroll-incident-investigation/">the story behind this lab →</a><a href="/cybersecurity/">all labs →</a></div>
+        <div class="lab-nav"><a href="/labs/malware-analysis-pua-dll/">← Static &amp; Behavioral Analysis of a PUA-Classified DLL</a><a href="/labs/hash-verification/">Comparing Hash Values with Linux Tools →</a></div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span>© 2026 Daniel Dela Dzikunu</span>
+      <span>built by hand · no template</span>
+    </footer>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="/js/main.js"></script>
+</body>
+</html>
