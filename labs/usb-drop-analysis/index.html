@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Parking-Lot USB Drop Analysis — Daniel Dela Dzikunu</title>
+  <meta name="description" content="Analysing an abandoned flash drive in an isolated environment — and the threat it posed with no malware on it at all.">
+  <meta property="og:title" content="Parking-Lot USB Drop Analysis">
+  <meta property="og:image" content="https://danieldeladzikunu.vercel.app/assets/images/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='14' fill='%230a0e0c'/><text x='50' y='68' text-anchor='middle' font-size='52' font-family='monospace' font-weight='bold' fill='%233df5a5'>DD</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&family=JetBrains+Mono:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+</head>
+<body data-ac="green">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="wrap">
+    <nav class="site-nav" aria-label="Main navigation">
+      <a class="brand" href="/"><span class="beat" aria-hidden="true">♥</span> daniel@portfolio<span>:~$</span></a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle navigation menu">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-menu" id="nav-menu">
+        <a href="/medicine/">medicine</a>
+        <a href="/cybersecurity/" aria-current="page">cybersecurity</a>
+        <a href="/web-development/">web-dev</a>
+        <a href="/graphic-design/">design</a>
+        <a href="/certifications/">certs</a>
+        <a href="/blog/">blog</a>
+        <a href="/#contact">contact</a>
+        <a class="cv-btn" href="/cv.pdf" target="_blank" rel="noopener">CV ↓</a>
+      </div>
+    </nav>
+
+    <header class="page-hero">
+      <span class="crumb">cybersecurity / labs</span>
+      <h1>Parking-Lot USB Drop Analysis</h1>
+      <p class="lede reveal">Analysing an abandoned flash drive in an isolated environment — and the threat it posed with no malware on it at all.</p>
+      <div class="lab-tools reveal"><span class="tool">Isolated VM</span><span class="tool">PII/SPII triage</span><span class="tool">Threat modeling</span><span class="tool">Defense-in-depth</span></div>
+    </header>
+
+    <main id="main">
+      <section style="padding-top: 40px;">
+        <article class="lab-body reveal">
+        <p>An unlabeled USB flash drive was found in a hospital parking lot. Acting on the security team, the task was to determine what it contained and what risk it posed — by mounting it inside a virtualized, network-isolated environment rather than plugging it into a live workstation.</p>
+        <h3>What was on the drive</h3>
+        <p>The drive belonged to a hospital HR manager (Jorge). It mixed personal and sensitive work files: a wedding guest list, a résumé, new-hire letters, shift schedules, and employee budget documents — a combination of PII and SPII that should never share one unencrypted device.</p>
+        <h3>The attacker’s view</h3>
+        <p>No malware was present — but the absence of malicious code did not make the drive safe. The files alone are a treasure trove: enough for highly targeted <b>spear-phishing</b> against Jorge’s family and the wider HR department, and a <b>physical security risk</b> (an attacker who knows an employee’s schedule knows when they are not home).</p>
+        <p>The second possibility is a <b>USB drop attack</b> — a social-engineering tactic where an attacker deliberately leaves a malware-loaded device in a prominent spot, relying on human curiosity. One curious employee plugging it into a hospital workstation could hand an attacker a backdoor into critical infrastructure.</p>
+        <h3>Layered mitigation</h3>
+        <ul><li><b>Technical controls:</b> EDR / MDM configurations that block or restrict unauthorized USB mass-storage devices from mounting, with automatic scanning of any permitted media.</li><li><b>Operational controls:</b> continuous security-awareness training that reframes "I’ll return it to IT" as the only acceptable response to a found device.</li><li><b>Managerial controls:</b> data-governance policy forbidding the mixing of corporate and personal files on unencrypted removable media, backed by DLP systems to prevent exfiltration.</li></ul>
+        <div class="verdict"><p class="v-label">key lesson</p><p>Curiosity is a feature of good clinicians and a liability in security. In medicine you investigate the unexpected; in cybersecurity, the unexpected is often the attack vector itself.</p></div>
+        </article>
+        <div class="post-foot"><a href="/blog/usb-drive-hospital-parking-lot/">the story behind this lab →</a><a href="/cybersecurity/">all labs →</a></div>
+        <div class="lab-nav"><span></span><a href="/labs/vulnerability-assessment/">Vulnerability Assessment: Public-Facing Database →</a></div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span>© 2026 Daniel Dela Dzikunu</span>
+      <span>built by hand · no template</span>
+    </footer>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="/js/main.js"></script>
+</body>
+</html>

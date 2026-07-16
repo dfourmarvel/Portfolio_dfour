@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Filtering with Numbers and Dates in SQL — Daniel Dela Dzikunu</title>
+  <meta name="description" content="Reconstructing an incident timeline with comparison operators and BETWEEN across date, time, and event-ID ranges.">
+  <meta property="og:title" content="Filtering with Numbers and Dates in SQL">
+  <meta property="og:image" content="https://danieldeladzikunu.vercel.app/assets/images/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='14' fill='%230a0e0c'/><text x='50' y='68' text-anchor='middle' font-size='52' font-family='monospace' font-weight='bold' fill='%233df5a5'>DD</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&family=JetBrains+Mono:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+</head>
+<body data-ac="green">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="wrap">
+    <nav class="site-nav" aria-label="Main navigation">
+      <a class="brand" href="/"><span class="beat" aria-hidden="true">♥</span> daniel@portfolio<span>:~$</span></a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle navigation menu">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-menu" id="nav-menu">
+        <a href="/medicine/">medicine</a>
+        <a href="/cybersecurity/" aria-current="page">cybersecurity</a>
+        <a href="/web-development/">web-dev</a>
+        <a href="/graphic-design/">design</a>
+        <a href="/certifications/">certs</a>
+        <a href="/blog/">blog</a>
+        <a href="/#contact">contact</a>
+        <a class="cv-btn" href="/cv.pdf" target="_blank" rel="noopener">CV ↓</a>
+      </div>
+    </nav>
+
+    <header class="page-hero">
+      <span class="crumb">cybersecurity / labs</span>
+      <h1>Filtering with Numbers and Dates in SQL</h1>
+      <p class="lede reveal">Reconstructing an incident timeline with comparison operators and BETWEEN across date, time, and event-ID ranges.</p>
+      <div class="lab-tools reveal"><span class="tool">MariaDB</span><span class="tool">&gt; &lt; &gt;= &lt;=</span><span class="tool">BETWEEN … AND</span><span class="tool">Date/time filtering</span></div>
+    </header>
+
+    <main id="main">
+      <section style="padding-top: 40px;">
+        <article class="lab-body reveal">
+        <h3>Date thresholds (&gt; vs &gt;=)</h3>
+        <p>Strict greater-than excluded the boundary date, returning <b>125 rows</b> after 2022-05-09; greater-than-or-equal included it, expanding to <b>165</b>. The one-character difference materially changes the result set — a detail that matters in incident scoping.</p>
+        <div class="code"><div class="code-bar"><i></i><i></i><i></i><span>sql</span></div><pre><span class="kw">SELECT</span> * <span class="kw">FROM</span> log_in_attempts
+<span class="kw">WHERE</span> login_date &gt;= '2022-05-09';</pre></div>
+        <h3>Bounded windows (BETWEEN)</h3>
+        <p><code>BETWEEN … AND</code> narrowed the window to a three-day range (123 rows), then to the 06:00–07:00 login hour (15 rows, earliest at 06:01:31) — the kind of tight window that surfaces anomalous access.</p>
+        <div class="code"><div class="code-bar"><i></i><i></i><i></i><span>sql</span></div><pre><span class="kw">SELECT</span> * <span class="kw">FROM</span> log_in_attempts
+<span class="kw">WHERE</span> login_time <span class="kw">BETWEEN</span> '06:00:00' <span class="kw">AND</span> '07:00:00';</pre></div>
+        <figure class="lab-fig"><img src="/assets/lab-figures/sql_numeric-05.png" alt="BETWEEN time filter" loading="lazy"><figcaption><b>Figure 5</b> — Login attempts between 06:00 and 07:00 — 15 rows, earliest recorded at 06:01:31.</figcaption></figure>
+        <h3>Numeric event-ID ranges</h3>
+        <p>Filtering by numeric <code>event_id</code> (unquoted) with <code>&gt;=</code> and <code>BETWEEN 100 AND 150</code> pinpointed specific events while selecting only the columns needed to reduce output noise.</p>
+        <div class="verdict"><p class="v-label">key takeaway</p><p>Numeric and date/time operators are the backbone of timeline reconstruction: 125 vs 165 rows on a single boundary, 67 after-hours logins refined to 15 in a target window. Precision here is precision in the investigation.</p></div>
+        </article>
+        <div class="post-foot"><a href="/blog/sql-queries-operational-security/">the story behind this lab →</a><a href="/cybersecurity/">all labs →</a></div>
+        <div class="lab-nav"><a href="/labs/sql-filters/">← Applying Filters to SQL Queries</a><a href="/labs/sql-foundations/">SQL Foundations: Querying for a Security Audit →</a></div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span>© 2026 Daniel Dela Dzikunu</span>
+      <span>built by hand · no template</span>
+    </footer>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="/js/main.js"></script>
+</body>
+</html>

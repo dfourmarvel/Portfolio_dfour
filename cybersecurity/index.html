@@ -42,31 +42,61 @@
 
     <main id="main">
       <section>
-        <p class="sec-label">labs</p>
+        <p class="sec-label">lab reports</p>
         <h2 class="reveal">Documented lab work.</h2>
+        <p class="reveal" style="color: var(--text-dim); max-width: 640px; margin-top: -28px; margin-bottom: 34px; font-size: 15px;">Ten formal lab reports from the Google Cybersecurity Certificate — full methodology, commands, screenshots, and findings. Each links to the story behind it.</p>
 
-        <div class="feat-grid">
-          <a class="feat f-cyber reveal" href="/blog/gta-v-false-positive-investigation/">
+        <div class="lab-list">
+          <a class="feat f-cyber reveal" href="/labs/malware-analysis-pua-dll/">
             <span class="tag">MALWARE ANALYSIS</span>
-            <h3>The GTA V False Positive</h3>
-            <p>A Severe trojan alert, VirusTotal sandbox telemetry, and static PE analysis in Detect It Easy — ending in a formal analyst verdict.</p>
+            <h3>Static &amp; Behavioral Analysis of a PUA DLL</h3>
+            <p>VirusTotal sandbox telemetry, Defender quarantine auditing, and static PE analysis in Detect It Easy — a formal false-positive verdict.</p>
           </a>
-          <a class="feat f-cyber reveal" href="/blog/usb-drive-hospital-parking-lot/">
+          <a class="feat f-cyber reveal" href="/labs/usb-drop-analysis/">
             <span class="tag">SOCIAL ENGINEERING</span>
-            <h3>The USB Drive in the Parking Lot</h3>
-            <p>Forensic analysis of an abandoned flash drive in a network-isolated VM — and a three-layer mitigation framework.</p>
+            <h3>Parking-Lot USB Drop Analysis</h3>
+            <p>Analysing an abandoned flash drive in an isolated VM — and the three-layer defense framework it demanded.</p>
           </a>
-          <a class="feat f-cyber reveal" href="/blog/payroll-incident-investigation/">
+          <a class="feat f-cyber reveal" href="/labs/vulnerability-assessment/">
+            <span class="tag">VULNERABILITY ASSESSMENT</span>
+            <h3>Public-Facing Database Risk Assessment</h3>
+            <p>A formal NIST SP 800-30 risk analysis of a MySQL database exposed to the public internet since launch.</p>
+          </a>
+          <a class="feat f-cyber reveal" href="/labs/cryptography-decryption/">
+            <span class="tag">CRYPTOGRAPHY</span>
+            <h3>Breaking Two Layers of Encryption</h3>
+            <p>Recovering locked files through a Caesar cipher and AES-256-CBC with OpenSSL and tr.</p>
+          </a>
+          <a class="feat f-cyber reveal" href="/labs/hash-verification/">
+            <span class="tag">FILE INTEGRITY</span>
+            <h3>Comparing Hash Values with Linux Tools</h3>
+            <p>Two files identical on screen, different at the byte level — exposed with sha256sum and cmp.</p>
+          </a>
+          <a class="feat f-cyber reveal" href="/labs/linux-user-management/">
             <span class="tag">ACCESS CONTROL</span>
-            <h3>The Payroll Incident</h3>
-            <p>Tracing a fraudulent transfer to a ghost account — and the access-control failures that made it inevitable.</p>
+            <h3>Managing User Access in Linux</h3>
+            <p>The full user lifecycle — provision, assign, expand, offboard — as an exercise in least privilege.</p>
           </a>
-        </div>
-
-        <div class="pending reveal" style="margin-top: 22px;">
-          <p class="status-line">ls ./labs | wc -l</p>
-          <p>11 labs documented so far — Linux hardening, SQL investigations, cryptography, file integrity, vulnerability assessment, and malware triage. Every write-up lives on the blog.</p>
-          <p style="margin-top: 12px;"><a class="cert-link" href="/blog/">all 11 write-ups →</a></p>
+          <a class="feat f-cyber reveal" href="/labs/sql-joins/">
+            <span class="tag">SQL</span>
+            <h3>SQL Joins for Incident Investigation</h3>
+            <p>Correlating siloed tables with INNER, LEFT, and RIGHT JOINs to trace compromised assets.</p>
+          </a>
+          <a class="feat f-cyber reveal" href="/labs/sql-filters/">
+            <span class="tag">SQL</span>
+            <h3>Applying Filters to SQL Queries</h3>
+            <p>Isolating suspicious activity with AND, OR, NOT, and LIKE across login and employee tables.</p>
+          </a>
+          <a class="feat f-cyber reveal" href="/labs/sql-numeric-date-filters/">
+            <span class="tag">SQL</span>
+            <h3>Filtering with Numbers and Dates</h3>
+            <p>Reconstructing an incident timeline with comparison operators and BETWEEN.</p>
+          </a>
+          <a class="feat f-cyber reveal" href="/labs/sql-foundations/">
+            <span class="tag">SQL</span>
+            <h3>SQL Foundations for a Security Audit</h3>
+            <p>Column selection, wildcard retrieval, and chronological ordering in a MariaDB workflow.</p>
+          </a>
         </div>
       </section>
 

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SQL Joins for Incident Investigation — Daniel Dela Dzikunu</title>
+  <meta name="description" content="Correlating siloed tables — machines, employees, login attempts — with INNER, LEFT, and RIGHT JOINs to trace compromised assets.">
+  <meta property="og:title" content="SQL Joins for Incident Investigation">
+  <meta property="og:image" content="https://danieldeladzikunu.vercel.app/assets/images/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='14' fill='%230a0e0c'/><text x='50' y='68' text-anchor='middle' font-size='52' font-family='monospace' font-weight='bold' fill='%233df5a5'>DD</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&family=JetBrains+Mono:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+</head>
+<body data-ac="green">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="wrap">
+    <nav class="site-nav" aria-label="Main navigation">
+      <a class="brand" href="/"><span class="beat" aria-hidden="true">♥</span> daniel@portfolio<span>:~$</span></a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle navigation menu">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-menu" id="nav-menu">
+        <a href="/medicine/">medicine</a>
+        <a href="/cybersecurity/" aria-current="page">cybersecurity</a>
+        <a href="/web-development/">web-dev</a>
+        <a href="/graphic-design/">design</a>
+        <a href="/certifications/">certs</a>
+        <a href="/blog/">blog</a>
+        <a href="/#contact">contact</a>
+        <a class="cv-btn" href="/cv.pdf" target="_blank" rel="noopener">CV ↓</a>
+      </div>
+    </nav>
+
+    <header class="page-hero">
+      <span class="crumb">cybersecurity / labs</span>
+      <h1>SQL Joins for Incident Investigation</h1>
+      <p class="lede reveal">Correlating siloed tables — machines, employees, login attempts — with INNER, LEFT, and RIGHT JOINs to trace compromised assets.</p>
+      <div class="lab-tools reveal"><span class="tool">MariaDB</span><span class="tool">INNER JOIN</span><span class="tool">LEFT JOIN</span><span class="tool">RIGHT JOIN</span><span class="tool">Foreign keys</span></div>
+    </header>
+
+    <main id="main">
+      <section style="padding-top: 40px;">
+        <article class="lab-body reveal">
+        <p>Several machines in the organisation had been compromised. The investigation needed a coherent picture built from three separate tables — <code>machines</code>, <code>employees</code>, and <code>log_in_attempts</code> — linked through shared columns.</p>
+        <h3>Task 1 — Match employees to machines (INNER JOIN)</h3>
+        <p><code>machines</code> and <code>employees</code> share <code>device_id</code>. An INNER JOIN returns only rows matched in both tables — every machine definitively assigned to a known employee.</p>
+        <div class="code"><div class="code-bar"><i></i><i></i><i></i><span>sql</span></div><pre><span class="kw">SELECT</span> *
+<span class="kw">FROM</span> machines
+<span class="kw">INNER JOIN</span> employees <span class="kw">ON</span> machines.device_id = employees.device_id;</pre></div>
+        <figure class="lab-fig"><img src="/assets/lab-figures/sql_joins-01.png" alt="INNER JOIN result" loading="lazy"><figcaption><b>Figure 1</b> — INNER JOIN of machines and employees on device_id — 185 matched employee-machine pairs.</figcaption></figure>
+        <h3>Task 2 — Expose gaps (LEFT &amp; RIGHT JOIN)</h3>
+        <p>A LEFT JOIN returned every machine (NULL where no employee matched) — revealing at least one <b>unassigned machine</b>, a potential security flag. A RIGHT JOIN returned every employee, exposing <code>lrodriqu</code> (employee 1009) with <b>no machine assigned</b>.</p>
+        <figure class="lab-fig"><img src="/assets/lab-figures/sql_joins-03.png" alt="RIGHT JOIN result" loading="lazy"><figcaption><b>Figure 3</b> — RIGHT JOIN — employee lrodriqu (1009) shows NULL across all machine columns, indicating no assigned device.</figcaption></figure>
+        <h3>Task 3 — Correlate logins (INNER JOIN on username)</h3>
+        <p>Joining <code>employees</code> to <code>log_in_attempts</code> on <code>username</code> paired each staff profile with its login events — department, office, country, IP, and success flag in one view. 200 records returned.</p>
+        <div class="lab-table-wrap"><table class="lab-table"><thead><tr><th>Task</th><th>Join type</th><th>Tables</th><th>Key</th><th>Records</th></tr></thead><tbody><tr><td>Task 1</td><td>INNER JOIN</td><td>machines + employees</td><td>device_id</td><td>185</td></tr><tr><td>Task 2a</td><td>LEFT JOIN</td><td>machines + employees</td><td>device_id</td><td>All machines</td></tr><tr><td>Task 2b</td><td>RIGHT JOIN</td><td>machines + employees</td><td>device_id</td><td>All employees</td></tr><tr><td>Task 3</td><td>INNER JOIN</td><td>employees + log_in_attempts</td><td>username</td><td>200</td></tr></tbody></table></div>
+        <div class="verdict"><p class="v-label">key takeaway</p><p>INNER JOIN is the strictest match — ideal for confirmed asset-employee pairings. LEFT and RIGHT JOINs expose gaps: NULLs signal unassigned machines or employees without assets, both worth investigating. Together they form the foundation for cross-table forensic analysis.</p></div>
+        </article>
+        <div class="post-foot"><a href="/blog/sql-filtering-investigation/">the story behind this lab →</a><a href="/cybersecurity/">all labs →</a></div>
+        <div class="lab-nav"><a href="/labs/cryptography-decryption/">← Cryptography in Linux: Breaking Two Layers</a><a href="/labs/sql-filters/">Applying Filters to SQL Queries →</a></div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span>© 2026 Daniel Dela Dzikunu</span>
+      <span>built by hand · no template</span>
+    </footer>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="/js/main.js"></script>
+</body>
+</html>

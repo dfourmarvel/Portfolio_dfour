@@ -326,6 +326,65 @@ h2 { font-size: clamp(28px, 4vw, 40px); font-weight: 800; letter-spacing: -0.02e
 .post-foot a { color: var(--text-dim); border-bottom: 1px dashed var(--line); }
 .post-foot a:hover { color: var(--page-ac); border-color: var(--page-ac); }
 
+/* ==========================================================================
+   LAB REPORT DETAIL PAGES
+   ========================================================================== */
+.lab-tools { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px; }
+.lab-tools .tool { font-family: var(--mono); font-size: 11.5px; color: var(--page-ac); border: 1px solid var(--line); border-radius: 100px; padding: 4px 12px; }
+.lab-body { max-width: 820px; }
+.lab-body h2 { font-size: clamp(20px, 3vw, 26px); margin: 8px 0 18px; }
+.lab-body h3 { font-size: 16px; font-weight: 700; margin: 24px 0 10px; color: var(--text); }
+.lab-body p { margin-bottom: 16px; font-size: 15.5px; }
+.lab-body .lab-block { margin-bottom: 44px; }
+.lab-body ul { list-style: none; margin: 0 0 16px; }
+.lab-body li { padding-left: 20px; position: relative; margin-bottom: 8px; font-size: 15px; }
+.lab-body li::before { content: ">"; position: absolute; left: 0; color: var(--page-ac); font-family: var(--mono); }
+
+/* terminal-style command block */
+.code { background: var(--bg-card); border: 1px solid var(--line); border-radius: 8px; overflow: hidden; margin: 0 0 18px; }
+.code .code-bar { display: flex; gap: 6px; padding: 9px 12px; border-bottom: 1px solid var(--line); background: var(--bg-raise); align-items: center; }
+.code .code-bar i { width: 9px; height: 9px; border-radius: 50%; background: #2a3a33; }
+.code .code-bar i:nth-child(1) { background: #ff5f57; opacity: .6; }
+.code .code-bar i:nth-child(2) { background: #febc2e; opacity: .6; }
+.code .code-bar i:nth-child(3) { background: #28c840; opacity: .6; }
+.code .code-bar span { margin-left: auto; font-family: var(--mono); font-size: 10.5px; color: var(--text-dim); }
+.code pre { padding: 16px 18px; overflow-x: auto; font-family: var(--mono); font-size: 13px; line-height: 1.7; color: var(--text); }
+.code pre .pr { color: var(--page-ac); }
+.code pre .cm { color: var(--text-dim); }
+.code pre .kw { color: var(--cyan); }
+
+/* figure with caption */
+.lab-fig { margin: 0 0 22px; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; background: var(--bg-card); }
+.lab-fig img { width: 100%; display: block; }
+.lab-fig figcaption { padding: 10px 16px; font-family: var(--mono); font-size: 12px; color: var(--text-dim); border-top: 1px solid var(--line); }
+.lab-fig figcaption b { color: var(--page-ac); font-weight: 400; }
+
+/* data table */
+.lab-table { width: 100%; border-collapse: collapse; margin: 0 0 22px; font-size: 14px; }
+.lab-table th, .lab-table td { text-align: left; padding: 11px 14px; border-bottom: 1px solid var(--line); }
+.lab-table th { font-family: var(--mono); font-size: 12px; color: var(--page-ac); text-transform: uppercase; letter-spacing: .05em; }
+.lab-table td { color: var(--text-dim); }
+.lab-table td:first-child { color: var(--text); font-family: var(--mono); font-size: 13px; }
+.lab-table tr:last-child td { border-bottom: none; }
+.lab-table .risk-hi { color: var(--rose); font-weight: 600; }
+.lab-table-wrap { overflow-x: auto; }
+
+/* verdict / callout box */
+.verdict { border: 1px solid var(--page-ac); border-radius: 8px; padding: 24px 26px; background: var(--page-ac-dim); margin: 0 0 22px; }
+.verdict .v-label { font-family: var(--mono); font-size: 12px; color: var(--page-ac); margin-bottom: 8px; }
+.verdict .v-label::before { content: "// "; color: var(--text-dim); }
+.verdict p { font-size: 15.5px; margin: 0; color: var(--text); }
+.verdict p + p { margin-top: 12px; }
+
+/* prev/next nav */
+.lab-nav { display: flex; justify-content: space-between; gap: 16px; margin-top: 40px; padding-top: 24px; border-top: 1px solid var(--line); font-family: var(--mono); font-size: 13px; flex-wrap: wrap; }
+.lab-nav a { color: var(--text-dim); border-bottom: 1px dashed var(--line); }
+.lab-nav a:hover { color: var(--page-ac); border-color: var(--page-ac); }
+
+/* lab index cards on cybersecurity page */
+.lab-list { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+@media (max-width: 700px) { .lab-list { grid-template-columns: 1fr; } }
+
 /* reveal system — hidden state only applies once JS confirms animation will run */
 body.anim .reveal { opacity: 0; transform: translateY(30px); }
 

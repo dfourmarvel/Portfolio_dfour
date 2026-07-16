@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SQL Foundations: Querying for a Security Audit — Daniel Dela Dzikunu</title>
+  <meta name="description" content="Column selection, wildcard retrieval, and chronological ordering in a MariaDB security-analyst workflow.">
+  <meta property="og:title" content="SQL Foundations: Querying for a Security Audit">
+  <meta property="og:image" content="https://danieldeladzikunu.vercel.app/assets/images/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='14' fill='%230a0e0c'/><text x='50' y='68' text-anchor='middle' font-size='52' font-family='monospace' font-weight='bold' fill='%233df5a5'>DD</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&family=JetBrains+Mono:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+</head>
+<body data-ac="green">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="wrap">
+    <nav class="site-nav" aria-label="Main navigation">
+      <a class="brand" href="/"><span class="beat" aria-hidden="true">♥</span> daniel@portfolio<span>:~$</span></a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle navigation menu">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-menu" id="nav-menu">
+        <a href="/medicine/">medicine</a>
+        <a href="/cybersecurity/" aria-current="page">cybersecurity</a>
+        <a href="/web-development/">web-dev</a>
+        <a href="/graphic-design/">design</a>
+        <a href="/certifications/">certs</a>
+        <a href="/blog/">blog</a>
+        <a href="/#contact">contact</a>
+        <a class="cv-btn" href="/cv.pdf" target="_blank" rel="noopener">CV ↓</a>
+      </div>
+    </nav>
+
+    <header class="page-hero">
+      <span class="crumb">cybersecurity / labs</span>
+      <h1>SQL Foundations: Querying for a Security Audit</h1>
+      <p class="lede reveal">Column selection, wildcard retrieval, and chronological ordering in a MariaDB security-analyst workflow.</p>
+      <div class="lab-tools reveal"><span class="tool">MariaDB</span><span class="tool">SELECT</span><span class="tool">Wildcard *</span><span class="tool">ORDER BY</span></div>
+    </header>
+
+    <main id="main">
+      <section style="padding-top: 40px;">
+        <article class="lab-body reveal">
+        <h3>Task 1 — Device audit (column selection)</h3>
+        <p>The <code>machines</code> table holds 200 devices. Progressively narrowing columns surfaced patch currency: device <code>a184b775c707</code> on OS 1 had a patch date of 2021-09-01 — over four years stale, a priority for the update cycle.</p>
+        <div class="code"><div class="code-bar"><i></i><i></i><i></i><span>sql</span></div><pre><span class="kw">SELECT</span> device_id, operating_system, OS_patch_date
+<span class="kw">FROM</span> machines;</pre></div>
+        <figure class="lab-fig"><img src="/assets/lab-figures/sql_main-03.png" alt="Device patch audit" loading="lazy"><figcaption><b>Figure 3</b> — device_id, operating_system, and OS_patch_date — surfacing devices overdue for patching.</figcaption></figure>
+        <h3>Task 2 — Login investigation (SELECT *)</h3>
+        <p>Scanning <code>log_in_attempts</code> found no unexpected geographic logins, but flagged after-hours access — <code>jrafael</code> at 03:05 and <code>bisles</code> at 01:30 — warranting the filter-based follow-up in later labs.</p>
+        <h3>Task 3 — Chronological ordering (ORDER BY)</h3>
+        <p>A secondary sort key breaks ties within a date. <code>ORDER BY login_date, login_time</code> pinned the earliest event in the dataset to <code>bsand</code> at 00:19:11 on 2022-05-08 — where initial-access attempts often originate.</p>
+        <div class="code"><div class="code-bar"><i></i><i></i><i></i><span>sql</span></div><pre><span class="kw">SELECT</span> * <span class="kw">FROM</span> log_in_attempts
+<span class="kw">ORDER BY</span> login_date, login_time;</pre></div>
+        <figure class="lab-fig"><img src="/assets/lab-figures/sql_main-08.png" alt="ORDER BY result" loading="lazy"><figcaption><b>Figure 8</b> — log_in_attempts ordered by date then time — reconstructing the earliest activity in the log.</figcaption></figure>
+        <div class="verdict"><p class="v-label">key takeaway</p><p>Even the most basic SQL has real security weight: which columns you pull, and in what order you view them, can be the difference between catching a threat early and missing it entirely.</p></div>
+        </article>
+        <div class="post-foot"><a href="/blog/first-sql-lab/">the story behind this lab →</a><a href="/cybersecurity/">all labs →</a></div>
+        <div class="lab-nav"><a href="/labs/sql-numeric-date-filters/">← Filtering with Numbers and Dates in SQL</a><a href="/labs/linux-user-management/">Managing User Access in Linux →</a></div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span>© 2026 Daniel Dela Dzikunu</span>
+      <span>built by hand · no template</span>
+    </footer>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="/js/main.js"></script>
+</body>
+</html>
