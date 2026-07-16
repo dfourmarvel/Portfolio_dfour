@@ -5,9 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Managing User Access in Linux — Daniel Dela Dzikunu</title>
   <meta name="description" content="The full user lifecycle — provision, assign, expand, offboard — as an exercise in least privilege.">
+  <link rel="canonical" href="https://danieldeladzikunu.vercel.app/labs/linux-user-management/">
   <meta property="og:title" content="Managing User Access in Linux">
+  <meta property="og:description" content="The full user lifecycle — provision, assign, expand, offboard — as an exercise in least privilege.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://danieldeladzikunu.vercel.app/labs/linux-user-management/">
   <meta property="og:image" content="https://danieldeladzikunu.vercel.app/assets/images/og.png">
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Managing User Access in Linux">
+  <meta name="twitter:description" content="The full user lifecycle — provision, assign, expand, offboard — as an exercise in least privilege.">
+  <meta name="twitter:image" content="https://danieldeladzikunu.vercel.app/assets/images/og.png">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='14' fill='%230a0e0c'/><text x='50' y='68' text-anchor='middle' font-size='52' font-family='monospace' font-weight='bold' fill='%233df5a5'>DD</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -48,18 +55,18 @@
         <p>Authentication verifies who a user is; authorization defines what they can do. Managing users sits at that intersection. Acting as a security analyst, this lab ran the complete lifecycle for a new employee — all under <code>sudo</code> to respect authorization controls.</p>
         <h3>Provision &amp; assign a primary group</h3>
         <p>A swapped argument order first returned <em>"user 'research_team' does not exist"</em> — a reminder that <code>usermod -g</code> expects <code>group username</code>, not the reverse. Corrected, it set <code>research_team</code> as the primary group.</p>
-        <div class="code"><div class="code-bar"><i></i><i></i><i></i><span>bash</span></div><pre><span class="pr">$</span>  useradd researcher9
-<span class="pr">$</span>  usermod -g research_team researcher9</pre></div>
+        <div class="code"><div class="code-bar"><i></i><i></i><i></i><span>bash</span></div><pre><span class="pr">$</span> sudo useradd researcher9
+<span class="pr">$</span> sudo usermod -g research_team researcher9</pre></div>
         <h3>Transfer file ownership</h3>
         <p><code>chown</code> transferred <code>project_r.txt</code> to researcher9; <code>ls -l</code> confirmed the new owner while group and permissions stayed intact.</p>
-        <div class="code"><div class="code-bar"><i></i><i></i><i></i><span>bash</span></div><pre><span class="pr">$</span>  chown researcher9 project_r.txt
-<span class="pr">$</span> l
+        <div class="code"><div class="code-bar"><i></i><i></i><i></i><span>bash</span></div><pre><span class="pr">$</span> sudo chown researcher9 project_r.txt
+<span class="pr">$</span> ls -l
 <span class="cm"># -rw-rw-r-- 1 researcher9 research_team 46 May 25 13:50 project_r.txt</span></pre></div>
         <h3>Expand access, then offboard</h3>
         <p>A supplementary group was appended with <code>-aG</code> (the <code>-a</code> appends without removing existing membership; the flags are case-sensitive). A year later, <code>userdel</code> removed the account, leaving an orphaned personal group that <code>groupdel</code> cleaned up.</p>
-        <div class="code"><div class="code-bar"><i></i><i></i><i></i><span>bash</span></div><pre><span class="pr">$</span>  usermod -aG sales_team researcher9
-<span class="pr">$</span>  userdel researcher9
-<span class="pr">$</span>  groupdel researcher9</pre></div>
+        <div class="code"><div class="code-bar"><i></i><i></i><i></i><span>bash</span></div><pre><span class="pr">$</span> sudo usermod -aG sales_team researcher9
+<span class="pr">$</span> sudo userdel researcher9
+<span class="pr">$</span> sudo groupdel researcher9</pre></div>
         <div class="verdict"><p class="v-label">key takeaway</p><p>Access control is not a setting you configure once — it is a discipline you enforce continuously. The user lifecycle maps directly to least privilege: give access only to what is needed, only for as long as it is needed, then revoke it cleanly.</p></div>
         </article>
         <div class="post-foot"><a href="/blog/linux-user-management/">the story behind this lab →</a><a href="/cybersecurity/">all labs →</a></div>

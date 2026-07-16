@@ -5,9 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Comparing Hash Values with Linux Tools — Daniel Dela Dzikunu</title>
   <meta name="description" content="Two files that look identical on screen, and the SHA-256 workflow that proves they are not.">
+  <link rel="canonical" href="https://danieldeladzikunu.vercel.app/labs/hash-verification/">
   <meta property="og:title" content="Comparing Hash Values with Linux Tools">
+  <meta property="og:description" content="Two files that look identical on screen, and the SHA-256 workflow that proves they are not.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://danieldeladzikunu.vercel.app/labs/hash-verification/">
   <meta property="og:image" content="https://danieldeladzikunu.vercel.app/assets/images/og.png">
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Comparing Hash Values with Linux Tools">
+  <meta name="twitter:description" content="Two files that look identical on screen, and the SHA-256 workflow that proves they are not.">
+  <meta name="twitter:image" content="https://danieldeladzikunu.vercel.app/assets/images/og.png">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='14' fill='%230a0e0c'/><text x='50' y='68' text-anchor='middle' font-size='52' font-family='monospace' font-weight='bold' fill='%233df5a5'>DD</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -48,16 +55,16 @@
         <p>A hash function is a one-way algorithm producing a fixed-length digest that uniquely represents an input’s contents — a single-bit change yields a completely different digest. This lab began with two files that printed the identical EICAR antivirus test string to the terminal, yet differed at the binary level.</p>
         <h3>Task 1 — Generate hashes</h3>
         <p><code>cat</code> showed both files as visually identical. But <code>sha256sum</code> produced two completely different 64-character digests — the avalanche effect in action, exposing a difference invisible to the eye.</p>
-        <div class="code"><div class="code-bar"><i></i><i></i><i></i><span>bash</span></div><pre><span class="pr">$</span> 56sum file1.txt
+        <div class="code"><div class="code-bar"><i></i><i></i><i></i><span>bash</span></div><pre><span class="pr">$</span> sha256sum file1.txt
 <span class="cm"># 131f95c5...bdfd8267  file1.txt</span>
-<span class="pr">$</span> 56sum file2.txt
+<span class="pr">$</span> sha256sum file2.txt
 <span class="cm"># 2558ba9a...f9ca017b  file2.txt</span></pre></div>
         <figure class="lab-fig"><img src="/assets/lab-figures/hash-02.png" alt="sha256sum output" loading="lazy"><figcaption><b>Figure 2</b> — sha256sum produces distinct 64-character digests for two files with visually identical contents.</figcaption></figure>
         <h3>Task 2 — Persist and compare</h3>
         <p>Each digest was appended to its own file with the <code>&gt;&gt;</code> operator (a practical SOC pattern — hashes often need logging or feeding into automated pipelines), then compared byte-for-byte with <code>cmp</code>, which reports the exact position of the first divergence.</p>
-        <div class="code"><div class="code-bar"><i></i><i></i><i></i><span>bash</span></div><pre><span class="pr">$</span> 56sum file1.txt &gt;&gt; file1hash
-<span class="pr">$</span> 56sum file2.txt &gt;&gt; file2hash
-<span class="pr">$</span> file1hash file2hash
+        <div class="code"><div class="code-bar"><i></i><i></i><i></i><span>bash</span></div><pre><span class="pr">$</span> sha256sum file1.txt &gt;&gt; file1hash
+<span class="pr">$</span> sha256sum file2.txt &gt;&gt; file2hash
+<span class="pr">$</span> cmp file1hash file2hash
 <span class="cm"># file1hash file2hash differ: char 1, line 1</span></pre></div>
         <figure class="lab-fig"><img src="/assets/lab-figures/hash-04.png" alt="cmp output" loading="lazy"><figcaption><b>Figure 4</b> — cmp reports the first byte mismatch between the two hash files — a divergence at the very first character.</figcaption></figure>
         <div class="verdict"><p class="v-label">key takeaway</p><p>Visual inspection of file contents is not integrity verification. A threat actor can swap a legitimate binary, preserve its readable output, and leave no obvious trace — unless you are hashing. <code>sha256sum</code> doesn’t care what a file looks like; it cares what the file is.</p></div>
