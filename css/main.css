@@ -244,7 +244,8 @@ h2 { font-size: clamp(28px, 4vw, 40px); font-weight: 800; letter-spacing: -0.02e
 .f-design { --ac: var(--amber); }
 
 /* cert cards */
-.cert-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+/* auto-fit: rows of 2 stay half-width, rows of 3 go three across (homepage, cybersecurity) */
+.cert-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
 .cert { background: var(--bg-card); border: 1px solid var(--line); border-radius: 8px; padding: 26px; }
 .cert .status { font-family: var(--mono); font-size: 12px; color: var(--green); }
 .cert h3 { font-size: 17px; margin: 10px 0 14px; }

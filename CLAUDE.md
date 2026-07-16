@@ -7,13 +7,15 @@ Daniel Dela Dzikunu's personal portfolio, v2 ("Vital Terminal" design). Vanilla 
 - `labs/<slug>/` — full cybersecurity lab-report detail pages (the deep layer behind the blog summaries). Terminal-styled command blocks, data tables, verdict callouts, extracted screenshots. Linked from the cybersecurity section and from each matching blog post's footer. Figures live in `assets/lab-figures/` (extracted from Daniel's PDF reports with mupdf; qwiklabs browser chrome cropped out — never re-introduce it)
 - `css/main.css` — single shared stylesheet; per-page accent color set via `<body data-ac="rose|green|cyan|amber">`
 - `js/main.js` — single shared script (terminal typing, GSAP reveals, mobile menu, copy-email)
-- `404.html` — custom not-found page (Vercel picks it up automatically)
+- `404.html` — custom not-found page (Vercel picks it up automatically). Carries `noindex`, so it deliberately has no description/OG tags.
 - `assets/` — images (incl. `og.png` social preview), certificate PDFs
 - `mockups/` — phase-1 design explorations; not linked from the site
 - `PRD.md` — the spec for the v2 overhaul; check it before structural changes
+- `sitemap.xml` / `robots.txt` — sitemap is generated, not hand-written (see Conventions)
+- `.vercelignore` — repo-only files (PRD.md, CLAUDE.md, README.md, cv-source.html, mockups/) stay in git but are never deployed
 
 ## Commands
-- Serve locally: `npx serve .` from repo root (port anything). Pages use root-absolute paths (`/css/main.css`) so `file://` won't work.
+- Serve locally: `npx serve .` from repo root, or use the `portfolio` config in `.claude/launch.json`. Pages use root-absolute paths (`/css/main.css`) so `file://` won't work.
 - No tests/lint tooling.
 
 ## Conventions
@@ -26,3 +28,6 @@ Daniel Dela Dzikunu's personal portfolio, v2 ("Vital Terminal" design). Vanilla 
 - `cv.pdf` is generated from `cv-source.html` (deliberately excludes Daniel's phone number — never add it). Regenerate after edits with:
   `chrome --headless --disable-gpu --no-pdf-header-footer --print-to-pdf=cv.pdf cv-source.html`
 - Content must reflect Daniel's real work — check `cybersecurity-labs` and other project repos when updating sections. No invented projects, stats, or post titles.
+- Lab-page terminal blocks must match the commands in Daniel's source lab reports verbatim — never reconstruct them from memory. Sources: `cybersecurity-labs/` and the lab PDFs/DOCX in `~/Downloads`. (A generator once silently ate the first 4 characters of every `$` prompt line, publishing `56sum` for `sha256sum`; re-read the source when touching these.)
+- Every page carries the full meta set: `canonical`, `og:title/description/type/url/image`, `twitter:card/title/description/image`. Copy the block from an existing page when adding one — `og:type` is `article` for `blog/` and `labs/`, `website` elsewhere.
+- Adding or removing a page means regenerating `sitemap.xml` (39 URLs = every `index.html` except mockups; `lastmod` comes from each file's last git commit date).
