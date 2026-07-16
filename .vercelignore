@@ -1,0 +1,6 @@
+# Repo-only files — kept in git, never deployed to the live site.
+PRD.md
+README.md
+CLAUDE.md
+cv-source.html
+mockups/
