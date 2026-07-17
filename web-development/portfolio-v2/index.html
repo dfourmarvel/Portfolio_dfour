@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>This Portfolio (v2) — Daniel Dela Dzikunu</title>
+  <meta name="description" content="The site you're reading: a ground-up rebuild in vanilla HTML/CSS/JS with GSAP. Dark-only 'Vital Terminal' design, no framework, no build step.">
+  <link rel="canonical" href="https://danieldeladzikunu.vercel.app/web-development/portfolio-v2/">
+  <meta property="og:title" content="This Portfolio (v2)">
+  <meta property="og:description" content="The site you're reading: a ground-up rebuild in vanilla HTML/CSS/JS with GSAP. Dark-only 'Vital Terminal' design, no framework, no build step.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://danieldeladzikunu.vercel.app/web-development/portfolio-v2/">
+  <meta property="og:image" content="https://danieldeladzikunu.vercel.app/assets/images/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="This Portfolio (v2)">
+  <meta name="twitter:description" content="The site you're reading: a ground-up rebuild in vanilla HTML/CSS/JS with GSAP. Dark-only 'Vital Terminal' design, no framework, no build step.">
+  <meta name="twitter:image" content="https://danieldeladzikunu.vercel.app/assets/images/og.png">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='14' fill='%230a0e0c'/><text x='50' y='68' text-anchor='middle' font-size='52' font-family='monospace' font-weight='bold' fill='%233df5a5'>DD</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&family=JetBrains+Mono:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+</head>
+<body data-ac="cyan">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="wrap">
+    <nav class="site-nav" aria-label="Main navigation">
+      <a class="brand" href="/"><span class="beat" aria-hidden="true">♥</span> daniel@portfolio<span>:~$</span></a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle navigation menu">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-menu" id="nav-menu">
+        <a href="/medicine/">medicine</a>
+        <a href="/cybersecurity/">cybersecurity</a>
+        <a href="/web-development/" aria-current="page">web-dev</a>
+        <a href="/graphic-design/">design</a>
+        <a href="/certifications/">certs</a>
+        <a href="/blog/">blog</a>
+        <a href="/#contact">contact</a>
+        <a class="cv-btn" href="/cv.pdf" target="_blank" rel="noopener">CV ↓</a>
+      </div>
+    </nav>
+
+    <header class="page-hero">
+      <span class="crumb">web-development / projects</span>
+      <h1>This Portfolio (v2)</h1>
+      <p class="lede reveal">The site you are currently reading. Vanilla HTML, CSS and JavaScript with GSAP — no framework, no build step, and no template.</p>
+      <div class="lab-tools reveal"><span class="tool">HTML5</span><span class="tool">CSS3</span><span class="tool">Vanilla JS (ES6+)</span><span class="tool">GSAP + ScrollTrigger</span><span class="tool">Vercel</span><span class="tool">No build step</span></div>
+      <div class="feat-links reveal">
+        <a href="https://github.com/dfourmarvel/Portfolio_dfour" target="_blank" rel="noopener">github ↗</a>
+        <a href="/">you're looking at it →</a>
+      </div>
+    </header>
+
+    <main id="main">
+      <section style="padding-top: 40px;">
+        <article class="lab-body reveal">
+
+        <h3>Overview</h3>
+        <p>A ground-up rebuild of my portfolio. Version 1 worked, but it was visually dull, read as AI-generated, had an empty projects page, and did not reflect the four areas I actually work in. v2 replaced all of it: new architecture, new design, new content model, real projects.</p>
+
+        <h3>The goal</h3>
+        <p>One test, written into the spec before any code: a stranger should leave the homepage able to say <em>"medical student, serious about cybersecurity, builds websites and designs posters — and the site itself proves he can build."</em> That last clause is the whole reason this is a hand-built site rather than a template. A portfolio claiming someone can build is evidence, not a claim.</p>
+
+        <h3>The design</h3>
+        <p>Three animated homepage directions were built as real, running pages and reviewed in the browser rather than as static mockups. The winner — <b>"Vital Terminal"</b> — is a fusion of a phosphor-green terminal and a hospital vitals monitor: the ECG strip in the hero, the heartbeat in the nav, the typing prompt. Medicine and cybersecurity in one visual language, which is the actual thesis of the site.</p>
+        <ul>
+          <li><b>Dark only.</b> No light mode and no toggle — the dark theme is the designed theme, not a default.</li>
+          <li><b>Per-domain accents</b> — medicine is rose, cybersecurity green, web-dev cyan, design amber. This page is cyan because it's a web-dev page; the whole system is one CSS variable.</li>
+          <li><b>Hand-built details</b> — custom hover states, intentional asymmetry, and a terminal that types itself out.</li>
+        </ul>
+
+        <h3>How it's built</h3>
+        <p>Vanilla HTML, CSS and JavaScript. GSAP with ScrollTrigger is the single sanctioned dependency, loaded from a CDN — everything else is dependency-free, and there is no build step at all. The nav and footer are deliberately duplicated across every page: the honest cost of having no build, paid knowingly.</p>
+        <p>The rule the animation system is built around: <b>content must never be stuck invisible.</b> Every hidden-until-animated style is gated behind a class that JavaScript only adds after confirming GSAP will actually run. If the CDN fails, the script dies, or a browser refuses — the page is still fully readable. <code>prefers-reduced-motion</code> collapses every decorative animation, and that is treated as non-negotiable rather than a nice-to-have.</p>
+
+        <div class="verdict"><p class="v-label">what I learned</p><p>There is something uniquely exposing about building the thing that is supposed to prove you can build things. Every shortcut I might have taken elsewhere would be sitting right there in the evidence. So the ECG in the hero had to be hand-made, the terminal had to actually type, and the reduced-motion path had to genuinely work rather than merely exist.</p><p>The lesson that stuck was about the boring parts. The animation contract — content never stranded invisible if the CDN dies — is the piece I am quietest about and proudest of. Nobody will ever notice it working. That turns out to be the point: the difference between a site that looks impressive and one that is actually built is entirely made of things nobody notices.</p></div>
+
+        </article>
+        <div class="post-foot"><a href="/web-development/">← all projects</a><a href="https://github.com/dfourmarvel/Portfolio_dfour" target="_blank" rel="noopener">read the source ↗</a></div>
+        <div class="lab-nav"><a href="/web-development/mothers-day/">← Mothers-Day</a><a href="/web-development/med-match/">MedMatch Ghana →</a></div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span>© 2026 Daniel Dela Dzikunu</span>
+      <span>built by hand · no template</span>
+    </footer>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="/js/main.js"></script>
+</body>
+</html>

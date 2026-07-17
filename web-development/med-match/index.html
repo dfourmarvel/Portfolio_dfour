@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MedMatch Ghana — Daniel Dela Dzikunu</title>
+  <meta name="description" content="A specialty-fit assessment for Ghana's future clinicians: 25 questions, a 15-dimension trait engine, and Ghana-aware specialty pathways. Next.js, TypeScript, Supabase.">
+  <link rel="canonical" href="https://danieldeladzikunu.vercel.app/web-development/med-match/">
+  <meta property="og:title" content="MedMatch Ghana">
+  <meta property="og:description" content="A specialty-fit assessment for Ghana's future clinicians: 25 questions, a 15-dimension trait engine, and Ghana-aware specialty pathways. Next.js, TypeScript, Supabase.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://danieldeladzikunu.vercel.app/web-development/med-match/">
+  <meta property="og:image" content="https://danieldeladzikunu.vercel.app/assets/images/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="MedMatch Ghana">
+  <meta name="twitter:description" content="A specialty-fit assessment for Ghana's future clinicians: 25 questions, a 15-dimension trait engine, and Ghana-aware specialty pathways. Next.js, TypeScript, Supabase.">
+  <meta name="twitter:image" content="https://danieldeladzikunu.vercel.app/assets/images/og.png">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='14' fill='%230a0e0c'/><text x='50' y='68' text-anchor='middle' font-size='52' font-family='monospace' font-weight='bold' fill='%233df5a5'>DD</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&family=JetBrains+Mono:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+</head>
+<body data-ac="cyan">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="wrap">
+    <nav class="site-nav" aria-label="Main navigation">
+      <a class="brand" href="/"><span class="beat" aria-hidden="true">♥</span> daniel@portfolio<span>:~$</span></a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle navigation menu">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-menu" id="nav-menu">
+        <a href="/medicine/">medicine</a>
+        <a href="/cybersecurity/">cybersecurity</a>
+        <a href="/web-development/" aria-current="page">web-dev</a>
+        <a href="/graphic-design/">design</a>
+        <a href="/certifications/">certs</a>
+        <a href="/blog/">blog</a>
+        <a href="/#contact">contact</a>
+        <a class="cv-btn" href="/cv.pdf" target="_blank" rel="noopener">CV ↓</a>
+      </div>
+    </nav>
+
+    <header class="page-hero">
+      <span class="crumb">web-development / projects</span>
+      <h1>MedMatch Ghana</h1>
+      <p class="lede reveal">A specialty-fit assessment for Ghana's future clinicians — 25 questions, a 15-dimension trait engine, and specialty pathways written for training here, not somewhere else.</p>
+      <div class="lab-tools reveal"><span class="tool">Next.js 15</span><span class="tool">React 19</span><span class="tool">TypeScript</span><span class="tool">Tailwind</span><span class="tool">Supabase</span><span class="tool">Groq</span><span class="tool">Upstash Redis</span><span class="tool">Recharts</span><span class="tool">Jest</span></div>
+      <div class="feat-links reveal">
+        <a href="https://medmatchgh.vercel.app" target="_blank" rel="noopener">live demo ↗</a>
+        <a href="https://github.com/dfourmarvel/med-match-gh" target="_blank" rel="noopener">github ↗</a>
+      </div>
+    </header>
+
+    <main id="main">
+      <section style="padding-top: 40px;">
+        <article class="lab-body reveal">
+
+        <h3>Overview</h3>
+        <p>MedMatch Ghana asks 25 questions about how you think, how you work with patients, how you handle pressure, and how you want to live — then maps the answers onto a clinical trait profile and ranks your top five specialty matches. Every match comes with Ghana-specific context: residency routes, the realities of Korle Bu and Komfo Anokye, and local salary framing. It is free, and it works without an account.</p>
+
+        <figure class="lab-fig"><img src="/assets/project-shots/medmatch-home.png" alt="MedMatch Ghana landing page showing the specialty-fit assessment headline and a sample match report" loading="lazy"><figcaption><b>Figure 1</b> — The landing page: 25 questions, 15 trait dimensions, 20+ specialties, free. The sample card previews the report a visitor gets at the end.</figcaption></figure>
+
+        <h3>The goal</h3>
+        <p>A guided assessment for Ghana's future clinicians, built around personality, strengths, lifestyle goals — and the realities of training here. That last part is the whole point: the specialties actually available, the hospitals you would actually train in, and salary context in cedis rather than numbers borrowed from another country's system.</p>
+
+        <h3>How it works</h3>
+        <p>The assessment is three steps — answer 25 signals, get a weighted trait profile across 15 dimensions, then explore the matches. The scoring is a plain weighted engine written in TypeScript rather than a model call, which means the result is inspectable: no black box, and the same answers always produce the same profile.</p>
+        <p>The report gives the top five specialties with confidence levels, strengths and stretch areas, a radar chart of the trait profile, and a top-three comparison table. AI enters only at the last step — a Groq call writes a personalised explanation of <em>why</em> those matches surfaced and what to test next. The ranking itself is never left to the model.</p>
+        <ul>
+          <li><b>Framing adapts to the reader</b> — the same engine speaks differently to medical students, dental students, and high schoolers considering medicine.</li>
+          <li><b>20+ specialties</b>, medical and dental, each with a Ghana-aware detail page covering training pathway, lifestyle rating, and day-in-the-life.</li>
+          <li><b>Salary context in cedis</b>, published with an explicit disclaimer that the figures are broad and directional — seniority, public/private mix, location and call burden all move them.</li>
+          <li><b>Guest mode</b> via local storage, plus Supabase-backed share links so a result can be sent to a mentor, and a print-ready export.</li>
+        </ul>
+
+        <h3>Engineering notes</h3>
+        <p>It is a Next.js 15 / React 19 app on the App Router, typed end to end in TypeScript, with Zod validating anything crossing an API boundary. Supabase is the backend, Upstash Redis rate-limits the AI route so a public free tool cannot be run up as someone else's bill, and Jest with Testing Library covers the scoring logic — the part where a silent bug would quietly mislead someone about their career.</p>
+
+        <div class="verdict"><p class="v-label">what I learned</p><p>This is the biggest thing I have built, and for a long stretch it was bigger than I was. There is a particular feeling that comes with an app this size — the moment where the scoring engine, the database, the AI call and the charts all finally hold hands and a stranger's answers come out the other end as something that actually reads like advice. I sat back the first time that happened.</p><p>The part I am proudest of is the restraint. It would have been easier, and more impressive-sounding, to let the AI do the matching. Keeping the scoring deterministic and letting AI only explain the result was the harder call, and it is the one that lets me stand behind the tool. Someone might weigh a career decision on this. That thought changed how I built it.</p></div>
+
+        </article>
+        <div class="post-foot"><a href="/web-development/">← all projects</a><a href="https://medmatchgh.vercel.app" target="_blank" rel="noopener">try the assessment ↗</a></div>
+        <div class="lab-nav"><a href="/web-development/portfolio-v2/">← This Portfolio (v2)</a><a href="/web-development/bible-quiz/">Bible Quiz →</a></div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span>© 2026 Daniel Dela Dzikunu</span>
+      <span>built by hand · no template</span>
+    </footer>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="/js/main.js"></script>
+</body>
+</html>

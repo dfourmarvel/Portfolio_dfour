@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menstrual Health Game — Daniel Dela Dzikunu</title>
+  <meta name="description" content="Snakes &amp; Ladders reimagined to teach menstrual health — breaking stigma one board square at a time. Built in vanilla JavaScript with a clinician-guided question bank.">
+  <link rel="canonical" href="https://danieldeladzikunu.vercel.app/web-development/menstrual-health-game/">
+  <meta property="og:title" content="Menstrual Health Game">
+  <meta property="og:description" content="Snakes &amp; Ladders reimagined to teach menstrual health — breaking stigma one board square at a time. Built in vanilla JavaScript with a clinician-guided question bank.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://danieldeladzikunu.vercel.app/web-development/menstrual-health-game/">
+  <meta property="og:image" content="https://danieldeladzikunu.vercel.app/assets/images/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Menstrual Health Game">
+  <meta name="twitter:description" content="Snakes &amp; Ladders reimagined to teach menstrual health — breaking stigma one board square at a time. Built in vanilla JavaScript with a clinician-guided question bank.">
+  <meta name="twitter:image" content="https://danieldeladzikunu.vercel.app/assets/images/og.png">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='14' fill='%230a0e0c'/><text x='50' y='68' text-anchor='middle' font-size='52' font-family='monospace' font-weight='bold' fill='%233df5a5'>DD</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&family=JetBrains+Mono:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+</head>
+<body data-ac="cyan">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="wrap">
+    <nav class="site-nav" aria-label="Main navigation">
+      <a class="brand" href="/"><span class="beat" aria-hidden="true">♥</span> daniel@portfolio<span>:~$</span></a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle navigation menu">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-menu" id="nav-menu">
+        <a href="/medicine/">medicine</a>
+        <a href="/cybersecurity/">cybersecurity</a>
+        <a href="/web-development/" aria-current="page">web-dev</a>
+        <a href="/graphic-design/">design</a>
+        <a href="/certifications/">certs</a>
+        <a href="/blog/">blog</a>
+        <a href="/#contact">contact</a>
+        <a class="cv-btn" href="/cv.pdf" target="_blank" rel="noopener">CV ↓</a>
+      </div>
+    </nav>
+
+    <header class="page-hero">
+      <span class="crumb">web-development / projects</span>
+      <h1>Menstrual Health Game</h1>
+      <p class="lede reveal">Snakes &amp; Ladders reimagined to teach menstrual health — breaking stigma one board square at a time. Cross-listed under medicine, because it belongs in both.</p>
+      <div class="lab-tools reveal"><span class="tool">HTML5</span><span class="tool">CSS3</span><span class="tool">Vanilla JS (ES6+)</span><span class="tool">Playwright</span><span class="tool">SDG 3 &amp; 5</span><span class="tool">No build step</span></div>
+      <div class="feat-links reveal">
+        <a href="https://menstrualhealthawareness.vercel.app" target="_blank" rel="noopener">play it ↗</a>
+        <a href="https://github.com/dfourmarvel/Menstrual-health-game" target="_blank" rel="noopener">github ↗</a>
+        <a href="/medicine/">see it under medicine →</a>
+      </div>
+    </header>
+
+    <main id="main">
+      <section style="padding-top: 40px;">
+        <article class="lab-body reveal">
+
+        <h3>Overview</h3>
+        <p>The same board, pointed at a harder subject. Players roll onto a 100-square Snakes &amp; Ladders board; ladders and snakes trigger menstrual health questions, right answers climb, wrong answers slide. The game is the delivery mechanism — the question bank is the actual content.</p>
+
+        <h3>The problem</h3>
+        <p>Menstrual health remains one of the most stigmatised and misunderstood topics in Ghana and beyond. Misinformation, missing resources and cultural silence carry a real cost in health and quality of life. The silence is the mechanism: a topic nobody will discuss directly is a topic where myths go uncorrected.</p>
+        <p>A game sidesteps that. Nobody has to volunteer to attend a menstrual health talk — they sit down to play Snakes &amp; Ladders, and the education arrives in the middle of it. The project is aligned with the UN Sustainable Development Goals, specifically <b>SDG 3 (Good Health &amp; Well-being)</b> and <b>SDG 5 (Gender Equality)</b>.</p>
+
+        <h3>The question bank</h3>
+        <p>This is where a game about health either earns trust or loses it, so the bank was not written alone. <b>Dr. Frank</b>'s expertise and guidance shaped both the questions and the educational direction of the project. It spans four areas:</p>
+        <ul>
+          <li><b>Core true/false questions</b> on menstrual health concepts, myths and facts.</li>
+          <li><b>Family, education &amp; community</b> — the social side, where most of the stigma actually lives.</li>
+          <li><b>WASH &amp; period poverty</b> — water, sanitation, hygiene, and access.</li>
+          <li><b>Clinical &amp; public health</b> — MCQ/SBA questions at a genuinely clinical level.</li>
+        </ul>
+        <p>Every question is presented as both a true/false statement and a multiple-choice item, each with an explanation attached — because a right answer with no explanation teaches nothing, and a wrong answer with no explanation teaches less.</p>
+
+        <h3>How it's built</h3>
+        <p>Vanilla HTML, CSS and JavaScript — no framework, no build step, open <code>index.html</code> and play. It shares its engine with the <a href="/web-development/bible-quiz/">Bible Quiz</a>: the same board mechanics, AI players for solo play, audio, and read-aloud support for accessibility. Playwright covers the tests. Made in Ghana, for Ghana first.</p>
+
+        <div class="verdict"><p class="v-label">what I learned</p><p>This is the project I am most glad exists. Not the most technically ambitious thing I have built — that's MedMatch — but the one where the gap between "a thing I coded" and "a thing that might change what someone believes about their own body" is smallest.</p><p>It also taught me the limits of my own expertise, which was a useful thing to run into early. I can build the board, write the engine, and ship it. I could not have written the clinical questions responsibly on my own, and the honest move was to bring in Dr. Frank rather than approximate it. A health game that is confidently wrong does more damage than one that never launched. Knowing which part of a project isn't yours to write turns out to be a skill of its own.</p></div>
+
+        </article>
+        <div class="post-foot"><a href="/web-development/">← all projects</a><a href="/medicine/">see it under medicine →</a><a href="https://menstrualhealthawareness.vercel.app" target="_blank" rel="noopener">play it ↗</a></div>
+        <div class="lab-nav"><a href="/web-development/bible-quiz/">← Bible Quiz</a><a href="/web-development/mothers-day/">Mothers-Day →</a></div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span>© 2026 Daniel Dela Dzikunu</span>
+      <span>built by hand · no template</span>
+    </footer>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="/js/main.js"></script>
+</body>
+</html>

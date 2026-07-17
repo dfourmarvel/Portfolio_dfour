@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mothers-Day — Daniel Dela Dzikunu</title>
+  <meta name="description" content="An interactive tribute site for my mother — built by directing AI coding agents as system architect rather than typing every line.">
+  <link rel="canonical" href="https://danieldeladzikunu.vercel.app/web-development/mothers-day/">
+  <meta property="og:title" content="Mothers-Day">
+  <meta property="og:description" content="An interactive tribute site for my mother — built by directing AI coding agents as system architect rather than typing every line.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://danieldeladzikunu.vercel.app/web-development/mothers-day/">
+  <meta property="og:image" content="https://danieldeladzikunu.vercel.app/assets/images/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Mothers-Day">
+  <meta name="twitter:description" content="An interactive tribute site for my mother — built by directing AI coding agents as system architect rather than typing every line.">
+  <meta name="twitter:image" content="https://danieldeladzikunu.vercel.app/assets/images/og.png">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='14' fill='%230a0e0c'/><text x='50' y='68' text-anchor='middle' font-size='52' font-family='monospace' font-weight='bold' fill='%233df5a5'>DD</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&family=JetBrains+Mono:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+</head>
+<body data-ac="cyan">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="wrap">
+    <nav class="site-nav" aria-label="Main navigation">
+      <a class="brand" href="/"><span class="beat" aria-hidden="true">♥</span> daniel@portfolio<span>:~$</span></a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle navigation menu">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-menu" id="nav-menu">
+        <a href="/medicine/">medicine</a>
+        <a href="/cybersecurity/">cybersecurity</a>
+        <a href="/web-development/" aria-current="page">web-dev</a>
+        <a href="/graphic-design/">design</a>
+        <a href="/certifications/">certs</a>
+        <a href="/blog/">blog</a>
+        <a href="/#contact">contact</a>
+        <a class="cv-btn" href="/cv.pdf" target="_blank" rel="noopener">CV ↓</a>
+      </div>
+    </nav>
+
+    <header class="page-hero">
+      <span class="crumb">web-development / projects</span>
+      <h1>Mothers-Day</h1>
+      <p class="lede reveal">An interactive tribute to my mother, Josephine Yaba Dzikunu — and the project where I stopped writing every line and started directing the build instead.</p>
+      <div class="lab-tools reveal"><span class="tool">HTML5</span><span class="tool">CSS3</span><span class="tool">Vanilla JS (ES6+)</span><span class="tool">GitHub Copilot</span><span class="tool">Codex</span><span class="tool">AI-assisted</span></div>
+      <div class="feat-links reveal">
+        <a href="https://josephineyabat.vercel.app" target="_blank" rel="noopener">visit it ↗</a>
+        <a href="https://github.com/dfourmarvel/Mothers-Day" target="_blank" rel="noopener">github ↗</a>
+        <a href="/blog/building-a-tribute-site-for-my-mom/">the write-up →</a>
+      </div>
+    </header>
+
+    <main id="main">
+      <section style="padding-top: 40px;">
+        <article class="lab-body reveal">
+
+        <h3>Overview</h3>
+        <p>A mobile-first single-page site built as a Mother's Day gift for my mum. It opens on a surprise reveal, then unfolds like a love letter — a family letter, a photo gallery, and a timeline of memories, wrapped in warm golds and oranges with animation guiding you through each section.</p>
+
+        <figure class="lab-fig"><img src="/assets/project-shots/mothersday-card.png" alt="The site's welcome card: a cream panel reading 'A family surprise — Mama Joe, this is for you' above a gold 'Open your surprise' button" loading="lazy"><figcaption><b>Figure 1</b> — The welcome gate. Cormorant Garamond over warm cream and gold, with the reveal held behind a single button. The rest of the site is family photographs, so this is the one frame that is all design and no album.</figcaption></figure>
+
+        <h3>The goal</h3>
+        <p>In my own words from the write-up: <em>"For a long time, I had a vision of building something truly special for my mom… I wanted to create a digital tribute that went beyond a standard webpage — something immersive, elegant, and deeply personal. However, doing it justice using purely traditional development methods felt out of reach for my current frontend skillset."</em></p>
+        <p>So the constraint was real and worth naming: the idea was further along than the hands were.</p>
+
+        <h3>How it was built</h3>
+        <p>The answer was to change roles. Using VS Code with GitHub Copilot and Codex, I shifted from writing every line of syntax to acting as system architect and creative director — prompting the agents, managing the logic, and owning the user experience. That let me ship a polished, production-ready site I could not have coded from scratch at the time.</p>
+        <ul>
+          <li><b>The look:</b> warm gold (<code>#d8a24b</code>) through burnt orange (<code>#d66b34</code>) on cream and soft beige, with Cormorant Garamond over Manrope.</li>
+          <li><b>The experience:</b> an animated welcome reveal, scroll-triggered animations, typing effects, a memories timeline, background music controls, and a photo gallery with full lightbox.</li>
+          <li><b>The engineering underneath:</b> lazy-loaded images, and accessibility taken seriously — semantic markup, ARIA labels, skip links and focus management.</li>
+        </ul>
+
+        <div class="verdict"><p class="v-label">what I learned</p><p>In my own words: <em>"Building this project taught me that the barrier to entry for software creation has completely shifted. You do not need to be a veteran frontend engineer to bring complex, beautiful ideas to life anymore; you just need a clear vision, strong logical direction, and the ability to effectively collaborate with AI."</em></p><p><em>"Seeing my mom's reaction to a custom digital experience built just for her was the best deployment feeling yet."</em></p></div>
+
+        </article>
+        <div class="post-foot"><a href="/web-development/">← all projects</a><a href="/blog/building-a-tribute-site-for-my-mom/">read the full write-up →</a><a href="https://josephineyabat.vercel.app" target="_blank" rel="noopener">visit it ↗</a></div>
+        <div class="lab-nav"><a href="/web-development/menstrual-health-game/">← Menstrual Health Game</a><a href="/web-development/portfolio-v2/">This Portfolio (v2) →</a></div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span>© 2026 Daniel Dela Dzikunu</span>
+      <span>built by hand · no template</span>
+    </footer>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="/js/main.js"></script>
+</body>
+</html>

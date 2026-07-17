@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bible Quiz — Daniel Dela Dzikunu</title>
+  <meta name="description" content="Snakes &amp; Ladders reimagined as a Bible trivia game: 875 questions, each written as both true/false and multiple choice. Vanilla JavaScript, no build step.">
+  <link rel="canonical" href="https://danieldeladzikunu.vercel.app/web-development/bible-quiz/">
+  <meta property="og:title" content="Bible Quiz">
+  <meta property="og:description" content="Snakes &amp; Ladders reimagined as a Bible trivia game: 875 questions, each written as both true/false and multiple choice. Vanilla JavaScript, no build step.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://danieldeladzikunu.vercel.app/web-development/bible-quiz/">
+  <meta property="og:image" content="https://danieldeladzikunu.vercel.app/assets/images/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Bible Quiz">
+  <meta name="twitter:description" content="Snakes &amp; Ladders reimagined as a Bible trivia game: 875 questions, each written as both true/false and multiple choice. Vanilla JavaScript, no build step.">
+  <meta name="twitter:image" content="https://danieldeladzikunu.vercel.app/assets/images/og.png">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='14' fill='%230a0e0c'/><text x='50' y='68' text-anchor='middle' font-size='52' font-family='monospace' font-weight='bold' fill='%233df5a5'>DD</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&family=JetBrains+Mono:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/main.css">
+</head>
+<body data-ac="cyan">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="wrap">
+    <nav class="site-nav" aria-label="Main navigation">
+      <a class="brand" href="/"><span class="beat" aria-hidden="true">♥</span> daniel@portfolio<span>:~$</span></a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle navigation menu">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-menu" id="nav-menu">
+        <a href="/medicine/">medicine</a>
+        <a href="/cybersecurity/">cybersecurity</a>
+        <a href="/web-development/" aria-current="page">web-dev</a>
+        <a href="/graphic-design/">design</a>
+        <a href="/certifications/">certs</a>
+        <a href="/blog/">blog</a>
+        <a href="/#contact">contact</a>
+        <a class="cv-btn" href="/cv.pdf" target="_blank" rel="noopener">CV ↓</a>
+      </div>
+    </nav>
+
+    <header class="page-hero">
+      <span class="crumb">web-development / projects</span>
+      <h1>Bible Quiz</h1>
+      <p class="lede reveal">Snakes &amp; Ladders reimagined as a Bible trivia game — 875 questions, every one written twice, in a board game people already know how to play.</p>
+      <div class="lab-tools reveal"><span class="tool">HTML5</span><span class="tool">CSS3</span><span class="tool">Vanilla JS (ES6+)</span><span class="tool">Playwright</span><span class="tool">No build step</span></div>
+      <div class="feat-links reveal">
+        <a href="https://biblequizgame.vercel.app" target="_blank" rel="noopener">play it ↗</a>
+        <a href="https://github.com/dfourmarvel/Bible-quiz" target="_blank" rel="noopener">github ↗</a>
+      </div>
+    </header>
+
+    <main id="main">
+      <section style="padding-top: 40px;">
+        <article class="lab-body reveal">
+
+        <h3>Overview</h3>
+        <p>A Bible trivia game wrapped in a board everyone's already played. You answer an entry question and roll a 6 to get on the board; from there, landing on a ladder or a snake triggers a question. Get it right and you climb, get it wrong and you slide. First player to land exactly on 100 wins.</p>
+
+        <h3>The goal</h3>
+        <p>Bible knowledge is usually tested in formats that feel like an exam — a quiz sheet, a list of verses to memorise. The bet here is that the format is the problem, not the content. Snakes &amp; Ladders needs no explaining, so the questions arrive while people are already playing rather than while they're being tested.</p>
+
+        <h3>The question bank</h3>
+        <p>The bank behind the game is the part that took the real work. It started from a 1,000-question source and ended at <b>875 unique questions</b> — and getting there meant treating it like data cleaning, not copywriting:</p>
+        <ul>
+          <li><b>50 questions (451–500) were missing from the source</b> entirely — the original document had a placeholder where the content should be, then resumed at 501.</li>
+          <li><b>72 questions were exact duplicates</b> of others elsewhere in the bank. 75 redundant slots were removed, keeping the lowest-numbered instance of each.</li>
+          <li><b>Two answers were wrong or malformed</b> and were corrected against the question content — Q903 was missing its book name ("32:24-32" only, corrected to Genesis 32:24-32), and Q38 had a stray clarifying clause trimmed out.</li>
+        </ul>
+        <p>Every surviving question is rendered <b>twice</b> — once as a true/false item and once as multiple choice — which is 1,750 playable items from 875 questions. The multiple-choice distractors are real Bible references pulled from elsewhere in the same bank, matched to the same book where possible and the same testament otherwise. None of them are invented verses, which matters: a plausible-looking fake reference in a Bible game teaches the wrong thing. Each question carries an explanation and cross-reference verses.</p>
+
+        <h3>How it's built</h3>
+        <p>Vanilla HTML, CSS and JavaScript with no framework and no build step — you can open <code>index.html</code> and play. Game state, dice, questions, audio and storage all live in one script. Playwright drives the automated tests.</p>
+        <ul>
+          <li><b>Optional AI players</b> so the board still works with one person in the room.</li>
+          <li><b>Read-aloud support</b> and background music with sound effects.</li>
+          <li><b>A skeleton shimmer loader</b> for the board grid, and a layout that holds from phone to desktop.</li>
+        </ul>
+
+        <div class="verdict"><p class="v-label">what I learned</p><p>I expected the game to be the hard part. It wasn't — it was the 875 questions. Finding that 50 were simply missing from the source, that 72 were quiet duplicates, that an answer was wrong — none of that is glamorous work, and all of it happened before a single line of game logic mattered.</p><p>What stuck with me is how good it felt to refuse the shortcut. I could have generated plausible-looking wrong answers in an afternoon. Pulling every distractor from real verses in the same bank took far longer and nobody playing will ever notice. But I'd know, and a Bible game that teaches a fake verse is worse than no game at all.</p></div>
+
+        </article>
+        <div class="post-foot"><a href="/web-development/">← all projects</a><a href="https://biblequizgame.vercel.app" target="_blank" rel="noopener">play it ↗</a></div>
+        <div class="lab-nav"><a href="/web-development/med-match/">← MedMatch Ghana</a><a href="/web-development/menstrual-health-game/">Menstrual Health Game →</a></div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span>© 2026 Daniel Dela Dzikunu</span>
+      <span>built by hand · no template</span>
+    </footer>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="/js/main.js"></script>
+</body>
+</html>
