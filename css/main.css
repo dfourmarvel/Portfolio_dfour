@@ -560,6 +560,8 @@ body.anim .reveal { opacity: 0; transform: translateY(30px); }
   .feat-grid, .cert-row { grid-template-columns: 1fr; }
   .post { flex-direction: column; gap: 6px; }
   .post .meta-col { text-align: left; }
+  /* the label + bpm collide on the top line at phone widths — drop bpm to bottom-right */
+  .ecg-bpm { top: auto; bottom: 8px; }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
