@@ -5,6 +5,7 @@ Daniel Dela Dzikunu's personal portfolio, v2 ("Vital Terminal" design). Vanilla 
 ## Structure
 - `index.html` — homepage hub; section pages live at `medicine/`, `cybersecurity/`, `web-development/`, `graphic-design/`, `certifications/`, `blog/` (each is a directory with an `index.html`)
 - `labs/<slug>/` — full cybersecurity lab-report detail pages (the deep layer behind the blog summaries). Terminal-styled command blocks, data tables, verdict callouts, extracted screenshots. Linked from the cybersecurity section and from each matching blog post's footer. Figures live in `assets/lab-figures/` (extracted from Daniel's PDF reports with mupdf; qwiklabs browser chrome cropped out — never re-introduce it)
+- `web-development/<slug>/` — project detail pages (the web-dev equivalent of `labs/`). Same template components as a lab page, themed cyan via `data-ac`. Screenshots live in `assets/project-shots/`
 - `css/main.css` — single shared stylesheet; per-page accent color set via `<body data-ac="rose|green|cyan|amber">`
 - `js/main.js` — single shared script (terminal typing, GSAP reveals, mobile menu, copy-email)
 - `404.html` — custom not-found page (Vercel picks it up automatically). Carries `noindex`, so it deliberately has no description/OG tags.
