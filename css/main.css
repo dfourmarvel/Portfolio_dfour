@@ -246,7 +246,7 @@ body::after {
 
 .menu-toggle {
   display: none; background: none; border: 1px solid var(--line); border-radius: 4px;
-  width: 42px; height: 38px; cursor: pointer; position: relative; z-index: 90;
+  width: 44px; height: 44px; cursor: pointer; position: relative; z-index: 90;
   flex-direction: column; align-items: center; justify-content: center; gap: 5px;
 }
 .menu-toggle span { display: block; width: 18px; height: 2px; background: var(--green); transition: transform 0.25s, opacity 0.25s; }
@@ -262,6 +262,7 @@ body::after {
     opacity: 0; pointer-events: none; transition: opacity 0.25s;
   }
   .nav-menu.open { opacity: 1; pointer-events: auto; }
+  .nav-menu a { padding: 8px 0; }
   body.menu-locked { overflow: hidden; }
 }
 
@@ -448,6 +449,10 @@ h2 { font-size: clamp(28px, 4vw, 40px); font-weight: 800; letter-spacing: -0.02e
 .pending li::before { content: "[ ] "; color: var(--page-ac); }
 .pending.raw li::before { content: ""; } /* items carry their own checkbox text */
 
+/* graphic-design gallery empty-state: additive only, base .pending/.pending.raw rules above untouched */
+.pending.gallery-empty .out { display: block; margin-bottom: 14px; }
+.pending.gallery-empty .cursor { margin-left: 4px; }
+
 /* ==========================================================================
    BLOG POST PAGES
    ========================================================================== */
@@ -539,9 +544,14 @@ h2 { font-size: clamp(28px, 4vw, 40px); font-weight: 800; letter-spacing: -0.02e
 .lab-filter[hidden], .feat[hidden] { display: none; }
 /* wrapping all 8 chips costs ~5 rows on a phone — scroll them instead so the labs stay up */
 @media (max-width: 700px) {
-  .lab-filter { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; padding-bottom: 4px; }
+  .lab-filter {
+    flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; padding-bottom: 4px;
+    mask-image: linear-gradient(to right, black 85%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, black 85%, transparent 100%);
+  }
   .lab-filter::-webkit-scrollbar { display: none; }
   .lab-filter button, .lab-filter .lf-label { flex: 0 0 auto; }
+  .lab-filter button { min-height: 44px; padding: 8px 16px; display: inline-flex; align-items: center; }
 }
 
 /* reveal system — hidden state only applies once JS confirms animation will run */
