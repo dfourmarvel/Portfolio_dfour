@@ -12,12 +12,33 @@ if (menuToggle && navMenu) {
     menuToggle.setAttribute("aria-expanded", String(open));
     navMenu.classList.toggle("open", open);
     document.body.classList.toggle("menu-locked", open);
+    if (open) {
+      const first = navMenu.querySelector("a");
+      if (first) first.focus();
+    } else {
+      menuToggle.focus();
+    }
   };
   menuToggle.addEventListener("click", () =>
     setOpen(menuToggle.getAttribute("aria-expanded") !== "true")
   );
   navMenu.addEventListener("click", (e) => {
     if (e.target.tagName === "A") setOpen(false);
+  });
+  /* simple focus trap: only active while the mobile overlay is open */
+  navMenu.addEventListener("keydown", (e) => {
+    if (e.key !== "Tab" || !navMenu.classList.contains("open")) return;
+    const focusable = [...navMenu.querySelectorAll("a")];
+    if (!focusable.length) return;
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    if (e.shiftKey && document.activeElement === first) {
+      e.preventDefault();
+      last.focus();
+    } else if (!e.shiftKey && document.activeElement === last) {
+      e.preventDefault();
+      first.focus();
+    }
   });
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") setOpen(false);
@@ -119,19 +140,21 @@ if (!reduced && window.gsap) {
   document.querySelectorAll(".bar i").forEach((bar) => (bar.style.width = bar.dataset.w));
 }
 
-/* ---------- lab topic filter (cybersecurity page) ---------- */
-const labFilter = document.getElementById("lab-filter");
-const labList = document.querySelector(".lab-list");
-if (labFilter && labList) {
-  const cards = [...labList.querySelectorAll(".feat")];
-  const status = document.getElementById("lab-filter-status");
+/* ---------- topic filter (reused on cybersecurity + blog) ----------
+   Topics come from each card's own tag/category text, so a new card shows up
+   in the filter automatically and the chips can never drift from the card
+   labels. Filtering reflows the list, and a ScrollTrigger.refresh() after that
+   will reset any un-fired reveal back to opacity 0 — stranding a card that is
+   on screen — so the cards' reveal is retired entirely on first use rather
+   than fought. */
+function initTopicFilter({ filterEl, statusEl, list, cardSelector, tagSelector, noun }) {
+  if (!filterEl || !list) return;
+  const cards = [...list.querySelectorAll(cardSelector)];
   const slug = (s) => s.trim().toLowerCase().replace(/\s+/g, "-");
 
-  /* Topics come from each card's own .tag text, so a new lab shows up in the
-     filter automatically and the chips can never drift from the card labels. */
   const topics = new Map();
   cards.forEach((card) => {
-    const label = card.querySelector(".tag").textContent.trim().toLowerCase();
+    const label = card.querySelector(tagSelector).textContent.trim().toLowerCase();
     const id = slug(label);
     card.dataset.topic = id;
     const seen = topics.get(id);
@@ -145,7 +168,7 @@ if (labFilter && labList) {
       .map(([id, t]) => ({ id, label: t.label, count: t.count }))
   );
 
-  labFilter.innerHTML =
+  filterEl.innerHTML =
     '<span class="lf-label" aria-hidden="true">filter:</span>' +
     chips
       .map(
@@ -153,11 +176,8 @@ if (labFilter && labList) {
           `<button type="button" data-topic="${c.id}" aria-pressed="${i === 0}">${c.label}<i>${c.count}</i></button>`
       )
       .join("");
-  labFilter.hidden = false; // only expose the control once it's wired up
+  filterEl.hidden = false; // only expose the control once it's wired up
 
-  /* Filtering reflows the list, and a ScrollTrigger.refresh() after that will reset
-     any un-fired reveal back to opacity 0 — stranding a card that is on screen.
-     So retire the cards' reveal entirely on first use rather than fight it. */
   let settled = false;
   const settleCards = () => {
     if (settled) return;
@@ -174,8 +194,8 @@ if (labFilter && labList) {
     });
   };
 
-  const buttons = [...labFilter.querySelectorAll("button")];
-  labFilter.addEventListener("click", (e) => {
+  const buttons = [...filterEl.querySelectorAll("button")];
+  filterEl.addEventListener("click", (e) => {
     const btn = e.target.closest("button[data-topic]");
     if (!btn) return;
     settleCards();
@@ -186,9 +206,67 @@ if (labFilter && labList) {
       if (match) shown++;
     });
     buttons.forEach((b) => b.setAttribute("aria-pressed", String(b === btn)));
-    status.textContent = `${shown} lab${shown === 1 ? "" : "s"} shown`;
+    statusEl.textContent = `${shown} ${noun}${shown === 1 ? "" : "s"} shown`;
     if (window.ScrollTrigger) ScrollTrigger.refresh(); // everything below the list moved
   });
+}
+
+initTopicFilter({
+  filterEl: document.getElementById("lab-filter"),
+  statusEl: document.getElementById("lab-filter-status"),
+  list: document.querySelector(".lab-list"),
+  cardSelector: ".feat",
+  tagSelector: ".tag",
+  noun: "lab",
+});
+
+initTopicFilter({
+  filterEl: document.getElementById("blog-filter"),
+  statusEl: document.getElementById("blog-filter-status"),
+  list: document.querySelector(".blog-list"),
+  cardSelector: ".post",
+  tagSelector: ".cat",
+  noun: "post",
+});
+
+/* ---------- footer sign-off typing (homepage only) ----------
+   Deliberately separate from typeScript/#term above so this small closing
+   touch can never break the hero effect. */
+const footEcho = document.getElementById("foot-echo");
+if (footEcho) {
+  const signOff = "exit 0 — thanks for reading.";
+  const renderFootEcho = (text) => {
+    footEcho.innerHTML = `<span class="prompt">daniel@portfolio:~$</span> <span class="cmd">${text}</span><span class="cursor"></span>`;
+  };
+  const typeFootEcho = () => {
+    footEcho.innerHTML = `<span class="prompt">daniel@portfolio:~$</span> <span class="cmd"></span>`;
+    const target = footEcho.querySelector(".cmd");
+    let i = 0;
+    const step = () => {
+      if (i < signOff.length) {
+        target.textContent += signOff[i];
+        i++;
+        setTimeout(step, 50);
+      } else {
+        const cursor = document.createElement("span");
+        cursor.className = "cursor";
+        footEcho.appendChild(cursor);
+      }
+    };
+    step();
+  };
+  if (reduced) {
+    renderFootEcho(signOff);
+  } else if (window.gsap && window.ScrollTrigger) {
+    /* "top 88%"-style thresholds can sit past max-scroll for content this
+       close to the page's true bottom (the crossing never happens, so
+       onEnter never fires) — "top bottom" fires as the footer's top enters
+       the viewport, well before that edge case, and still reads as "the
+       footer scrolls into view". */
+    ScrollTrigger.create({ trigger: footEcho, start: "top bottom", once: true, onEnter: typeFootEcho });
+  } else {
+    renderFootEcho(signOff);
+  }
 }
 
 /* ---------- copy email ---------- */
