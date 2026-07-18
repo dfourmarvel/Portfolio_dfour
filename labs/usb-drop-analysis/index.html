@@ -50,12 +50,12 @@
       <section style="padding-top: 40px;">
         <article class="lab-body reveal">
         <p>An unlabeled USB flash drive was found in a hospital parking lot. Acting on the security team, the task was to determine what it contained and what risk it posed — by mounting it inside a virtualized, network-isolated environment rather than plugging it into a live workstation.</p>
-        <h3>What was on the drive</h3>
+        <h2>What was on the drive</h2>
         <p>The drive belonged to a hospital HR manager (Jorge). It mixed personal and sensitive work files: a wedding guest list, a résumé, new-hire letters, shift schedules, and employee budget documents — a combination of PII and SPII that should never share one unencrypted device.</p>
-        <h3>The attacker’s view</h3>
+        <h2>The attacker’s view</h2>
         <p>No malware was present — but the absence of malicious code did not make the drive safe. The files alone are a treasure trove: enough for highly targeted <b>spear-phishing</b> against Jorge’s family and the wider HR department, and a <b>physical security risk</b> (an attacker who knows an employee’s schedule knows when they are not home).</p>
         <p>The second possibility is a <b>USB drop attack</b> — a social-engineering tactic where an attacker deliberately leaves a malware-loaded device in a prominent spot, relying on human curiosity. One curious employee plugging it into a hospital workstation could hand an attacker a backdoor into critical infrastructure.</p>
-        <h3>Layered mitigation</h3>
+        <h2>Layered mitigation</h2>
         <ul><li><b>Technical controls:</b> EDR / MDM configurations that block or restrict unauthorized USB mass-storage devices from mounting, with automatic scanning of any permitted media.</li><li><b>Operational controls:</b> continuous security-awareness training that reframes "I’ll return it to IT" as the only acceptable response to a found device.</li><li><b>Managerial controls:</b> data-governance policy forbidding the mixing of corporate and personal files on unencrypted removable media, backed by DLP systems to prevent exfiltration.</li></ul>
         <div class="verdict"><p class="v-label">key lesson</p><p>Curiosity is a feature of good clinicians and a liability in security. In medicine you investigate the unexpected; in cybersecurity, the unexpected is often the attack vector itself.</p></div>
         </article>

@@ -50,16 +50,16 @@
       <section style="padding-top: 40px;">
         <article class="lab-body reveal">
         <p>Several machines in the organisation had been compromised. The investigation needed a coherent picture built from three separate tables — <code>machines</code>, <code>employees</code>, and <code>log_in_attempts</code> — linked through shared columns.</p>
-        <h3>Task 1 — Match employees to machines (INNER JOIN)</h3>
+        <h2>Task 1 — Match employees to machines (INNER JOIN)</h2>
         <p><code>machines</code> and <code>employees</code> share <code>device_id</code>. An INNER JOIN returns only rows matched in both tables — every machine definitively assigned to a known employee.</p>
         <div class="code"><div class="code-bar"><i></i><i></i><i></i><span>sql</span></div><pre><span class="kw">SELECT</span> *
 <span class="kw">FROM</span> machines
 <span class="kw">INNER JOIN</span> employees <span class="kw">ON</span> machines.device_id = employees.device_id;</pre></div>
-        <figure class="lab-fig"><img src="/assets/lab-figures/sql_joins-01.png" alt="INNER JOIN result" loading="lazy"><figcaption><b>Figure 1</b> — INNER JOIN of machines and employees on device_id — 185 matched employee-machine pairs.</figcaption></figure>
-        <h3>Task 2 — Expose gaps (LEFT &amp; RIGHT JOIN)</h3>
+        <figure class="lab-fig"><picture><source srcset="/assets/lab-figures/sql_joins-01.webp" type="image/webp"><img src="/assets/lab-figures/sql_joins-01.png" alt="INNER JOIN result" loading="lazy"></picture><figcaption><b>Figure 1</b> — INNER JOIN of machines and employees on device_id — 185 matched employee-machine pairs.</figcaption></figure>
+        <h2>Task 2 — Expose gaps (LEFT &amp; RIGHT JOIN)</h2>
         <p>A LEFT JOIN returned every machine (NULL where no employee matched) — revealing at least one <b>unassigned machine</b>, a potential security flag. A RIGHT JOIN returned every employee, exposing <code>lrodriqu</code> (employee 1009) with <b>no machine assigned</b>.</p>
-        <figure class="lab-fig"><img src="/assets/lab-figures/sql_joins-03.png" alt="RIGHT JOIN result" loading="lazy"><figcaption><b>Figure 3</b> — RIGHT JOIN — employee lrodriqu (1009) shows NULL across all machine columns, indicating no assigned device.</figcaption></figure>
-        <h3>Task 3 — Correlate logins (INNER JOIN on username)</h3>
+        <figure class="lab-fig"><picture><source srcset="/assets/lab-figures/sql_joins-03.webp" type="image/webp"><img src="/assets/lab-figures/sql_joins-03.png" alt="RIGHT JOIN result" loading="lazy"></picture><figcaption><b>Figure 3</b> — RIGHT JOIN — employee lrodriqu (1009) shows NULL across all machine columns, indicating no assigned device.</figcaption></figure>
+        <h2>Task 3 — Correlate logins (INNER JOIN on username)</h2>
         <p>Joining <code>employees</code> to <code>log_in_attempts</code> on <code>username</code> paired each staff profile with its login events — department, office, country, IP, and success flag in one view. 200 records returned.</p>
         <div class="lab-table-wrap"><table class="lab-table"><thead><tr><th>Task</th><th>Join type</th><th>Tables</th><th>Key</th><th>Records</th></tr></thead><tbody><tr><td>Task 1</td><td>INNER JOIN</td><td>machines + employees</td><td>device_id</td><td>185</td></tr><tr><td>Task 2a</td><td>LEFT JOIN</td><td>machines + employees</td><td>device_id</td><td>All machines</td></tr><tr><td>Task 2b</td><td>RIGHT JOIN</td><td>machines + employees</td><td>device_id</td><td>All employees</td></tr><tr><td>Task 3</td><td>INNER JOIN</td><td>employees + log_in_attempts</td><td>username</td><td>200</td></tr></tbody></table></div>
         <div class="verdict"><p class="v-label">key takeaway</p><p>INNER JOIN is the strictest match — ideal for confirmed asset-employee pairings. LEFT and RIGHT JOINs expose gaps: NULLs signal unassigned machines or employees without assets, both worth investigating. Together they form the foundation for cross-table forensic analysis.</p></div>

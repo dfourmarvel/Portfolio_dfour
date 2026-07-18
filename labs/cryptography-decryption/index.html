@@ -50,21 +50,21 @@
       <section style="padding-top: 40px;">
         <article class="lab-body reveal">
         <p>Every file in the analyst’s home directory had been encrypted. Recovery required three sequential operations: reading the encrypted listing, breaking a Caesar cipher hidden inside a dotfile, then using OpenSSL’s AES-256-CBC to decrypt the main data file.</p>
-        <h3>Task 1 — Read the instructions</h3>
+        <h2>Task 1 — Read the instructions</h2>
         <p><code>ls</code> revealed <code>Q1.encrypted</code>, <code>README.txt</code>, and a <code>caesar</code> subdirectory. The README directed the analyst to a hidden file inside <code>caesar</code>.</p>
-        <h3>Task 2 — Break the Caesar cipher</h3>
+        <h2>Task 2 — Break the Caesar cipher</h2>
         <p><code>ls -a</code> surfaced a hidden dotfile <code>.leftShift3</code> — files beginning with a period are hidden from standard <code>ls</code>. Its contents were scrambled by a Caesar cipher with a left-shift of three. The <code>tr</code> command reversed the substitution, revealing the OpenSSL command needed for Task 3.</p>
         <div class="code"><div class="code-bar"><i></i><i></i><i></i><span>bash</span></div><pre><span class="pr">$</span> cd caesar
 <span class="pr">$</span> ls -a
 <span class="pr">$</span> cat .leftShift3 | tr "d-za-cD-ZA-C" "a-zA-Z"</pre></div>
-        <figure class="lab-fig"><img src="/assets/lab-figures/crypto-03.png" alt="Caesar cipher decryption with tr" loading="lazy"><figcaption><b>Figure 3</b> — cat .leftShift3 showing the ciphertext, then the tr command translating each character three positions to reveal the plaintext OpenSSL command.</figcaption></figure>
-        <h3>Task 3 — Decrypt with AES-256-CBC</h3>
+        <figure class="lab-fig"><picture><source srcset="/assets/lab-figures/crypto-03.webp" type="image/webp"><img src="/assets/lab-figures/crypto-03.png" alt="Caesar cipher decryption with tr" loading="lazy"></picture><figcaption><b>Figure 3</b> — cat .leftShift3 showing the ciphertext, then the tr command translating each character three positions to reveal the plaintext OpenSSL command.</figcaption></figure>
+        <h2>Task 3 — Decrypt with AES-256-CBC</h2>
         <p>Back in the home directory, the recovered command decrypted <code>Q1.encrypted</code> to <code>Q1.recovered</code>. The <code>-pbkdf2</code> flag applied Password-Based Key Derivation Function 2, <code>-a</code> handled Base64, and the key — <code>ettubrute</code> — came from the Caesar cipher.</p>
         <div class="code"><div class="code-bar"><i></i><i></i><i></i><span>bash</span></div><pre><span class="pr">$</span> cd ~
 <span class="pr">$</span> openssl aes-256-cbc -pbkdf2 -a -d -in Q1.encrypted \
     -out Q1.recovered -k ettubrute
 <span class="pr">$</span> cat Q1.recovered</pre></div>
-        <figure class="lab-fig"><img src="/assets/lab-figures/crypto-04.png" alt="OpenSSL decryption" loading="lazy"><figcaption><b>Figure 4</b> — Executing the OpenSSL AES-256-CBC decryption with the recovered key.</figcaption></figure>
+        <figure class="lab-fig"><picture><source srcset="/assets/lab-figures/crypto-04.webp" type="image/webp"><img src="/assets/lab-figures/crypto-04.png" alt="OpenSSL decryption" loading="lazy"></picture><figcaption><b>Figure 4</b> — Executing the OpenSSL AES-256-CBC decryption with the recovered key.</figcaption></figure>
         <div class="verdict"><p class="v-label">key takeaway</p><p>Encryption is only as strong as the key management around it. The Caesar cipher fell the moment the shift was known; AES-256 held — but the password was sitting in a file one directory away. The algorithm is rarely the weakest link.</p><p>AES-256 is the same standard that protects patient records. Understanding how it works, and how its keys can be exposed, is the gap between a clinician who trusts encryption and one who can evaluate it.</p></div>
         </article>
         <div class="post-foot"><a href="/blog/caesar-aes-decryption-lab/">the story behind this lab →</a><a href="/cybersecurity/">all labs →</a></div>

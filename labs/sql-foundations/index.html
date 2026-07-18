@@ -49,18 +49,18 @@
     <main id="main">
       <section style="padding-top: 40px;">
         <article class="lab-body reveal">
-        <h3>Task 1 — Device audit (column selection)</h3>
+        <h2>Task 1 — Device audit (column selection)</h2>
         <p>The <code>machines</code> table holds 200 devices. Progressively narrowing columns surfaced patch currency: device <code>a184b775c707</code> on OS 1 had a patch date of 2021-09-01 — over four years stale, a priority for the update cycle.</p>
         <div class="code"><div class="code-bar"><i></i><i></i><i></i><span>sql</span></div><pre><span class="kw">SELECT</span> device_id, operating_system, OS_patch_date
 <span class="kw">FROM</span> machines;</pre></div>
-        <figure class="lab-fig"><img src="/assets/lab-figures/sql_main-03.png" alt="Device patch audit" loading="lazy"><figcaption><b>Figure 3</b> — device_id, operating_system, and OS_patch_date — surfacing devices overdue for patching.</figcaption></figure>
-        <h3>Task 2 — Login investigation (SELECT *)</h3>
+        <figure class="lab-fig"><picture><source srcset="/assets/lab-figures/sql_main-03.webp" type="image/webp"><img src="/assets/lab-figures/sql_main-03.png" alt="Device patch audit" loading="lazy"></picture><figcaption><b>Figure 3</b> — device_id, operating_system, and OS_patch_date — surfacing devices overdue for patching.</figcaption></figure>
+        <h2>Task 2 — Login investigation (SELECT *)</h2>
         <p>Scanning <code>log_in_attempts</code> found no unexpected geographic logins, but flagged after-hours access — <code>jrafael</code> at 03:05 and <code>bisles</code> at 01:30 — warranting the filter-based follow-up in later labs.</p>
-        <h3>Task 3 — Chronological ordering (ORDER BY)</h3>
+        <h2>Task 3 — Chronological ordering (ORDER BY)</h2>
         <p>A secondary sort key breaks ties within a date. <code>ORDER BY login_date, login_time</code> pinned the earliest event in the dataset to <code>bsand</code> at 00:19:11 on 2022-05-08 — where initial-access attempts often originate.</p>
         <div class="code"><div class="code-bar"><i></i><i></i><i></i><span>sql</span></div><pre><span class="kw">SELECT</span> * <span class="kw">FROM</span> log_in_attempts
 <span class="kw">ORDER BY</span> login_date, login_time;</pre></div>
-        <figure class="lab-fig"><img src="/assets/lab-figures/sql_main-08.png" alt="ORDER BY result" loading="lazy"><figcaption><b>Figure 8</b> — log_in_attempts ordered by date then time — reconstructing the earliest activity in the log.</figcaption></figure>
+        <figure class="lab-fig"><picture><source srcset="/assets/lab-figures/sql_main-08.webp" type="image/webp"><img src="/assets/lab-figures/sql_main-08.png" alt="ORDER BY result" loading="lazy"></picture><figcaption><b>Figure 8</b> — log_in_attempts ordered by date then time — reconstructing the earliest activity in the log.</figcaption></figure>
         <div class="verdict"><p class="v-label">key takeaway</p><p>Even the most basic SQL has real security weight: which columns you pull, and in what order you view them, can be the difference between catching a threat early and missing it entirely.</p></div>
         </article>
         <div class="post-foot"><a href="/blog/first-sql-lab/">the story behind this lab →</a><a href="/cybersecurity/">all labs →</a></div>

@@ -49,16 +49,16 @@
     <main id="main">
       <section style="padding-top: 40px;">
         <article class="lab-body reveal">
-        <h3>Date thresholds (&gt; vs &gt;=)</h3>
+        <h2>Date thresholds (&gt; vs &gt;=)</h2>
         <p>Strict greater-than excluded the boundary date, returning <b>125 rows</b> after 2022-05-09; greater-than-or-equal included it, expanding to <b>165</b>. The one-character difference materially changes the result set — a detail that matters in incident scoping.</p>
         <div class="code"><div class="code-bar"><i></i><i></i><i></i><span>sql</span></div><pre><span class="kw">SELECT</span> * <span class="kw">FROM</span> log_in_attempts
 <span class="kw">WHERE</span> login_date &gt;= '2022-05-09';</pre></div>
-        <h3>Bounded windows (BETWEEN)</h3>
+        <h2>Bounded windows (BETWEEN)</h2>
         <p><code>BETWEEN … AND</code> narrowed the window to a three-day range (123 rows), then to the 06:00–07:00 login hour (15 rows, earliest at 06:01:31) — the kind of tight window that surfaces anomalous access.</p>
         <div class="code"><div class="code-bar"><i></i><i></i><i></i><span>sql</span></div><pre><span class="kw">SELECT</span> * <span class="kw">FROM</span> log_in_attempts
 <span class="kw">WHERE</span> login_time <span class="kw">BETWEEN</span> '06:00:00' <span class="kw">AND</span> '07:00:00';</pre></div>
-        <figure class="lab-fig"><img src="/assets/lab-figures/sql_numeric-05.png" alt="BETWEEN time filter" loading="lazy"><figcaption><b>Figure 5</b> — Login attempts between 06:00 and 07:00 — 15 rows, earliest recorded at 06:01:31.</figcaption></figure>
-        <h3>Numeric event-ID ranges</h3>
+        <figure class="lab-fig"><picture><source srcset="/assets/lab-figures/sql_numeric-05.webp" type="image/webp"><img src="/assets/lab-figures/sql_numeric-05.png" alt="BETWEEN time filter" loading="lazy"></picture><figcaption><b>Figure 5</b> — Login attempts between 06:00 and 07:00 — 15 rows, earliest recorded at 06:01:31.</figcaption></figure>
+        <h2>Numeric event-ID ranges</h2>
         <p>Filtering by numeric <code>event_id</code> (unquoted) with <code>&gt;=</code> and <code>BETWEEN 100 AND 150</code> pinpointed specific events while selecting only the columns needed to reduce output noise.</p>
         <div class="verdict"><p class="v-label">key takeaway</p><p>Numeric and date/time operators are the backbone of timeline reconstruction: 125 vs 165 rows on a single boundary, 67 after-hours logins refined to 15 in a target window. Precision here is precision in the investigation.</p></div>
         </article>

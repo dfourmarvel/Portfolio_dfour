@@ -50,16 +50,16 @@
       <section style="padding-top: 40px;">
         <article class="lab-body reveal">
         <p>Authentication verifies who a user is; authorization defines what they can do. Managing users sits at that intersection. Acting as a security analyst, this lab ran the complete lifecycle for a new employee — all under <code>sudo</code> to respect authorization controls.</p>
-        <h3>Provision &amp; assign a primary group</h3>
+        <h2>Provision &amp; assign a primary group</h2>
         <p>A swapped argument order first returned <em>"user 'research_team' does not exist"</em> — a reminder that <code>usermod -g</code> expects <code>group username</code>, not the reverse. Corrected, it set <code>research_team</code> as the primary group.</p>
         <div class="code"><div class="code-bar"><i></i><i></i><i></i><span>bash</span></div><pre><span class="pr">$</span> sudo useradd researcher9
 <span class="pr">$</span> sudo usermod -g research_team researcher9</pre></div>
-        <h3>Transfer file ownership</h3>
+        <h2>Transfer file ownership</h2>
         <p><code>chown</code> transferred <code>project_r.txt</code> to researcher9; <code>ls -l</code> confirmed the new owner while group and permissions stayed intact.</p>
         <div class="code"><div class="code-bar"><i></i><i></i><i></i><span>bash</span></div><pre><span class="pr">$</span> sudo chown researcher9 project_r.txt
 <span class="pr">$</span> ls -l
 <span class="cm"># -rw-rw-r-- 1 researcher9 research_team 46 May 25 13:50 project_r.txt</span></pre></div>
-        <h3>Expand access, then offboard</h3>
+        <h2>Expand access, then offboard</h2>
         <p>A supplementary group was appended with <code>-aG</code> (the <code>-a</code> appends without removing existing membership; the flags are case-sensitive). A year later, <code>userdel</code> removed the account, leaving an orphaned personal group that <code>groupdel</code> cleaned up.</p>
         <div class="code"><div class="code-bar"><i></i><i></i><i></i><span>bash</span></div><pre><span class="pr">$</span> sudo usermod -aG sales_team researcher9
 <span class="pr">$</span> sudo userdel researcher9

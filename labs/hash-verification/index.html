@@ -50,20 +50,20 @@
       <section style="padding-top: 40px;">
         <article class="lab-body reveal">
         <p>A hash function is a one-way algorithm producing a fixed-length digest that uniquely represents an input’s contents — a single-bit change yields a completely different digest. This lab began with two files that printed the identical EICAR antivirus test string to the terminal, yet differed at the binary level.</p>
-        <h3>Task 1 — Generate hashes</h3>
+        <h2>Task 1 — Generate hashes</h2>
         <p><code>cat</code> showed both files as visually identical. But <code>sha256sum</code> produced two completely different 64-character digests — the avalanche effect in action, exposing a difference invisible to the eye.</p>
         <div class="code"><div class="code-bar"><i></i><i></i><i></i><span>bash</span></div><pre><span class="pr">$</span> sha256sum file1.txt
 <span class="cm"># 131f95c5...bdfd8267  file1.txt</span>
 <span class="pr">$</span> sha256sum file2.txt
 <span class="cm"># 2558ba9a...f9ca017b  file2.txt</span></pre></div>
-        <figure class="lab-fig"><img src="/assets/lab-figures/hash-02.png" alt="sha256sum output" loading="lazy"><figcaption><b>Figure 2</b> — sha256sum produces distinct 64-character digests for two files with visually identical contents.</figcaption></figure>
-        <h3>Task 2 — Persist and compare</h3>
+        <figure class="lab-fig"><picture><source srcset="/assets/lab-figures/hash-02.webp" type="image/webp"><img src="/assets/lab-figures/hash-02.png" alt="sha256sum output" loading="lazy"></picture><figcaption><b>Figure 2</b> — sha256sum produces distinct 64-character digests for two files with visually identical contents.</figcaption></figure>
+        <h2>Task 2 — Persist and compare</h2>
         <p>Each digest was appended to its own file with the <code>&gt;&gt;</code> operator (a practical SOC pattern — hashes often need logging or feeding into automated pipelines), then compared byte-for-byte with <code>cmp</code>, which reports the exact position of the first divergence.</p>
         <div class="code"><div class="code-bar"><i></i><i></i><i></i><span>bash</span></div><pre><span class="pr">$</span> sha256sum file1.txt &gt;&gt; file1hash
 <span class="pr">$</span> sha256sum file2.txt &gt;&gt; file2hash
 <span class="pr">$</span> cmp file1hash file2hash
 <span class="cm"># file1hash file2hash differ: char 1, line 1</span></pre></div>
-        <figure class="lab-fig"><img src="/assets/lab-figures/hash-04.png" alt="cmp output" loading="lazy"><figcaption><b>Figure 4</b> — cmp reports the first byte mismatch between the two hash files — a divergence at the very first character.</figcaption></figure>
+        <figure class="lab-fig"><picture><source srcset="/assets/lab-figures/hash-04.webp" type="image/webp"><img src="/assets/lab-figures/hash-04.png" alt="cmp output" loading="lazy"></picture><figcaption><b>Figure 4</b> — cmp reports the first byte mismatch between the two hash files — a divergence at the very first character.</figcaption></figure>
         <div class="verdict"><p class="v-label">key takeaway</p><p>Visual inspection of file contents is not integrity verification. A threat actor can swap a legitimate binary, preserve its readable output, and leave no obvious trace — unless you are hashing. <code>sha256sum</code> doesn’t care what a file looks like; it cares what the file is.</p></div>
         </article>
         <div class="post-foot"><a href="/blog/file-integrity-sha256/">the story behind this lab →</a><a href="/cybersecurity/">all labs →</a></div>

@@ -49,20 +49,20 @@
     <main id="main">
       <section style="padding-top: 40px;">
         <article class="lab-body reveal">
-        <h3>After-hours failed logins (AND)</h3>
+        <h2>After-hours failed logins (AND)</h2>
         <p>Two conditions joined with <code>AND</code> — both must be true — isolated failed login attempts after 18:00. The query returned <b>19 rows</b>.</p>
         <div class="code"><div class="code-bar"><i></i><i></i><i></i><span>sql</span></div><pre><span class="kw">SELECT</span> *
 <span class="kw">FROM</span> log_in_attempts
 <span class="kw">WHERE</span> login_time &gt; '18:00' <span class="kw">AND</span> success = 0;</pre></div>
-        <figure class="lab-fig"><img src="/assets/lab-figures/sql_filters-01.png" alt="AND filter result" loading="lazy"><figcaption><b>Figure 1</b> — After-hours failed login attempts — 19 rows where login_time &gt; 18:00 AND success = 0.</figcaption></figure>
-        <h3>Logins outside Mexico (NOT + LIKE)</h3>
+        <figure class="lab-fig"><picture><source srcset="/assets/lab-figures/sql_filters-01.webp" type="image/webp"><img src="/assets/lab-figures/sql_filters-01.png" alt="AND filter result" loading="lazy"></picture><figcaption><b>Figure 1</b> — After-hours failed login attempts — 19 rows where login_time &gt; 18:00 AND success = 0.</figcaption></figure>
+        <h2>Logins outside Mexico (NOT + LIKE)</h2>
         <p>The <code>country</code> column stored Mexico as both <code>MEX</code> and <code>MEXICO</code>, so a simple equality check would miss a variant. <code>LIKE 'MEX%'</code> matches any string starting with "MEX"; wrapping it in <code>NOT</code> returns every other country — a robust way to handle inconsistent data.</p>
         <div class="code"><div class="code-bar"><i></i><i></i><i></i><span>sql</span></div><pre><span class="kw">SELECT</span> *
 <span class="kw">FROM</span> log_in_attempts
 <span class="kw">WHERE</span> <span class="kw">NOT</span> country <span class="kw">LIKE</span> 'MEX%';</pre></div>
-        <h3>Targeted patching (AND + LIKE, OR, NOT)</h3>
+        <h2>Targeted patching (AND + LIKE, OR, NOT)</h2>
         <ul><li>Marketing staff in the East building: <code>department = 'Marketing' AND office LIKE 'East%'</code> — 7 employees.</li><li>Finance or Sales (an employee is in one department, so <code>OR</code>, not <code>AND</code>): <code>department = 'Finance' OR department = 'Sales'</code>.</li><li>Everyone except already-patched IT: <code>NOT department = 'Information Technology'</code> — concise and future-proof.</li></ul>
-        <figure class="lab-fig"><img src="/assets/lab-figures/sql_filters-04.png" alt="Marketing East building filter" loading="lazy"><figcaption><b>Figure 4</b> — Marketing employees in the East building, isolated with AND + LIKE wildcard matching.</figcaption></figure>
+        <figure class="lab-fig"><picture><source srcset="/assets/lab-figures/sql_filters-04.webp" type="image/webp"><img src="/assets/lab-figures/sql_filters-04.png" alt="Marketing East building filter" loading="lazy"></picture><figcaption><b>Figure 4</b> — Marketing employees in the East building, isolated with AND + LIKE wildcard matching.</figcaption></figure>
         <div class="verdict"><p class="v-label">key takeaway</p><p>Clean queries save investigations. <code>LIKE</code> with wildcards proved essential for messy real-world data ("MEX" vs "MEXICO", variable room numbers), and knowing when to reach for AND vs OR vs NOT is the difference between finding an active threat and getting lost in the noise.</p></div>
         </article>
         <div class="post-foot"><a href="/blog/sql-filtering-investigation/">the story behind this lab →</a><a href="/cybersecurity/">all labs →</a></div>

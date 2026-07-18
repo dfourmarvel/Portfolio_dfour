@@ -50,23 +50,23 @@
       <section style="padding-top: 40px;">
         <article class="lab-body reveal">
         <p>Acting as an analyst auditing a research team’s Linux development environment, the task was to examine file and directory attributes for authorization vulnerabilities — over-permissive write access and hidden-file exposures — then bring everything into compliance using <code>chmod</code>.</p>
-        <h3>Reading the permission strings</h3>
+        <h2>Reading the permission strings</h2>
         <p><code>ls -al</code> lists every file including hidden ones (the <code>-a</code> flag) alongside their permission strings (the <code>-l</code> flag). Each 10-character string breaks down as: type (<code>d</code> or <code>-</code>), then three groups of three — owner, group, others — each <code>rwx</code>.</p>
         <div class="code"><div class="code-bar"><i></i><i></i><i></i><span>bash</span></div><pre><span class="pr">$</span> ls -al</pre></div>
-        <figure class="lab-fig"><img src="/assets/lab-figures/linuxperm-01.png" alt="Initial file listing" loading="lazy"><figcaption><b>Figure 1</b> — Initial ls -l output — project_k.txt shows -rw-rw-rw-, giving both group and others full write access.</figcaption></figure>
+        <figure class="lab-fig"><picture><source srcset="/assets/lab-figures/linuxperm-01.webp" type="image/webp"><img src="/assets/lab-figures/linuxperm-01.png" alt="Initial file listing" loading="lazy"></picture><figcaption><b>Figure 1</b> — Initial ls -l output — project_k.txt shows -rw-rw-rw-, giving both group and others full write access.</figcaption></figure>
         <div class="lab-table-wrap"><table class="lab-table"><thead><tr><th>Item</th><th>Permissions</th><th>Issue</th></tr></thead><tbody><tr><td>project_k.txt</td><td>-rw-rw-rw-</td><td class="risk-hi">others can write</td></tr><tr><td>.project_x.txt (hidden)</td><td>-rw--w----</td><td>group has write, no read</td></tr><tr><td>drafts (directory)</td><td>drwx--x---</td><td>group can enter and execute</td></tr></tbody></table></div>
-        <h3>Stripping public write access</h3>
+        <h2>Stripping public write access</h2>
         <p>Policy: no file should grant write access to "others." <code>project_k.txt</code> (<code>-rw-rw-rw-</code>) violated this outright. <code>chmod o-w</code> — <code>o</code> for others, <code>-</code> to remove, <code>w</code> for write — silently fixed it.</p>
         <div class="code"><div class="code-bar"><i></i><i></i><i></i><span>bash</span></div><pre><span class="pr">$</span> chmod o-w project_k.txt
 <span class="pr">$</span> ls -l
 # -rw-rw-rw- → -rw-rw-r--</pre></div>
-        <h3>Securing a hidden file</h3>
+        <h2>Securing a hidden file</h2>
         <p><code>.project_x.txt</code> started at <code>-rw--w----</code> — the owner could read/write, but the group had write-only access (no read), and the target state required read-only access for both owner and group. Two commands got there: <code>u-w</code> removed the owner’s write, then <code>g+r,g-w</code> added group read and removed group write.</p>
         <div class="code"><div class="code-bar"><i></i><i></i><i></i><span>bash</span></div><pre><span class="pr">$</span> chmod g+r,g-w .project_x.txt
 <span class="pr">$</span> ls -al
 # -rw--w---- → -r--r-----</pre></div>
-        <figure class="lab-fig"><img src="/assets/lab-figures/linuxperm-03.png" alt="Hidden file permission changes" loading="lazy"><figcaption><b>Figure 3</b> — chmod u-w,g-r and chmod g+r,g-w applied in sequence to .project_x.txt, verified after each step with ls -al.</figcaption></figure>
-        <h3>Locking down a directory</h3>
+        <figure class="lab-fig"><picture><source srcset="/assets/lab-figures/linuxperm-03.webp" type="image/webp"><img src="/assets/lab-figures/linuxperm-03.png" alt="Hidden file permission changes" loading="lazy"></picture><figcaption><b>Figure 3</b> — chmod u-w,g-r and chmod g+r,g-w applied in sequence to .project_x.txt, verified after each step with ls -al.</figcaption></figure>
+        <h2>Locking down a directory</h2>
         <p>The <code>drafts</code> directory (<code>drwx--x---</code>) let the group execute — meaning enter and access contents — despite policy restricting it to the owner alone. Execute permission on a directory controls entry, so removing it with <code>g-x</code> locked the group out entirely.</p>
         <div class="code"><div class="code-bar"><i></i><i></i><i></i><span>bash</span></div><pre><span class="pr">$</span> chmod g-x drafts
 # drwx--x--- → drwx------</pre></div>
