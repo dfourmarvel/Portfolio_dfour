@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Daniel Dela Dzikunu — CV (Welo Data)</title>
+<style>
+  @page { size: A4; margin: 16mm 15mm; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+    color: #16211c;
+    font-size: 9.6pt;
+    line-height: 1.45;
+  }
+  a { color: inherit; text-decoration: none; }
+
+  header { border-bottom: 2.5px solid #0d9e63; padding-bottom: 9pt; margin-bottom: 11pt; }
+  h1 { font-size: 21pt; font-weight: 800; letter-spacing: -0.02em; }
+  .role { font-size: 11pt; font-weight: 600; color: #0d9e63; margin-top: 1pt; }
+  .subrole { font-size: 9.6pt; color: #4a5a53; margin-top: 1pt; }
+  .contact { margin-top: 5pt; font-size: 8.8pt; color: #4a5a53; }
+  .contact b { color: #16211c; font-weight: 600; }
+  .sep { color: #0d9e63; padding: 0 3pt; }
+
+  h2 {
+    font-size: 9.5pt; letter-spacing: 0.14em; text-transform: uppercase;
+    color: #0d9e63; border-bottom: 1px solid #d5e2db;
+    padding-bottom: 2pt; margin: 11pt 0 6pt;
+  }
+  .entry { margin-bottom: 7pt; }
+  .entry-head { display: flex; justify-content: space-between; align-items: baseline; }
+  .entry-head h3 { font-size: 10.3pt; font-weight: 700; }
+  .entry-head .date { font-size: 8.6pt; color: #4a5a53; white-space: nowrap; padding-left: 8pt; }
+  .entry .sub { font-size: 8.9pt; color: #4a5a53; margin-bottom: 2.5pt; }
+  ul { list-style: none; }
+  li { padding-left: 10pt; position: relative; margin-bottom: 2.5pt; }
+  li::before { content: "▪"; position: absolute; left: 0; color: #0d9e63; font-size: 7.5pt; top: 1.5pt; }
+  li b { font-weight: 650; }
+
+  table.skills { width: 100%; border-collapse: collapse; }
+  table.skills td { vertical-align: top; padding: 1.6pt 0; font-size: 9.2pt; }
+  table.skills td.k {
+    width: 88pt; font-weight: 700; color: #16211c; padding-right: 10pt;
+  }
+
+  .addl { display: flex; gap: 24pt; }
+  .addl > div { flex: 1; }
+  .addl h3 { font-size: 9.3pt; font-weight: 700; margin-bottom: 2pt; }
+  .addl p { font-size: 9pt; color: #2c3a33; }
+
+  .page-break { break-before: page; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Daniel Dela Dzikunu</h1>
+  <p class="role">Medical Student &bull; Web Developer &bull; Aspiring Cybersecurity Analyst</p>
+  <p class="subrole">Twi &bull; English &bull; Fante &bull; Based in Accra, Ghana</p>
+  <p class="contact">
+    <b>danieldeladzikunu@gmail.com</b><span class="sep">&bull;</span>Accra, Ghana<span class="sep">&bull;</span>linkedin.com/in/dfour<span class="sep">&bull;</span>github.com/dfourmarvel<span class="sep">&bull;</span>danieldeladzikunu.vercel.app
+  </p>
+</header>
+
+<h2>Professional Summary</h2>
+<p>
+Detail-oriented medical student and multilingual contributor with native-level Twi fluency, conversational
+Fante, and strong English proficiency. Experienced in transcribing Twi-language content and building
+culturally aware digital educational tools for Ghanaian audiences. Brings a clinical investigative mindset
+to data annotation, prompt evaluation, and quality assurance tasks. Proficient in AI-assisted development
+workflows (agentic AI, Groq API) and comfortable with diverse digital platforms. Combines medical domain
+expertise with hands-on skills in content analysis, log investigation, and cryptographic verification.
+</p>
+
+<h2>Languages</h2>
+<table class="skills">
+  <tr><td class="k">Twi</td><td>Fluent (spoken &amp; listening); Intermediate (reading &amp; writing)</td></tr>
+  <tr><td class="k">English</td><td>Fluent (professional &amp; academic)</td></tr>
+  <tr><td class="k">Fante</td><td>Conversational</td></tr>
+  <tr><td class="k">French</td><td>Intermediate (medical school coursework)</td></tr>
+  <tr><td class="k">Japanese</td><td>Beginner</td></tr>
+</table>
+
+<h2>Education</h2>
+
+<div class="entry">
+  <div class="entry-head"><h3>Entrance University of Health Sciences</h3><span class="date">2026 &ndash; Present</span></div>
+  <p class="sub">Bachelor of Medicine and Surgery (MBChB) | Year 1 | Accra, Ghana</p>
+</div>
+
+<div class="entry">
+  <div class="entry-head"><h3>Google Cybersecurity Certificate</h3><span class="date">2026 &ndash; Present (In Progress)</span></div>
+  <p class="sub">Google / Coursera | 5 of 8 courses completed</p>
+  <ul>
+    <li><b>Labs completed:</b> Network packet analysis (Wireshark, tcpdump), AES-256-CBC decryption (OpenSSL), SQL-based security log auditing with JOIN/filtering, malware static analysis, and threat modeling with MITRE ATT&amp;CK / CVE.</li>
+    <li><b>Core skills developed:</b> Systematic documentation, pattern recognition, data integrity verification, and rigorous attention to detail &mdash; all directly transferable to annotation and quality-evaluation workflows.</li>
+  </ul>
+</div>
+
+<div class="page-break"></div>
+
+<h2>Projects &amp; Experience</h2>
+
+<div class="entry">
+  <div class="entry-head"><h3>BibleTTS Twi Transcript Repair &mdash; Published Dataset</h3><span class="date">2026</span></div>
+  <ul>
+    <li>Using native Twi fluency, caught a data-integrity defect in a published open-source speech dataset: two vowel characters (&#603;/&#596;) had been silently stripped from Asante Twi transcripts across all ~21,600 files, invisible without language-specific review.</li>
+    <li>Rebuilt and published the corrected transcripts as an open dataset on Hugging Face (CC BY-SA 4.0), with original and repaired text side by side for auditability.</li>
+    <li>Reported the defect upstream on the source repository's public issue tracker, resolving a report that had gone unanswered since March 2024.</li>
+  </ul>
+</div>
+
+<div class="entry">
+  <div class="entry-head"><h3>Twi Bible Video Transcription</h3><span class="date">2024 &ndash; Present</span></div>
+  <ul>
+    <li>Built an AI-assisted transcription workflow to process captioned Twi Bible video readings, converting spoken Twi into structured written text with automated orthographic consistency checks and dialectal nuance handling.</li>
+    <li>Reviewed and validated AI-generated transcriptions against source audio to ensure high fidelity, flagging misalignments and refining the pipeline for improved accuracy across Twi-language datasets.</li>
+  </ul>
+</div>
+
+<div class="entry">
+  <div class="entry-head"><h3>Menstrual Health Awareness Game</h3><span class="date">2026</span></div>
+  <ul>
+    <li>Built a culturally sensitive educational game addressing menstrual health stigma in Ghanaian communities, with an interactive question bank requiring precise categorisation of health facts, myths, and culturally contextual scenarios.</li>
+    <li>Aligned content with UN Sustainable Development Goals (SDG 3 &amp; SDG 5), reflecting awareness of global frameworks and local applicability.</li>
+  </ul>
+</div>
+
+<div class="entry">
+  <div class="entry-head"><h3>Bible Quiz Game</h3><span class="date">2026</span></div>
+  <ul>
+    <li>Developed an accessible Bible trivia game with read-aloud support, requiring careful curation of question difficulty tiers and topical categories for cross-literacy-level engagement.</li>
+    <li>Designed static, no-build architecture ensuring instant accessibility across mobile and desktop devices in low-bandwidth environments.</li>
+  </ul>
+</div>
+
+<div class="entry">
+  <div class="entry-head"><h3>Medical Specialty Matching Web Application</h3><span class="date">2026 &ndash; In Progress</span></div>
+  <ul>
+    <li>Architected a full-stack web application incorporating an AI matching layer (Groq API), gaining hands-on experience with LLM prompt design, response evaluation, and iterative refinement.</li>
+    <li>Engineered via agentic AI development workflows &mdash; orchestrating AI coding agents across system architecture, database design, and iterative debugging.</li>
+  </ul>
+</div>
+
+<div class="entry">
+  <div class="entry-head"><h3>Malware Analysis &amp; Incident Triage</h3><span class="date">2026</span></div>
+  <p class="sub">Google Cybersecurity Certificate Labs | Tools: Detect It Easy (DIE), VirusTotal, Wireshark, OpenSSL</p>
+  <ul>
+    <li>Conducted static analysis on flagged binary executables using DIE and VirusTotal to isolate Indicators of Compromise (IoCs) and evaluate multi-engine reputation scan results.</li>
+    <li>Authored a formal incident report documenting triage methodology, static analysis findings, IoC review, and final analyst verdict &mdash; demonstrating structured, detail-oriented documentation.</li>
+  </ul>
+</div>
+
+<h2>Technical Skills</h2>
+<table class="skills">
+  <tr><td class="k">Languages</td><td>Twi, Fante, English, French, Japanese</td></tr>
+  <tr><td class="k">AI &amp; LLM Tools</td><td>Agentic AI workflows, Groq API, LLM prompt iteration, Supabase (PostgreSQL + Auth)</td></tr>
+  <tr><td class="k">Annotation &amp; Analysis</td><td>Data review, SQL querying, log filtering, pattern recognition, quality verification</td></tr>
+  <tr><td class="k">Web Development</td><td>HTML5, CSS3, JavaScript, responsive design</td></tr>
+  <tr><td class="k">Security &amp; Systems</td><td>Linux CLI, Wireshark, tcpdump, hash integrity verification, malware triage, threat modeling</td></tr>
+  <tr><td class="k">Tools</td><td>Git / GitHub, Python, VS Code, Kali Linux, Ubuntu VMs</td></tr>
+</table>
+
+<h2>Additional</h2>
+<div class="addl">
+  <div>
+    <h3>Interests</h3>
+    <p>Medicine and surgery, ethical hacking, CTF competitions, forex and stock trading, Arduino and electronics</p>
+  </div>
+  <div>
+    <h3>Profiles</h3>
+    <p>linkedin.com/in/dfour<br>github.com/dfourmarvel<br>danieldeladzikunu.vercel.app</p>
+  </div>
+</div>
+
+</body>
+</html>
