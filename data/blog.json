@@ -1,0 +1,355 @@
+{
+  "page": {
+    "title": "Blog — Daniel Dela Dzikunu",
+    "description": "Write-ups by Daniel Dela Dzikunu: cybersecurity labs, community health work, and project stories — the permanent home of posts shared on LinkedIn.",
+    "ogTitle": "Blog — Daniel Dela Dzikunu",
+    "ogDescription": "Write-ups by Daniel Dela Dzikunu: cybersecurity labs, community health work, and project stories — the permanent home of posts shared on LinkedIn.",
+    "accent": "green",
+    "heroHtml": "Write-<span class=\"accent\">ups.</span>",
+    "lede": "The permanent home of what I share on LinkedIn — lab write-ups, project stories, and community health work. Each post links back to the original and to the project it's about.",
+    "secLabel": "posts",
+    "secHeading": "Latest first."
+  },
+  "posts": [
+    {
+      "slug": "blood-donation-screening-day",
+      "listTitle": "The queue for finger pricks never got shorter",
+      "date": "Jul 15, 2026",
+      "categoryClass": "cat-med",
+      "category": "community health",
+      "title": "The queue for finger pricks never got shorter",
+      "description": "Running blood type, hepatitis B, blood sugar, malaria, and typhoid tests off a single drop, one person after another, for hours.",
+      "accent": "rose",
+      "meta": [
+        "<span>Jul 15, 2026</span>",
+        "<span class=\"tag-pill\">community health</span>",
+        "<span>from linkedin</span>"
+      ],
+      "body": "        <p>The queue for finger pricks never got shorter. It just changed faces.</p>\n        <p>At today's screening, my station was pricking fingers, running blood type, hepatitis B, blood sugar, malaria, and typhoid tests off a single drop, one person after another, for hours. As soon as one person walked off nursing a cotton ball, the next was already sitting down. There's a particular kind of pressure in doing something precise, sharp, and slightly painful to a stranger, over and over, at a pace that doesn't leave room to think too hard about any single one of them.</p>\n        <p>Some of the people in that queue were children. A few cried before the lancet even touched their skin. I still had to do the same thing to them that I'd just done to the adult before, hold the finger steady, get a clean sample first try, keep moving, because there were still forty more people behind them.</p>\n        <p>What surprised me wasn't the technical part. That stayed easy the whole day, positioning, pressure, angle, done. What took actual effort was doing it well while a child looked at me like I was about to hurt them, and not letting that show up in my hands. Composure under repetition is one thing. Composure while someone is actively upset with you for something you know is necessary is a different skill entirely, and nobody teaches it in a lecture hall.</p>\n        <p>By the time the queue ended, it had stopped feeling remarkable at all. That's probably the most honest thing I can say about it.</p>",
+      "footHtml": "          <a href=\"/blog/\">← all write-ups</a>\n          <a href=\"https://www.linkedin.com/in/dfour/\" target=\"_blank\" rel=\"noreferrer\">originally shared on LinkedIn ↗</a>\n          <a href=\"/medicine/\">the medicine section →</a>"
+    },
+    {
+      "slug": "donating-blood-for-the-first-time",
+      "listTitle": "I spent yesterday telling strangers blood donation was safe",
+      "date": "Jul 15, 2026",
+      "categoryClass": "cat-med",
+      "category": "community health",
+      "title": "I spent yesterday telling strangers blood donation was safe",
+      "description": "Today I found out I hadn't fully convinced myself — sitting down for my own turn, first in the chair.",
+      "accent": "rose",
+      "meta": [
+        "<span>Jul 15, 2026</span>",
+        "<span class=\"tag-pill\">community health</span>",
+        "<span>from linkedin</span>"
+      ],
+      "body": "        <p>I spent yesterday telling strangers blood donation was safe. Today I found out I hadn't fully convinced myself.</p>\n        <p>As part of the team from Entrance University of Health Sciences, we'd spent yesterday reaching out to the communities around us, Spintex, Manet, and the surrounding areas, knocking on doors and stopping people on the street to talk about the Blood Donation and Health Screening Day happening today. A lot of them had the same doubts, that it would leave them weak, that something could go wrong, that it just wasn't worth the risk. I answered every one of those doubts with confidence.</p>\n        <p>Then today, I sat down for my own turn, and I was the first person in the chair. No one ahead of me to watch go through it fine, no reassurance from seeing it work for someone else first, just me and everything I'd told other people the day before.</p>\n        <p>The needle went in. It was quick, and honestly a bit anticlimactic given how much I'd built it up in my head over the last ten minutes. What stuck with me wasn't the process, it was the gap between what I knew and what I felt. I could recite the physiology. I still needed a minute to actually believe it applied to me.</p>\n        <p>By the time it was done, the nervousness felt almost embarrassing in hindsight, given how many people I'd talked into doing the exact same thing the day before. But maybe that's the honest version of the story. Telling someone it's safe is easy. Finding out you believed yourself is a different thing entirely.</p>",
+      "footHtml": "          <a href=\"/blog/\">← all write-ups</a>\n          <a href=\"https://www.linkedin.com/in/dfour/\" target=\"_blank\" rel=\"noreferrer\">originally shared on LinkedIn ↗</a>\n          <a href=\"/medicine/\">the medicine section →</a>"
+    },
+    {
+      "slug": "blood-donation-community-outreach",
+      "listTitle": "Talking to strangers about blood donation",
+      "date": "Jul 14, 2026",
+      "categoryClass": "cat-med",
+      "category": "community health",
+      "title": "Talking to strangers about blood donation",
+      "description": "Going door to door in Spintex and Manet ahead of a Blood Donation and Health Screening Day — as an introvert.",
+      "accent": "rose",
+      "meta": [
+        "<span>Jul 14, 2026</span>",
+        "<span class=\"tag-pill\">community health</span>",
+        "<span>from linkedin</span>"
+      ],
+      "body": "        <p>Today I did something that doesn't come naturally to me. I walked up to strangers, again and again, and started conversations.</p>\n        <p>As part of our SRC celebrations, our team went out into the community to talk about blood donation ahead of tomorrow's Blood Donation and Health Screening Day at Entrance University of Health Sciences, in collaboration with the National Blood Service. Most of the people we met had questions rooted in fear more than fact. Some thought donating blood would make them weak or sick. Others weren't sure it was safe at all. We sat with them, explained the actual process, and watched the hesitation turn into interest.</p>\n        <p>Blood donation was only part of what we were inviting them to. Tomorrow's event also offers free screening for malaria, blood pressure, and blood type, along with free consultations. For a lot of people we spoke to, that alone was worth showing up for, even before they'd fully warmed to the idea of donating.</p>\n        <p>I'm introverted by nature. Approaching people I don't know isn't where I'm comfortable. But something about believing in what I was saying made it easier. I wasn't selling anything. I was just telling people the truth: this is simple, it's safe, and it could catch something that matters before it becomes serious. I'll also be on the team running the screening itself tomorrow, so I get to see it through from the invitation to the checkup.</p>\n        <p>The screening happens tomorrow. If today was any indication, we're going to see people who walked past us skeptical this morning show up ready to give, get checked, or both.</p>",
+      "footHtml": "          <a href=\"/blog/\">← all write-ups</a>\n          <a href=\"https://www.linkedin.com/in/dfour/\" target=\"_blank\" rel=\"noreferrer\">originally shared on LinkedIn ↗</a>\n          <a href=\"/medicine/\">the medicine section →</a>"
+    },
+    {
+      "slug": "fake-gta-6-apk-scam",
+      "listTitle": "36.8 MB: the fake GTA 6 APK people are actually downloading",
+      "date": "Jul 1, 2026",
+      "categoryClass": "cat-cyber",
+      "category": "social engineering",
+      "title": "36.8 MB: the fake GTA 6 APK people are actually downloading",
+      "description": "A convincing fake download page, a suspiciously small APK, and the social engineering that made it work.",
+      "accent": "green",
+      "meta": [
+        "<span>Jul 1, 2026</span>",
+        "<span class=\"tag-pill\">social engineering</span>",
+        "<span>from linkedin</span>"
+      ],
+      "body": "        <p>36.8 MB. That's the size of a GTA 6 APK someone is currently distributing — and people are downloading it.</p>\n        <p>I came across a fake GTA 6 download page this week. Proper logo. Rockstar Games branding. Polished screenshots. A confident blue button. The works. Whoever built this put in effort — which is honestly more than I can say for some legitimate app listings I've seen.</p>\n        <p>The APK is 36.8 megabytes. For context, GTA V — a game from 2013, when 4G was still new — ships at over 80 gigabytes. GTA 6 hasn't even launched on console. The idea that it exists as a mobile APK, fully functional, smaller than most podcast episodes, is the kind of claim that should trigger an immediate double-take in the human brain. It did not trigger that in everyone.</p>\n        <p>That's the actual story. The fake page isn't impressive. What's impressive is that it works. Years of trailers and leaks have turned GTA 6 anticipation into a fully weaponised attack surface. Threat actors didn't need an exploit. They needed a logo, a download button, and a user base too excited to ask questions. The hype did the social engineering. They just showed up with a file.</p>\n        <p>And that file, once installed, has your permissions. Camera. Contacts. SMS. Storage. Congratulations, you now have GTA 6 and a new business partner you did not elect.</p>\n        <p>The gap being exploited here isn't technical. Nobody defeated a firewall to pull this off. The gap is education — specifically, the part where most users don't know that file size is a data point, that APK signatures exist, or that sideloading is a trust decision with real consequences. Until that changes, a convincing logo and a release date will always be enough.</p>",
+      "footHtml": "          <a href=\"/blog/\">← all write-ups</a>\n          <a href=\"https://www.linkedin.com/in/dfour/\" target=\"_blank\" rel=\"noreferrer\">originally shared on LinkedIn ↗</a>\n          <a href=\"/cybersecurity/\">the cybersecurity section →</a>"
+    },
+    {
+      "slug": "usb-drive-hospital-parking-lot",
+      "listTitle": "A USB drive in a hospital parking lot",
+      "date": "Jun 26, 2026",
+      "categoryClass": "cat-cyber",
+      "category": "social engineering",
+      "title": "A USB drive in a hospital parking lot",
+      "description": "Analyzing an abandoned flash drive in an isolated VM — and why 'no malware' didn't mean 'no threat.'",
+      "accent": "green",
+      "meta": [
+        "<span>Jun 26, 2026</span>",
+        "<span class=\"tag-pill\">social engineering</span>",
+        "<span>google cybersecurity certificate lab</span>"
+      ],
+      "body": "        <p>A USB drive in a hospital parking lot. No owner in sight. Just curiosity, and a decision.</p>\n        <p>This week's Google Cybersecurity Certificate lab dropped me into exactly that scenario. I was placed on the security team at a fictional hospital and tasked with analyzing an abandoned flash drive — not by plugging it into a live machine, but by mounting it inside a virtualized, network-isolated environment. That distinction matters more than most people realize.</p>\n        <p>The drive belonged to a hospital HR manager. On it: shift schedules, new hire letters, budget documents, a wedding guest list, and a resume. No malware. But the absence of malicious code didn't make it safe — it made it a different kind of threat. An attacker who found that drive before we did would have had everything needed for highly targeted spear phishing against the employee, his family, and the broader HR department. Knowing an employee's schedule is also a physical security risk — it tells an attacker exactly when someone won't be home.</p>\n        <p>Then there's the other possibility: the drive was never lost. USB drop attacks are a real social engineering tactic where a threat actor deliberately places a malware-loaded device and waits for human curiosity to do the rest. One curious employee, one infected workstation, one backdoor into critical hospital infrastructure.</p>\n        <p>The mitigation framework I proposed combined three layers: EDR/MDM configurations to block unauthorized USB mass storage devices at the endpoint, mandatory security awareness training that reframes \"I'll return it to IT\" as the only acceptable response, and data governance policies backed by DLP systems to prevent sensitive work files from ever living on personal, unencrypted removable media in the first place.</p>\n        <p>The key lesson: curiosity is a feature of good clinicians and a liability in security. In medicine, we're trained to investigate the unexpected. In cybersecurity, the unexpected is often the attack vector.</p>",
+      "footHtml": "          <a href=\"/blog/\">← all write-ups</a>\n          <a href=\"https://www.linkedin.com/in/dfour/\" target=\"_blank\" rel=\"noreferrer\">originally shared on LinkedIn ↗</a>\n          <a href=\"/labs/usb-drop-analysis/\">read the full lab report →</a>"
+    },
+    {
+      "slug": "open-database-vulnerability-assessment",
+      "listTitle": "A database open to the public is an open invitation",
+      "date": "Jun 23, 2026",
+      "categoryClass": "cat-cyber",
+      "category": "vulnerability assessment",
+      "title": "A database open to the public is an open invitation",
+      "description": "A formal NIST SP 800-30 vulnerability assessment of a MySQL database that spent three years exposed.",
+      "accent": "green",
+      "meta": [
+        "<span>Jun 23, 2026</span>",
+        "<span class=\"tag-pill\">vulnerability assessment</span>",
+        "<span>google cybersecurity certificate lab</span>"
+      ],
+      "body": "        <p>A database open to the public for three years is not a misconfiguration. It is an open invitation.</p>\n        <p>This week's lab put me in the role of a cybersecurity analyst for an e-commerce company whose remote MySQL database had been publicly accessible since launch — no access controls, no restrictions, just raw exposure. My task was to conduct a formal vulnerability assessment using NIST SP 800-30 Rev. 1 as the guiding framework and communicate the risk clearly to decision makers.</p>\n        <p>The risk assessment table told the real story. A motivated hacker exfiltrating customer data scored a likelihood of 3 and severity of 3 — a maximum risk score of 9. An internal employee maliciously or accidentally altering critical records scored a 3. Even a competitor conducting passive reconnaissance on an unprotected server scored a 2. Three completely different threat actors, three completely different motivations, all enabled by the same single failure: public exposure.</p>\n        <p>What made this exercise valuable was being forced to think beyond the technical fix. Yes, the database needs to be pulled off the public internet immediately. But remediation is layered — firewall rules, the AAA framework, MFA for remote employees, and the principle of least privilege to contain the internal threat surface. Defense-in-depth is not a buzzword. It is the only realistic response to a threat landscape that attacks from every direction simultaneously.</p>\n        <p>The lesson I took from this: in medicine, a patient's vitals might look stable right up until they aren't. An unmonitored, publicly exposed database is the same kind of silent deterioration — the damage compounds quietly until it cannot be reversed.</p>",
+      "footHtml": "          <a href=\"/blog/\">← all write-ups</a>\n          <a href=\"https://www.linkedin.com/in/dfour/\" target=\"_blank\" rel=\"noreferrer\">originally shared on LinkedIn ↗</a>\n          <a href=\"/labs/vulnerability-assessment/\">read the full lab report →</a>"
+    },
+    {
+      "slug": "gta-v-false-positive-investigation",
+      "listTitle": "From “Game Over” to cyber detective: why I ignored my antivirus (for science)",
+      "date": "Jun 20, 2026",
+      "categoryClass": "cat-cyber",
+      "category": "malware analysis",
+      "title": "From “Game Over” to cyber detective: why I ignored my antivirus (for science)",
+      "description": "A Severe trojan alert on a game file — VirusTotal sandboxing and static PE analysis to reach a verdict.",
+      "accent": "green",
+      "meta": [
+        "<span>Jun 20, 2026</span>",
+        "<span class=\"tag-pill\">malware analysis</span>",
+        "<span>google cybersecurity certificate lab</span>"
+      ],
+      "body": "        <p>From \"Game Over\" to Cyber Detective: Why I Ignored My Antivirus (For Science)</p>\n        <p>Yesterday, GTA V refused to launch. The culprit was a Windows Defender alert — Severe, Trojan: Win32/KepavII!rfn — targeting a file called RUNE64.dll, a core component of the game's crack infrastructure. Quarantine failed. The game was dead. My immediate instinct as a gamer was exactly what you'd expect: whitelist the folder, override the antivirus, move on. It worked. But later, the part of my brain still working through Cybersecurity training refused to let it go. I had just manually overridden a Severe trojan warning on a file I knew nothing about. So I went back and treated it as a forensic case.</p>\n        <p>Step one was submitting the file's SHA-256 hash to VirusTotal for behavioral sandbox analysis across three environments — CAPE, Zenbox, and C2AE. Zero dropped files, zero persistence modifications, zero unauthorized network connections. Every DNS resolution traced back to verified Microsoft CDN infrastructure. Real trojans leave tracks. Secondary payloads, Run key registrations, C2 beacons. This file left none. What it did leave was a set of DLL filenames like library.dll and readme.dll that looked suspicious until I cross-referenced them with the sandbox's shell commands. Those were not runtime dependencies. They were artifacts of the sandbox brute-forcing the DLL's 483 export ordinals, re-executing the binary under renamed copies to trigger any latent behavior. The sandbox manufactured the noise it was trying to measure.</p>\n        <p>Step two was static PE analysis in Detect It Easy. Two findings explained everything. First: VMProtect 1.70 at maximum protection. The release group virtualized the native x64 assembly into proprietary bytecode so when Defender's scan engine hits it, it cannot read it, and defaults to classifying the binary as a trojan. Second: custom PE sections named .rune and .rune2, compressed and structurally misaligned with standard MSVC output. That section collision is the exact trigger behind the Packunwan designation. The binary was not hiding malicious intent. It was hiding its DRM-bypass logic from its original adversary — the game developer — and inadvertently tripping every automated alarm designed for a completely different threat model.</p>\n        <p>Final verdict: confirmed false positive. The obfuscation is real, the structural anomalies are real, and the antivirus detections were technically correct responses to genuinely unusual binary characteristics. They were just wrong about what those characteristics meant.</p>\n        <p>This conclusion is based on behavioural telemetry and static analysis — not full dynamic instrumentation or code review under a debugger. A more thorough pass might surface something I missed. If you have worked with VMProtect-packed binaries professionally or seen this specific hash before, I would genuinely value your read on this.</p>",
+      "footHtml": "          <a href=\"/blog/\">← all write-ups</a>\n          <a href=\"https://www.linkedin.com/in/dfour/\" target=\"_blank\" rel=\"noreferrer\">originally shared on LinkedIn ↗</a>\n          <a href=\"/labs/malware-analysis-pua-dll/\">read the full lab report →</a>"
+    },
+    {
+      "slug": "payroll-incident-investigation",
+      "listTitle": "The payroll transfer nobody sent",
+      "date": "Jun 16, 2026",
+      "categoryClass": "cat-cyber",
+      "category": "access control",
+      "title": "The payroll transfer nobody sent",
+      "description": "Tracing a fraudulent transaction to a contractor whose account outlived his contract by four years.",
+      "accent": "green",
+      "meta": [
+        "<span>Jun 16, 2026</span>",
+        "<span class=\"tag-pill\">access control</span>",
+        "<span>google cybersecurity certificate lab</span>"
+      ],
+      "body": "        <p>A payroll transfer went to an unknown bank account. The finance manager didn't make a mistake. So who did?</p>\n        <p>That was the scenario in my latest Google Cybersecurity Certificate lab — a Payroll Incident Investigation that placed me as the first cybersecurity hire at a growing business. My job: trace the transaction, identify the threat actor, and close the gaps that made it all possible.</p>\n        <p>The investigation began with an event log. A payroll event was recorded on October 3, 2023, at 8:29:57 AM from IP address 152.207.255.255, under the account Legal\\Administrator, on a machine flagged as Up2-NoGud. One cross-reference against the employee directory and the source came into focus — Robert Taylor Jr., a legal contractor whose end date was December 27, 2019. His IP matched the log exactly. A man whose contract had expired nearly four years prior had just initiated a fraudulent payroll transfer, because nobody had ever deactivated his account.</p>\n        <p>But the ghost account was only half the story. Pulling up the employee directory revealed something more systemic: every single person in the organization — full-time staff, part-time workers, seasonal employees, and external contractors alike — carried Admin authorization. A graphic designer. A seasonal sales associate. A manufacturer with no end date on file. All holding the same access level as the owner. The business hadn't just failed to offboard one contractor; it had built an environment where a breach from any direction was almost inevitable.</p>\n        <p>The takeaway is that access control is not a technical setting you configure once — it's an organizational discipline you enforce continuously. The Principle of Least Privilege and Role-Based Access Control exist precisely to prevent a single expired account from becoming an open door to financial systems. Pair those frameworks with strict offboarding protocols and MFA enforced enterprise-wide, and this incident never reaches the bank statement.</p>\n        <p>In medicine, every person who touches a patient's record must have a documented, role-specific reason for that access. When that discipline breaks down, people get harmed. Cybersecurity is no different — the only thing that changes is what ends up at risk.</p>",
+      "footHtml": "          <a href=\"/blog/\">← all write-ups</a>\n          <a href=\"https://www.linkedin.com/in/dfour/\" target=\"_blank\" rel=\"noreferrer\">originally shared on LinkedIn ↗</a>\n          <a href=\"/labs/payroll-access-controls/\">read the full lab report →</a>"
+    },
+    {
+      "slug": "isc2-candidate-milestone",
+      "listTitle": "Officially an ISC² Candidate",
+      "date": "Jun 2026",
+      "categoryClass": "cat-cyber",
+      "category": "credential",
+      "title": "Officially an ISC² Candidate",
+      "description": "Formally joining the ISC² global community of cybersecurity professionals — access, resources, and a next step toward certification.",
+      "accent": "green",
+      "meta": [
+        "<span>Jun 2026</span>",
+        "<span class=\"tag-pill\">credential</span>",
+        "<span>from linkedin</span>"
+      ],
+      "body": "        <p>Proud to share that I am officially an ISC² Candidate!</p>\n        <p>I have formally joined the ISC² global community of cybersecurity professionals. Gaining access to this network, along with their professional development resources and continuing education, marks a significant step forward as I build my technical expertise and prepare for upcoming certifications.</p>\n        <p>Securing this badge reinforces my commitment to staying at the forefront of information security, implementing industry best practices, and contributing to a safer digital ecosystem.</p>\n        <p>Thank you to the ISC² community for the warm welcome! I look forward to connecting with fellow professionals, mentors, and peers in the field.</p>",
+      "footHtml": "          <a href=\"/blog/\">← all write-ups</a>\n          <a href=\"https://www.linkedin.com/in/dfour/\" target=\"_blank\" rel=\"noreferrer\">originally shared on LinkedIn ↗</a>\n          <a href=\"/cybersecurity/\">the cybersecurity section →</a>"
+    },
+    {
+      "slug": "building-a-tribute-site-for-my-mom",
+      "listTitle": "Building a digital tribute for my mom",
+      "date": "Jun 2026",
+      "categoryClass": "cat-web",
+      "category": "web project",
+      "title": "Building a digital tribute for my mom",
+      "description": "How AI-assisted development let me build something I couldn't have coded from scratch — for the person it mattered most to.",
+      "accent": "cyan",
+      "meta": [
+        "<span>Jun 2026</span>",
+        "<span class=\"tag-pill\">web project</span>",
+        "<span>from linkedin</span>"
+      ],
+      "body": "        <p>For a long time, I had a vision of building something truly special for my mom, Josephine Yaba Dzikunu. I wanted to create a digital tribute that went beyond a standard webpage — something immersive, elegant, and deeply personal. However, doing it justice using purely traditional development methods felt out of reach for my current frontend skillset.</p>\n        <p>That changed when I embraced \"Vibe Coding.\" Using VS Code paired with GitHub Copilot and Codex, I shifted my role from writing every line of syntax manually to acting as a system architect and creative director. By prompting AI agents, managing the logic, and focusing on the user experience, I was able to rapidly build and deploy a polished, production-ready site that I could not have coded from scratch before.</p>\n        <p>The result is josephineyabat.vercel.app, an interactive, mobile-first single-page experience designed to celebrate my mom through emotional storytelling and cinematic design.</p>\n        <p>What the AI workflow helped me build:</p>\n        <ul><li>Immersive UI/UX: a warm gold-and-orange aesthetic featuring an animated welcome reveal, smooth scroll-triggered animations, and dynamic typing effects.</li><li>Deep personalization: a heartfelt digital family letter, a curated memories timeline, background music controls, and an interactive photo gallery with full lightbox support.</li><li>Production-grade engineering: beyond the visuals, I guided the AI to optimize for performance — implementing lazy-loaded images, smooth transitions, and solid accessibility foundations like keyboard navigation and ARIA support.</li></ul>\n        <p>Building this project taught me that the barrier to entry for software creation has completely shifted. You do not need to be a veteran frontend engineer to bring complex, beautiful ideas to life anymore; you just need a clear vision, strong logical direction, and the ability to effectively collaborate with AI.</p>\n        <p>Seeing my mom's reaction to a custom digital experience built just for her was the best deployment feeling yet.</p>",
+      "footHtml": "          <a href=\"/blog/\">← all write-ups</a>\n          <a href=\"https://www.linkedin.com/in/dfour/\" target=\"_blank\" rel=\"noreferrer\">originally shared on LinkedIn ↗</a>\n          <a href=\"/web-development/\">the web development section →</a>"
+    },
+    {
+      "slug": "file-integrity-sha256",
+      "listTitle": "Two files. Same content. Different hashes.",
+      "date": "Jun 11, 2026",
+      "categoryClass": "cat-cyber",
+      "category": "file integrity",
+      "title": "Two files. Same content. Different hashes.",
+      "description": "Why visual inspection is not integrity verification — sha256sum and cmp expose the difference.",
+      "accent": "green",
+      "meta": [
+        "<span>Jun 11, 2026</span>",
+        "<span class=\"tag-pill\">file integrity</span>",
+        "<span>google cybersecurity certificate lab</span>"
+      ],
+      "body": "        <p>Two files. Same content on screen. Completely different hash values.</p>\n        <p>That's the scenario I worked through in this lab — and it's exactly the kind of deception a malicious program uses to hide in plain sight.</p>\n        <p>Here's what I did to expose the difference:</p>\n        <p>Used cat to display both files — they printed the exact same EICAR antivirus test string, indistinguishable to the naked eye</p>\n        <p>Ran sha256sum on each file — the digests were entirely different: 131f95c5... vs 2558ba9a...</p>\n        <p>Redirected both hash values into separate files using the &gt;&gt; operator</p>\n        <p>Used cmp for a byte-level comparison, which confirmed the mismatch at character 1, line 1</p>\n        <p>Key takeaway: visual inspection of file contents is not integrity verification. A threat actor can swap out a legitimate binary, preserve its readable output, and leave no obvious trace — unless you're hashing.</p>\n        <p>sha256sum doesn't care what the file looks like. It cares what the file is.</p>",
+      "footHtml": "          <a href=\"/blog/\">← all write-ups</a>\n          <a href=\"https://www.linkedin.com/in/dfour/\" target=\"_blank\" rel=\"noreferrer\">originally shared on LinkedIn ↗</a>\n          <a href=\"/labs/hash-verification/\">read the full lab report →</a>"
+    },
+    {
+      "slug": "caesar-aes-decryption-lab",
+      "listTitle": "The key is hidden inside a cipher",
+      "date": "Jun 8, 2026",
+      "categoryClass": "cat-cyber",
+      "category": "cryptography",
+      "title": "The key is hidden inside a cipher",
+      "description": "Recovering encrypted files through two layers of cryptography: a Caesar cipher and AES-256-CBC.",
+      "accent": "green",
+      "meta": [
+        "<span>Jun 8, 2026</span>",
+        "<span class=\"tag-pill\">cryptography</span>",
+        "<span>google cybersecurity certificate lab</span>"
+      ],
+      "body": "        <p>Your data is encrypted. The key is hidden inside a cipher. The cipher is hidden inside a hidden file. Go.</p>\n        <p>That was the setup for this lab — a simulated scenario where every file in the home directory had been locked, and the only way out was through two layers of cryptography: a classical Caesar cipher and a modern AES-256-CBC encrypted file.</p>\n        <p>Here is what I worked through:</p>\n        <ul><li>Used ls and cat to explore the home directory and read the README instructions pointing toward a hidden file</li><li>Navigated into the caesar subdirectory and ran ls -a to surface the hidden dotfile .leftShift3</li><li>Read the scrambled ciphertext and applied a tr command to reverse the three-position left shift, recovering the plaintext OpenSSL command</li><li>Executed openssl aes-256-cbc with PBKDF2 key derivation to decrypt Q1.encrypted into Q1.recovered using the key ettubrute</li><li>Confirmed full decryption by reading the recovered file's hidden message</li></ul>\n        <p>Key takeaway: encryption is only as strong as the key management around it. The Caesar cipher fell the moment the shift value was known. AES-256 held — but the password was sitting in a file one directory away. The algorithm is rarely the weakest link.</p>\n        <p>In medicine, patient data is protected by the same AES-256 standard that secured this lab file. Understanding how that cipher works — and how its keys can be exposed — is exactly the knowledge gap between a clinician who trusts encryption and one who can actually evaluate it.</p>",
+      "footHtml": "          <a href=\"/blog/\">← all write-ups</a>\n          <a href=\"https://www.linkedin.com/in/dfour/\" target=\"_blank\" rel=\"noreferrer\">originally shared on LinkedIn ↗</a>\n          <a href=\"/labs/cryptography-decryption/\">read the full lab report →</a>"
+    },
+    {
+      "slug": "sql-filtering-investigation",
+      "listTitle": "Investigating a breach with raw SQL",
+      "date": "Jun 1, 2026",
+      "categoryClass": "cat-cyber",
+      "category": "sql",
+      "title": "Investigating a breach with raw SQL",
+      "description": "After-hours logins, geofenced traffic, and targeted patching — a breach investigation in pure queries.",
+      "accent": "green",
+      "meta": [
+        "<span>Jun 1, 2026</span>",
+        "<span class=\"tag-pill\">sql</span>",
+        "<span>google cybersecurity certificate lab</span>"
+      ],
+      "body": "        <p>Completed a SQL filtering lab as part of my Google Cybersecurity Certificate — and it's one of the more practical exercises I've done so far.</p>\n        <p>The scenario: a potential breach at a fictional organization. My job? Investigate it using only raw SQL queries—no dashboards, no shortcuts.</p>\n        <p>Here's the breakdown of the investigation:</p>\n        <p>Isolating Threat Windows: Filtered the log_in_attempts table to catch after-hours failed login attempts after 18:00, extracting 19 critical rows.</p>\n        <p>Timeline Mapping: Pulled all login records spanning two specific suspicious dates using OR logic.</p>\n        <p>Geofencing Traffic: Excluded logins originating from Mexico using NOT + LIKE to account for real-world data inconsistency where the country was recorded as both 'MEX' and 'MEXICO'.</p>\n        <p>Targeted Patching: Pivoted to the employees table to identify 7 specific Marketing machines located in the East building using wildcards ('East%').</p>\n        <p>Access Segregation: Isolated Finance and Sales staff for critical system updates, and excluded IT personnel who had already been patched using the NOT operator.</p>\n        <p>The biggest takeaway? Clean queries save investigations. Knowing exactly how to handle conditional operators and wildcards is the difference between finding an active threat and getting lost in the noise.</p>\n        <p>Steadily bridging my medical background with a growing cybersecurity skillset.</p>\n        <p>More labs incoming.</p>",
+      "footHtml": "          <a href=\"/blog/\">← all write-ups</a>\n          <a href=\"https://www.linkedin.com/in/dfour/\" target=\"_blank\" rel=\"noreferrer\">originally shared on LinkedIn ↗</a>\n          <a href=\"/labs/sql-filters/\">read the full lab report →</a>"
+    },
+    {
+      "slug": "sql-queries-operational-security",
+      "listTitle": "Querying like a security analyst",
+      "date": "May 29, 2026",
+      "categoryClass": "cat-cyber",
+      "category": "sql",
+      "title": "Querying like a security analyst",
+      "description": "200 machines, 80 overdue updates, one faulty endpoint — operational decisions driven by MariaDB queries.",
+      "accent": "green",
+      "meta": [
+        "<span>May 29, 2026</span>",
+        "<span class=\"tag-pill\">sql</span>",
+        "<span>google cybersecurity certificate lab</span>"
+      ],
+      "body": "        <p>The scenario: act as a security analyst tasked with querying an organisation's database to support real operational decisions — identifying machines due for OS updates, locating employees in specific departments, and tracing a machine fault to its owner.</p>\n        <p>Tools used: MariaDB | Techniques: WHERE, LIKE, % wildcard</p>\n        <p>Some of the tasks I worked through:</p>\n        <ul><li>Retrieved a full inventory of 200 organisation machines</li><li>Isolated 80 devices running OS 2 — flagged for urgent updates</li><li>Pulled employee lists for Finance and Sales departments to support a policy rollout</li><li>Identified the exact employee behind a faulty machine in South-109 using a targeted query, then expanded the search to the entire South building using LIKE with wildcards</li></ul>\n        <p>What stood out to me most was how much precision matters. A poorly written query in a real SOC environment could mean missing a compromised endpoint entirely.</p>\n        <p>If you are also on a cybersecurity learning path, feel free to connect — always open to exchanging notes.</p>",
+      "footHtml": "          <a href=\"/blog/\">← all write-ups</a>\n          <a href=\"https://www.linkedin.com/in/dfour/\" target=\"_blank\" rel=\"noreferrer\">originally shared on LinkedIn ↗</a>\n          <a href=\"/labs/sql-numeric-date-filters/\">read the full lab report →</a>"
+    },
+    {
+      "slug": "first-sql-lab",
+      "listTitle": "My first SQL lab",
+      "date": "May 28, 2026",
+      "categoryClass": "cat-cyber",
+      "category": "sql",
+      "title": "My first SQL lab",
+      "description": "Device audits and login-attempt timelines — basic SELECT and ORDER BY with real security implications.",
+      "accent": "green",
+      "meta": [
+        "<span>May 28, 2026</span>",
+        "<span class=\"tag-pill\">sql</span>",
+        "<span>google cybersecurity certificate lab</span>"
+      ],
+      "body": "        <p>Just completed my first SQL lab and honestly? It hits different when the queries actually work.</p>\n        <p>The lab simulated a real security analyst workflow — I was given access to an organization's database and tasked with two things:</p>\n        <ul><li>Identify employee devices due for security updates</li><li>Investigate login attempts for suspicious activity</li></ul>\n        <p>Here's what I actually did:</p>\n        <p>Used SELECT with specific columns (device_id, email_client, OS_patch_date) to filter only the data relevant to the update audit — no noise, just signal.</p>\n        <p>Queried the log_in_attempts table to check login locations, timestamps, and usernames. Spotted several after-hours logins (e.g. 03:05 AM, 01:30 AM) that would warrant deeper investigation in a real environment.</p>\n        <p>Applied ORDER BY on login_date and login_time together to reconstruct a chronological timeline of access events — a core technique in incident response.</p>\n        <p>The biggest takeaway? Even the most basic SQL commands have serious security implications. Knowing which columns to pull, and in what order to view them, can be the difference between catching a threat early and missing it entirely.</p>\n        <p>Filters, WHERE clauses, and JOIN queries are next — and I'm excited to keep going.</p>",
+      "footHtml": "          <a href=\"/blog/\">← all write-ups</a>\n          <a href=\"https://www.linkedin.com/in/dfour/\" target=\"_blank\" rel=\"noreferrer\">originally shared on LinkedIn ↗</a>\n          <a href=\"/labs/sql-foundations/\">read the full lab report →</a>"
+    },
+    {
+      "slug": "linux-user-management",
+      "listTitle": "Linux user management as a security discipline",
+      "date": "May 25, 2026",
+      "categoryClass": "cat-cyber",
+      "category": "linux",
+      "title": "Linux user management as a security discipline",
+      "description": "Onboarding, role changes, and offboarding with useradd, usermod, chown — least privilege in practice.",
+      "accent": "green",
+      "meta": [
+        "<span>May 25, 2026</span>",
+        "<span class=\"tag-pill\">linux</span>",
+        "<span>google cybersecurity certificate lab</span>"
+      ],
+      "body": "        <p>Just completed a hands-on Linux user management lab as part of the Google Cybersecurity Certificate — and it reinforced something fundamental: access control isn't just a technical task, it's a security discipline.</p>\n        <p>The lab simulated a real-world scenario — onboarding a new employee, adjusting their access as their role evolved, and offboarding them when they left. Here's what I worked through:</p>\n        <p>Authentication vs. Authorization</p>\n        <p>Before touching a single command, the lab grounded me in the distinction between the two. Authentication confirms identity. Authorization defines what that identity can do. Managing users sits right at that intersection.</p>\n        <p>Commands used:</p>\n        <ul><li>useradd — provisioned a new user account on the system</li><li>usermod -g — assigned a primary group (research_team)</li><li>chown — transferred file ownership to reflect new responsibilities</li><li>usermod -aG — appended a secondary group (sales_team) without overwriting existing group membership</li><li>userdel + groupdel — cleanly removed the user and the orphaned personal group left behind</li></ul>\n        <p>Principle of Least Privilege in practice</p>\n        <p>Every step was a deliberate access decision — not just \"add the user\" but \"what should this user be able to access, and only that.\" When the role changed, the permissions changed. When they left, access was fully revoked.</p>\n        <p>This is one lab in a longer journey, but each one is building the foundation I need to work in defensive security.</p>",
+      "footHtml": "          <a href=\"/blog/\">← all write-ups</a>\n          <a href=\"https://www.linkedin.com/in/dfour/\" target=\"_blank\" rel=\"noreferrer\">originally shared on LinkedIn ↗</a>\n          <a href=\"/labs/linux-user-management/\">read the full lab report →</a>"
+    },
+    {
+      "slug": "linux-file-permissions-audit",
+      "listTitle": "Where it started: auditing Linux file permissions",
+      "date": "May 22, 2026",
+      "categoryClass": "cat-cyber",
+      "category": "linux",
+      "title": "Where it started: auditing Linux file permissions",
+      "description": "My first formally documented lab — finding over-permissive files and locking them down with chmod.",
+      "accent": "green",
+      "meta": [
+        "<span>May 22, 2026</span>",
+        "<span class=\"tag-pill\">linux</span>",
+        "<span>google cybersecurity certificate lab</span>"
+      ],
+      "body": "        <p>I am excited to share a milestone in my cybersecurity journey! While this isn't my first hands-on lab, it is the very first one I have formally documented as part of my progress toward the Google Cybersecurity Professional Certificate.</p>\n        <p>In this lab, I stepped into the role of a security analyst tasked with auditing and securing a research team's Linux development environment to align it with strict organizational data protection policies.</p>\n        <p>The Mission: Eliminating Authorization Vulnerabilities</p>\n        <p>Operating within a Bash terminal, I used commands like ls -al to uncover hidden files and analyze the 10-character permission strings of the environment's directories and assets. I quickly identified several over-permissive write access issues and hidden file exposures that violated our compliance standards.</p>\n        <p>The Fix: Applying Least Privilege</p>\n        <p>To bring the environment to a secure state, I systematically modified file modes using the chmod command to enforce the Principle of Least Privilege:</p>\n        <p>Public Write Access Revoked: Discovered that project_k.txt allowed write permissions for anyone (-rw-rw-rw-). I executed chmod o-w project_k.txt to strip public write authorization.</p>\n        <p>Securing Hidden Assets: Located a hidden file, .project_x.txt, with improper permissions. Through targeted commands like chmod g+r,g-w, I transitioned it to a secure, read-only state for both the user and the group (-r--r-----).</p>\n        <p>Directory Isolation: Inspected the drafts directory, which initially allowed execute-only access to the group (drwx--x---). By running chmod g-x drafts, I completely restricted entry to the owner alone (drwx------).</p>\n        <p>The Takeaway</p>\n        <p>Linux file permissions are a fundamental pillar of access control. Successfully auditing these permissions and resolving vulnerabilities silently and effectively via the CLI was an incredibly rewarding experience. Documenting this process has reinforced how critical the principle of least privilege is to keeping organizational data safe.</p>",
+      "footHtml": "          <a href=\"/blog/\">← all write-ups</a>\n          <a href=\"https://www.linkedin.com/in/dfour/\" target=\"_blank\" rel=\"noreferrer\">originally shared on LinkedIn ↗</a>\n          <a href=\"/labs/linux-file-permissions-audit/\">read the full lab report →</a>"
+    },
+    {
+      "slug": "world-tuberculosis-day-awareness",
+      "listTitle": "TB is preventable. TB is curable. But only if it's taken seriously.",
+      "date": "Mar 24, 2026",
+      "categoryClass": "cat-med",
+      "category": "health awareness",
+      "title": "TB is preventable. TB is curable. But only if it's taken seriously.",
+      "description": "On World Tuberculosis Day: a disease many assume is under control, and still isn't, in Ghana.",
+      "accent": "rose",
+      "meta": [
+        "<span>Mar 24, 2026</span>",
+        "<span class=\"tag-pill\">health awareness</span>",
+        "<span>from linkedin</span>"
+      ],
+      "body": "        <p>On World Tuberculosis Day, it's worth revisiting a disease many assume is \"under control\" — but isn't.</p>\n        <p>Tuberculosis (TB) remains one of the world's deadliest infectious diseases, and its impact is still very real in Ghana.</p>\n        <p>Recent data shows:</p>\n        <ul><li>Ghana records ~20,000+ TB cases annually, yet thousands more go undiagnosed</li><li>Treatment success rates are high (over 90%), proving TB is curable when detected early</li><li>A significant number of cases — especially in children — are still missed each year</li></ul>\n        <p>TB spreads through the air when an infected person coughs, sneezes, or even talks. The early signs are often ignored:</p>\n        <ul><li>Persistent cough</li><li>Weight loss</li><li>Chest pain</li><li>Fatigue</li></ul>\n        <p>The key issue isn't just treatment — it's late detection and low awareness.</p>\n        <p>What can be done:</p>\n        <ul><li>Seek medical attention for any cough lasting more than 2 weeks</li><li>Take advantage of free TB testing available in Ghana</li><li>Complete the full course of treatment if diagnosed</li><li>Reduce stigma — it delays people from seeking care</li></ul>\n        <p>TB is preventable. TB is curable. But only if it's taken seriously.</p>\n        <p>How many people around us might be ignoring the early signs?</p>",
+      "footHtml": "          <a href=\"/blog/\">← all write-ups</a>\n          <a href=\"https://www.linkedin.com/in/dfour/\" target=\"_blank\" rel=\"noreferrer\">originally shared on LinkedIn ↗</a>\n          <a href=\"/medicine/\">the medicine section →</a>"
+    },
+    {
+      "slug": "how-i-got-into-cybersecurity",
+      "listTitle": "How curiosity about Wi-Fi security became a path",
+      "date": "Mar 2026",
+      "categoryClass": "cat-cyber",
+      "category": "origin story",
+      "title": "How curiosity about Wi-Fi security became a path",
+      "description": "A cybersecurity scholarship, starting the Google Cybersecurity Professional Certificate, and where the interest actually started.",
+      "accent": "green",
+      "meta": [
+        "<span>Mar 2026</span>",
+        "<span class=\"tag-pill\">origin story</span>",
+        "<span>from linkedin</span>"
+      ],
+      "body": "        <p>Grateful to have received a cybersecurity scholarship through ITExperience and Google Career Certificates, and to be starting the Google Cybersecurity Professional Certificate on Coursera.</p>\n        <p>What started as simple curiosity — trying to understand how Wi-Fi security works — quickly turned into something much deeper. At one point, I just wanted to see if I could \"hack\" a network. That curiosity led me to explore tools like Kali Linux, and from there, cybersecurity became more than just interest — it became a path.</p>\n        <p>Interestingly, I'm currently a medical student, but I've always been drawn to problem-solving beyond a single field. Completing the Cisco Networking Academy Introduction to Cybersecurity course gave me a solid foundation and pushed me to take this further.</p>\n        <p>Right now, my focus is on:</p>\n        <ul><li>Building a strong foundation in networking</li><li>Understanding core security concepts</li><li>Getting hands-on with cybersecurity tools</li><li>Exploring ethical hacking</li></ul>\n        <p>Short term: complete the certificate and apply what I learn through practical work.</p>\n        <p>Long term: move into penetration testing / red teaming.</p>\n        <p>Cybersecurity sits at the intersection of technology, psychology, and strategy — and that's what makes it so compelling.</p>",
+      "footHtml": "          <a href=\"/blog/\">← all write-ups</a>\n          <a href=\"https://www.linkedin.com/in/dfour/\" target=\"_blank\" rel=\"noreferrer\">originally shared on LinkedIn ↗</a>\n          <a href=\"/cybersecurity/\">the cybersecurity section →</a>"
+    },
+    {
+      "slug": "cisco-cybersecurity-course-reflection",
+      "listTitle": "What the Cisco Introduction to Cybersecurity course taught me",
+      "date": "Mar 2026",
+      "categoryClass": "cat-cyber",
+      "category": "coursework",
+      "title": "What the Cisco Introduction to Cybersecurity course taught me",
+      "description": "Attack methods, human error, and why cybersecurity starts with networking fundamentals.",
+      "accent": "green",
+      "meta": [
+        "<span>Mar 2026</span>",
+        "<span class=\"tag-pill\">coursework</span>",
+        "<span>from linkedin</span>"
+      ],
+      "body": "        <p>I recently completed the Cisco Introduction to Cybersecurity course through Cisco Networking Academy, and it gave me a deeper appreciation for how complex — and human — cybersecurity really is.</p>\n        <p>A few things stood out to me:</p>\n        <p>Attack methods are more diverse than I expected. Learning about threats like Remote Access Trojans (RATs), phishing, and other forms of social engineering showed how attackers often gain control not through sophisticated code alone, but by exploiting trust and human behavior.</p>\n        <p>Human error plays a massive role in security breaches. One of the most surprising insights was how many cyber incidents start with something simple: clicking a malicious link, reusing passwords, or falling for a well-crafted phishing message.</p>\n        <p>Cybersecurity starts with strong fundamentals. I'm beginning to appreciate how important networking knowledge is in security. My next step is diving deeper into networking fundamentals and practicing with Cisco Packet Tracer to better understand how networks operate and how they can be protected.</p>\n        <p>This course reinforced something important for me: cybersecurity isn't just about \"hacking.\" It's about understanding systems, anticipating threats, and protecting people and organizations in an increasingly digital world.</p>",
+      "footHtml": "          <a href=\"/blog/\">← all write-ups</a>\n          <a href=\"https://www.linkedin.com/in/dfour/\" target=\"_blank\" rel=\"noreferrer\">originally shared on LinkedIn ↗</a>\n          <a href=\"/cybersecurity/\">the cybersecurity section →</a>"
+    }
+  ]
+}

@@ -1,0 +1,171 @@
+{
+  "page": {
+    "title": "Web Development — Daniel Dela Dzikunu",
+    "description": "Daniel Dela Dzikunu's web projects: apps and games built with vanilla JavaScript and Next.js/TypeScript — live demos and open source.",
+    "ogTitle": "Web Development — Daniel Dela Dzikunu",
+    "ogDescription": "Daniel Dela Dzikunu's web projects: apps and games built with vanilla JavaScript and Next.js/TypeScript — live demos and open source.",
+    "accent": "cyan",
+    "heroHtml": "Web <span class=\"accent\">Development</span>",
+    "lede": "Websites, apps, and games — vanilla HTML/CSS/JS where it's enough, Next.js/TypeScript where it isn't. Every project runs live: click in and use it.",
+    "secLabel": "projects",
+    "secHeading": "Built and shipped."
+  },
+  "projects": [
+    {
+      "slug": "med-match",
+      "tag": "NEXT.JS · TYPESCRIPT · SUPABASE",
+      "name": "med-match",
+      "blurb": "App that helps aspiring physicians find their specialty — my biggest build so far.",
+      "linksHtml": "              <a href=\"/web-development/med-match/\">the write-up →</a>\n              <a href=\"https://medmatchgh.vercel.app\" target=\"_blank\" rel=\"noreferrer\">live demo →</a>\n              <a href=\"https://github.com/dfourmarvel/med-match-gh\" target=\"_blank\" rel=\"noreferrer\">github →</a>",
+      "detail": {
+        "title": "MedMatch Ghana",
+        "crumb": "web-development / projects",
+        "description": "A specialty-fit assessment for Ghana's future clinicians: 25 questions, a 15-dimension trait engine, and Ghana-aware specialty pathways. Next.js, TypeScript, Supabase.",
+        "accent": "cyan",
+        "lede": "A specialty-fit assessment for Ghana's future clinicians — 25 questions, a 15-dimension trait engine, and specialty pathways written for training here, not somewhere else.",
+        "tools": [
+          "Next.js 15",
+          "React 19",
+          "TypeScript",
+          "Tailwind",
+          "Supabase",
+          "Groq",
+          "Upstash Redis",
+          "Recharts",
+          "Jest"
+        ],
+        "heroLinksHtml": "        <a href=\"https://medmatchgh.vercel.app\" target=\"_blank\" rel=\"noopener\">live demo ↗</a>\n        <a href=\"https://github.com/dfourmarvel/med-match-gh\" target=\"_blank\" rel=\"noopener\">github ↗</a>",
+        "body": "\n        <h3>Overview</h3>\n        <p>MedMatch Ghana asks 25 questions about how you think, how you work with patients, how you handle pressure, and how you want to live — then maps the answers onto a clinical trait profile and ranks your top five specialty matches. Every match comes with Ghana-specific context: residency routes, the realities of Korle Bu and Komfo Anokye, and local salary framing. It is free, and it works without an account.</p>\n\n        <figure class=\"lab-fig\"><img src=\"/assets/project-shots/medmatch-home.png\" alt=\"MedMatch Ghana landing page showing the specialty-fit assessment headline and a sample match report\" loading=\"lazy\"><figcaption><b>Figure 1</b> — The landing page: 25 questions, 15 trait dimensions, 20+ specialties, free. The sample card previews the report a visitor gets at the end.</figcaption></figure>\n\n        <h3>The goal</h3>\n        <p>A guided assessment for Ghana's future clinicians, built around personality, strengths, lifestyle goals — and the realities of training here. That last part is the whole point: the specialties actually available, the hospitals you would actually train in, and salary context in cedis rather than numbers borrowed from another country's system.</p>\n\n        <h3>How it works</h3>\n        <p>The assessment is three steps — answer 25 signals, get a weighted trait profile across 15 dimensions, then explore the matches. The scoring is a plain weighted engine written in TypeScript rather than a model call, which means the result is inspectable: no black box, and the same answers always produce the same profile.</p>\n        <p>The report gives the top five specialties with confidence levels, strengths and stretch areas, a radar chart of the trait profile, and a top-three comparison table. AI enters only at the last step — a Groq call writes a personalised explanation of <em>why</em> those matches surfaced and what to test next. The ranking itself is never left to the model.</p>\n        <ul>\n          <li><b>Framing adapts to the reader</b> — the same engine speaks differently to medical students, dental students, and high schoolers considering medicine.</li>\n          <li><b>20+ specialties</b>, medical and dental, each with a Ghana-aware detail page covering training pathway, lifestyle rating, and day-in-the-life.</li>\n          <li><b>Salary context in cedis</b>, published with an explicit disclaimer that the figures are broad and directional — seniority, public/private mix, location and call burden all move them.</li>\n          <li><b>Guest mode</b> via local storage, plus Supabase-backed share links so a result can be sent to a mentor, and a print-ready export.</li>\n        </ul>\n\n        <h3>Engineering notes</h3>\n        <p>It is a Next.js 15 / React 19 app on the App Router, typed end to end in TypeScript, with Zod validating anything crossing an API boundary. Supabase is the backend, Upstash Redis rate-limits the AI route so a public free tool cannot be run up as someone else's bill, and Jest with Testing Library covers the scoring logic — the part where a silent bug would quietly mislead someone about their career.</p>\n\n        <div class=\"verdict\"><p class=\"v-label\">what I learned</p><p>This is the biggest thing I have built, and for a long stretch it was bigger than I was. There is a particular feeling that comes with an app this size — the moment where the scoring engine, the database, the AI call and the charts all finally hold hands and a stranger's answers come out the other end as something that actually reads like advice. I sat back the first time that happened.</p><p>The part I am proudest of is the restraint. It would have been easier, and more impressive-sounding, to let the AI do the matching. Keeping the scoring deterministic and letting AI only explain the result was the harder call, and it is the one that lets me stand behind the tool. Someone might weigh a career decision on this. That thought changed how I built it.</p></div>\n",
+        "footHtml": "<a href=\"/web-development/\">← all projects</a><a href=\"https://medmatchgh.vercel.app\" target=\"_blank\" rel=\"noopener\">try the assessment ↗</a>",
+        "labNavHtml": "<a href=\"/web-development/portfolio-v2/\">← This Portfolio (v2)</a><a href=\"/web-development/bible-quiz/\">Bible Quiz →</a>"
+      }
+    },
+    {
+      "slug": "bible-quiz",
+      "tag": "VANILLA JS · GAME",
+      "name": "Bible Quiz",
+      "blurb": "Snakes &amp; Ladders reimagined as Bible trivia — 875 questions, each written as both true/false and multiple choice.",
+      "linksHtml": "              <a href=\"/web-development/bible-quiz/\">the write-up →</a>\n              <a href=\"https://biblequizgame.vercel.app\" target=\"_blank\" rel=\"noreferrer\">play it →</a>\n              <a href=\"https://github.com/dfourmarvel/Bible-quiz\" target=\"_blank\" rel=\"noreferrer\">github →</a>",
+      "detail": {
+        "title": "Bible Quiz",
+        "crumb": "web-development / projects",
+        "description": "Snakes &amp; Ladders reimagined as a Bible trivia game: 875 questions, each written as both true/false and multiple choice. Vanilla JavaScript, no build step.",
+        "accent": "cyan",
+        "lede": "Snakes &amp; Ladders reimagined as a Bible trivia game — 875 questions, every one written twice, in a board game people already know how to play.",
+        "tools": [
+          "HTML5",
+          "CSS3",
+          "Vanilla JS (ES6+)",
+          "Playwright",
+          "No build step"
+        ],
+        "heroLinksHtml": "        <a href=\"https://biblequizgame.vercel.app\" target=\"_blank\" rel=\"noopener\">play it ↗</a>\n        <a href=\"https://github.com/dfourmarvel/Bible-quiz\" target=\"_blank\" rel=\"noopener\">github ↗</a>",
+        "body": "\n        <h3>Overview</h3>\n        <p>A Bible trivia game wrapped in a board everyone's already played. You answer an entry question and roll a 6 to get on the board; from there, landing on a ladder or a snake triggers a question. Get it right and you climb, get it wrong and you slide. First player to land exactly on 100 wins.</p>\n\n        <figure class=\"lab-fig\"><img src=\"/assets/project-shots/biblequiz-setup.png\" alt=\"The Bible Quiz setup screen: player count, name fields, an avatar picker, and an AI checkbox for each player, with the snakes-and-ladders board visible behind\" loading=\"lazy\"><figcaption><b>Figure 1</b> — Setup: name your players, pick avatars, and tick <em>AI</em> for any seat you want the computer to take. The board waits behind.</figcaption></figure>\n\n        <h3>The goal</h3>\n        <p>Bible knowledge is usually tested in formats that feel like an exam — a quiz sheet, a list of verses to memorise. The bet here is that the format is the problem, not the content. Snakes &amp; Ladders needs no explaining, so the questions arrive while people are already playing rather than while they're being tested.</p>\n\n        <h3>The question bank</h3>\n        <p>The bank behind the game is the part that took the real work. It started from a 1,000-question source and ended at <b>875 unique questions</b> — and getting there meant treating it like data cleaning, not copywriting:</p>\n        <ul>\n          <li><b>50 questions (451–500) were missing from the source</b> entirely — the original document had a placeholder where the content should be, then resumed at 501.</li>\n          <li><b>72 questions were exact duplicates</b> of others elsewhere in the bank. 75 redundant slots were removed, keeping the lowest-numbered instance of each.</li>\n          <li><b>Two answers were wrong or malformed</b> and were corrected against the question content — Q903 was missing its book name (\"32:24-32\" only, corrected to Genesis 32:24-32), and Q38 had a stray clarifying clause trimmed out.</li>\n        </ul>\n        <p>Every surviving question is rendered <b>twice</b> — once as a true/false item and once as multiple choice — which is 1,750 playable items from 875 questions. The multiple-choice distractors are real Bible references pulled from elsewhere in the same bank, matched to the same book where possible and the same testament otherwise. None of them are invented verses, which matters: a plausible-looking fake reference in a Bible game teaches the wrong thing. Each question carries an explanation and cross-reference verses.</p>\n\n        <h3>How it's built</h3>\n        <p>Vanilla HTML, CSS and JavaScript with no framework and no build step — you can open <code>index.html</code> and play. Game state, dice, questions, audio and storage all live in one script. Playwright drives the automated tests.</p>\n        <ul>\n          <li><b>Optional AI players</b> so the board still works with one person in the room.</li>\n          <li><b>Read-aloud support</b> and background music with sound effects.</li>\n          <li><b>A skeleton shimmer loader</b> for the board grid, and a layout that holds from phone to desktop.</li>\n        </ul>\n\n        <div class=\"verdict\"><p class=\"v-label\">what I learned</p><p>I expected the game to be the hard part. It wasn't — it was the 875 questions. Finding that 50 were simply missing from the source, that 72 were quiet duplicates, that an answer was wrong — none of that is glamorous work, and all of it happened before a single line of game logic mattered.</p><p>What stuck with me is how good it felt to refuse the shortcut. I could have generated plausible-looking wrong answers in an afternoon. Pulling every distractor from real verses in the same bank took far longer and nobody playing will ever notice. But I'd know, and a Bible game that teaches a fake verse is worse than no game at all.</p></div>\n",
+        "footHtml": "<a href=\"/web-development/\">← all projects</a><a href=\"https://biblequizgame.vercel.app\" target=\"_blank\" rel=\"noopener\">play it ↗</a>",
+        "labNavHtml": "<a href=\"/web-development/med-match/\">← MedMatch Ghana</a><a href=\"/web-development/menstrual-health-game/\">Menstrual Health Game →</a>"
+      }
+    },
+    {
+      "slug": "menstrual-health-game",
+      "tag": "VANILLA JS · HEALTH × GAME",
+      "name": "Menstrual Health Game",
+      "blurb": "Snakes &amp; Ladders reimagined to teach menstrual health — cross-listed under medicine.",
+      "linksHtml": "              <a href=\"/web-development/menstrual-health-game/\">the write-up →</a>\n              <a href=\"https://menstrualhealthawareness.vercel.app\" target=\"_blank\" rel=\"noreferrer\">play it →</a>\n              <a href=\"https://github.com/dfourmarvel/Menstrual-health-game\" target=\"_blank\" rel=\"noreferrer\">github →</a>",
+      "detail": {
+        "title": "Menstrual Health Game",
+        "crumb": "web-development / projects",
+        "description": "Snakes &amp; Ladders reimagined to teach menstrual health — breaking stigma one board square at a time. Built in vanilla JavaScript with a clinician-guided question bank.",
+        "accent": "cyan",
+        "lede": "Snakes &amp; Ladders reimagined to teach menstrual health — breaking stigma one board square at a time. Cross-listed under medicine, because it belongs in both.",
+        "tools": [
+          "HTML5",
+          "CSS3",
+          "Vanilla JS (ES6+)",
+          "Playwright",
+          "SDG 3 &amp; 5",
+          "No build step"
+        ],
+        "heroLinksHtml": "        <a href=\"https://menstrualhealthawareness.vercel.app\" target=\"_blank\" rel=\"noopener\">play it ↗</a>\n        <a href=\"https://github.com/dfourmarvel/Menstrual-health-game\" target=\"_blank\" rel=\"noopener\">github ↗</a>\n        <a href=\"/medicine/\">see it under medicine →</a>",
+        "body": "\n        <h3>Overview</h3>\n        <p>The same board, pointed at a harder subject. Players roll onto a 100-square Snakes &amp; Ladders board; ladders and snakes trigger menstrual health questions, right answers climb, wrong answers slide. The game is the delivery mechanism — the question bank is the actual content.</p>\n\n        <figure class=\"lab-fig\"><img src=\"/assets/project-shots/menstrual-setup.png\" alt=\"The Menstrual Health Game setup screen: player count, name fields and an avatar picker, with the illustrated menstrual health board visible behind\" loading=\"lazy\"><figcaption><b>Figure 1</b> — Setup, with the board behind it. Every square carries its own illustration — the artwork is doing as much teaching as the questions are.</figcaption></figure>\n\n        <h3>The problem</h3>\n        <p>Menstrual health remains one of the most stigmatised and misunderstood topics in Ghana and beyond. Misinformation, missing resources and cultural silence carry a real cost in health and quality of life. The silence is the mechanism: a topic nobody will discuss directly is a topic where myths go uncorrected.</p>\n        <p>A game sidesteps that. Nobody has to volunteer to attend a menstrual health talk — they sit down to play Snakes &amp; Ladders, and the education arrives in the middle of it. The project is aligned with the UN Sustainable Development Goals, specifically <b>SDG 3 (Good Health &amp; Well-being)</b> and <b>SDG 5 (Gender Equality)</b>.</p>\n\n        <h3>The question bank</h3>\n        <p>This is where a game about health either earns trust or loses it, so the bank was not written alone. <b>Dr. Frank</b>'s expertise and guidance shaped both the questions and the educational direction of the project. It spans four areas:</p>\n        <ul>\n          <li><b>Core true/false questions</b> on menstrual health concepts, myths and facts.</li>\n          <li><b>Family, education &amp; community</b> — the social side, where most of the stigma actually lives.</li>\n          <li><b>WASH &amp; period poverty</b> — water, sanitation, hygiene, and access.</li>\n          <li><b>Clinical &amp; public health</b> — MCQ/SBA questions at a genuinely clinical level.</li>\n        </ul>\n        <p>Every question is presented as both a true/false statement and a multiple-choice item, each with an explanation attached — because a right answer with no explanation teaches nothing, and a wrong answer with no explanation teaches less.</p>\n\n        <h3>How it's built</h3>\n        <p>Vanilla HTML, CSS and JavaScript — no framework, no build step, open <code>index.html</code> and play. It shares its engine with the <a href=\"/web-development/bible-quiz/\">Bible Quiz</a>: the same board mechanics, AI players for solo play, audio, and read-aloud support for accessibility. Playwright covers the tests. Made in Ghana, for Ghana first.</p>\n\n        <div class=\"verdict\"><p class=\"v-label\">what I learned</p><p>This is the project I am most glad exists. Not the most technically ambitious thing I have built — that's MedMatch — but the one where the gap between \"a thing I coded\" and \"a thing that might change what someone believes about their own body\" is smallest.</p><p>It also taught me the limits of my own expertise, which was a useful thing to run into early. I can build the board, write the engine, and ship it. I could not have written the clinical questions responsibly on my own, and the honest move was to bring in Dr. Frank rather than approximate it. A health game that is confidently wrong does more damage than one that never launched. Knowing which part of a project isn't yours to write turns out to be a skill of its own.</p></div>\n",
+        "footHtml": "<a href=\"/web-development/\">← all projects</a><a href=\"/medicine/\">see it under medicine →</a><a href=\"https://menstrualhealthawareness.vercel.app\" target=\"_blank\" rel=\"noopener\">play it ↗</a>",
+        "labNavHtml": "<a href=\"/web-development/bible-quiz/\">← Bible Quiz</a><a href=\"/web-development/mothers-day/\">Mothers-Day →</a>"
+      }
+    },
+    {
+      "slug": "mothers-day",
+      "tag": "AI-ASSISTED · TRIBUTE",
+      "name": "Mothers-Day",
+      "blurb": "An interactive tribute site for my mother — built by directing AI coding agents as system architect, not typing every line.",
+      "linksHtml": "              <a href=\"/web-development/mothers-day/\">the write-up →</a>\n              <a href=\"https://josephineyabat.vercel.app\" target=\"_blank\" rel=\"noreferrer\">visit it →</a>\n              <a href=\"https://github.com/dfourmarvel/Mothers-Day\" target=\"_blank\" rel=\"noreferrer\">github →</a>",
+      "detail": {
+        "title": "Mothers-Day",
+        "crumb": "web-development / projects",
+        "description": "An interactive tribute site for my mother — built by directing AI coding agents as system architect rather than typing every line.",
+        "accent": "cyan",
+        "lede": "An interactive tribute to my mother, Josephine Yaba Dzikunu — and the project where I stopped writing every line and started directing the build instead.",
+        "tools": [
+          "HTML5",
+          "CSS3",
+          "Vanilla JS (ES6+)",
+          "GitHub Copilot",
+          "Codex",
+          "AI-assisted"
+        ],
+        "heroLinksHtml": "        <a href=\"https://josephineyabat.vercel.app\" target=\"_blank\" rel=\"noopener\">visit it ↗</a>\n        <a href=\"https://github.com/dfourmarvel/Mothers-Day\" target=\"_blank\" rel=\"noopener\">github ↗</a>\n        <a href=\"/blog/building-a-tribute-site-for-my-mom/\">the write-up →</a>",
+        "body": "\n        <h3>Overview</h3>\n        <p>A mobile-first single-page site built as a Mother's Day gift for my mum. It opens on a surprise reveal, then unfolds like a love letter — a family letter, a photo gallery, and a timeline of memories, wrapped in warm golds and oranges with animation guiding you through each section.</p>\n\n        <figure class=\"lab-fig\"><img src=\"/assets/project-shots/mothersday-card.png\" alt=\"The site's welcome card: a cream panel reading 'A family surprise — Mama Joe, this is for you' above a gold 'Open your surprise' button\" loading=\"lazy\"><figcaption><b>Figure 1</b> — The welcome gate. Cormorant Garamond over warm cream and gold, with the reveal held behind a single button. The rest of the site is family photographs, so this is the one frame that is all design and no album.</figcaption></figure>\n\n        <h3>The goal</h3>\n        <p>In my own words from the write-up: <em>\"For a long time, I had a vision of building something truly special for my mom… I wanted to create a digital tribute that went beyond a standard webpage — something immersive, elegant, and deeply personal. However, doing it justice using purely traditional development methods felt out of reach for my current frontend skillset.\"</em></p>\n        <p>So the constraint was real and worth naming: the idea was further along than the hands were.</p>\n\n        <h3>How it was built</h3>\n        <p>The answer was to change roles. Using VS Code with GitHub Copilot and Codex, I shifted from writing every line of syntax to acting as system architect and creative director — prompting the agents, managing the logic, and owning the user experience. That let me ship a polished, production-ready site I could not have coded from scratch at the time.</p>\n        <ul>\n          <li><b>The look:</b> warm gold (<code>#d8a24b</code>) through burnt orange (<code>#d66b34</code>) on cream and soft beige, with Cormorant Garamond over Manrope.</li>\n          <li><b>The experience:</b> an animated welcome reveal, scroll-triggered animations, typing effects, a memories timeline, background music controls, and a photo gallery with full lightbox.</li>\n          <li><b>The engineering underneath:</b> lazy-loaded images, and accessibility taken seriously — semantic markup, ARIA labels, skip links and focus management.</li>\n        </ul>\n\n        <div class=\"verdict\"><p class=\"v-label\">what I learned</p><p>In my own words: <em>\"Building this project taught me that the barrier to entry for software creation has completely shifted. You do not need to be a veteran frontend engineer to bring complex, beautiful ideas to life anymore; you just need a clear vision, strong logical direction, and the ability to effectively collaborate with AI.\"</em></p><p><em>\"Seeing my mom's reaction to a custom digital experience built just for her was the best deployment feeling yet.\"</em></p></div>\n",
+        "footHtml": "<a href=\"/web-development/\">← all projects</a><a href=\"/blog/building-a-tribute-site-for-my-mom/\">read the full write-up →</a><a href=\"https://josephineyabat.vercel.app\" target=\"_blank\" rel=\"noopener\">visit it ↗</a>",
+        "labNavHtml": "<a href=\"/web-development/menstrual-health-game/\">← Menstrual Health Game</a><a href=\"/web-development/portfolio-v2/\">This Portfolio (v2) →</a>"
+      }
+    },
+    {
+      "slug": "bibletts-twi-repair",
+      "tag": "PYTHON · OPEN DATA",
+      "name": "BibleTTS Twi Transcript Repair",
+      "blurb": "Found a published open speech dataset silently stripping two Twi vowels from every transcript since 2024 — fixed it and published the repair.",
+      "linksHtml": "              <a href=\"/web-development/bibletts-twi-repair/\">the write-up →</a>\n              <a href=\"https://huggingface.co/datasets/danieldzikunuofmarvel/bibletts-asante-twi-repaired\" target=\"_blank\" rel=\"noreferrer\">dataset →</a>",
+      "detail": {
+        "title": "BibleTTS Twi Transcript Repair",
+        "crumb": "web-development / open source",
+        "description": "Found a silent data-integrity bug in a published open speech dataset — two Twi vowels stripped from every transcript since 2024 — fixed it, and published the repair on Hugging Face.",
+        "accent": "cyan",
+        "lede": "A side effect of building speech tools for Twi: found that a published open dataset had been silently corrupting Twi text since 2024, fixed it, and published the repair for anyone else using the same data.",
+        "tools": [
+          "Python",
+          "Hugging Face Datasets",
+          "Data Integrity",
+          "Threaded I/O"
+        ],
+        "heroLinksHtml": "        <a href=\"https://huggingface.co/datasets/danieldzikunuofmarvel/bibletts-asante-twi-repaired\" target=\"_blank\" rel=\"noopener\">the dataset ↗</a>\n        <a href=\"https://github.com/masakhane-io/bibleTTS/issues/3#issuecomment-5154120426\" target=\"_blank\" rel=\"noopener\">upstream issue ↗</a>",
+        "body": "\n        <h3>Overview</h3>\n        <p>BibleTTS is an open speech dataset used to train and evaluate speech recognition for a set of African languages, including Asante Twi. While preparing training data for a separate speech project, I noticed the Asante Twi transcripts read wrong — not mistranscribed, but missing letters in a pattern too consistent to be a typo.</p>\n\n        <h3>The bug</h3>\n        <p>Every transcript in the released Asante Twi set had <code>ɛ</code> (U+025B) and <code>ɔ</code> (U+0254) — two vowels that exist only in Twi's orthography, not in English — stripped out and replaced with spaces. Across a 1,500-file sample, the count was zero. A same-sized sample of the Ewe portion of BibleTTS, which doesn't use those characters as diacritics in the same way, contained 6,145 occurrences of <code>ɔ</code> in the same span — confirming the gap was specific to the Twi processing pipeline, not a fluke of the sample. The defect affected all ~21,600 Asante Twi transcripts and had gone unreported since the dataset's release; an open issue on the upstream repository had sat with no replies since March 2024.</p>\n\n        <h3>The fix</h3>\n        <p>Re-downloading doesn't help — the corruption is in the published transcript files themselves, not a download artifact. The fix is a verse-by-verse lookup against the Biblica USFM source text from ebible.org, restoring the correct characters verse by verse rather than attempting forced alignment or guesswork. The rebuild script threads its file reads — a single-threaded pass over 43,000 files was creeping toward an hour on my connection; threaded, it finishes in under a minute.</p>\n\n        <h3>Publishing it</h3>\n        <p>Repaired transcripts are published as an open dataset on Hugging Face under CC BY-SA 4.0, matching the license of both source datasets. Original and repaired text sit side by side per entry, so the change is auditable rather than a black-box replacement. I also posted the finding as a comment on the original GitHub issue, linking the dataset so anyone else building on BibleTTS's Twi data can pick up the fix without re-deriving it.</p>\n\n        <div class=\"verdict\"><p class=\"v-label\">what I learned</p><p>This wasn't the project I set out to build — it was a bug I tripped over on the way to one. The instinct to keep going is strong when the actual goal is somewhere else, but a silently corrupted dataset sitting unfixed for two years is a bigger problem than my own timeline. Publishing the fix took an afternoon; leaving it broken would have cost every future user of that data a lot more.</p></div>\n",
+        "footHtml": "<a href=\"/web-development/\">← all projects</a><a href=\"https://huggingface.co/datasets/danieldzikunuofmarvel/bibletts-asante-twi-repaired\" target=\"_blank\" rel=\"noopener\">the dataset ↗</a>",
+        "labNavHtml": null
+      }
+    },
+    {
+      "slug": "portfolio-v2",
+      "tag": "VANILLA JS · GSAP",
+      "name": "This Portfolio",
+      "blurb": "The site you're on — designed and built by hand, no template.",
+      "linksHtml": "              <a href=\"/web-development/portfolio-v2/\">the write-up →</a>\n              <a href=\"https://github.com/dfourmarvel/Portfolio_dfour\" target=\"_blank\" rel=\"noreferrer\">github →</a>",
+      "detail": {
+        "title": "This Portfolio (v2)",
+        "crumb": "web-development / projects",
+        "description": "The site you're reading: a ground-up rebuild in vanilla HTML/CSS/JS with GSAP. Dark-only 'Vital Terminal' design, no framework, no build step.",
+        "accent": "cyan",
+        "lede": "The site you are currently reading. Vanilla HTML, CSS and JavaScript with GSAP — no framework, no build step, and no template.",
+        "tools": [
+          "HTML5",
+          "CSS3",
+          "Vanilla JS (ES6+)",
+          "GSAP + ScrollTrigger",
+          "Vercel",
+          "No build step"
+        ],
+        "heroLinksHtml": "        <a href=\"https://github.com/dfourmarvel/Portfolio_dfour\" target=\"_blank\" rel=\"noopener\">github ↗</a>\n        <a href=\"/\">you're looking at it →</a>",
+        "body": "\n        <h3>Overview</h3>\n        <p>A ground-up rebuild of my portfolio. Version 1 worked, but it was visually dull, read as AI-generated, had an empty projects page, and did not reflect the four areas I actually work in. v2 replaced all of it: new architecture, new design, new content model, real projects.</p>\n\n        <h3>The goal</h3>\n        <p>One test, written into the spec before any code: a stranger should leave the homepage able to say <em>\"medical student, serious about cybersecurity, builds websites and designs posters — and the site itself proves he can build.\"</em> That last clause is the whole reason this is a hand-built site rather than a template. A portfolio claiming someone can build is evidence, not a claim.</p>\n\n        <h3>The design</h3>\n        <p>Three animated homepage directions were built as real, running pages and reviewed in the browser rather than as static mockups. The winner — <b>\"Vital Terminal\"</b> — is a fusion of a phosphor-green terminal and a hospital vitals monitor: the ECG strip in the hero, the heartbeat in the nav, the typing prompt. Medicine and cybersecurity in one visual language, which is the actual thesis of the site.</p>\n        <ul>\n          <li><b>Dark only.</b> No light mode and no toggle — the dark theme is the designed theme, not a default.</li>\n          <li><b>Per-domain accents</b> — medicine is rose, cybersecurity green, web-dev cyan, design amber. This page is cyan because it's a web-dev page; the whole system is one CSS variable.</li>\n          <li><b>Hand-built details</b> — custom hover states, intentional asymmetry, and a terminal that types itself out.</li>\n        </ul>\n\n        <h3>How it's built</h3>\n        <p>Vanilla HTML, CSS and JavaScript. GSAP with ScrollTrigger is the single sanctioned dependency, loaded from a CDN — everything else is dependency-free, and there is no build step at all. The nav and footer are deliberately duplicated across every page: the honest cost of having no build, paid knowingly.</p>\n        <p>The rule the animation system is built around: <b>content must never be stuck invisible.</b> Every hidden-until-animated style is gated behind a class that JavaScript only adds after confirming GSAP will actually run. If the CDN fails, the script dies, or a browser refuses — the page is still fully readable. <code>prefers-reduced-motion</code> collapses every decorative animation, and that is treated as non-negotiable rather than a nice-to-have.</p>\n\n        <div class=\"verdict\"><p class=\"v-label\">what I learned</p><p>There is something uniquely exposing about building the thing that is supposed to prove you can build things. Every shortcut I might have taken elsewhere would be sitting right there in the evidence. So the ECG in the hero had to be hand-made, the terminal had to actually type, and the reduced-motion path had to genuinely work rather than merely exist.</p><p>The lesson that stuck was about the boring parts. The animation contract — content never stranded invisible if the CDN dies — is the piece I am quietest about and proudest of. Nobody will ever notice it working. That turns out to be the point: the difference between a site that looks impressive and one that is actually built is entirely made of things nobody notices.</p></div>\n",
+        "footHtml": "<a href=\"/web-development/\">← all projects</a><a href=\"https://github.com/dfourmarvel/Portfolio_dfour\" target=\"_blank\" rel=\"noopener\">read the source ↗</a>",
+        "labNavHtml": "<a href=\"/web-development/mothers-day/\">← Mothers-Day</a><a href=\"/web-development/med-match/\">MedMatch Ghana →</a>"
+      }
+    }
+  ]
+}
