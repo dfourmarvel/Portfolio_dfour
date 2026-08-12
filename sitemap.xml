@@ -196,6 +196,11 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://danieldeladzikunu.vercel.app/labs/wireshark-packet-analysis/</loc>
+    <lastmod>2026-08-12</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://danieldeladzikunu.vercel.app/web-development/bible-quiz/</loc>
     <lastmod>2026-07-16</lastmod>
     <priority>0.6</priority>
