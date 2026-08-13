@@ -12,16 +12,16 @@
   },
   "posts": [
     {
-      "slug": "first-wireshark-lab",
-      "listTitle": "My first Wireshark lab",
-      "date": "Aug 12, 2026",
+      "slug": "wireshark-capture-filters",
+      "listTitle": "Applying filters to a Wireshark packet capture",
+      "date": "Aug 13, 2026",
       "categoryClass": "cat-cyber",
       "category": "network analysis",
-      "title": "My first Wireshark lab",
+      "title": "Applying filters to a Wireshark packet capture",
       "description": "200 packets, five display filters, and the point at which encapsulation stopped being a diagram.",
       "accent": "green",
       "meta": [
-        "<span>Aug 12, 2026</span>",
+        "<span>Aug 13, 2026</span>",
         "<span class=\"tag-pill\">network analysis</span>",
         "<span>google cybersecurity certificate lab</span>"
       ],
