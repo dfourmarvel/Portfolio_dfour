@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My first Wireshark lab — Daniel Dela Dzikunu</title>
+  <meta name="description" content="200 packets, five display filters, and the point at which encapsulation stopped being a diagram.">
+  <link rel="canonical" href="https://danieldeladzikunu.vercel.app/blog/first-wireshark-lab/">
+  <meta property="og:title" content="My first Wireshark lab">
+  <meta property="og:description" content="200 packets, five display filters, and the point at which encapsulation stopped being a diagram.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://danieldeladzikunu.vercel.app/blog/first-wireshark-lab/">
+  <meta property="og:image" content="https://danieldeladzikunu.vercel.app/assets/images/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="My first Wireshark lab">
+  <meta name="twitter:description" content="200 packets, five display filters, and the point at which encapsulation stopped being a diagram.">
+  <meta name="twitter:image" content="https://danieldeladzikunu.vercel.app/assets/images/og.png">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='14' fill='%230a0e0c'/><text x='50' y='68' text-anchor='middle' font-size='52' font-family='monospace' font-weight='bold' fill='%233df5a5'>DD</text></svg>">
+  <link rel="stylesheet" href="/css/main.css">
+</head>
+<body data-ac="green">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="wrap">
+    <nav class="site-nav" aria-label="Main navigation">
+      <a class="brand" href="/"><span class="beat" aria-hidden="true">♥</span> daniel@portfolio<span>:~$</span></a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle navigation menu">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-menu" id="nav-menu">
+        <a href="/medicine/">medicine</a>
+        <a href="/cybersecurity/">cybersecurity</a>
+        <a href="/web-development/">web-dev</a>
+        <a href="/graphic-design/">design</a>
+        <a href="/certifications/">certs</a>
+        <a href="/blog/" aria-current="page">blog</a>
+        <a href="/#contact">contact</a>
+        <a class="cv-btn" href="/cv.pdf" target="_blank" rel="noopener">CV ↓</a>
+      </div>
+    </nav>
+
+    <header class="page-hero">
+      <span class="crumb">blog</span>
+      <h1>My first Wireshark lab</h1>
+      <p class="post-meta">
+        <span>Aug 12, 2026</span>
+        <span class="tag-pill">network analysis</span>
+        <span>google cybersecurity certificate lab</span>
+      </p>
+    </header>
+
+    <main id="main">
+      <section style="padding-top: 40px;">
+        <article class="post-body reveal">
+        <p>My first Wireshark lab, as part of the Google Cybersecurity Certificate.</p>
+        <p>The setup: a saved capture file, sample.pcap, holding 200 packets from a user who had browsed to opensource.google.com. Two hundred sounds manageable until you open it. ICMP, DNS, TCP, HTTP and SSH all interleaved, row after row, with no obvious place to start.</p>
+        <p>Display filters are the place to start. Filtering on one IP address cut the list from 200 packets to 16. Splitting that by direction separated what the server sent from what it received. Filtering on a MAC address instead returned every protocol that machine touched, which answers a different question: show me this interface, whatever it happens to be talking to. Filtering UDP port 53 surfaced the DNS lookup, which is where that IP address came from in the first place. Filtering TCP port 80 isolated the web request itself. One last filter searched the payload text rather than the headers.</p>
+        <p>Then the packet detail pane, one collapsible section per layer: frame, Ethernet, IP, TCP. Opening them in order is what turned encapsulation from a diagram I had read about into something I could read off a screen.</p>
+        <p>The filter is the analysis. Everything after it follows from asking one question at a time and knowing which field answers it.</p>
+        </article>
+        <div class="post-foot">
+          <a href="/blog/">← all write-ups</a>
+          <a href="https://www.linkedin.com/in/dfour/" target="_blank" rel="noreferrer">originally shared on LinkedIn ↗</a>
+          <a href="/labs/wireshark-packet-analysis/">read the full lab report →</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span>© 2026 Daniel Dela Dzikunu</span>
+      <span>built by hand · no template</span>
+    </footer>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="/js/main.js"></script>
+</body>
+</html>

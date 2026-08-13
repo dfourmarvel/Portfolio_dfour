@@ -12,6 +12,23 @@
   },
   "posts": [
     {
+      "slug": "first-wireshark-lab",
+      "listTitle": "My first Wireshark lab",
+      "date": "Aug 12, 2026",
+      "categoryClass": "cat-cyber",
+      "category": "network analysis",
+      "title": "My first Wireshark lab",
+      "description": "200 packets, five display filters, and the point at which encapsulation stopped being a diagram.",
+      "accent": "green",
+      "meta": [
+        "<span>Aug 12, 2026</span>",
+        "<span class=\"tag-pill\">network analysis</span>",
+        "<span>google cybersecurity certificate lab</span>"
+      ],
+      "body": "        <p>My first Wireshark lab, as part of the Google Cybersecurity Certificate.</p>\n        <p>The setup: a saved capture file, sample.pcap, holding 200 packets from a user who had browsed to opensource.google.com. Two hundred sounds manageable until you open it. ICMP, DNS, TCP, HTTP and SSH all interleaved, row after row, with no obvious place to start.</p>\n        <p>Display filters are the place to start. Filtering on one IP address cut the list from 200 packets to 16. Splitting that by direction separated what the server sent from what it received. Filtering on a MAC address instead returned every protocol that machine touched, which answers a different question: show me this interface, whatever it happens to be talking to. Filtering UDP port 53 surfaced the DNS lookup, which is where that IP address came from in the first place. Filtering TCP port 80 isolated the web request itself. One last filter searched the payload text rather than the headers.</p>\n        <p>Then the packet detail pane, one collapsible section per layer: frame, Ethernet, IP, TCP. Opening them in order is what turned encapsulation from a diagram I had read about into something I could read off a screen.</p>\n        <p>The filter is the analysis. Everything after it follows from asking one question at a time and knowing which field answers it.</p>",
+      "footHtml": "          <a href=\"/blog/\">← all write-ups</a>\n          <a href=\"https://www.linkedin.com/in/dfour/\" target=\"_blank\" rel=\"noreferrer\">originally shared on LinkedIn ↗</a>\n          <a href=\"/labs/wireshark-packet-analysis/\">read the full lab report →</a>"
+    },
+    {
       "slug": "blood-donation-screening-day",
       "listTitle": "The queue for finger pricks never got shorter",
       "date": "Jul 15, 2026",
