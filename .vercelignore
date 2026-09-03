@@ -2,7 +2,11 @@
 PRD.md
 README.md
 CLAUDE.md
+AGENTS.md
 cv-source.html
 cv-welo-data.html
 cv-welo-data.pdf
 mockups/
+data/
+tools/
+.claude/

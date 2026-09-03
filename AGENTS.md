@@ -13,7 +13,7 @@ Daniel Dela Dzikunu's personal portfolio, v2 ("Vital Terminal" design). Vanilla 
 - `mockups/` — phase-1 design explorations; not linked from the site
 - `PRD.md` — the spec for the v2 overhaul; check it before structural changes
 - `sitemap.xml` / `robots.txt` — sitemap is generated, not hand-written (see Conventions)
-- `.vercelignore` — repo-only files (PRD.md, AGENTS.md, README.md, cv-source.html, mockups/) stay in git but are never deployed
+- `.vercelignore` — repo-only files (PRD.md, README.md, CLAUDE.md, AGENTS.md, cv-source.html, cv-welo-data.html, cv-welo-data.pdf, mockups/, data/, tools/, .claude/) stay in git but are never deployed
 
 ## Commands
 - Serve locally: `npx serve .` from repo root, or use the `portfolio` config in `.Codex/launch.json`. Pages use root-absolute paths (`/css/main.css`) so `file://` won't work.
@@ -31,5 +31,5 @@ Daniel Dela Dzikunu's personal portfolio, v2 ("Vital Terminal" design). Vanilla 
 - Content must reflect Daniel's real work — check `cybersecurity-labs` and other project repos when updating sections. No invented projects, stats, or post titles.
 - Lab-page terminal blocks must match the commands in Daniel's source lab reports verbatim — never reconstruct them from memory. Sources: `cybersecurity-labs/` and the lab PDFs/DOCX in `~/Downloads`. (A generator once silently ate the first 4 characters of every `$` prompt line, publishing `56sum` for `sha256sum`; re-read the source when touching these.)
 - Every page carries the full meta set: `canonical`, `og:title/description/type/url/image`, `twitter:card/title/description/image`. Copy the block from an existing page when adding one — `og:type` is `article` for `blog/` and `labs/`, `website` elsewhere.
-- Adding or removing a page means regenerating `sitemap.xml` (39 URLs = every `index.html` except mockups; `lastmod` comes from each file's last git commit date).
+- Adding or removing a page means regenerating `sitemap.xml` (47 URLs = every `index.html` except mockups; `lastmod` comes from each file's last git commit date).
 - The lab topic filter on `cybersecurity/` builds its chips at runtime from each lab card's `.tag` text, so adding a lab card needs no filter edit — but the tag text *is* the filter label, so keep tags consistent (a typo spawns a phantom chip). The intro prose ("Twelve formal lab reports") is still hardcoded — update it by hand. Note the filter deliberately kills the cards' GSAP reveal on first use: filtering reflows the list, and a `ScrollTrigger.refresh()` afterwards would otherwise reset an on-screen card to `opacity: 0`.
