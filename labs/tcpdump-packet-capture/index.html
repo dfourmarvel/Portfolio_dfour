@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Capturing HTTP Traffic with tcpdump — Daniel Dela Dzikunu</title>
+  <meta name="description" content="Four tcpdump commands, the name resolution it performs by default, and the point where a plain HTTP request becomes readable bytes.">
+  <link rel="canonical" href="https://danieldeladzikunu.vercel.app/labs/tcpdump-packet-capture/">
+  <meta property="og:title" content="Capturing HTTP Traffic with tcpdump">
+  <meta property="og:description" content="Four tcpdump commands, the name resolution it performs by default, and the point where a plain HTTP request becomes readable bytes.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://danieldeladzikunu.vercel.app/labs/tcpdump-packet-capture/">
+  <meta property="og:image" content="https://danieldeladzikunu.vercel.app/assets/images/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Capturing HTTP Traffic with tcpdump">
+  <meta name="twitter:description" content="Four tcpdump commands, the name resolution it performs by default, and the point where a plain HTTP request becomes readable bytes.">
+  <meta name="twitter:image" content="https://danieldeladzikunu.vercel.app/assets/images/og.png">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='14' fill='%230a0e0c'/><text x='50' y='68' text-anchor='middle' font-size='52' font-family='monospace' font-weight='bold' fill='%233df5a5'>DD</text></svg>">
+  <link rel="stylesheet" href="/css/main.css">
+</head>
+<body data-ac="green">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="wrap">
+    <nav class="site-nav" aria-label="Main navigation">
+      <a class="brand" href="/"><span class="beat" aria-hidden="true">♥</span> daniel@portfolio<span>:~$</span></a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle navigation menu">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-menu" id="nav-menu">
+        <a href="/medicine/">medicine</a>
+        <a href="/cybersecurity/" aria-current="page">cybersecurity</a>
+        <a href="/web-development/">web-dev</a>
+        <a href="/graphic-design/">design</a>
+        <a href="/certifications/">certs</a>
+        <a href="/blog/">blog</a>
+        <a href="/#contact">contact</a>
+        <a class="cv-btn" href="/cv.pdf" target="_blank" rel="noopener">CV ↓</a>
+      </div>
+    </nav>
+
+    <header class="page-hero">
+      <span class="crumb">cybersecurity / labs</span>
+      <h1>Capturing HTTP Traffic with tcpdump</h1>
+      <p class="lede reveal">Four tcpdump commands, the name resolution it performs by default, and the point where a plain HTTP request becomes readable bytes.</p>
+      <div class="lab-tools reveal"><span class="tool">tcpdump</span><span class="tool">ifconfig</span><span class="tool">curl</span><span class="tool">HTTP</span><span class="tool">pcap</span></div>
+    </header>
+
+    <main id="main">
+      <section style="padding-top: 40px;">
+        <article class="lab-body reveal">
+        <p>This lab worked through the core tcpdump workflow used to capture and inspect live network traffic on a Linux machine: identifying which network interfaces are available to capture on, inspecting live traffic on the chosen interface, capturing a filtered sample of that traffic to a file, and then reading the saved file back in two different output formats to interpret exactly what was captured.</p>
+
+        <h2>Task 1 — Identify network interfaces</h2>
+        <p><code>sudo ifconfig</code> listed the interfaces on the machine. <code>eth0</code> was identifiable as the Ethernet interface by its "eth" prefix, showing IP address <b>172.18.0.2</b> and MAC address <b>02:42:ac:12:00:02</b>.</p>
+        <div class="code"><div class="code-bar"><i></i><i></i><i></i><span>bash</span></div><pre><span class="pr">$</span> sudo ifconfig</pre></div>
+        <figure class="lab-fig"><picture><source srcset="/assets/lab-figures/tcpdump-01.webp" type="image/webp"><img src="/assets/lab-figures/tcpdump-01.png" alt="eth0 interface details from ifconfig" loading="lazy"></picture><figcaption><b>Figure 1</b> — <code>ifconfig</code> shows eth0 at 172.18.0.2 with MAC 02:42:ac:12:00:02.</figcaption></figure>
+        <p><code>sudo tcpdump -D</code> then listed every interface tcpdump itself could capture on: <code>eth0</code>, the pseudo-interface <code>any</code> (captures on all interfaces at once), <code>lo</code> (loopback), and several interfaces with no active traffic (<code>bluetooth-monitor</code>, <code>nflog</code>, <code>nfqueue</code>, <code>dbus-system</code>, <code>dbus-session</code>). Between the two commands, eth0 was confirmed as the interface to use for the rest of the exercise.</p>
+        <div class="code"><div class="code-bar"><i></i><i></i><i></i><span>bash</span></div><pre><span class="pr">$</span> sudo tcpdump -D</pre></div>
+        <figure class="lab-fig"><picture><source srcset="/assets/lab-figures/tcpdump-02.webp" type="image/webp"><img src="/assets/lab-figures/tcpdump-02.png" alt="Full list of capture-capable interfaces from tcpdump -D" loading="lazy"></picture><figcaption><b>Figure 2</b> — <code>tcpdump -D</code> lists every capture-capable interface, confirming eth0 as the one to use.</figcaption></figure>
+
+        <h2>Task 2 — Inspect network traffic on an interface</h2>
+        <p><code>sudo tcpdump -i eth0 -v -c5</code> captured five packets from eth0, with <code>-v</code> adding detail to each packet's IP and TCP header fields (TTL, ID, flags, checksum, sequence and acknowledgment numbers, window size) and <code>-c5</code> stopping the capture after five packets. The point of this task was to observe tcpdump's default behaviour: by default, tcpdump resolves IP addresses and ports to hostnames rather than displaying them numerically. That resolution is visible directly in the capture — the lab VM's own hostname and its terminal backend's hostname appear in place of raw IP addresses, on port 5000, and a DNS PTR lookup addressed to <code>metadata.google.internal</code> shows up among the five packets. This is exactly the default behaviour that <code>-nn</code> is used to switch off in Tasks 3 and 4. The resolved backend hostname was <code>nginx-us-central1-b.c.qwiklabs-terminal-vms-prod-00.internal</code>.</p>
+        <div class="code"><div class="code-bar"><i></i><i></i><i></i><span>bash</span></div><pre><span class="pr">$</span> sudo tcpdump -i eth0 -v -c5</pre></div>
+        <figure class="lab-fig"><picture><source srcset="/assets/lab-figures/tcpdump-03.webp" type="image/webp"><img src="/assets/lab-figures/tcpdump-03.png" alt="Five-packet live capture on eth0 with verbose output" loading="lazy"></picture><figcaption><b>Figure 3</b> — <code>tcpdump -i eth0 -v -c5</code>: default name resolution turns raw addresses into hostnames, including a PTR lookup to metadata.google.internal.</figcaption></figure>
+
+        <h2>Task 3 — Capture network traffic to a file</h2>
+        <p><code>sudo tcpdump -i eth0 -nn -c9 port 80 -w capture.pcap &amp;</code> started a background capture on eth0, filtered to port 80 (HTTP) traffic, limited to nine packets, and written to <code>capture.pcap</code> rather than printed to the terminal. The <code>-nn</code> flag disabled IP address and port name resolution — a security best practice, since lookup data may not be reliable and performing lookups can alert anyone monitoring the network that an investigation is under way.</p>
+        <div class="code"><div class="code-bar"><i></i><i></i><i></i><span>bash</span></div><pre><span class="pr">$</span> sudo tcpdump -i eth0 -nn -c9 port 80 -w capture.pcap &amp;</pre></div>
+        <p>With the capture running, <code>curl opensource.google.com</code> generated the HTTP traffic to capture: curl's own output showed the site responding with a 301 Moved redirect to <code>https://opensource.google/</code>.</p>
+        <div class="code"><div class="code-bar"><i></i><i></i><i></i><span>bash</span></div><pre><span class="pr">$</span> curl opensource.google.com</pre></div>
+        <figure class="lab-fig"><picture><source srcset="/assets/lab-figures/tcpdump-04.webp" type="image/webp"><img src="/assets/lab-figures/tcpdump-04.png" alt="Background capture running while curl triggers the HTTP request" loading="lazy"></picture><figcaption><b>Figure 4</b> — the background capture running while <code>curl opensource.google.com</code> triggers the HTTP request it is filtered for.</figcaption></figure>
+        <p>The background job then reported "[1]+ Done" once its nine-packet limit was reached, and <code>ls -l capture.pcap</code> confirmed the file existed on disk (1401 bytes).</p>
+        <div class="code"><div class="code-bar"><i></i><i></i><i></i><span>bash</span></div><pre><span class="pr">$</span> ls -l capture.pcap
+<span class="cm"># -rw-r--r-- 1 tcpdump tcpdump 1401 Aug 14 22:40 capture.pcap</span></pre></div>
+        <figure class="lab-fig"><picture><source srcset="/assets/lab-figures/tcpdump-05.webp" type="image/webp"><img src="/assets/lab-figures/tcpdump-05.png" alt="Capture file confirmed on disk, background job reporting Done" loading="lazy"></picture><figcaption><b>Figure 5</b> — the background job reports "Done" and <code>ls -l</code> confirms capture.pcap on disk at 1401 bytes.</figcaption></figure>
+
+        <h2>Task 4 — Filter the captured packet data</h2>
+        <p>Two commands read the same <code>capture.pcap</code> file back in different formats. <code>sudo tcpdump -nn -r capture.pcap -v</code> reproduced the verbose per-packet detail from Task 2, this time reading from the saved file rather than from live traffic, again with <code>-nn</code> disabling name resolution for the same investigative reasons as Task 3. The read-back showed the TCP three-way handshake between 172.18.0.2 and 173.194.206.101 on port 80 (SYN, SYN-ACK, ACK), each packet's TTL and checksum-verification status, and, further into the exchange, the full HTTP response: <code>HTTP/1.1 301 Moved Permanently</code>, a <code>Location</code> header pointing to <code>https://opensource.google/</code>, and further headers including <code>Content-Type</code>, <code>Cache-Control</code>, <code>Server</code>, and <code>X-XSS-Protection</code>.</p>
+        <div class="code"><div class="code-bar"><i></i><i></i><i></i><span>bash</span></div><pre><span class="pr">$</span> sudo tcpdump -nn -r capture.pcap -v</pre></div>
+        <figure class="lab-fig"><picture><source srcset="/assets/lab-figures/tcpdump-06.webp" type="image/webp"><img src="/assets/lab-figures/tcpdump-06.png" alt="Verbose read-back of capture.pcap, including the full HTTP response" loading="lazy"></picture><figcaption><b>Figure 6</b> — <code>tcpdump -nn -r capture.pcap -v</code>: the three-way handshake followed by the full 301 Moved Permanently HTTP response.</figcaption></figure>
+        <p>Then <code>sudo tcpdump -nn -r capture.pcap -X</code> read the same file a second time, printing each packet's raw bytes in hexadecimal alongside their ASCII equivalent. This is the format analysts use to look for patterns or anomalies during malware or forensic analysis. In this capture, the ASCII column of the fourth packet showed the HTTP GET request in full, human-readable text: "GET / HTTP/1.1", "Host: opensource.google.com", "User-Agent: curl/7.74.0", and "Accept: */*" — the same request that the <code>-v</code> output in the previous command had already interpreted and labelled, now visible as the literal bytes it was built from.</p>
+        <div class="code"><div class="code-bar"><i></i><i></i><i></i><span>bash</span></div><pre><span class="pr">$</span> sudo tcpdump -nn -r capture.pcap -X</pre></div>
+        <figure class="lab-fig"><picture><source srcset="/assets/lab-figures/tcpdump-07.webp" type="image/webp"><img src="/assets/lab-figures/tcpdump-07.png" alt="Hex/ASCII read-back of capture.pcap, showing the plaintext HTTP GET request" loading="lazy"></picture><figcaption><b>Figure 7</b> — <code>tcpdump -nn -r capture.pcap -X</code>: the fourth packet's ASCII column shows the plaintext HTTP GET request and headers.</figcaption></figure>
+
+        <div class="verdict"><p class="v-label">key takeaway</p><p>Reading the same file with <code>-v</code> and then with <code>-X</code> made the distinction between those two formats concrete: <code>-v</code> labels and interprets the header fields for you, while <code>-X</code> shows the underlying bytes those labels were built from — and in this capture, because the traffic was plain HTTP rather than HTTPS, those underlying bytes included a fully readable GET request.</p></div>
+        </article>
+        <div class="post-foot"><a href="/blog/tcpdump-packet-capture/">the story behind this lab →</a><a href="/cybersecurity/">all labs →</a></div>
+        <div class="lab-nav"><a href="/labs/virustotal-pyramid-of-pain/">← VirusTotal Malware Investigation</a><a href="/labs/wireshark-packet-analysis/">Filtering Network Traffic in Wireshark →</a></div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span>© 2026 Daniel Dela Dzikunu</span>
+      <span>built by hand · no template</span>
+    </footer>
+  </div>
+
+  <script src="/assets/vendor/gsap/gsap.min.js"></script>
+  <script src="/assets/vendor/gsap/ScrollTrigger.min.js"></script>
+  <script src="/js/main.js"></script>
+</body>
+</html>

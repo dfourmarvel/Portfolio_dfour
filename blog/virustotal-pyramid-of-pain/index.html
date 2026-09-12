@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The password was in the same email as the attachment — Daniel Dela Dzikunu</title>
+  <meta name="description" content="A SHA-256 hash, 53 of 71 vendors, and why the IP address nobody flagged was the most interesting indicator in the report.">
+  <link rel="canonical" href="https://danieldeladzikunu.vercel.app/blog/virustotal-pyramid-of-pain/">
+  <meta property="og:title" content="The password was in the same email as the attachment">
+  <meta property="og:description" content="A SHA-256 hash, 53 of 71 vendors, and why the IP address nobody flagged was the most interesting indicator in the report.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://danieldeladzikunu.vercel.app/blog/virustotal-pyramid-of-pain/">
+  <meta property="og:image" content="https://danieldeladzikunu.vercel.app/assets/images/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="The password was in the same email as the attachment">
+  <meta name="twitter:description" content="A SHA-256 hash, 53 of 71 vendors, and why the IP address nobody flagged was the most interesting indicator in the report.">
+  <meta name="twitter:image" content="https://danieldeladzikunu.vercel.app/assets/images/og.png">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='14' fill='%230a0e0c'/><text x='50' y='68' text-anchor='middle' font-size='52' font-family='monospace' font-weight='bold' fill='%233df5a5'>DD</text></svg>">
+  <link rel="stylesheet" href="/css/main.css">
+</head>
+<body data-ac="green">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="wrap">
+    <nav class="site-nav" aria-label="Main navigation">
+      <a class="brand" href="/"><span class="beat" aria-hidden="true">♥</span> daniel@portfolio<span>:~$</span></a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle navigation menu">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-menu" id="nav-menu">
+        <a href="/medicine/">medicine</a>
+        <a href="/cybersecurity/">cybersecurity</a>
+        <a href="/web-development/">web-dev</a>
+        <a href="/graphic-design/">design</a>
+        <a href="/certifications/">certs</a>
+        <a href="/blog/" aria-current="page">blog</a>
+        <a href="/#contact">contact</a>
+        <a class="cv-btn" href="/cv.pdf" target="_blank" rel="noopener">CV ↓</a>
+      </div>
+    </nav>
+
+    <header class="page-hero">
+      <span class="crumb">blog</span>
+      <h1>The password was in the same email as the attachment</h1>
+      <p class="post-meta">
+        <span>Aug 19, 2026</span>
+        <span class="tag-pill">malware analysis</span>
+        <span>google cybersecurity certificate lab</span>
+      </p>
+    </header>
+
+    <main id="main">
+      <section style="padding-top: 40px;">
+        <article class="post-body reveal">
+        <p>1:11 p.m. An employee opens an email with a password-protected spreadsheet attached. The password is sitting right there in the same email. Two minutes later the file is open. Two minutes after that, multiple unauthorized executables appear on the machine, and by 1:20 the IDS is screaming.</p>
+        <p>Password-protecting your own malicious attachment and then handing over the key in the same message is either lazy social engineering or supreme confidence in the reader's trust. Judging by how many people open these, it works either way, mostly because it slips the file past the email gateway's automated scanning, which can't crack a password it was never given.</p>
+        <p>The investigation starts with a single SHA-256 hash pulled from the retrieved file, run through VirusTotal. 53 of 71 security vendors flag it outright. Community score: -292. Threat label: trojan.flagpro/fragtor. Three independent signals, all pointing the same direction, no real ambiguity.</p>
+        <p>From there it's a Pyramid of Pain exercise: work up from the hash to everything else this file touches. An MD5 sitting alongside the SHA-256 in the Details tab. A domain, a.sinkhole.yourtrap.com, flagged by 10 of 91 vendors. An IP address the malware genuinely contacted, flagged by exactly zero. A dropped host artifact. Two abused native Windows tools, cmd.exe and wmiprvse.exe, doing an attacker's work without either of them needing to be malicious software themselves. Classic living-off-the-land: use what's already trusted and already there. And three techniques mapped to MITRE's Privilege Escalation tactic, sitting at the top.</p>
+        <p>That IP address is the interesting part. Zero out of 91 vendors flagged it, and it's still evidence, not of innocence, but of how disposable IP infrastructure is to begin with. An attacker burns an IP and stands up another one before lunch. Rewriting the technique that got them privilege escalation in the first place takes a lot more than that, which is exactly why the pyramid puts TTPs at the top and IPs near the bottom. If you're only blocking indicators, you're only ever a few minutes ahead of the next rotation.</p>
+        </article>
+        <div class="post-foot">
+          <a href="/blog/">← all write-ups</a>
+          <a href="https://www.linkedin.com/in/dfour/" target="_blank" rel="noreferrer">originally shared on LinkedIn ↗</a>
+          <a href="/labs/virustotal-pyramid-of-pain/">read the full lab report →</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span>© 2026 Daniel Dela Dzikunu</span>
+      <span>built by hand · no template</span>
+    </footer>
+  </div>
+
+  <script src="/assets/vendor/gsap/gsap.min.js"></script>
+  <script src="/assets/vendor/gsap/ScrollTrigger.min.js"></script>
+  <script src="/js/main.js"></script>
+</body>
+</html>

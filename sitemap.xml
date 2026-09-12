@@ -36,6 +36,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://danieldeladzikunu.vercel.app/blog/assets-threats-and-vulnerabilities/</loc>
+    <lastmod>2026-07-15</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://danieldeladzikunu.vercel.app/blog/blood-donation-community-outreach/</loc>
     <lastmod>2026-07-16</lastmod>
     <priority>0.6</priority>
@@ -58,6 +63,11 @@
   <url>
     <loc>https://danieldeladzikunu.vercel.app/blog/cisco-cybersecurity-course-reflection/</loc>
     <lastmod>2026-07-16</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://danieldeladzikunu.vercel.app/blog/claude-code-deleted-14gb/</loc>
+    <lastmod>2026-09-10</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
@@ -96,6 +106,11 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://danieldeladzikunu.vercel.app/blog/learning-cybersecurity-at-your-own-pace/</loc>
+    <lastmod>2026-03-25</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://danieldeladzikunu.vercel.app/blog/linux-file-permissions-audit/</loc>
     <lastmod>2026-07-16</lastmod>
     <priority>0.6</priority>
@@ -103,6 +118,11 @@
   <url>
     <loc>https://danieldeladzikunu.vercel.app/blog/linux-user-management/</loc>
     <lastmod>2026-07-16</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://danieldeladzikunu.vercel.app/blog/medmatch-ai-never-worked/</loc>
+    <lastmod>2026-09-09</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
@@ -126,8 +146,28 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://danieldeladzikunu.vercel.app/blog/tcpdump-packet-capture/</loc>
+    <lastmod>2026-08-14</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://danieldeladzikunu.vercel.app/blog/triage-and-alert-priority/</loc>
+    <lastmod>2026-08-30</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://danieldeladzikunu.vercel.app/blog/usb-drive-hospital-parking-lot/</loc>
     <lastmod>2026-07-16</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://danieldeladzikunu.vercel.app/blog/virustotal-pyramid-of-pain/</loc>
+    <lastmod>2026-08-19</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://danieldeladzikunu.vercel.app/blog/why-nigerian-scammers-say-nigeria/</loc>
+    <lastmod>2026-09-04</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
@@ -191,8 +231,18 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://danieldeladzikunu.vercel.app/labs/tcpdump-packet-capture/</loc>
+    <lastmod>2026-08-14</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://danieldeladzikunu.vercel.app/labs/usb-drop-analysis/</loc>
     <lastmod>2026-07-16</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://danieldeladzikunu.vercel.app/labs/virustotal-pyramid-of-pain/</loc>
+    <lastmod>2026-08-19</lastmod>
     <priority>0.6</priority>
   </url>
   <url>

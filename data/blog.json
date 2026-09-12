@@ -13,6 +13,108 @@
   },
   "posts": [
     {
+      "slug": "claude-code-deleted-14gb",
+      "listTitle": "A tidying script permanently deleted 14 GB",
+      "date": "Sep 10, 2026",
+      "categoryClass": "cat-cyber",
+      "category": "incident review",
+      "title": "A tidying script permanently deleted 14 GB",
+      "description": "A dry run that printed the safe path, a case-insensitive folder collision, and 133 files that never reached the Recycle Bin.",
+      "accent": "green",
+      "meta": [
+        "<span>Sep 10, 2026</span>",
+        "<span class=\"tag-pill\">incident review</span>",
+        "<span>from linkedin</span>"
+      ],
+      "body": "        <p>Yesterday I asked Claude Code to organise my Downloads folder. It did. It also permanently deleted 14 GB that I never asked it to touch.</p>\n        <p>Some context: Claude Code is my main coding tool, and by now it does considerably more than code — it helps me plan my week against my course timetable and generally keeps my files and notes in order. Handing it a messy Downloads folder was, on paper, the least risky thing I had ever asked it to do. And most of the job was good. It took 209 loose files in the Downloads root down to four and hash-matched 109 genuine duplicates into the Recycle Bin. It even caught one of its own bugs before running it — filenames containing square brackets were failing to hash, which would have flagged every anime episode on the drive as one enormous duplicate set. It fixed that. I reviewed the fix. I felt quite good about the whole thing.</p>\n        <p>Then came the part I did not review closely enough. The script needed to merge an old folder called media into a new one called Media. On Windows, those are the same folder. So it moved the folder's entire contents into a subdirectory of itself, then ran Remove-Item -Recurse -Force on the source — which, unlike dragging something to the bin, does not go to the Recycle Bin at all. 133 files. Anime I can re-download, design work I cannot, and a video off my phone from May that I definitely cannot.</p>\n        <figure class=\"lab-fig\"><img src=\"/assets/post-images/claude-code-data-loss.jpg\" alt=\"Claude Code transcript reporting 133 files and roughly 14 GB permanently deleted from Downloads\\Media, bypassing the Recycle Bin\" loading=\"lazy\"><figcaption><b>Figure 1</b> — The agent's own report of what it destroyed: 133 files plus 3 folders, outside the Recycle Bin because <code>Remove-Item -Recurse -Force</code> bypasses it.</figcaption></figure>\n        <p>This is where the cybersecurity coursework turned up uninvited. My first instinct was file recovery, so I checked the disk: a Samsung NVMe SSD with TRIM enabled, meaning the controller zeroes deleted blocks within minutes instead of leaving them for a recovery tool to find. No File History, no restore points, Downloads never synced anywhere. Had any one of those been different, this would have become another lab write-up. Instead it is just a loss.</p>\n        <p>The failure I keep returning to is not the bug. It is that a routine tidying task had permission to permanently destroy files without asking anybody first. A dry run did run, and I read it — but it printed the safe path and never entered the branch holding the delete. Reading output is not the same as testing behaviour.</p>\n        <p>What is in place now: deletions go to the Recycle Bin or they do not happen, and a hook that reads inside any script before it executes and forces a prompt when it finds a recursive delete. That last part matters, because the command that caused the damage was a single line invoking phase3_sort.ps1. There was nothing dangerous in the text at all.</p>\n        <p>I have not attempted recovery with PhotoRec, so \"unrecoverable\" here is an inference from TRIM being enabled rather than a proven negative. If you have pulled files off a TRIM-enabled NVMe drive after a delete that bypassed the Recycle Bin, I would like to hear about it. I would be happy to be wrong.</p>",
+      "footHtml": "          <a href=\"/blog/\">← all write-ups</a>\n          <a href=\"https://www.linkedin.com/in/dfour/\" target=\"_blank\" rel=\"noreferrer\">originally shared on LinkedIn ↗</a>"
+    },
+    {
+      "slug": "medmatch-ai-never-worked",
+      "listTitle": "The AI feature that had never worked",
+      "date": "Sep 09, 2026",
+      "categoryClass": "cat-web",
+      "category": "web project",
+      "title": "The AI feature that had never worked",
+      "description": "A payload shape mismatch returned 400 for every user for four months, and the friendly fallback made it look intentional.",
+      "accent": "cyan",
+      "meta": [
+        "<span>Sep 09, 2026</span>",
+        "<span class=\"tag-pill\">web project</span>",
+        "<span>from linkedin</span>"
+      ],
+      "body": "        <p>The AI feature on my app had never worked. Not once, for anyone, in the four months since it shipped.</p>\n        <p>MedMatch Ghana gives medical students a specialty-fit assessment, and part of the results page was meant to be an AI-written explanation of why your top three matches came out the way they did. I was reading the route handler for an unrelated reason when I noticed it was validating a request shape — a user id, an answers array, a list of top specialties — that the results page had stopped sending long ago. The page posts the full assessment result object. The route rejected it. Every live request returned a 400.</p>\n        <p>Nobody saw an error, because the client caught the failure and showed a friendly fallback message instead. It looked intentional. It looked like a product decision. Every person who ever finished the assessment got the fallback, and nobody reported anything, because there was nothing visibly broken to report.</p>\n        <p>Three days later I found the same shape of bug somewhere else. A scheduled job kept my free-tier Supabase project awake by calling a results endpoint with a zeroed UUID and treating the 404 as proof of life. That function returns not-found when the row is missing, when the database client fails to initialise, and when the query itself errors. All three come back as 404. The check reported green with the database completely unreachable, which is the one condition it existed to detect. I replaced it with an endpoint that runs a real head query and answers 200 or 503, then confirmed it returns 503 against placeholder credentials — exactly the case the old one called healthy.</p>\n        <p>Both are the same mistake. I built systems that degrade gracefully, and they degraded so gracefully that nothing ever told me they were degrading.</p>\n        <p>The clinical version is familiar. A patient in compensated shock has a normal blood pressure. The number is real, it is reassuring, and it is the last thing you should trust, because the body is holding that reading up at a cost the monitor cannot show you. Normal vitals are not a well patient, and a passing health check is not a working system.</p>\n        <p>The limitation worth stating: I found both of these by reading my own code, not from monitoring, which is itself the finding. That project has no error tracking and no alert on 4xx rates. With either one, the first bug surfaces in a day instead of four months.</p>\n        <p>If you run something small in production, I would like to know what your cheapest signal is that a fallback path has quietly become the only path.</p>",
+      "footHtml": "          <a href=\"/blog/\">← all write-ups</a>\n          <a href=\"https://www.linkedin.com/in/dfour/\" target=\"_blank\" rel=\"noreferrer\">originally shared on LinkedIn ↗</a>\n          <a href=\"/web-development/med-match/\">see the project →</a>"
+    },
+    {
+      "slug": "why-nigerian-scammers-say-nigeria",
+      "listTitle": "Why Nigerian scammers say they are from Nigeria",
+      "date": "Sep 04, 2026",
+      "categoryClass": "cat-cyber",
+      "category": "social engineering",
+      "title": "Why Nigerian scammers say they are from Nigeria",
+      "description": "Herley's 2012 paper argues the bad grammar is a filter, not a mistake — and AI has only sharpened the split.",
+      "accent": "green",
+      "meta": [
+        "<span>Sep 04, 2026</span>",
+        "<span class=\"tag-pill\">social engineering</span>",
+        "<span>from linkedin</span>"
+      ],
+      "body": "        <p>There's an academic paper literally titled \"Why Do Nigerian Scammers Say They Are From Nigeria?\" Cormac Herley wrote it at Microsoft Research in 2012, and it undid an assumption I've been carrying around for years.</p>\n        <p>I'd always filed the bad grammar under non-native authorship, someone running a scam from a country where English wasn't the first language, working off a script nobody had properly translated. And I assumed AI would quietly close that gap. Better translation, then generative models, smoothing the language barrier until the emails read clean. If that were the whole story, phishing should be getting harder to spot every year.</p>\n        <p>It isn't the whole story. Herley's argument is that the bad grammar is deliberate. Running a phishing campaign to completion is expensive: you have to build rapport, keep the story consistent, and walk someone through wiring money or handing over credentials, all without them getting suspicious partway through and reporting you. A scammer with limited time doesn't want a large pool of sceptical replies to work through. They want a small pool of people already inclined to believe them. The typos aren't a bug, they're user onboarding for a very specific type of user, and everyone who'd eventually catch on gets screened out before the scammer spends a minute on them.</p>\n        <figure class=\"lab-fig\"><img src=\"/assets/post-images/nigerian-scam-email-annotated.jpg\" alt=\"Mock inheritance scam email with every grammatical error highlighted in red\" loading=\"lazy\"><figcaption><b>Figure 1</b> — A reconstructed advance-fee email with the errors marked. Every highlighted phrase is doing screening work.</figcaption></figure>\n        <p>Non-native authorship is still real, a lot of this infrastructure does run out of regions where English isn't the operator's first language. But it's a secondary cause sitting on top of something intentional, not the explanation itself.</p>\n        <p>Here's the part that actually unsettles me. The barrier I assumed AI would erase, it already has, just not for the messages I was picturing. Business email compromise and spear-phishing, the ones built around impersonating an executive or targeting one specific person, are increasingly AI-generated and read cleanly, because the target is worth the extra production cost. The volume scams stay deliberately rough on purpose. The targeted ones got fluent because someone decided you were worth the effort.</p>",
+      "footHtml": "          <a href=\"/blog/\">← all write-ups</a>\n          <a href=\"https://www.linkedin.com/in/dfour/\" target=\"_blank\" rel=\"noreferrer\">originally shared on LinkedIn ↗</a>"
+    },
+    {
+      "slug": "triage-and-alert-priority",
+      "listTitle": "A paper cut and crushing chest pain do not wait in the same line",
+      "date": "Aug 30, 2026",
+      "categoryClass": "cat-cyber",
+      "category": "incident response",
+      "title": "A paper cut and crushing chest pain do not wait in the same line",
+      "description": "An emergency department and a security operations centre run the same framework; only the vocabulary changes.",
+      "accent": "green",
+      "meta": [
+        "<span>Aug 30, 2026</span>",
+        "<span class=\"tag-pill\">incident response</span>",
+        "<span>from linkedin</span>"
+      ],
+      "body": "        <p>A patient with a paper cut and a patient with crushing chest pain do not wait in the same line. Every emergency department decides that before either of them has met a doctor. That decision is called triage, and it runs on a structured framework — assess the presenting complaint, weigh it against a fixed set of discriminators, assign a category — not on who looks worse or who's shouting.</p>\n        <figure class=\"lab-fig\"><img src=\"/assets/post-images/triage.jpg\" alt=\"Word cloud of triage-related terms including emergency, paramedic, assessment and healthcare\" loading=\"lazy\"><figcaption><b>Figure 1</b> — The vocabulary of clinical triage.</figcaption></figure>\n        <p>This week, in the Google Cybersecurity Certificate, I learned that a security operations centre runs on the identical logic, just aimed at alerts instead of patients. Receive and assess: is this a false positive, has it happened before, is it tied to a known vulnerability? Assign priority: weigh functional impact, information impact, and whether recovery is even possible if it turns out to be real. Only after both of those does an analyst actually start digging into logs and evidence.</p>\n        <p>Swap \"patient\" for \"alert\" and the process doesn't change — it just changes vocabulary. A failed login at 3am, from outside the network, is the security equivalent of a patient walking in short of breath: not automatically an emergency, but not something you wave through either. The framework exists precisely so that decision doesn't come down to instinct or how alarming something sounds in the moment.</p>\n        <p>Neither system is complicated. A handful of categories, a short list of questions. What's hard — in an ED and in a SOC — is running it correctly on the fortieth alert or the fortieth patient of a long shift, when the one question you're most tempted to skip is usually the one that mattered. Skip it in security and a real incident gets filed as noise. Skip it in medicine and \"just a bit tired\" turns out to be an epidural haematoma. The framework was never the hard part. Executing it perfectly, every time, is.</p>",
+      "footHtml": "          <a href=\"/blog/\">← all write-ups</a>\n          <a href=\"https://www.linkedin.com/in/dfour/\" target=\"_blank\" rel=\"noreferrer\">originally shared on LinkedIn ↗</a>"
+    },
+    {
+      "slug": "virustotal-pyramid-of-pain",
+      "listTitle": "The password was in the same email as the attachment",
+      "date": "Aug 19, 2026",
+      "categoryClass": "cat-cyber",
+      "category": "malware analysis",
+      "title": "The password was in the same email as the attachment",
+      "description": "A SHA-256 hash, 53 of 71 vendors, and why the IP address nobody flagged was the most interesting indicator in the report.",
+      "accent": "green",
+      "meta": [
+        "<span>Aug 19, 2026</span>",
+        "<span class=\"tag-pill\">malware analysis</span>",
+        "<span>google cybersecurity certificate lab</span>"
+      ],
+      "body": "        <p>1:11 p.m. An employee opens an email with a password-protected spreadsheet attached. The password is sitting right there in the same email. Two minutes later the file is open. Two minutes after that, multiple unauthorized executables appear on the machine, and by 1:20 the IDS is screaming.</p>\n        <p>Password-protecting your own malicious attachment and then handing over the key in the same message is either lazy social engineering or supreme confidence in the reader's trust. Judging by how many people open these, it works either way, mostly because it slips the file past the email gateway's automated scanning, which can't crack a password it was never given.</p>\n        <p>The investigation starts with a single SHA-256 hash pulled from the retrieved file, run through VirusTotal. 53 of 71 security vendors flag it outright. Community score: -292. Threat label: trojan.flagpro/fragtor. Three independent signals, all pointing the same direction, no real ambiguity.</p>\n        <p>From there it's a Pyramid of Pain exercise: work up from the hash to everything else this file touches. An MD5 sitting alongside the SHA-256 in the Details tab. A domain, a.sinkhole.yourtrap.com, flagged by 10 of 91 vendors. An IP address the malware genuinely contacted, flagged by exactly zero. A dropped host artifact. Two abused native Windows tools, cmd.exe and wmiprvse.exe, doing an attacker's work without either of them needing to be malicious software themselves. Classic living-off-the-land: use what's already trusted and already there. And three techniques mapped to MITRE's Privilege Escalation tactic, sitting at the top.</p>\n        <p>That IP address is the interesting part. Zero out of 91 vendors flagged it, and it's still evidence, not of innocence, but of how disposable IP infrastructure is to begin with. An attacker burns an IP and stands up another one before lunch. Rewriting the technique that got them privilege escalation in the first place takes a lot more than that, which is exactly why the pyramid puts TTPs at the top and IPs near the bottom. If you're only blocking indicators, you're only ever a few minutes ahead of the next rotation.</p>",
+      "footHtml": "          <a href=\"/blog/\">← all write-ups</a>\n          <a href=\"https://www.linkedin.com/in/dfour/\" target=\"_blank\" rel=\"noreferrer\">originally shared on LinkedIn ↗</a>\n          <a href=\"/labs/virustotal-pyramid-of-pain/\">read the full lab report →</a>"
+    },
+    {
+      "slug": "tcpdump-packet-capture",
+      "listTitle": "Before the capture started, tcpdump had already told me something",
+      "date": "Aug 14, 2026",
+      "categoryClass": "cat-cyber",
+      "category": "network analysis",
+      "title": "Before the capture started, tcpdump had already told me something",
+      "description": "Default name resolution, -nn, and the difference between what tcpdump decided a packet means and the bytes underneath.",
+      "accent": "green",
+      "meta": [
+        "<span>Aug 14, 2026</span>",
+        "<span class=\"tag-pill\">network analysis</span>",
+        "<span>google cybersecurity certificate lab</span>"
+      ],
+      "body": "        <p>Before the real capture even started, tcpdump had already resolved a hostname I never typed — the first of two things it told me without asking.</p>\n        <p>The workflow ran in four parts. First, ifconfig and tcpdump -D to work out which interface was actually worth capturing on, eth0 was the only one both up and carrying traffic. Second, sudo tcpdump -i eth0 -v -c5, five packets, verbose. The actual point of this step was watching tcpdump's default behaviour: it resolves IP addresses and ports into hostnames unless told not to. Sure enough, the five packets showed the lab VM's own hostname and its terminal backend's hostname where raw IP addresses would otherwise sit, on port 5000, plus a DNS lookup against Google's internal metadata service. That default resolution is exactly what gets switched off two commands later.</p>\n        <p>Third, the real capture, sudo tcpdump -i eth0 -nn -c9 port 80 -w capture.pcap, run in the background with -nn switched on to stop tcpdump resolving IPs and ports to names, partly because that lookup data cannot be trusted and partly because performing lookups mid-investigation is a good way to tip off whoever you are investigating. curl opensource.google.com supplied the traffic, and got back a 301 redirect to HTTPS for its trouble.</p>\n        <p>Fourth, reading capture.pcap back twice. The verbose pass, -v, reconstructed the TCP handshake and the full HTTP response, headers, status code, all interpreted and labelled. The hex and ASCII pass, -X, showed none of that interpretation, only raw bytes, and sitting right there in packet four: GET / HTTP/1.1, Host: opensource.google.com, User-Agent: curl/7.74.0. Completely legible, no decoding required, because HTTP was never encrypted to begin with.</p>\n        <p>That's the reason -X exists as its own command rather than just an extra flag on -v: verbose output tells you what tcpdump decided a packet means, hex and ASCII shows you the raw material underneath, and that raw view is what analysts fall back on to catch patterns or anomalies a summarised read might smooth over.</p>",
+      "footHtml": "          <a href=\"/blog/\">← all write-ups</a>\n          <a href=\"https://www.linkedin.com/in/dfour/\" target=\"_blank\" rel=\"noreferrer\">originally shared on LinkedIn ↗</a>\n          <a href=\"/labs/tcpdump-packet-capture/\">read the full lab report →</a>"
+    },
+    {
       "slug": "wireshark-capture-filters",
       "listTitle": "Applying filters to a Wireshark packet capture",
       "date": "Aug 13, 2026",
@@ -62,6 +164,23 @@
       ],
       "body": "        <p>I spent yesterday telling strangers blood donation was safe. Today I found out I hadn't fully convinced myself.</p>\n        <p>As part of the team from Entrance University of Health Sciences, we'd spent yesterday reaching out to the communities around us, Spintex, Manet, and the surrounding areas, knocking on doors and stopping people on the street to talk about the Blood Donation and Health Screening Day happening today. A lot of them had the same doubts, that it would leave them weak, that something could go wrong, that it just wasn't worth the risk. I answered every one of those doubts with confidence.</p>\n        <p>Then today, I sat down for my own turn, and I was the first person in the chair. No one ahead of me to watch go through it fine, no reassurance from seeing it work for someone else first, just me and everything I'd told other people the day before.</p>\n        <p>The needle went in. It was quick, and honestly a bit anticlimactic given how much I'd built it up in my head over the last ten minutes. What stuck with me wasn't the process, it was the gap between what I knew and what I felt. I could recite the physiology. I still needed a minute to actually believe it applied to me.</p>\n        <p>By the time it was done, the nervousness felt almost embarrassing in hindsight, given how many people I'd talked into doing the exact same thing the day before. But maybe that's the honest version of the story. Telling someone it's safe is easy. Finding out you believed yourself is a different thing entirely.</p>",
       "footHtml": "          <a href=\"/blog/\">← all write-ups</a>\n          <a href=\"https://www.linkedin.com/in/dfour/\" target=\"_blank\" rel=\"noreferrer\">originally shared on LinkedIn ↗</a>\n          <a href=\"/medicine/\">the medicine section →</a>"
+    },
+    {
+      "slug": "assets-threats-and-vulnerabilities",
+      "listTitle": "Three modules in, my laptop stopped turning on",
+      "date": "Jul 15, 2026",
+      "categoryClass": "cat-cyber",
+      "category": "coursework",
+      "title": "Three modules in, my laptop stopped turning on",
+      "description": "Course five of the Google Cybersecurity Certificate, NIST RMF and CVEs, and a flood that made the point for it.",
+      "accent": "green",
+      "meta": [
+        "<span>Jul 15, 2026</span>",
+        "<span class=\"tag-pill\">coursework</span>",
+        "<span>from linkedin</span>"
+      ],
+      "body": "        <p>Three modules into Assets, Threats, and Vulnerabilities, my laptop stopped turning on. The recent floods got to it before I could finish the section on how organisations protect what they value, which is not the kind of coincidence you want when the entire course is about exactly that problem.</p>\n        <p>This is course five of the Google Cybersecurity Certificate, and it's the one I stalled on longest. The first four courses were technical in a way that gave immediate feedback: run a Linux command, write a SQL query, watch it work or fail. This one is slower. It's about classifying what an organisation actually has worth protecting, applying the NIST risk management framework to decide how much that protection is worth spending on, and using MITRE's CVE system, a public catalogue that assigns every known vulnerability its own name and number before anyone gets to exploit it quietly. There's no green checkmark for \"correctly assessed risk.\" You just have to reason it through.</p>\n        <p>The back half covers the threat side: social engineering, malware, web-based exploits, and how security teams build threat models to think like the person trying to get in before that person shows up. It reframed vulnerability management for me, less as a checklist and more as a constant, unfinished argument between what you can afford to protect and what someone else has decided is worth attacking.</p>\n        <p>Between the laptop going in for repair and a course module that never really grabbed me the way the earlier, hands-on courses did, this one took longer than any course before it. Something is fitting about needing a repair before I could finish a course on protecting what you value. I noticed the irony. I did not enjoy it.</p>\n        <figure class=\"lab-fig\"><img src=\"/assets/post-images/google-assets-threats-vulnerabilities-certificate.jpg\" alt=\"Coursera course certificate for Assets, Threats, and Vulnerabilities, issued to Daniel Dela Dzikunu\" loading=\"lazy\"><figcaption><b>Figure 1</b> — Course five of eight, finished later than any before it.</figcaption></figure>",
+      "footHtml": "          <a href=\"/blog/\">← all write-ups</a>\n          <a href=\"https://www.linkedin.com/in/dfour/\" target=\"_blank\" rel=\"noreferrer\">originally shared on LinkedIn ↗</a>\n          <a href=\"/certifications/\">all certifications →</a>"
     },
     {
       "slug": "blood-donation-community-outreach",
@@ -317,6 +436,23 @@
       ],
       "body": "        <p>I am excited to share a milestone in my cybersecurity journey! While this isn't my first hands-on lab, it is the very first one I have formally documented as part of my progress toward the Google Cybersecurity Professional Certificate.</p>\n        <p>In this lab, I stepped into the role of a security analyst tasked with auditing and securing a research team's Linux development environment to align it with strict organizational data protection policies.</p>\n        <p>The Mission: Eliminating Authorization Vulnerabilities</p>\n        <p>Operating within a Bash terminal, I used commands like ls -al to uncover hidden files and analyze the 10-character permission strings of the environment's directories and assets. I quickly identified several over-permissive write access issues and hidden file exposures that violated our compliance standards.</p>\n        <p>The Fix: Applying Least Privilege</p>\n        <p>To bring the environment to a secure state, I systematically modified file modes using the chmod command to enforce the Principle of Least Privilege:</p>\n        <p>Public Write Access Revoked: Discovered that project_k.txt allowed write permissions for anyone (-rw-rw-rw-). I executed chmod o-w project_k.txt to strip public write authorization.</p>\n        <p>Securing Hidden Assets: Located a hidden file, .project_x.txt, with improper permissions. Through targeted commands like chmod g+r,g-w, I transitioned it to a secure, read-only state for both the user and the group (-r--r-----).</p>\n        <p>Directory Isolation: Inspected the drafts directory, which initially allowed execute-only access to the group (drwx--x---). By running chmod g-x drafts, I completely restricted entry to the owner alone (drwx------).</p>\n        <p>The Takeaway</p>\n        <p>Linux file permissions are a fundamental pillar of access control. Successfully auditing these permissions and resolving vulnerabilities silently and effectively via the CLI was an incredibly rewarding experience. Documenting this process has reinforced how critical the principle of least privilege is to keeping organizational data safe.</p>",
       "footHtml": "          <a href=\"/blog/\">← all write-ups</a>\n          <a href=\"https://www.linkedin.com/in/dfour/\" target=\"_blank\" rel=\"noreferrer\">originally shared on LinkedIn ↗</a>\n          <a href=\"/labs/linux-file-permissions-audit/\">read the full lab report →</a>"
+    },
+    {
+      "slug": "learning-cybersecurity-at-your-own-pace",
+      "listTitle": "I used to think everyone understood cybersecurity except me",
+      "date": "Mar 2026",
+      "categoryClass": "cat-cyber",
+      "category": "origin story",
+      "title": "I used to think everyone understood cybersecurity except me",
+      "description": "Feeling behind while everyone else talked about XSS and Active Directory, and what changed when I stopped rushing myself.",
+      "accent": "green",
+      "meta": [
+        "<span>Mar 2026</span>",
+        "<span class=\"tag-pill\">origin story</span>",
+        "<span>from linkedin</span>"
+      ],
+      "body": "        <p>I used to think everyone understood cybersecurity except me. I saw people talk about XSS, SQL injection, Active Directory and bug bounties like it was normal. I was still trying to learn simple terms.</p>\n        <p>I felt behind. I doubted myself.</p>\n        <p>Then I learned something helpful. Progress depends on steady learning. You move forward when you stop rushing yourself.</p>\n        <p>Starting with free courses helped me. The Cisco Introduction to Cybersecurity course gave me the basics. The Google Cybersecurity Certificate is adding structure. Taking things slow helped me understand more.</p>\n        <p>You grow when you accept your pace. You stay consistent. You learn one topic at a time.</p>\n        <p>Most people online are only a few steps ahead or more confident in sharing. Your effort matters more than speed.</p>\n        <p>Keep learning. Keep moving.</p>\n        <figure class=\"lab-fig\"><img src=\"/assets/post-images/learning-at-my-own-pace.jpg\" alt=\"A laptop, a pair of glasses and a mouse on a desk\" loading=\"lazy\"><figcaption><b>Figure 1</b> — Where most of the learning actually happened.</figcaption></figure>",
+      "footHtml": "          <a href=\"/blog/\">← all write-ups</a>\n          <a href=\"https://www.linkedin.com/in/dfour/\" target=\"_blank\" rel=\"noreferrer\">originally shared on LinkedIn ↗</a>\n          <a href=\"/certifications/\">all certifications →</a>"
     },
     {
       "slug": "world-tuberculosis-day-awareness",

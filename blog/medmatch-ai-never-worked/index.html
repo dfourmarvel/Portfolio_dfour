@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The AI feature that had never worked — Daniel Dela Dzikunu</title>
+  <meta name="description" content="A payload shape mismatch returned 400 for every user for four months, and the friendly fallback made it look intentional.">
+  <link rel="canonical" href="https://danieldeladzikunu.vercel.app/blog/medmatch-ai-never-worked/">
+  <meta property="og:title" content="The AI feature that had never worked">
+  <meta property="og:description" content="A payload shape mismatch returned 400 for every user for four months, and the friendly fallback made it look intentional.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://danieldeladzikunu.vercel.app/blog/medmatch-ai-never-worked/">
+  <meta property="og:image" content="https://danieldeladzikunu.vercel.app/assets/images/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="The AI feature that had never worked">
+  <meta name="twitter:description" content="A payload shape mismatch returned 400 for every user for four months, and the friendly fallback made it look intentional.">
+  <meta name="twitter:image" content="https://danieldeladzikunu.vercel.app/assets/images/og.png">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='14' fill='%230a0e0c'/><text x='50' y='68' text-anchor='middle' font-size='52' font-family='monospace' font-weight='bold' fill='%233df5a5'>DD</text></svg>">
+  <link rel="stylesheet" href="/css/main.css">
+</head>
+<body data-ac="cyan">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="wrap">
+    <nav class="site-nav" aria-label="Main navigation">
+      <a class="brand" href="/"><span class="beat" aria-hidden="true">♥</span> daniel@portfolio<span>:~$</span></a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle navigation menu">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-menu" id="nav-menu">
+        <a href="/medicine/">medicine</a>
+        <a href="/cybersecurity/">cybersecurity</a>
+        <a href="/web-development/">web-dev</a>
+        <a href="/graphic-design/">design</a>
+        <a href="/certifications/">certs</a>
+        <a href="/blog/" aria-current="page">blog</a>
+        <a href="/#contact">contact</a>
+        <a class="cv-btn" href="/cv.pdf" target="_blank" rel="noopener">CV ↓</a>
+      </div>
+    </nav>
+
+    <header class="page-hero">
+      <span class="crumb">blog</span>
+      <h1>The AI feature that had never worked</h1>
+      <p class="post-meta">
+        <span>Sep 09, 2026</span>
+        <span class="tag-pill">web project</span>
+        <span>from linkedin</span>
+      </p>
+    </header>
+
+    <main id="main">
+      <section style="padding-top: 40px;">
+        <article class="post-body reveal">
+        <p>The AI feature on my app had never worked. Not once, for anyone, in the four months since it shipped.</p>
+        <p>MedMatch Ghana gives medical students a specialty-fit assessment, and part of the results page was meant to be an AI-written explanation of why your top three matches came out the way they did. I was reading the route handler for an unrelated reason when I noticed it was validating a request shape — a user id, an answers array, a list of top specialties — that the results page had stopped sending long ago. The page posts the full assessment result object. The route rejected it. Every live request returned a 400.</p>
+        <p>Nobody saw an error, because the client caught the failure and showed a friendly fallback message instead. It looked intentional. It looked like a product decision. Every person who ever finished the assessment got the fallback, and nobody reported anything, because there was nothing visibly broken to report.</p>
+        <p>Three days later I found the same shape of bug somewhere else. A scheduled job kept my free-tier Supabase project awake by calling a results endpoint with a zeroed UUID and treating the 404 as proof of life. That function returns not-found when the row is missing, when the database client fails to initialise, and when the query itself errors. All three come back as 404. The check reported green with the database completely unreachable, which is the one condition it existed to detect. I replaced it with an endpoint that runs a real head query and answers 200 or 503, then confirmed it returns 503 against placeholder credentials — exactly the case the old one called healthy.</p>
+        <p>Both are the same mistake. I built systems that degrade gracefully, and they degraded so gracefully that nothing ever told me they were degrading.</p>
+        <p>The clinical version is familiar. A patient in compensated shock has a normal blood pressure. The number is real, it is reassuring, and it is the last thing you should trust, because the body is holding that reading up at a cost the monitor cannot show you. Normal vitals are not a well patient, and a passing health check is not a working system.</p>
+        <p>The limitation worth stating: I found both of these by reading my own code, not from monitoring, which is itself the finding. That project has no error tracking and no alert on 4xx rates. With either one, the first bug surfaces in a day instead of four months.</p>
+        <p>If you run something small in production, I would like to know what your cheapest signal is that a fallback path has quietly become the only path.</p>
+        </article>
+        <div class="post-foot">
+          <a href="/blog/">← all write-ups</a>
+          <a href="https://www.linkedin.com/in/dfour/" target="_blank" rel="noreferrer">originally shared on LinkedIn ↗</a>
+          <a href="/web-development/med-match/">see the project →</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span>© 2026 Daniel Dela Dzikunu</span>
+      <span>built by hand · no template</span>
+    </footer>
+  </div>
+
+  <script src="/assets/vendor/gsap/gsap.min.js"></script>
+  <script src="/assets/vendor/gsap/ScrollTrigger.min.js"></script>
+  <script src="/js/main.js"></script>
+</body>
+</html>

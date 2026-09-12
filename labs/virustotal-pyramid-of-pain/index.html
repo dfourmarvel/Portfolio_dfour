@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VirusTotal Malware Investigation — Daniel Dela Dzikunu</title>
+  <meta name="description" content="A Tier 1 SOC investigation: one SHA-256 hash expanded across the Pyramid of Pain, from a rotatable MD5 up to privilege-escalation TTPs.">
+  <link rel="canonical" href="https://danieldeladzikunu.vercel.app/labs/virustotal-pyramid-of-pain/">
+  <meta property="og:title" content="VirusTotal Malware Investigation">
+  <meta property="og:description" content="A Tier 1 SOC investigation: one SHA-256 hash expanded across the Pyramid of Pain, from a rotatable MD5 up to privilege-escalation TTPs.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://danieldeladzikunu.vercel.app/labs/virustotal-pyramid-of-pain/">
+  <meta property="og:image" content="https://danieldeladzikunu.vercel.app/assets/images/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="VirusTotal Malware Investigation">
+  <meta name="twitter:description" content="A Tier 1 SOC investigation: one SHA-256 hash expanded across the Pyramid of Pain, from a rotatable MD5 up to privilege-escalation TTPs.">
+  <meta name="twitter:image" content="https://danieldeladzikunu.vercel.app/assets/images/og.png">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='14' fill='%230a0e0c'/><text x='50' y='68' text-anchor='middle' font-size='52' font-family='monospace' font-weight='bold' fill='%233df5a5'>DD</text></svg>">
+  <link rel="stylesheet" href="/css/main.css">
+</head>
+<body data-ac="green">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="wrap">
+    <nav class="site-nav" aria-label="Main navigation">
+      <a class="brand" href="/"><span class="beat" aria-hidden="true">♥</span> daniel@portfolio<span>:~$</span></a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle navigation menu">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-menu" id="nav-menu">
+        <a href="/medicine/">medicine</a>
+        <a href="/cybersecurity/" aria-current="page">cybersecurity</a>
+        <a href="/web-development/">web-dev</a>
+        <a href="/graphic-design/">design</a>
+        <a href="/certifications/">certs</a>
+        <a href="/blog/">blog</a>
+        <a href="/#contact">contact</a>
+        <a class="cv-btn" href="/cv.pdf" target="_blank" rel="noopener">CV ↓</a>
+      </div>
+    </nav>
+
+    <header class="page-hero">
+      <span class="crumb">cybersecurity / labs</span>
+      <h1>VirusTotal Malware Investigation</h1>
+      <p class="lede reveal">A Tier 1 SOC investigation: one SHA-256 hash expanded across the Pyramid of Pain, from a rotatable MD5 up to privilege-escalation TTPs.</p>
+      <div class="lab-tools reveal"><span class="tool">VirusTotal</span><span class="tool">Pyramid of Pain</span><span class="tool">MITRE ATT&amp;CK</span><span class="tool">Threat Intel</span></div>
+    </header>
+
+    <main id="main">
+      <section style="padding-top: 40px;">
+        <article class="lab-body reveal">
+        <p>This project simulates a Tier 1 Security Operations Center (SOC) investigation at a financial services company. An employee received an email containing a password-protected spreadsheet attachment, with the password supplied in the body of the same email. After the employee opened the file, a malicious payload executed on the workstation, dropping multiple unauthorized executable files and triggering an intrusion detection system (IDS) alert. The SHA-256 hash of the retrieved malicious file served as the starting artifact for the investigation. Using VirusTotal, a crowdsourced threat intelligence platform that aggregates verdicts from dozens of independent security vendors, the file was analysed across its detection ratio, static properties, network relations, and sandboxed behaviour. The resulting indicators of compromise (IoCs) were then mapped onto the Pyramid of Pain, a framework that orders IoC types by the operational difficulty they impose on an adversary when a defender detects and blocks them — from trivially-replaceable hash values at the base to costly-to-alter tactics, techniques, and procedures (TTPs) at the apex.</p>
+
+        <h2>Task 1 — Alert triage and timeline review</h2>
+        <p>Before beginning the VirusTotal investigation, the alert details and the event timeline were reviewed to establish the sequence of compromise, and the SHA-256 hash of the malicious file was recorded as the artifact for analysis.</p>
+        <div class="code"><div class="code-bar"><i></i><i></i><i></i><span>timeline</span></div><pre>13:11 — Employee receives email with file attachment
+13:13 — Employee downloads and opens the file
+13:15 — Multiple unauthorized executable files created
+13:20 — IDS detects the executables and alerts the SOC</pre></div>
+        <div class="code"><div class="code-bar"><i></i><i></i><i></i><span>artifact</span></div><pre>SHA-256:
+54e6ea47eb04634d3e87fd7787e2136ccfbcc80ade34f246a12cf93bab527f6b</pre></div>
+
+        <h2>Task 2 — Detection tab: determining maliciousness</h2>
+        <p>The Detection tab returned verdicts from 71 security vendors, of which 53 flagged the file as malicious — a ratio of roughly 75%. The Community Score, a crowdsourced maliciousness indicator drawn from the VirusTotal user base, stood at -292, a strongly negative score consistent with the vendor consensus. The popular threat label trojan.flagpro/fragtor, along with the family labels flagpro, fragtor, and bfrl, further corroborate a trojan classification rather than a false positive. With all three independent measures — vendor ratio, community score, and named threat classification — pointing in the same direction, the file is assessed as malicious.</p>
+        <figure class="lab-fig"><picture><source srcset="/assets/lab-figures/pyramid-01.webp" type="image/webp"><img src="/assets/lab-figures/pyramid-01.png" alt="VirusTotal Detection tab showing 53 of 71 vendors flagging the file as malicious" loading="lazy"></picture><figcaption><b>Figure 1</b> — VirusTotal Detection tab showing 53 of 71 security vendors flagging the file as malicious, with a Community Score of -292.</figcaption></figure>
+
+        <h2>Task 3 — Details tab: identifying an additional hash value</h2>
+        <p>The Details tab provides the results of VirusTotal's static analysis and lists every hash type computed for the artifact. Beyond the SHA-256 hash already used as the case's starting point, the report also lists an MD5 and a SHA-1 hash, either of which is equally valid for uniquely identifying this specific file. The MD5 hash was selected for the Hash values tier of the Pyramid of Pain.</p>
+        <div class="code"><div class="code-bar"><i></i><i></i><i></i><span>hash</span></div><pre>MD5: 287d612e29b71c90aa54947313810a25</pre></div>
+        <figure class="lab-fig"><picture><source srcset="/assets/lab-figures/pyramid-02.webp" type="image/webp"><img src="/assets/lab-figures/pyramid-02.png" alt="VirusTotal Details tab listing MD5, SHA-1, and SHA-256 hashes" loading="lazy"></picture><figcaption><b>Figure 2</b> — VirusTotal Details tab listing the file's MD5, SHA-1, and SHA-256 hashes alongside its basic static properties.</figcaption></figure>
+
+        <h2>Task 4 — Relations tab: domain and IP address indicators</h2>
+        <p>The Relations tab lists every domain and IP address the malware's sandboxed executions contacted, alongside a Detections column showing how many vendors flagged each one as malicious. Of the 100 contacted domains listed, the large majority returned 0/91 detections — legitimate infrastructure, such as Google and Microsoft services, that the malware likely queried incidentally. One domain, a.sinkhole.yourtrap.com, stood out with 10/91 detections, making it a credible malicious network indicator. Among the 431 contacted IP addresses, 104.86.245.126 was selected for the Pyramid of Pain despite carrying a 0/91 detection ratio — illustrating a core property of the Pyramid: IP addresses sit low on the pyramid precisely because they are cheap for an attacker to rotate and are frequently shared, legitimate, or coincidental infrastructure, which makes them weak indicators in isolation even when directly observed in the malware's own traffic.</p>
+        <figure class="lab-fig"><picture><source srcset="/assets/lab-figures/pyramid-03.webp" type="image/webp"><img src="/assets/lab-figures/pyramid-03.png" alt="VirusTotal Relations tab listing contacted domains and IP addresses" loading="lazy"></picture><figcaption><b>Figure 3</b> — VirusTotal Relations tab listing contacted domains and IP addresses, including the flagged domain a.sinkhole.yourtrap.com (10/91 detections).</figcaption></figure>
+
+        <h2>Task 5 — Behavior tab: network artifacts, tools, and TTPs</h2>
+        <p>The Behavior tab aggregates sandbox execution reports from multiple analysis engines — including CAPA, CAPE Sandbox, DAS-Security Orcas, Rising MOVES, and Tencent HABO — each observing the malware's actions when detonated in an isolated environment. Reviewing these reports surfaced a dropped file, KB0K8X6S.htm, logged as a host artifact; use of the Command Prompt (cmd.exe) and Windows Management Instrumentation (wmiprvse.exe) as execution tools; and three techniques mapped to the MITRE ATT&amp;CK Privilege Escalation tactic (TA0004). These three indicator types sit progressively higher on the Pyramid of Pain than hashes, domains, or IPs, because a defender who detects and disrupts them forces the adversary to retool or rewrite part of the attack chain rather than simply rotating infrastructure.</p>
+        <figure class="lab-fig"><picture><source srcset="/assets/lab-figures/pyramid-04.webp" type="image/webp"><img src="/assets/lab-figures/pyramid-04.png" alt="VirusTotal Behavior tab showing sandbox reports reviewed for tools, artifacts, and TTPs" loading="lazy"></picture><figcaption><b>Figure 4</b> — VirusTotal Behavior tab, showing the sandbox reports (CAPA, CAPE Sandbox, DAS-Security Orcas, and others) reviewed to identify tools, host artifacts, and TTPs.</figcaption></figure>
+
+        <h2>Task 6 — Pyramid of Pain documentation</h2>
+        <p>All identified indicators were consolidated into the Pyramid of Pain template, ordering the six IoC types by increasing cost-to-adversary: hash value (MD5) at the base, followed by IP address, domain name, network/host artifact, tools, and TTPs at the apex. This ordering reflects the difficulty a threat actor faces when each indicator type is detected and blocked — a hash is trivially defeated by recompiling the binary, while retooling an entire attack chain to avoid a known TTP demands significant adversary investment.</p>
+        <div class="lab-table-wrap"><table class="lab-table"><thead><tr><th>Tier</th><th>Indicator type</th><th>Value</th></tr></thead><tbody><tr><td>1 (base)</td><td>Hash value</td><td>MD5: 287d612e29b71c90aa54947313810a25</td></tr><tr><td>2</td><td>IP address</td><td>104.86.245.126</td></tr><tr><td>3</td><td>Domain name</td><td>a.sinkhole.yourtrap.com</td></tr><tr><td>4</td><td>Network/host artifact</td><td>KB0K8X6S.htm (dropped file)</td></tr><tr><td>5</td><td>Tools</td><td>cmd.exe, wmiprvse.exe</td></tr><tr><td>6 (apex)</td><td>TTPs</td><td>MITRE ATT&amp;CK Privilege Escalation (TA0004)</td></tr></tbody></table></div>
+        <figure class="lab-fig"><picture><source srcset="/assets/lab-figures/pyramid-05.webp" type="image/webp"><img src="/assets/lab-figures/pyramid-05.png" alt="Completed Pyramid of Pain mapping all six IoC types" loading="lazy"></picture><figcaption><b>Figure 5</b> — Completed Pyramid of Pain mapping all six IoC types identified for this investigation.</figcaption></figure>
+
+        <div class="verdict"><p class="v-label">key takeaway</p><p>This investigation confirmed the retrieved file as malicious through three independent, mutually reinforcing signals: a 53/71 vendor detection ratio, a Community Score of -292, and a named trojan classification (flagpro/fragtor family). Beyond the initial SHA-256 hash, the VirusTotal report yielded a full spread of indicators across the Pyramid of Pain — from an easily-rotated hash and a low-confidence IP address, through a flagged malicious domain and a dropped host artifact, up to the tools and privilege-escalation TTPs that represent the adversary's actual tradecraft. The exercise reinforced why threat intelligence teams prioritise TTP-level detection over IoC-level blocklisting: indicators lower on the pyramid are cheap for an attacker to discard, while the behavioural patterns at the top are far more costly to change and therefore far more durable as detection signals.</p></div>
+        </article>
+        <div class="post-foot"><a href="/blog/virustotal-pyramid-of-pain/">the story behind this lab →</a><a href="/cybersecurity/">all labs →</a></div>
+        <div class="lab-nav"><span></span><a href="/labs/tcpdump-packet-capture/">Capturing HTTP Traffic with tcpdump →</a></div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span>© 2026 Daniel Dela Dzikunu</span>
+      <span>built by hand · no template</span>
+    </footer>
+  </div>
+
+  <script src="/assets/vendor/gsap/gsap.min.js"></script>
+  <script src="/assets/vendor/gsap/ScrollTrigger.min.js"></script>
+  <script src="/js/main.js"></script>
+</body>
+</html>
