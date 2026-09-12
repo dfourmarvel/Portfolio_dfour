@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio admin</title>
+  <!-- Filled in by the server for this run only; proves a request came from this page. -->
+  <meta name="admin-token" content="__ADMIN_TOKEN__">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='14' fill='%230a0e0c'/><text x='50' y='68' text-anchor='middle' font-size='52' font-family='monospace' font-weight='bold' fill='%233df5a5'>DD</text></svg>">
+  <link rel="stylesheet" href="/admin/app.css">
+</head>
+<body>
+  <header class="bar">
+    <span class="brand">daniel@portfolio<span class="dim">:~$</span> admin</span>
+    <nav class="tabs" id="tabs">
+      <button type="button" data-view="posts" class="on">Blog posts</button>
+      <button type="button" data-view="projects">Projects</button>
+    </nav>
+    <div class="bar-right">
+      <span class="status" id="status" aria-live="polite"></span>
+      <button type="button" class="primary" id="publish-open">Publish to the live site</button>
+    </div>
+  </header>
+
+  <main id="main" tabindex="-1"></main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+  <dialog id="publish">
+    <form method="dialog" class="sheet">
+      <h2>Publish to the live site</h2>
+      <p class="note">This saves a version of your changes and sends them to GitHub. Vercel then rebuilds the site — usually live within a minute.</p>
+      <div id="publish-changes" class="changes"></div>
+      <label class="field">
+        <span>What changed? <em>(a short note for your own history)</em></span>
+        <input type="text" id="publish-message" placeholder="Add write-up on the Wireshark lab" autocomplete="off">
+      </label>
+      <div id="publish-log" class="log" hidden></div>
+      <div class="sheet-actions">
+        <button type="button" class="ghost" id="publish-cancel">Cancel</button>
+        <button type="button" class="primary" id="publish-go">Publish</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script type="module" src="/admin/app.js"></script>
+</body>
+</html>

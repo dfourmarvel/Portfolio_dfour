@@ -62,6 +62,6 @@ export const FOOTER = `    <footer class="site-footer">
       <span>built by hand · no template</span>
     </footer>`;
 
-export const SCRIPTS = `  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+export const SCRIPTS = `  <script src="/assets/vendor/gsap/gsap.min.js"></script>
+  <script src="/assets/vendor/gsap/ScrollTrigger.min.js"></script>
   <script src="/js/main.js"></script>`;

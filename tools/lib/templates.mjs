@@ -154,6 +154,8 @@ export function projectPage(slug, project) {
     ogType: 'article',
   });
   const labNav = project.labNavHtml ? `\n        <div class="lab-nav">${project.labNavHtml}</div>` : '';
+  const heroNote = project.heroNoteHtml ? `
+      ${project.heroNoteHtml}` : '';
   const tools = project.tools.map((t) => `<span class="tool">${t}</span>`).join('');
   return page({
     headHtml,
@@ -167,7 +169,7 @@ export function projectPage(slug, project) {
       <div class="lab-tools reveal">${tools}</div>
       <div class="feat-links reveal">
 ${project.heroLinksHtml}
-      </div>
+      </div>${heroNote}
     </header>
 
     <main id="main">

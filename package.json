@@ -1,0 +1,15 @@
+{
+  "name": "portfolio-dfour",
+  "private": true,
+  "version": "2.0.0",
+  "description": "Daniel Dela Dzikunu's portfolio. Static site; these scripts are authoring tools only and are never deployed.",
+  "type": "module",
+  "scripts": {
+    "admin": "node tools/admin/server.mjs",
+    "generate": "node tools/generate.mjs",
+    "verify": "node tools/verify.mjs",
+    "extract": "node tools/extract.mjs",
+    "link-check": "node tools/link-check.mjs",
+    "serve": "npx serve ."
+  }
+}

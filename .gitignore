@@ -5,6 +5,9 @@
 .idea/
 .claude/
 
+# Node tooling (the admin runs on plain node, but keep this honest)
+node_modules/
+
 # OS files
 .DS_Store
 Thumbs.db

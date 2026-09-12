@@ -6,7 +6,7 @@ import { readFile, readdir, stat } from 'node:fs/promises';
 import { join, dirname, resolve } from 'node:path';
 import { ROOT } from './lib/paths.mjs';
 
-const SKIP_DIRS = new Set(['.git', 'node_modules']);
+const SKIP_DIRS = new Set(['.git', 'node_modules', 'tools', '.claude', '.foreman']);
 const ATTR_RE = /\s(?:href|src)="([^"]*)"/g;
 
 async function walkHtml(dir, out) {
