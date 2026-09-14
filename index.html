@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Daniel Dela Dzikunu — Medicine × Cybersecurity × Code × Design</title>
-  <meta name="description" content="Daniel Dela Dzikunu: medical student on the surgery track, building hands-on cybersecurity skills lab by lab, and shipping web projects and designs along the way.">
+  <title>Daniel Dela Dzikunu (D4 / Dfour) — Medical Student &amp; Cybersecurity</title>
+  <meta name="description" content="Daniel Dela Dzikunu (D4, Dfour) is a medical student at Entrance University of Health Sciences in Accra, Ghana, training in cybersecurity through the Google Cybersecurity Certificate and building web apps.">
   <link rel="canonical" href="https://danieldeladzikunu.vercel.app/">
   <meta property="og:title" content="Daniel Dela Dzikunu — Medicine × Cybersecurity × Code × Design">
   <meta property="og:description" content="Medical student building real cybersecurity skills, web projects, and designs — all documented here.">
@@ -19,11 +19,35 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Daniel Dela Dzikunu",
-    "jobTitle": ["Medical Student", "Cybersecurity Learner", "Web Developer"],
-    "email": "mailto:danieldeladzikunu@gmail.com",
-    "sameAs": ["https://github.com/dfourmarvel", "https://www.linkedin.com/in/dfour/"]
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": "https://danieldeladzikunu.vercel.app/#person",
+        "name": "Daniel Dela Dzikunu",
+        "givenName": "Daniel",
+        "additionalName": "Dela",
+        "familyName": "Dzikunu",
+        "alternateName": ["D4", "Dfour", "dfourmarvel", "Daniel Dzikunu", "Dela Dzikunu"],
+        "description": "Medical student (MBChB) at Entrance University of Health Sciences in Accra, Ghana, training in cybersecurity and building web applications.",
+        "url": "https://danieldeladzikunu.vercel.app/",
+        "image": "https://danieldeladzikunu.vercel.app/assets/images/og.png",
+        "jobTitle": ["Medical Student", "Cybersecurity Learner", "Web Developer"],
+        "affiliation": { "@type": "CollegeOrUniversity", "name": "Entrance University of Health Sciences", "address": { "@type": "PostalAddress", "addressLocality": "Accra", "addressCountry": "GH" } },
+        "homeLocation": { "@type": "Place", "name": "Accra, Ghana" },
+        "nationality": { "@type": "Country", "name": "Ghana" },
+        "knowsAbout": ["Medicine", "Cybersecurity", "Security operations", "Linux", "SQL", "Web development", "Next.js", "Supabase"],
+        "email": "mailto:danieldeladzikunu@gmail.com",
+        "sameAs": ["https://github.com/dfourmarvel", "https://www.linkedin.com/in/dfour/"]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://danieldeladzikunu.vercel.app/#website",
+        "url": "https://danieldeladzikunu.vercel.app/",
+        "name": "Daniel Dela Dzikunu (D4)",
+        "alternateName": ["Dfour", "D4 portfolio"],
+        "about": { "@id": "https://danieldeladzikunu.vercel.app/#person" }
+      }
+    ]
   }
   </script>
   <link rel="stylesheet" href="/css/main.css">
@@ -80,6 +104,12 @@
     </header>
 
     <main id="main">
+      <section id="about">
+        <p class="sec-label">about</p>
+        <h2 class="reveal">Who is Daniel Dela Dzikunu?</h2>
+        <p class="reveal">Daniel Dela Dzikunu, also known as <b>D4</b> or <b>Dfour</b>, is a first-year medical student (MBChB) at Entrance University of Health Sciences in Accra, Ghana. Alongside medicine he trains in cybersecurity through the Google Cybersecurity Certificate, writing up hands-on labs in Linux, SQL, packet capture and incident triage. He also builds web apps with Next.js and Supabase, including med-match, and publishes open-source code on GitHub as dfourmarvel.</p>
+      </section>
+
       <section id="domains">
         <p class="sec-label">domains</p>
         <h2 class="reveal">Four things I do.</h2>
@@ -209,7 +239,7 @@
     <p class="foot-echo" id="foot-echo" style="font-family: var(--mono); font-size: 12.5px; color: var(--text-dim); text-align: center; margin: 40px 0 -6px;"></p>
 
     <footer class="site-footer">
-      <span>© 2026 Daniel Dela Dzikunu</span>
+      <span>© 2026 Daniel Dela Dzikunu (D4)</span>
       <span>built by hand · no template</span>
     </footer>
   </div>
