@@ -47,6 +47,23 @@
       "footHtml": "          <a href=\"/blog/\">← all write-ups</a>\n          <a href=\"https://www.linkedin.com/in/dfour/\" target=\"_blank\" rel=\"noreferrer\">originally shared on LinkedIn ↗</a>\n          <a href=\"/web-development/med-match/\">see the project →</a>"
     },
     {
+      "slug": "medmatch-ghana-specialty-quiz",
+      "listTitle": "Ask a medical student in Ghana how they chose their specialty",
+      "date": "Sep 09, 2026",
+      "categoryClass": "cat-web",
+      "category": "web project",
+      "title": "Ask a medical student in Ghana how they chose their specialty",
+      "description": "Every specialty quiz online assumes a US match or UK training, so I built one around the GCPS pathway, Korle-Bu and Komfo Anokye.",
+      "accent": "cyan",
+      "meta": [
+        "<span>Sep 09, 2026</span>",
+        "<span class=\"tag-pill\">web project</span>",
+        "<span>from linkedin</span>"
+      ],
+      "body": "        <p>Ask a medical student in Ghana how they chose their specialty and you will usually get a story about one rotation, one consultant they admired, or one relative who said surgery pays.</p>\n        <p>That was going to be my process too. When I went looking for something better, I found that every specialty quiz online is built around American residency match data and British training pathways. Useful if you are matching into a US program. Useless if your next step is the Ghana College of Physicians and Surgeons and a residency post at Korle-Bu or Komfo Anokye.</p>\n        <p>So I built the local version. MedMatch Ghana is live at <a href=\"https://medmatchgh.vercel.app\" target=\"_blank\" rel=\"noreferrer\">medmatchgh.vercel.app</a>, it is free, and it takes about ten minutes.</p>\n        <p>Twenty-five questions — a mix of agreement statements and situational choices — score you across fifteen traits: procedural interest, diagnostic reasoning, tolerance for long training, comfort in emergencies, how much you need a predictable schedule, and ten others. Those scores are matched against twenty specialties, fifteen medical and five dental, each carrying its actual Ghanaian context: how long training runs, what the GCPS pathway looks like, realistic pay, and the honest downsides. You can also get an AI-written explanation of why your top three came out the way they did.</p>\n        <p>What it is not: a structured way to think, not an answer. There is no outcome data behind it — no cohort of Ghanaian doctors followed for a decade telling me that people who score high on precision orientation end up happy in pathology. The trait model and the specialty weightings are mine, built from published training requirements and a lot of reading, and they are opinionated. A specialty you have actually rotated through will always beat a questionnaire.</p>\n        <p>Which is why I would rather it be wrong in public than untested in private. If you are a Ghanaian medical or dental student, take it and tell me where the result missed. If you are already a specialist here, the description of your own field is the part I most want you to argue with.</p>",
+      "footHtml": "          <a href=\"/blog/\">← all write-ups</a>\n          <a href=\"https://www.linkedin.com/posts/dfour_ask-a-medical-student-in-ghana-how-they-chose-share-7503574284624162816-MQ1O\" target=\"_blank\" rel=\"noreferrer\">originally shared on LinkedIn ↗</a>\n          <a href=\"/web-development/med-match/\">see the project →</a>"
+    },
+    {
       "slug": "why-nigerian-scammers-say-nigeria",
       "listTitle": "Why Nigerian scammers say they are from Nigeria",
       "date": "Sep 04, 2026",
