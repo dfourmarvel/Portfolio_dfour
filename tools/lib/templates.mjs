@@ -20,7 +20,7 @@ ${SCRIPTS}
 
 export function blogPost(post) {
   const headHtml = head({
-    title: `${post.title} — Daniel Dela Dzikunu`,
+    title: `${post.title} | Daniel Dela Dzikunu`,
     description: post.description,
     canonicalPath: `/blog/${post.slug}/`,
     ogTitle: post.title,
@@ -84,7 +84,6 @@ export function blogIndex({ posts, page: meta }) {
 
     <main id="main">
       <section>
-        <p class="sec-label">${meta.secLabel}</p>
         <h2 class="reveal">${meta.secHeading}</h2>
 
         <div class="lab-filter" id="blog-filter" role="group" aria-label="Filter posts by topic" hidden></div>
@@ -132,7 +131,6 @@ ${p.linksHtml}
 
     <main id="main">
       <section>
-        <p class="sec-label">${meta.secLabel}</p>
         <h2 class="reveal">${meta.secHeading}</h2>
 
         <div class="feat-grid">
@@ -146,7 +144,7 @@ ${cards}
 
 export function projectPage(slug, project) {
   const headHtml = head({
-    title: `${project.title} — Daniel Dela Dzikunu`,
+    title: `${project.title} | Daniel Dela Dzikunu`,
     description: project.description,
     canonicalPath: `/web-development/${slug}/`,
     ogTitle: project.title,

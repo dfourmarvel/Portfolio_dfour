@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>A tidying script permanently deleted 14 GB — Daniel Dela Dzikunu</title>
+  <title>A tidying script permanently deleted 14 GB | Daniel Dela Dzikunu</title>
   <meta name="description" content="A dry run that printed the safe path, a case-insensitive folder collision, and 133 files that never reached the Recycle Bin.">
   <link rel="canonical" href="https://danieldeladzikunu.vercel.app/blog/claude-code-deleted-14gb/">
   <meta property="og:title" content="A tidying script permanently deleted 14 GB">
@@ -53,11 +53,11 @@
       <section style="padding-top: 40px;">
         <article class="post-body reveal">
         <p>Yesterday I asked Claude Code to organise my Downloads folder. It did. It also permanently deleted 14 GB that I never asked it to touch.</p>
-        <p>Some context: Claude Code is my main coding tool, and by now it does considerably more than code — it helps me plan my week against my course timetable and generally keeps my files and notes in order. Handing it a messy Downloads folder was, on paper, the least risky thing I had ever asked it to do. And most of the job was good. It took 209 loose files in the Downloads root down to four and hash-matched 109 genuine duplicates into the Recycle Bin. It even caught one of its own bugs before running it — filenames containing square brackets were failing to hash, which would have flagged every anime episode on the drive as one enormous duplicate set. It fixed that. I reviewed the fix. I felt quite good about the whole thing.</p>
-        <p>Then came the part I did not review closely enough. The script needed to merge an old folder called media into a new one called Media. On Windows, those are the same folder. So it moved the folder's entire contents into a subdirectory of itself, then ran Remove-Item -Recurse -Force on the source — which, unlike dragging something to the bin, does not go to the Recycle Bin at all. 133 files. Anime I can re-download, design work I cannot, and a video off my phone from May that I definitely cannot.</p>
-        <figure class="lab-fig"><img src="/assets/post-images/claude-code-data-loss.jpg" alt="Claude Code transcript reporting 133 files and roughly 14 GB permanently deleted from Downloads\Media, bypassing the Recycle Bin" loading="lazy"><figcaption><b>Figure 1</b> — The agent's own report of what it destroyed: 133 files plus 3 folders, outside the Recycle Bin because <code>Remove-Item -Recurse -Force</code> bypasses it.</figcaption></figure>
+        <p>Some context: Claude Code is my main coding tool, and by now it does considerably more than code. It helps me plan my week against my course timetable and generally keeps my files and notes in order. Handing it a messy Downloads folder was, on paper, the least risky thing I had ever asked it to do. And most of the job was good. It took 209 loose files in the Downloads root down to four and hash-matched 109 genuine duplicates into the Recycle Bin. It even caught one of its own bugs before running it: filenames containing square brackets were failing to hash, which would have flagged every anime episode on the drive as one enormous duplicate set. It fixed that. I reviewed the fix. I felt quite good about the whole thing.</p>
+        <p>Then came the part I did not review closely enough. The script needed to merge an old folder called media into a new one called Media. On Windows, those are the same folder. So it moved the folder's entire contents into a subdirectory of itself, then ran Remove-Item -Recurse -Force on the source, which, unlike dragging something to the bin, does not go to the Recycle Bin at all. 133 files. Anime I can re-download, design work I cannot, and a video off my phone from May that I definitely cannot.</p>
+        <figure class="lab-fig"><img src="/assets/post-images/claude-code-data-loss.jpg" alt="Claude Code transcript reporting 133 files and roughly 14 GB permanently deleted from Downloads\Media, bypassing the Recycle Bin" loading="lazy"><figcaption><b>Figure 1</b>. The agent's own report of what it destroyed: 133 files plus 3 folders, outside the Recycle Bin because <code>Remove-Item -Recurse -Force</code> bypasses it.</figcaption></figure>
         <p>This is where the cybersecurity coursework turned up uninvited. My first instinct was file recovery, so I checked the disk: a Samsung NVMe SSD with TRIM enabled, meaning the controller zeroes deleted blocks within minutes instead of leaving them for a recovery tool to find. No File History, no restore points, Downloads never synced anywhere. Had any one of those been different, this would have become another lab write-up. Instead it is just a loss.</p>
-        <p>The failure I keep returning to is not the bug. It is that a routine tidying task had permission to permanently destroy files without asking anybody first. A dry run did run, and I read it — but it printed the safe path and never entered the branch holding the delete. Reading output is not the same as testing behaviour.</p>
+        <p>The failure I keep returning to is not the bug. It is that a routine tidying task had permission to permanently destroy files without asking anybody first. A dry run did run, and I read it, but it printed the safe path and never entered the branch holding the delete. Reading output is not the same as testing behaviour.</p>
         <p>What is in place now: deletions go to the Recycle Bin or they do not happen, and a hook that reads inside any script before it executes and forces a prompt when it finds a recursive delete. That last part matters, because the command that caused the damage was a single line invoking phase3_sort.ps1. There was nothing dangerous in the text at all.</p>
         <p>I have not attempted recovery with PhotoRec, so "unrecoverable" here is an inference from TRIM being enabled rather than a proven negative. If you have pulled files off a TRIM-enabled NVMe drive after a delete that bypassed the Recycle Bin, I would like to hear about it. I would be happy to be wrong.</p>
         </article>
@@ -70,7 +70,7 @@
 
     <footer class="site-footer">
       <span>© 2026 Daniel Dela Dzikunu</span>
-      <span>built by hand · no template</span>
+      <span><a href="https://github.com/dfourmarvel" target="_blank" rel="noreferrer">github</a> / <a href="https://www.linkedin.com/in/dfour/" target="_blank" rel="noreferrer">linkedin</a></span>
     </footer>
   </div>
 

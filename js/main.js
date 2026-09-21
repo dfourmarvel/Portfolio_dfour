@@ -45,63 +45,6 @@ if (menuToggle && navMenu) {
   });
 }
 
-/* ---------- hero terminal typing (homepage only) ---------- */
-const term = document.getElementById("term");
-if (term) {
-  const script = [
-    { type: "cmd", text: "whoami" },
-    { type: "out", html: '<span class="hl-rose">med student</span> · <span class="hl-green">security</span> · <span class="hl-cyan">builder</span>' },
-    { type: "cmd", text: "ls ./work" },
-    { type: "out", html: '<span class="hl-rose">medicine/</span>  <span class="hl-green">cybersecurity/</span>  <span class="hl-cyan">web-dev/</span>  <span class="hl-amber">design/</span>' },
-    { type: "cmd", text: "cat vitals.log" },
-    { type: "out", html: '<span class="hl-rose">♥ sinus rhythm</span> — all systems learning' },
-  ];
-  const renderLine = (kind, content) => {
-    const ln = document.createElement("span");
-    ln.className = "ln";
-    ln.innerHTML =
-      kind === "cmd"
-        ? `<span class="prompt">daniel@portfolio:~$</span> <span class="cmd">${content}</span>`
-        : `<span class="out">${content}</span>`;
-    term.appendChild(ln);
-  };
-  const typeScript = async () => {
-    for (const line of script) {
-      if (line.type === "cmd") {
-        const ln = document.createElement("span");
-        ln.className = "ln";
-        ln.innerHTML = `<span class="prompt">daniel@portfolio:~$</span> <span class="cmd"></span>`;
-        term.appendChild(ln);
-        const target = ln.querySelector(".cmd");
-        for (const ch of line.text) {
-          target.textContent += ch;
-          await new Promise((r) => setTimeout(r, 50));
-        }
-        await new Promise((r) => setTimeout(r, 220));
-      } else {
-        renderLine("out", line.html);
-        await new Promise((r) => setTimeout(r, 320));
-      }
-    }
-    const c = document.createElement("span");
-    c.innerHTML = `<span class="prompt">daniel@portfolio:~$</span> <span class="cursor"></span>`;
-    term.appendChild(c);
-  };
-  if (reduced) {
-    script.forEach((l) => renderLine(l.type, l.type === "cmd" ? l.text : l.html));
-  } else {
-    typeScript();
-  }
-}
-
-/* ---------- live bpm readout (homepage only) ---------- */
-const bpm = document.getElementById("bpm");
-if (bpm && !reduced) {
-  setInterval(() => {
-    bpm.textContent = `♥ ${68 + Math.floor(Math.random() * 9)} bpm`;
-  }, 2400);
-}
-
 /* ---------- GSAP entrances + scroll reveals ---------- */
 if (!reduced && window.gsap) {
   document.body.classList.add("anim");
@@ -229,46 +172,6 @@ initTopicFilter({
   noun: "post",
 });
 
-/* ---------- footer sign-off typing (homepage only) ----------
-   Deliberately separate from typeScript/#term above so this small closing
-   touch can never break the hero effect. */
-const footEcho = document.getElementById("foot-echo");
-if (footEcho) {
-  const signOff = "exit 0 — thanks for reading.";
-  const renderFootEcho = (text) => {
-    footEcho.innerHTML = `<span class="prompt">daniel@portfolio:~$</span> <span class="cmd">${text}</span><span class="cursor"></span>`;
-  };
-  const typeFootEcho = () => {
-    footEcho.innerHTML = `<span class="prompt">daniel@portfolio:~$</span> <span class="cmd"></span>`;
-    const target = footEcho.querySelector(".cmd");
-    let i = 0;
-    const step = () => {
-      if (i < signOff.length) {
-        target.textContent += signOff[i];
-        i++;
-        setTimeout(step, 50);
-      } else {
-        const cursor = document.createElement("span");
-        cursor.className = "cursor";
-        footEcho.appendChild(cursor);
-      }
-    };
-    step();
-  };
-  if (reduced) {
-    renderFootEcho(signOff);
-  } else if (window.gsap && window.ScrollTrigger) {
-    /* "top 88%"-style thresholds can sit past max-scroll for content this
-       close to the page's true bottom (the crossing never happens, so
-       onEnter never fires) — "top bottom" fires as the footer's top enters
-       the viewport, well before that edge case, and still reads as "the
-       footer scrolls into view". */
-    ScrollTrigger.create({ trigger: footEcho, start: "top bottom", once: true, onEnter: typeFootEcho });
-  } else {
-    renderFootEcho(signOff);
-  }
-}
-
 /* ---------- copy email ---------- */
 const chip = document.getElementById("email-chip");
 if (chip) {
@@ -280,4 +183,14 @@ if (chip) {
       setTimeout(() => (label.textContent = "[copy]"), 1800);
     } catch (e) { /* clipboard unavailable — mailto link still works */ }
   });
+}
+
+/* ---------- 404: show the path that was asked for ---------- */
+const missingPath = document.getElementById("missing-path");
+if (missingPath) {
+  let asked = location.pathname;
+  try { asked = decodeURIComponent(asked); } catch { /* malformed escape: show it raw */ }
+  asked = asked.slice(0, 80);
+  missingPath.textContent = asked;
+  document.getElementById("missing-path-echo").textContent = asked;
 }

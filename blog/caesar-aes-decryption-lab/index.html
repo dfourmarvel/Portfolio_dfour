@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The key is hidden inside a cipher — Daniel Dela Dzikunu</title>
+  <title>The key is hidden inside a cipher | Daniel Dela Dzikunu</title>
   <meta name="description" content="Recovering encrypted files through two layers of cryptography: a Caesar cipher and AES-256-CBC.">
   <link rel="canonical" href="https://danieldeladzikunu.vercel.app/blog/caesar-aes-decryption-lab/">
   <meta property="og:title" content="The key is hidden inside a cipher">
@@ -53,11 +53,11 @@
       <section style="padding-top: 40px;">
         <article class="post-body reveal">
         <p>Your data is encrypted. The key is hidden inside a cipher. The cipher is hidden inside a hidden file. Go.</p>
-        <p>That was the setup for this lab — a simulated scenario where every file in the home directory had been locked, and the only way out was through two layers of cryptography: a classical Caesar cipher and a modern AES-256-CBC encrypted file.</p>
+        <p>That was the setup for this lab, a simulated scenario where every file in the home directory had been locked, and the only way out was through two layers of cryptography: a classical Caesar cipher and a modern AES-256-CBC encrypted file.</p>
         <p>Here is what I worked through:</p>
         <ul><li>Used ls and cat to explore the home directory and read the README instructions pointing toward a hidden file</li><li>Navigated into the caesar subdirectory and ran ls -a to surface the hidden dotfile .leftShift3</li><li>Read the scrambled ciphertext and applied a tr command to reverse the three-position left shift, recovering the plaintext OpenSSL command</li><li>Executed openssl aes-256-cbc with PBKDF2 key derivation to decrypt Q1.encrypted into Q1.recovered using the key ettubrute</li><li>Confirmed full decryption by reading the recovered file's hidden message</li></ul>
-        <p>Key takeaway: encryption is only as strong as the key management around it. The Caesar cipher fell the moment the shift value was known. AES-256 held — but the password was sitting in a file one directory away. The algorithm is rarely the weakest link.</p>
-        <p>In medicine, patient data is protected by the same AES-256 standard that secured this lab file. Understanding how that cipher works — and how its keys can be exposed — is exactly the knowledge gap between a clinician who trusts encryption and one who can actually evaluate it.</p>
+        <p>Key takeaway: encryption is only as strong as the key management around it. The Caesar cipher fell the moment the shift value was known. AES-256 held, but the password was sitting in a file one directory away. The algorithm is rarely the weakest link.</p>
+        <p>In medicine, patient data is protected by the same AES-256 standard that secured this lab file. Understanding how that cipher works (and how its keys can be exposed) is exactly the knowledge gap between a clinician who trusts encryption and one who can actually evaluate it.</p>
         </article>
         <div class="post-foot">
           <a href="/blog/">← all write-ups</a>
@@ -69,7 +69,7 @@
 
     <footer class="site-footer">
       <span>© 2026 Daniel Dela Dzikunu</span>
-      <span>built by hand · no template</span>
+      <span><a href="https://github.com/dfourmarvel" target="_blank" rel="noreferrer">github</a> / <a href="https://www.linkedin.com/in/dfour/" target="_blank" rel="noreferrer">linkedin</a></span>
     </footer>
   </div>
 

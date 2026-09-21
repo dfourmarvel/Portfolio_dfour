@@ -59,7 +59,7 @@ ${links}
 
 export const FOOTER = `    <footer class="site-footer">
       <span>© 2026 Daniel Dela Dzikunu</span>
-      <span>built by hand · no template</span>
+      <span><a href="https://github.com/dfourmarvel" target="_blank" rel="noreferrer">github</a> / <a href="https://www.linkedin.com/in/dfour/" target="_blank" rel="noreferrer">linkedin</a></span>
     </footer>`;
 
 export const SCRIPTS = `  <script src="/assets/vendor/gsap/gsap.min.js"></script>

@@ -3,17 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Managing User Access in Linux — Daniel Dela Dzikunu</title>
-  <meta name="description" content="The full user lifecycle — provision, assign, expand, offboard — as an exercise in least privilege.">
+  <title>Managing User Access in Linux | Daniel Dela Dzikunu</title>
+  <meta name="description" content="The full user lifecycle (provision, assign, expand, offboard) as an exercise in least privilege.">
   <link rel="canonical" href="https://danieldeladzikunu.vercel.app/labs/linux-user-management/">
   <meta property="og:title" content="Managing User Access in Linux">
-  <meta property="og:description" content="The full user lifecycle — provision, assign, expand, offboard — as an exercise in least privilege.">
+  <meta property="og:description" content="The full user lifecycle (provision, assign, expand, offboard) as an exercise in least privilege.">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://danieldeladzikunu.vercel.app/labs/linux-user-management/">
   <meta property="og:image" content="https://danieldeladzikunu.vercel.app/assets/images/og.png">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Managing User Access in Linux">
-  <meta name="twitter:description" content="The full user lifecycle — provision, assign, expand, offboard — as an exercise in least privilege.">
+  <meta name="twitter:description" content="The full user lifecycle (provision, assign, expand, offboard) as an exercise in least privilege.">
   <meta name="twitter:image" content="https://danieldeladzikunu.vercel.app/assets/images/og.png">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='14' fill='%230a0e0c'/><text x='50' y='68' text-anchor='middle' font-size='52' font-family='monospace' font-weight='bold' fill='%233df5a5'>DD</text></svg>">
   <link rel="stylesheet" href="/css/main.css">
@@ -42,16 +42,16 @@
     <header class="page-hero">
       <span class="crumb">cybersecurity / labs</span>
       <h1>Managing User Access in Linux</h1>
-      <p class="lede reveal">The full user lifecycle — provision, assign, expand, offboard — as an exercise in least privilege.</p>
+      <p class="lede reveal">The full user lifecycle (provision, assign, expand, offboard) as an exercise in least privilege.</p>
       <div class="lab-tools reveal"><span class="tool">useradd</span><span class="tool">usermod</span><span class="tool">chown</span><span class="tool">userdel</span><span class="tool">sudo</span></div>
     </header>
 
     <main id="main">
       <section style="padding-top: 40px;">
         <article class="lab-body reveal">
-        <p>Authentication verifies who a user is; authorization defines what they can do. Managing users sits at that intersection. Acting as a security analyst, this lab ran the complete lifecycle for a new employee — all under <code>sudo</code> to respect authorization controls.</p>
+        <p>Authentication verifies who a user is; authorization defines what they can do. Managing users sits at that intersection. Acting as a security analyst, this lab ran the complete lifecycle for a new employee, all under <code>sudo</code> to respect authorization controls.</p>
         <h2>Provision &amp; assign a primary group</h2>
-        <p>A swapped argument order first returned <em>"user 'research_team' does not exist"</em> — a reminder that <code>usermod -g</code> expects <code>group username</code>, not the reverse. Corrected, it set <code>research_team</code> as the primary group.</p>
+        <p>A swapped argument order first returned <em>"user 'research_team' does not exist"</em>, a reminder that <code>usermod -g</code> expects <code>group username</code>, not the reverse. Corrected, it set <code>research_team</code> as the primary group.</p>
         <div class="code"><div class="code-bar"><i></i><i></i><i></i><span>bash</span></div><pre><span class="pr">$</span> sudo useradd researcher9
 <span class="pr">$</span> sudo usermod -g research_team researcher9</pre></div>
         <h2>Transfer file ownership</h2>
@@ -64,7 +64,7 @@
         <div class="code"><div class="code-bar"><i></i><i></i><i></i><span>bash</span></div><pre><span class="pr">$</span> sudo usermod -aG sales_team researcher9
 <span class="pr">$</span> sudo userdel researcher9
 <span class="pr">$</span> sudo groupdel researcher9</pre></div>
-        <div class="verdict"><p class="v-label">key takeaway</p><p>Access control is not a setting you configure once — it is a discipline you enforce continuously. The user lifecycle maps directly to least privilege: give access only to what is needed, only for as long as it is needed, then revoke it cleanly.</p></div>
+        <div class="verdict"><p class="v-label">key takeaway</p><p>Access control is not a setting you configure once. It is a discipline you enforce continuously. The user lifecycle maps directly to least privilege: give access only to what is needed, only for as long as it is needed, then revoke it cleanly.</p></div>
         </article>
         <div class="post-foot"><a href="/blog/linux-user-management/">the story behind this lab →</a><a href="/cybersecurity/">all labs →</a></div>
         <div class="lab-nav"><a href="/labs/sql-foundations/">← SQL Foundations: Querying for a Security Audit</a><a href="/labs/linux-file-permissions-audit/">Auditing Linux File Permissions →</a></div>
@@ -73,7 +73,7 @@
 
     <footer class="site-footer">
       <span>© 2026 Daniel Dela Dzikunu</span>
-      <span>built by hand · no template</span>
+      <span><a href="https://github.com/dfourmarvel" target="_blank" rel="noreferrer">github</a> / <a href="https://www.linkedin.com/in/dfour/" target="_blank" rel="noreferrer">linkedin</a></span>
     </footer>
   </div>
 

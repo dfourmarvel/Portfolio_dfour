@@ -3,17 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>From “Game Over” to cyber detective: why I ignored my antivirus (for science) — Daniel Dela Dzikunu</title>
-  <meta name="description" content="A Severe trojan alert on a game file — VirusTotal sandboxing and static PE analysis to reach a verdict.">
+  <title>From “Game Over” to cyber detective: why I ignored my antivirus (for science) | Daniel Dela Dzikunu</title>
+  <meta name="description" content="A Severe trojan alert on a game file: VirusTotal sandboxing and static PE analysis to reach a verdict.">
   <link rel="canonical" href="https://danieldeladzikunu.vercel.app/blog/gta-v-false-positive-investigation/">
   <meta property="og:title" content="From “Game Over” to cyber detective: why I ignored my antivirus (for science)">
-  <meta property="og:description" content="A Severe trojan alert on a game file — VirusTotal sandboxing and static PE analysis to reach a verdict.">
+  <meta property="og:description" content="A Severe trojan alert on a game file: VirusTotal sandboxing and static PE analysis to reach a verdict.">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://danieldeladzikunu.vercel.app/blog/gta-v-false-positive-investigation/">
   <meta property="og:image" content="https://danieldeladzikunu.vercel.app/assets/images/og.png">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="From “Game Over” to cyber detective: why I ignored my antivirus (for science)">
-  <meta name="twitter:description" content="A Severe trojan alert on a game file — VirusTotal sandboxing and static PE analysis to reach a verdict.">
+  <meta name="twitter:description" content="A Severe trojan alert on a game file: VirusTotal sandboxing and static PE analysis to reach a verdict.">
   <meta name="twitter:image" content="https://danieldeladzikunu.vercel.app/assets/images/og.png">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='14' fill='%230a0e0c'/><text x='50' y='68' text-anchor='middle' font-size='52' font-family='monospace' font-weight='bold' fill='%233df5a5'>DD</text></svg>">
   <link rel="stylesheet" href="/css/main.css">
@@ -53,11 +53,11 @@
       <section style="padding-top: 40px;">
         <article class="post-body reveal">
         <p>From "Game Over" to Cyber Detective: Why I Ignored My Antivirus (For Science)</p>
-        <p>Yesterday, GTA V refused to launch. The culprit was a Windows Defender alert — Severe, Trojan: Win32/KepavII!rfn — targeting a file called RUNE64.dll, a core component of the game's crack infrastructure. Quarantine failed. The game was dead. My immediate instinct as a gamer was exactly what you'd expect: whitelist the folder, override the antivirus, move on. It worked. But later, the part of my brain still working through Cybersecurity training refused to let it go. I had just manually overridden a Severe trojan warning on a file I knew nothing about. So I went back and treated it as a forensic case.</p>
-        <p>Step one was submitting the file's SHA-256 hash to VirusTotal for behavioral sandbox analysis across three environments — CAPE, Zenbox, and C2AE. Zero dropped files, zero persistence modifications, zero unauthorized network connections. Every DNS resolution traced back to verified Microsoft CDN infrastructure. Real trojans leave tracks. Secondary payloads, Run key registrations, C2 beacons. This file left none. What it did leave was a set of DLL filenames like library.dll and readme.dll that looked suspicious until I cross-referenced them with the sandbox's shell commands. Those were not runtime dependencies. They were artifacts of the sandbox brute-forcing the DLL's 483 export ordinals, re-executing the binary under renamed copies to trigger any latent behavior. The sandbox manufactured the noise it was trying to measure.</p>
-        <p>Step two was static PE analysis in Detect It Easy. Two findings explained everything. First: VMProtect 1.70 at maximum protection. The release group virtualized the native x64 assembly into proprietary bytecode so when Defender's scan engine hits it, it cannot read it, and defaults to classifying the binary as a trojan. Second: custom PE sections named .rune and .rune2, compressed and structurally misaligned with standard MSVC output. That section collision is the exact trigger behind the Packunwan designation. The binary was not hiding malicious intent. It was hiding its DRM-bypass logic from its original adversary — the game developer — and inadvertently tripping every automated alarm designed for a completely different threat model.</p>
+        <p>Yesterday, GTA V refused to launch. The culprit was a Windows Defender alert (Severe, Trojan: Win32/KepavII!rfn) targeting a file called RUNE64.dll, a core component of the game's crack infrastructure. Quarantine failed. The game was dead. My immediate instinct as a gamer was exactly what you'd expect: whitelist the folder, override the antivirus, move on. It worked. But later, the part of my brain still working through Cybersecurity training refused to let it go. I had just manually overridden a Severe trojan warning on a file I knew nothing about. So I went back and treated it as a forensic case.</p>
+        <p>Step one was submitting the file's SHA-256 hash to VirusTotal for behavioral sandbox analysis across three environments: CAPE, Zenbox, and C2AE. Zero dropped files, zero persistence modifications, zero unauthorized network connections. Every DNS resolution traced back to verified Microsoft CDN infrastructure. Real trojans leave tracks. Secondary payloads, Run key registrations, C2 beacons. This file left none. What it did leave was a set of DLL filenames like library.dll and readme.dll that looked suspicious until I cross-referenced them with the sandbox's shell commands. Those were not runtime dependencies. They were artifacts of the sandbox brute-forcing the DLL's 483 export ordinals, re-executing the binary under renamed copies to trigger any latent behavior. The sandbox manufactured the noise it was trying to measure.</p>
+        <p>Step two was static PE analysis in Detect It Easy. Two findings explained everything. First: VMProtect 1.70 at maximum protection. The release group virtualized the native x64 assembly into proprietary bytecode so when Defender's scan engine hits it, it cannot read it, and defaults to classifying the binary as a trojan. Second: custom PE sections named .rune and .rune2, compressed and structurally misaligned with standard MSVC output. That section collision is the exact trigger behind the Packunwan designation. The binary was not hiding malicious intent. It was hiding its DRM-bypass logic from its original adversary (the game developer) and inadvertently tripping every automated alarm designed for a completely different threat model.</p>
         <p>Final verdict: confirmed false positive. The obfuscation is real, the structural anomalies are real, and the antivirus detections were technically correct responses to genuinely unusual binary characteristics. They were just wrong about what those characteristics meant.</p>
-        <p>This conclusion is based on behavioural telemetry and static analysis — not full dynamic instrumentation or code review under a debugger. A more thorough pass might surface something I missed. If you have worked with VMProtect-packed binaries professionally or seen this specific hash before, I would genuinely value your read on this.</p>
+        <p>This conclusion is based on behavioural telemetry and static analysis, not full dynamic instrumentation or code review under a debugger. A more thorough pass might surface something I missed. If you have worked with VMProtect-packed binaries professionally or seen this specific hash before, I would genuinely value your read on this.</p>
         </article>
         <div class="post-foot">
           <a href="/blog/">← all write-ups</a>
@@ -69,7 +69,7 @@
 
     <footer class="site-footer">
       <span>© 2026 Daniel Dela Dzikunu</span>
-      <span>built by hand · no template</span>
+      <span><a href="https://github.com/dfourmarvel" target="_blank" rel="noreferrer">github</a> / <a href="https://www.linkedin.com/in/dfour/" target="_blank" rel="noreferrer">linkedin</a></span>
     </footer>
   </div>
 

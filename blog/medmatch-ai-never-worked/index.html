@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The AI feature that had never worked — Daniel Dela Dzikunu</title>
+  <title>The AI feature that had never worked | Daniel Dela Dzikunu</title>
   <meta name="description" content="A payload shape mismatch returned 400 for every user for four months, and the friendly fallback made it look intentional.">
   <link rel="canonical" href="https://danieldeladzikunu.vercel.app/blog/medmatch-ai-never-worked/">
   <meta property="og:title" content="The AI feature that had never worked">
@@ -53,9 +53,9 @@
       <section style="padding-top: 40px;">
         <article class="post-body reveal">
         <p>The AI feature on my app had never worked. Not once, for anyone, in the four months since it shipped.</p>
-        <p>MedMatch Ghana gives medical students a specialty-fit assessment, and part of the results page was meant to be an AI-written explanation of why your top three matches came out the way they did. I was reading the route handler for an unrelated reason when I noticed it was validating a request shape — a user id, an answers array, a list of top specialties — that the results page had stopped sending long ago. The page posts the full assessment result object. The route rejected it. Every live request returned a 400.</p>
+        <p>MedMatch Ghana gives medical students a specialty-fit assessment, and part of the results page was meant to be an AI-written explanation of why your top three matches came out the way they did. I was reading the route handler for an unrelated reason when I noticed it was validating a request shape (a user id, an answers array, a list of top specialties) that the results page had stopped sending long ago. The page posts the full assessment result object. The route rejected it. Every live request returned a 400.</p>
         <p>Nobody saw an error, because the client caught the failure and showed a friendly fallback message instead. It looked intentional. It looked like a product decision. Every person who ever finished the assessment got the fallback, and nobody reported anything, because there was nothing visibly broken to report.</p>
-        <p>Three days later I found the same shape of bug somewhere else. A scheduled job kept my free-tier Supabase project awake by calling a results endpoint with a zeroed UUID and treating the 404 as proof of life. That function returns not-found when the row is missing, when the database client fails to initialise, and when the query itself errors. All three come back as 404. The check reported green with the database completely unreachable, which is the one condition it existed to detect. I replaced it with an endpoint that runs a real head query and answers 200 or 503, then confirmed it returns 503 against placeholder credentials — exactly the case the old one called healthy.</p>
+        <p>Three days later I found the same shape of bug somewhere else. A scheduled job kept my free-tier Supabase project awake by calling a results endpoint with a zeroed UUID and treating the 404 as proof of life. That function returns not-found when the row is missing, when the database client fails to initialise, and when the query itself errors. All three come back as 404. The check reported green with the database completely unreachable, which is the one condition it existed to detect. I replaced it with an endpoint that runs a real head query and answers 200 or 503, then confirmed it returns 503 against placeholder credentials, exactly the case the old one called healthy.</p>
         <p>Both are the same mistake. I built systems that degrade gracefully, and they degraded so gracefully that nothing ever told me they were degrading.</p>
         <p>The clinical version is familiar. A patient in compensated shock has a normal blood pressure. The number is real, it is reassuring, and it is the last thing you should trust, because the body is holding that reading up at a cost the monitor cannot show you. Normal vitals are not a well patient, and a passing health check is not a working system.</p>
         <p>The limitation worth stating: I found both of these by reading my own code, not from monitoring, which is itself the finding. That project has no error tracking and no alert on 4xx rates. With either one, the first bug surfaces in a day instead of four months.</p>
@@ -71,7 +71,7 @@
 
     <footer class="site-footer">
       <span>© 2026 Daniel Dela Dzikunu</span>
-      <span>built by hand · no template</span>
+      <span><a href="https://github.com/dfourmarvel" target="_blank" rel="noreferrer">github</a> / <a href="https://www.linkedin.com/in/dfour/" target="_blank" rel="noreferrer">linkedin</a></span>
     </footer>
   </div>
 

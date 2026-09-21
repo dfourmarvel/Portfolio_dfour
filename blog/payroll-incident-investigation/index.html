@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The payroll transfer nobody sent — Daniel Dela Dzikunu</title>
+  <title>The payroll transfer nobody sent | Daniel Dela Dzikunu</title>
   <meta name="description" content="Tracing a fraudulent transaction to a contractor whose account outlived his contract by four years.">
   <link rel="canonical" href="https://danieldeladzikunu.vercel.app/blog/payroll-incident-investigation/">
   <meta property="og:title" content="The payroll transfer nobody sent">
@@ -53,11 +53,11 @@
       <section style="padding-top: 40px;">
         <article class="post-body reveal">
         <p>A payroll transfer went to an unknown bank account. The finance manager didn't make a mistake. So who did?</p>
-        <p>That was the scenario in my latest Google Cybersecurity Certificate lab — a Payroll Incident Investigation that placed me as the first cybersecurity hire at a growing business. My job: trace the transaction, identify the threat actor, and close the gaps that made it all possible.</p>
-        <p>The investigation began with an event log. A payroll event was recorded on October 3, 2023, at 8:29:57 AM from IP address 152.207.255.255, under the account Legal\Administrator, on a machine flagged as Up2-NoGud. One cross-reference against the employee directory and the source came into focus — Robert Taylor Jr., a legal contractor whose end date was December 27, 2019. His IP matched the log exactly. A man whose contract had expired nearly four years prior had just initiated a fraudulent payroll transfer, because nobody had ever deactivated his account.</p>
-        <p>But the ghost account was only half the story. Pulling up the employee directory revealed something more systemic: every single person in the organization — full-time staff, part-time workers, seasonal employees, and external contractors alike — carried Admin authorization. A graphic designer. A seasonal sales associate. A manufacturer with no end date on file. All holding the same access level as the owner. The business hadn't just failed to offboard one contractor; it had built an environment where a breach from any direction was almost inevitable.</p>
-        <p>The takeaway is that access control is not a technical setting you configure once — it's an organizational discipline you enforce continuously. The Principle of Least Privilege and Role-Based Access Control exist precisely to prevent a single expired account from becoming an open door to financial systems. Pair those frameworks with strict offboarding protocols and MFA enforced enterprise-wide, and this incident never reaches the bank statement.</p>
-        <p>In medicine, every person who touches a patient's record must have a documented, role-specific reason for that access. When that discipline breaks down, people get harmed. Cybersecurity is no different — the only thing that changes is what ends up at risk.</p>
+        <p>That was the scenario in my latest Google Cybersecurity Certificate lab, a Payroll Incident Investigation that placed me as the first cybersecurity hire at a growing business. My job: trace the transaction, identify the threat actor, and close the gaps that made it all possible.</p>
+        <p>The investigation began with an event log. A payroll event was recorded on October 3, 2023, at 8:29:57 AM from IP address 152.207.255.255, under the account Legal\Administrator, on a machine flagged as Up2-NoGud. One cross-reference against the employee directory and the source came into focus: Robert Taylor Jr., a legal contractor whose end date was December 27, 2019. His IP matched the log exactly. A man whose contract had expired nearly four years prior had just initiated a fraudulent payroll transfer, because nobody had ever deactivated his account.</p>
+        <p>But the ghost account was only half the story. Pulling up the employee directory revealed something more systemic: every single person in the organization (full-time staff, part-time workers, seasonal employees, and external contractors alike) carried Admin authorization. A graphic designer. A seasonal sales associate. A manufacturer with no end date on file. All holding the same access level as the owner. The business hadn't just failed to offboard one contractor; it had built an environment where a breach from any direction was almost inevitable.</p>
+        <p>The takeaway is that access control is not a technical setting you configure once. It's an organizational discipline you enforce continuously. The Principle of Least Privilege and Role-Based Access Control exist precisely to prevent a single expired account from becoming an open door to financial systems. Pair those frameworks with strict offboarding protocols and MFA enforced enterprise-wide, and this incident never reaches the bank statement.</p>
+        <p>In medicine, every person who touches a patient's record must have a documented, role-specific reason for that access. When that discipline breaks down, people get harmed. Cybersecurity is no different: the only thing that changes is what ends up at risk.</p>
         </article>
         <div class="post-foot">
           <a href="/blog/">← all write-ups</a>
@@ -69,7 +69,7 @@
 
     <footer class="site-footer">
       <span>© 2026 Daniel Dela Dzikunu</span>
-      <span>built by hand · no template</span>
+      <span><a href="https://github.com/dfourmarvel" target="_blank" rel="noreferrer">github</a> / <a href="https://www.linkedin.com/in/dfour/" target="_blank" rel="noreferrer">linkedin</a></span>
     </footer>
   </div>
 

@@ -3,17 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>A USB drive in a hospital parking lot — Daniel Dela Dzikunu</title>
-  <meta name="description" content="Analyzing an abandoned flash drive in an isolated VM — and why 'no malware' didn't mean 'no threat.'">
+  <title>A USB drive in a hospital parking lot | Daniel Dela Dzikunu</title>
+  <meta name="description" content="Analyzing an abandoned flash drive in an isolated VM, and why 'no malware' didn't mean 'no threat.'">
   <link rel="canonical" href="https://danieldeladzikunu.vercel.app/blog/usb-drive-hospital-parking-lot/">
   <meta property="og:title" content="A USB drive in a hospital parking lot">
-  <meta property="og:description" content="Analyzing an abandoned flash drive in an isolated VM — and why 'no malware' didn't mean 'no threat.'">
+  <meta property="og:description" content="Analyzing an abandoned flash drive in an isolated VM, and why 'no malware' didn't mean 'no threat.'">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://danieldeladzikunu.vercel.app/blog/usb-drive-hospital-parking-lot/">
   <meta property="og:image" content="https://danieldeladzikunu.vercel.app/assets/images/og.png">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="A USB drive in a hospital parking lot">
-  <meta name="twitter:description" content="Analyzing an abandoned flash drive in an isolated VM — and why 'no malware' didn't mean 'no threat.'">
+  <meta name="twitter:description" content="Analyzing an abandoned flash drive in an isolated VM, and why 'no malware' didn't mean 'no threat.'">
   <meta name="twitter:image" content="https://danieldeladzikunu.vercel.app/assets/images/og.png">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='14' fill='%230a0e0c'/><text x='50' y='68' text-anchor='middle' font-size='52' font-family='monospace' font-weight='bold' fill='%233df5a5'>DD</text></svg>">
   <link rel="stylesheet" href="/css/main.css">
@@ -53,8 +53,8 @@
       <section style="padding-top: 40px;">
         <article class="post-body reveal">
         <p>A USB drive in a hospital parking lot. No owner in sight. Just curiosity, and a decision.</p>
-        <p>This week's Google Cybersecurity Certificate lab dropped me into exactly that scenario. I was placed on the security team at a fictional hospital and tasked with analyzing an abandoned flash drive — not by plugging it into a live machine, but by mounting it inside a virtualized, network-isolated environment. That distinction matters more than most people realize.</p>
-        <p>The drive belonged to a hospital HR manager. On it: shift schedules, new hire letters, budget documents, a wedding guest list, and a resume. No malware. But the absence of malicious code didn't make it safe — it made it a different kind of threat. An attacker who found that drive before we did would have had everything needed for highly targeted spear phishing against the employee, his family, and the broader HR department. Knowing an employee's schedule is also a physical security risk — it tells an attacker exactly when someone won't be home.</p>
+        <p>This week's Google Cybersecurity Certificate lab dropped me into exactly that scenario. I was placed on the security team at a fictional hospital and tasked with analyzing an abandoned flash drive, not by plugging it into a live machine, but by mounting it inside a virtualized, network-isolated environment. That distinction matters more than most people realize.</p>
+        <p>The drive belonged to a hospital HR manager. On it: shift schedules, new hire letters, budget documents, a wedding guest list, and a resume. No malware. But the absence of malicious code didn't make it safe. It made it a different kind of threat. An attacker who found that drive before we did would have had everything needed for highly targeted spear phishing against the employee, his family, and the broader HR department. Knowing an employee's schedule is also a physical security risk. It tells an attacker exactly when someone won't be home.</p>
         <p>Then there's the other possibility: the drive was never lost. USB drop attacks are a real social engineering tactic where a threat actor deliberately places a malware-loaded device and waits for human curiosity to do the rest. One curious employee, one infected workstation, one backdoor into critical hospital infrastructure.</p>
         <p>The mitigation framework I proposed combined three layers: EDR/MDM configurations to block unauthorized USB mass storage devices at the endpoint, mandatory security awareness training that reframes "I'll return it to IT" as the only acceptable response, and data governance policies backed by DLP systems to prevent sensitive work files from ever living on personal, unencrypted removable media in the first place.</p>
         <p>The key lesson: curiosity is a feature of good clinicians and a liability in security. In medicine, we're trained to investigate the unexpected. In cybersecurity, the unexpected is often the attack vector.</p>
@@ -69,7 +69,7 @@
 
     <footer class="site-footer">
       <span>© 2026 Daniel Dela Dzikunu</span>
-      <span>built by hand · no template</span>
+      <span><a href="https://github.com/dfourmarvel" target="_blank" rel="noreferrer">github</a> / <a href="https://www.linkedin.com/in/dfour/" target="_blank" rel="noreferrer">linkedin</a></span>
     </footer>
   </div>
 

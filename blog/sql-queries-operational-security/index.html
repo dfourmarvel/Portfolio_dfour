@@ -3,17 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Querying like a security analyst — Daniel Dela Dzikunu</title>
-  <meta name="description" content="200 machines, 80 overdue updates, one faulty endpoint — operational decisions driven by MariaDB queries.">
+  <title>Querying like a security analyst | Daniel Dela Dzikunu</title>
+  <meta name="description" content="200 machines, 80 overdue updates, one faulty endpoint: operational decisions driven by MariaDB queries.">
   <link rel="canonical" href="https://danieldeladzikunu.vercel.app/blog/sql-queries-operational-security/">
   <meta property="og:title" content="Querying like a security analyst">
-  <meta property="og:description" content="200 machines, 80 overdue updates, one faulty endpoint — operational decisions driven by MariaDB queries.">
+  <meta property="og:description" content="200 machines, 80 overdue updates, one faulty endpoint: operational decisions driven by MariaDB queries.">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://danieldeladzikunu.vercel.app/blog/sql-queries-operational-security/">
   <meta property="og:image" content="https://danieldeladzikunu.vercel.app/assets/images/og.png">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Querying like a security analyst">
-  <meta name="twitter:description" content="200 machines, 80 overdue updates, one faulty endpoint — operational decisions driven by MariaDB queries.">
+  <meta name="twitter:description" content="200 machines, 80 overdue updates, one faulty endpoint: operational decisions driven by MariaDB queries.">
   <meta name="twitter:image" content="https://danieldeladzikunu.vercel.app/assets/images/og.png">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='14' fill='%230a0e0c'/><text x='50' y='68' text-anchor='middle' font-size='52' font-family='monospace' font-weight='bold' fill='%233df5a5'>DD</text></svg>">
   <link rel="stylesheet" href="/css/main.css">
@@ -52,12 +52,12 @@
     <main id="main">
       <section style="padding-top: 40px;">
         <article class="post-body reveal">
-        <p>The scenario: act as a security analyst tasked with querying an organisation's database to support real operational decisions — identifying machines due for OS updates, locating employees in specific departments, and tracing a machine fault to its owner.</p>
+        <p>The scenario: act as a security analyst tasked with querying an organisation's database to support real operational decisions, identifying machines due for OS updates, locating employees in specific departments, and tracing a machine fault to its owner.</p>
         <p>Tools used: MariaDB | Techniques: WHERE, LIKE, % wildcard</p>
         <p>Some of the tasks I worked through:</p>
-        <ul><li>Retrieved a full inventory of 200 organisation machines</li><li>Isolated 80 devices running OS 2 — flagged for urgent updates</li><li>Pulled employee lists for Finance and Sales departments to support a policy rollout</li><li>Identified the exact employee behind a faulty machine in South-109 using a targeted query, then expanded the search to the entire South building using LIKE with wildcards</li></ul>
+        <ul><li>Retrieved a full inventory of 200 organisation machines</li><li>Isolated 80 devices running OS 2, flagged for urgent updates</li><li>Pulled employee lists for Finance and Sales departments to support a policy rollout</li><li>Identified the exact employee behind a faulty machine in South-109 using a targeted query, then expanded the search to the entire South building using LIKE with wildcards</li></ul>
         <p>What stood out to me most was how much precision matters. A poorly written query in a real SOC environment could mean missing a compromised endpoint entirely.</p>
-        <p>If you are also on a cybersecurity learning path, feel free to connect — always open to exchanging notes.</p>
+        <p>If you are also on a cybersecurity learning path, feel free to connect. Always open to exchanging notes.</p>
         </article>
         <div class="post-foot">
           <a href="/blog/">← all write-ups</a>
@@ -69,7 +69,7 @@
 
     <footer class="site-footer">
       <span>© 2026 Daniel Dela Dzikunu</span>
-      <span>built by hand · no template</span>
+      <span><a href="https://github.com/dfourmarvel" target="_blank" rel="noreferrer">github</a> / <a href="https://www.linkedin.com/in/dfour/" target="_blank" rel="noreferrer">linkedin</a></span>
     </footer>
   </div>
 

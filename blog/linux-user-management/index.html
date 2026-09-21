@@ -3,17 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Linux user management as a security discipline — Daniel Dela Dzikunu</title>
-  <meta name="description" content="Onboarding, role changes, and offboarding with useradd, usermod, chown — least privilege in practice.">
+  <title>Linux user management as a security discipline | Daniel Dela Dzikunu</title>
+  <meta name="description" content="Onboarding, role changes, and offboarding with useradd, usermod, chown: least privilege in practice.">
   <link rel="canonical" href="https://danieldeladzikunu.vercel.app/blog/linux-user-management/">
   <meta property="og:title" content="Linux user management as a security discipline">
-  <meta property="og:description" content="Onboarding, role changes, and offboarding with useradd, usermod, chown — least privilege in practice.">
+  <meta property="og:description" content="Onboarding, role changes, and offboarding with useradd, usermod, chown: least privilege in practice.">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://danieldeladzikunu.vercel.app/blog/linux-user-management/">
   <meta property="og:image" content="https://danieldeladzikunu.vercel.app/assets/images/og.png">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Linux user management as a security discipline">
-  <meta name="twitter:description" content="Onboarding, role changes, and offboarding with useradd, usermod, chown — least privilege in practice.">
+  <meta name="twitter:description" content="Onboarding, role changes, and offboarding with useradd, usermod, chown: least privilege in practice.">
   <meta name="twitter:image" content="https://danieldeladzikunu.vercel.app/assets/images/og.png">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='14' fill='%230a0e0c'/><text x='50' y='68' text-anchor='middle' font-size='52' font-family='monospace' font-weight='bold' fill='%233df5a5'>DD</text></svg>">
   <link rel="stylesheet" href="/css/main.css">
@@ -52,14 +52,14 @@
     <main id="main">
       <section style="padding-top: 40px;">
         <article class="post-body reveal">
-        <p>Just completed a hands-on Linux user management lab as part of the Google Cybersecurity Certificate — and it reinforced something fundamental: access control isn't just a technical task, it's a security discipline.</p>
-        <p>The lab simulated a real-world scenario — onboarding a new employee, adjusting their access as their role evolved, and offboarding them when they left. Here's what I worked through:</p>
+        <p>Just completed a hands-on Linux user management lab as part of the Google Cybersecurity Certificate, and it reinforced something fundamental: access control isn't just a technical task, it's a security discipline.</p>
+        <p>The lab simulated a real-world scenario: onboarding a new employee, adjusting their access as their role evolved, and offboarding them when they left. Here's what I worked through:</p>
         <p>Authentication vs. Authorization</p>
         <p>Before touching a single command, the lab grounded me in the distinction between the two. Authentication confirms identity. Authorization defines what that identity can do. Managing users sits right at that intersection.</p>
         <p>Commands used:</p>
-        <ul><li>useradd — provisioned a new user account on the system</li><li>usermod -g — assigned a primary group (research_team)</li><li>chown — transferred file ownership to reflect new responsibilities</li><li>usermod -aG — appended a secondary group (sales_team) without overwriting existing group membership</li><li>userdel + groupdel — cleanly removed the user and the orphaned personal group left behind</li></ul>
+        <ul><li>useradd: provisioned a new user account on the system</li><li>usermod -g: assigned a primary group (research_team)</li><li>chown: transferred file ownership to reflect new responsibilities</li><li>usermod -aG: appended a secondary group (sales_team) without overwriting existing group membership</li><li>userdel + groupdel: cleanly removed the user and the orphaned personal group left behind</li></ul>
         <p>Principle of Least Privilege in practice</p>
-        <p>Every step was a deliberate access decision — not just "add the user" but "what should this user be able to access, and only that." When the role changed, the permissions changed. When they left, access was fully revoked.</p>
+        <p>Every step was a deliberate access decision, not just "add the user" but "what should this user be able to access, and only that." When the role changed, the permissions changed. When they left, access was fully revoked.</p>
         <p>This is one lab in a longer journey, but each one is building the foundation I need to work in defensive security.</p>
         </article>
         <div class="post-foot">
@@ -72,7 +72,7 @@
 
     <footer class="site-footer">
       <span>© 2026 Daniel Dela Dzikunu</span>
-      <span>built by hand · no template</span>
+      <span><a href="https://github.com/dfourmarvel" target="_blank" rel="noreferrer">github</a> / <a href="https://www.linkedin.com/in/dfour/" target="_blank" rel="noreferrer">linkedin</a></span>
     </footer>
   </div>
 

@@ -3,17 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BibleTTS Twi Transcript Repair — Daniel Dela Dzikunu</title>
-  <meta name="description" content="Found a silent data-integrity bug in a published open speech dataset — two Twi vowels stripped from every transcript since 2024 — fixed it, and published the repair on Hugging Face.">
+  <title>BibleTTS Twi Transcript Repair | Daniel Dela Dzikunu</title>
+  <meta name="description" content="Found a silent data-integrity bug in a published open speech dataset (two Twi vowels stripped from every transcript since 2024), fixed it, and published the repair on Hugging Face.">
   <link rel="canonical" href="https://danieldeladzikunu.vercel.app/web-development/bibletts-twi-repair/">
   <meta property="og:title" content="BibleTTS Twi Transcript Repair">
-  <meta property="og:description" content="Found a silent data-integrity bug in a published open speech dataset — two Twi vowels stripped from every transcript since 2024 — fixed it, and published the repair on Hugging Face.">
+  <meta property="og:description" content="Found a silent data-integrity bug in a published open speech dataset (two Twi vowels stripped from every transcript since 2024), fixed it, and published the repair on Hugging Face.">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://danieldeladzikunu.vercel.app/web-development/bibletts-twi-repair/">
   <meta property="og:image" content="https://danieldeladzikunu.vercel.app/assets/images/og.png">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="BibleTTS Twi Transcript Repair">
-  <meta name="twitter:description" content="Found a silent data-integrity bug in a published open speech dataset — two Twi vowels stripped from every transcript since 2024 — fixed it, and published the repair on Hugging Face.">
+  <meta name="twitter:description" content="Found a silent data-integrity bug in a published open speech dataset (two Twi vowels stripped from every transcript since 2024), fixed it, and published the repair on Hugging Face.">
   <meta name="twitter:image" content="https://danieldeladzikunu.vercel.app/assets/images/og.png">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='14' fill='%230a0e0c'/><text x='50' y='68' text-anchor='middle' font-size='52' font-family='monospace' font-weight='bold' fill='%233df5a5'>DD</text></svg>">
   <link rel="stylesheet" href="/css/main.css">
@@ -55,18 +55,18 @@
         <article class="lab-body reveal">
 
         <h3>Overview</h3>
-        <p>BibleTTS is an open speech dataset used to train and evaluate speech recognition for a set of African languages, including Asante Twi. While preparing training data for a separate speech project, I noticed the Asante Twi transcripts read wrong — not mistranscribed, but missing letters in a pattern too consistent to be a typo.</p>
+        <p>BibleTTS is an open speech dataset used to train and evaluate speech recognition for a set of African languages, including Asante Twi. While preparing training data for a separate speech project, I noticed the Asante Twi transcripts read wrong, not mistranscribed, but missing letters in a pattern too consistent to be a typo.</p>
 
         <h3>The bug</h3>
-        <p>Every transcript in the released Asante Twi set had <code>ɛ</code> (U+025B) and <code>ɔ</code> (U+0254) — two vowels that exist only in Twi's orthography, not in English — stripped out and replaced with spaces. Across a 1,500-file sample, the count was zero. A same-sized sample of the Ewe portion of BibleTTS, which doesn't use those characters as diacritics in the same way, contained 6,145 occurrences of <code>ɔ</code> in the same span — confirming the gap was specific to the Twi processing pipeline, not a fluke of the sample. The defect affected all ~21,600 Asante Twi transcripts and had gone unreported since the dataset's release; an open issue on the upstream repository had sat with no replies since March 2024.</p>
+        <p>Every transcript in the released Asante Twi set had <code>ɛ</code> (U+025B) and <code>ɔ</code> (U+0254), two vowels that exist only in Twi's orthography, not in English, stripped out and replaced with spaces. Across a 1,500-file sample, the count was zero. A same-sized sample of the Ewe portion of BibleTTS, which doesn't use those characters as diacritics in the same way, contained 6,145 occurrences of <code>ɔ</code> in the same span, confirming the gap was specific to the Twi processing pipeline, not a fluke of the sample. The defect affected all ~21,600 Asante Twi transcripts and had gone unreported since the dataset's release; an open issue on the upstream repository had sat with no replies since March 2024.</p>
 
         <h3>The fix</h3>
-        <p>Re-downloading doesn't help — the corruption is in the published transcript files themselves, not a download artifact. The fix is a verse-by-verse lookup against the Biblica USFM source text from ebible.org, restoring the correct characters verse by verse rather than attempting forced alignment or guesswork. The rebuild script threads its file reads — a single-threaded pass over 43,000 files was creeping toward an hour on my connection; threaded, it finishes in under a minute.</p>
+        <p>Re-downloading doesn't help: the corruption is in the published transcript files themselves, not a download artifact. The fix is a verse-by-verse lookup against the Biblica USFM source text from ebible.org, restoring the correct characters verse by verse rather than attempting forced alignment or guesswork. The rebuild script threads its file reads: a single-threaded pass over 43,000 files was creeping toward an hour on my connection; threaded, it finishes in under a minute.</p>
 
         <h3>Publishing it</h3>
         <p>Repaired transcripts are published as an open dataset on Hugging Face under CC BY-SA 4.0, matching the license of both source datasets. Original and repaired text sit side by side per entry, so the change is auditable rather than a black-box replacement. I also posted the finding as a comment on the original GitHub issue, linking the dataset so anyone else building on BibleTTS's Twi data can pick up the fix without re-deriving it.</p>
 
-        <div class="verdict"><p class="v-label">what I learned</p><p>This wasn't the project I set out to build — it was a bug I tripped over on the way to one. The instinct to keep going is strong when the actual goal is somewhere else, but a silently corrupted dataset sitting unfixed for two years is a bigger problem than my own timeline. Publishing the fix took an afternoon; leaving it broken would have cost every future user of that data a lot more.</p></div>
+        <div class="verdict"><p class="v-label">what I learned</p><p>This wasn't the project I set out to build. It was a bug I tripped over on the way to one. The instinct to keep going is strong when the actual goal is somewhere else, but a silently corrupted dataset sitting unfixed for two years is a bigger problem than my own timeline. Publishing the fix took an afternoon; leaving it broken would have cost every future user of that data a lot more.</p></div>
 
         </article>
         <div class="post-foot"><a href="/web-development/">← all projects</a><a href="https://huggingface.co/datasets/danieldzikunuofmarvel/bibletts-asante-twi-repaired" target="_blank" rel="noopener">the dataset ↗</a></div>
@@ -75,7 +75,7 @@
 
     <footer class="site-footer">
       <span>© 2026 Daniel Dela Dzikunu</span>
-      <span>built by hand · no template</span>
+      <span><a href="https://github.com/dfourmarvel" target="_blank" rel="noreferrer">github</a> / <a href="https://www.linkedin.com/in/dfour/" target="_blank" rel="noreferrer">linkedin</a></span>
     </footer>
   </div>
 

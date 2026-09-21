@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Before the capture started, tcpdump had already told me something — Daniel Dela Dzikunu</title>
+  <title>Before the capture started, tcpdump had already told me something | Daniel Dela Dzikunu</title>
   <meta name="description" content="Default name resolution, -nn, and the difference between what tcpdump decided a packet means and the bytes underneath.">
   <link rel="canonical" href="https://danieldeladzikunu.vercel.app/blog/tcpdump-packet-capture/">
   <meta property="og:title" content="Before the capture started, tcpdump had already told me something">
@@ -52,7 +52,7 @@
     <main id="main">
       <section style="padding-top: 40px;">
         <article class="post-body reveal">
-        <p>Before the real capture even started, tcpdump had already resolved a hostname I never typed — the first of two things it told me without asking.</p>
+        <p>Before the real capture even started, tcpdump had already resolved a hostname I never typed, the first of two things it told me without asking.</p>
         <p>The workflow ran in four parts. First, ifconfig and tcpdump -D to work out which interface was actually worth capturing on, eth0 was the only one both up and carrying traffic. Second, sudo tcpdump -i eth0 -v -c5, five packets, verbose. The actual point of this step was watching tcpdump's default behaviour: it resolves IP addresses and ports into hostnames unless told not to. Sure enough, the five packets showed the lab VM's own hostname and its terminal backend's hostname where raw IP addresses would otherwise sit, on port 5000, plus a DNS lookup against Google's internal metadata service. That default resolution is exactly what gets switched off two commands later.</p>
         <p>Third, the real capture, sudo tcpdump -i eth0 -nn -c9 port 80 -w capture.pcap, run in the background with -nn switched on to stop tcpdump resolving IPs and ports to names, partly because that lookup data cannot be trusted and partly because performing lookups mid-investigation is a good way to tip off whoever you are investigating. curl opensource.google.com supplied the traffic, and got back a 301 redirect to HTTPS for its trouble.</p>
         <p>Fourth, reading capture.pcap back twice. The verbose pass, -v, reconstructed the TCP handshake and the full HTTP response, headers, status code, all interpreted and labelled. The hex and ASCII pass, -X, showed none of that interpretation, only raw bytes, and sitting right there in packet four: GET / HTTP/1.1, Host: opensource.google.com, User-Agent: curl/7.74.0. Completely legible, no decoding required, because HTTP was never encrypted to begin with.</p>
@@ -68,7 +68,7 @@
 
     <footer class="site-footer">
       <span>© 2026 Daniel Dela Dzikunu</span>
-      <span>built by hand · no template</span>
+      <span><a href="https://github.com/dfourmarvel" target="_blank" rel="noreferrer">github</a> / <a href="https://www.linkedin.com/in/dfour/" target="_blank" rel="noreferrer">linkedin</a></span>
     </footer>
   </div>
 

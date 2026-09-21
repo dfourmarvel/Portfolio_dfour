@@ -3,17 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Two files. Same content. Different hashes. — Daniel Dela Dzikunu</title>
-  <meta name="description" content="Why visual inspection is not integrity verification — sha256sum and cmp expose the difference.">
+  <title>Two files. Same content. Different hashes. | Daniel Dela Dzikunu</title>
+  <meta name="description" content="Why visual inspection is not integrity verification: sha256sum and cmp expose the difference.">
   <link rel="canonical" href="https://danieldeladzikunu.vercel.app/blog/file-integrity-sha256/">
   <meta property="og:title" content="Two files. Same content. Different hashes.">
-  <meta property="og:description" content="Why visual inspection is not integrity verification — sha256sum and cmp expose the difference.">
+  <meta property="og:description" content="Why visual inspection is not integrity verification: sha256sum and cmp expose the difference.">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://danieldeladzikunu.vercel.app/blog/file-integrity-sha256/">
   <meta property="og:image" content="https://danieldeladzikunu.vercel.app/assets/images/og.png">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Two files. Same content. Different hashes.">
-  <meta name="twitter:description" content="Why visual inspection is not integrity verification — sha256sum and cmp expose the difference.">
+  <meta name="twitter:description" content="Why visual inspection is not integrity verification: sha256sum and cmp expose the difference.">
   <meta name="twitter:image" content="https://danieldeladzikunu.vercel.app/assets/images/og.png">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='14' fill='%230a0e0c'/><text x='50' y='68' text-anchor='middle' font-size='52' font-family='monospace' font-weight='bold' fill='%233df5a5'>DD</text></svg>">
   <link rel="stylesheet" href="/css/main.css">
@@ -53,13 +53,13 @@
       <section style="padding-top: 40px;">
         <article class="post-body reveal">
         <p>Two files. Same content on screen. Completely different hash values.</p>
-        <p>That's the scenario I worked through in this lab — and it's exactly the kind of deception a malicious program uses to hide in plain sight.</p>
+        <p>That's the scenario I worked through in this lab, and it's exactly the kind of deception a malicious program uses to hide in plain sight.</p>
         <p>Here's what I did to expose the difference:</p>
-        <p>Used cat to display both files — they printed the exact same EICAR antivirus test string, indistinguishable to the naked eye</p>
-        <p>Ran sha256sum on each file — the digests were entirely different: 131f95c5... vs 2558ba9a...</p>
+        <p>Used cat to display both files. They printed the exact same EICAR antivirus test string, indistinguishable to the naked eye</p>
+        <p>Ran sha256sum on each file. The digests were entirely different: 131f95c5... vs 2558ba9a...</p>
         <p>Redirected both hash values into separate files using the &gt;&gt; operator</p>
         <p>Used cmp for a byte-level comparison, which confirmed the mismatch at character 1, line 1</p>
-        <p>Key takeaway: visual inspection of file contents is not integrity verification. A threat actor can swap out a legitimate binary, preserve its readable output, and leave no obvious trace — unless you're hashing.</p>
+        <p>Key takeaway: visual inspection of file contents is not integrity verification. A threat actor can swap out a legitimate binary, preserve its readable output, and leave no obvious trace, unless you're hashing.</p>
         <p>sha256sum doesn't care what the file looks like. It cares what the file is.</p>
         </article>
         <div class="post-foot">
@@ -72,7 +72,7 @@
 
     <footer class="site-footer">
       <span>© 2026 Daniel Dela Dzikunu</span>
-      <span>built by hand · no template</span>
+      <span><a href="https://github.com/dfourmarvel" target="_blank" rel="noreferrer">github</a> / <a href="https://www.linkedin.com/in/dfour/" target="_blank" rel="noreferrer">linkedin</a></span>
     </footer>
   </div>
 
