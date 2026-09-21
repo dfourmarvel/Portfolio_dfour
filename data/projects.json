@@ -53,10 +53,10 @@
       "blurb": "A fitness tracker built around a weekly plan: each day opens on a check-off list, with cardio, bodyweight and body-weight logging, and calorie counting that has room for Ghanaian dishes.",
       "linksHtml": "              <a href=\"/web-development/routinerx/\">the overview →</a>\n              <a href=\"https://dfourfitness.vercel.app\" target=\"_blank\" rel=\"noreferrer\">try it →</a>",
       "shot": {
-        "src": "/assets/project-shots/routinerx-signin.webp",
+        "src": "/assets/project-shots/routinerx-posekit-lunge.webp",
         "width": 800,
-        "height": 522,
-        "alt": "The RoutineRx sign-in screen."
+        "height": 450,
+        "alt": "A lunge drawn by posekit, the animation library RoutineRx uses to show each exercise."
       },
       "detail": {
         "title": "RoutineRx",
