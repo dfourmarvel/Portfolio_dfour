@@ -38,7 +38,62 @@
         "heroLinksHtml": "        <a href=\"https://medmatchgh.vercel.app\" target=\"_blank\" rel=\"noopener\">live demo ↗</a>\n        <a href=\"https://github.com/dfourmarvel/med-match-gh\" target=\"_blank\" rel=\"noopener\">github ↗</a>",
         "body": "\n        <h3>Overview</h3>\n        <p>MedMatch Ghana asks 25 questions about how you think, how you work with patients, how you handle pressure, and how you want to live — then maps the answers onto a clinical trait profile and ranks your top five specialty matches. Every match comes with Ghana-specific context: residency routes, the realities of Korle Bu and Komfo Anokye, and local salary framing. It is free, and it works without an account.</p>\n\n        <figure class=\"lab-fig\"><img src=\"/assets/project-shots/medmatch-home.png\" alt=\"MedMatch Ghana landing page showing the specialty-fit assessment headline and a sample match report\" loading=\"lazy\"><figcaption><b>Figure 1</b> — The landing page: 25 questions, 15 trait dimensions, 20+ specialties, free. The sample card previews the report a visitor gets at the end.</figcaption></figure>\n\n        <h3>The goal</h3>\n        <p>A guided assessment for Ghana's future clinicians, built around personality, strengths, lifestyle goals — and the realities of training here. That last part is the whole point: the specialties actually available, the hospitals you would actually train in, and salary context in cedis rather than numbers borrowed from another country's system.</p>\n\n        <h3>How it works</h3>\n        <p>The assessment is three steps — answer 25 signals, get a weighted trait profile across 15 dimensions, then explore the matches. The scoring is a plain weighted engine written in TypeScript rather than a model call, which means the result is inspectable: no black box, and the same answers always produce the same profile.</p>\n        <p>The report gives the top five specialties with confidence levels, strengths and stretch areas, a radar chart of the trait profile, and a top-three comparison table. AI enters only at the last step — a Groq call writes a personalised explanation of <em>why</em> those matches surfaced and what to test next. The ranking itself is never left to the model.</p>\n        <ul>\n          <li><b>Framing adapts to the reader</b> — the same engine speaks differently to medical students, dental students, and high schoolers considering medicine.</li>\n          <li><b>20+ specialties</b>, medical and dental, each with a Ghana-aware detail page covering training pathway, lifestyle rating, and day-in-the-life.</li>\n          <li><b>Salary context in cedis</b>, published with an explicit disclaimer that the figures are broad and directional — seniority, public/private mix, location and call burden all move them.</li>\n          <li><b>Guest mode</b> via local storage, plus Supabase-backed share links so a result can be sent to a mentor, and a print-ready export.</li>\n        </ul>\n\n        <h3>Engineering notes</h3>\n        <p>It is a Next.js 15 / React 19 app on the App Router, typed end to end in TypeScript, with Zod validating anything crossing an API boundary. Supabase is the backend, Upstash Redis rate-limits the AI route so a public free tool cannot be run up as someone else's bill, and Jest with Testing Library covers the scoring logic — the part where a silent bug would quietly mislead someone about their career.</p>\n\n        <div class=\"verdict\"><p class=\"v-label\">what I learned</p><p>This is the biggest thing I have built, and for a long stretch it was bigger than I was. There is a particular feeling that comes with an app this size — the moment where the scoring engine, the database, the AI call and the charts all finally hold hands and a stranger's answers come out the other end as something that actually reads like advice. I sat back the first time that happened.</p><p>The part I am proudest of is the restraint. It would have been easier, and more impressive-sounding, to let the AI do the matching. Keeping the scoring deterministic and letting AI only explain the result was the harder call, and it is the one that lets me stand behind the tool. Someone might weigh a career decision on this. That thought changed how I built it.</p></div>\n",
         "footHtml": "<a href=\"/web-development/\">← all projects</a><a href=\"https://medmatchgh.vercel.app\" target=\"_blank\" rel=\"noopener\">try the assessment ↗</a>",
-        "labNavHtml": "<a href=\"/web-development/portfolio-v2/\">← This Portfolio (v2)</a><a href=\"/web-development/bible-quiz/\">Bible Quiz →</a>"
+        "labNavHtml": "<a href=\"/web-development/portfolio-v2/\">← This Portfolio (v2)</a><a href=\"/web-development/routinerx/\">RoutineRx →</a>"
+      }
+    },
+    {
+      "slug": "routinerx",
+      "tag": "NEXT.JS · TYPESCRIPT · SUPABASE · PWA",
+      "name": "RoutineRx",
+      "blurb": "A fitness tracker built around a weekly plan: each day opens on a check-off list, with cardio, bodyweight and body-weight logging, and calorie counting that has room for Ghanaian dishes.",
+      "linksHtml": "              <a href=\"/web-development/routinerx/\">the overview →</a>\n              <a href=\"https://dfourfitness.vercel.app\" target=\"_blank\" rel=\"noreferrer\">try it →</a>",
+      "detail": {
+        "title": "RoutineRx",
+        "crumb": "web-development / projects",
+        "description": "RoutineRx, a fitness tracker PWA: a planned weekly routine drives a daily check-off list, with cardio, bodyweight and calorie logging. Next.js, TypeScript and Supabase.",
+        "accent": "cyan",
+        "lede": "A fitness tracker where the plan comes first. You set a weekly routine once, and each day opens on a check-off list instead of a blank logbook.",
+        "tools": [
+          "Next.js",
+          "TypeScript",
+          "Supabase",
+          "Tailwind CSS",
+          "PWA",
+          "Vitest"
+        ],
+        "heroLinksHtml": "        <a href=\"https://dfourfitness.vercel.app\" target=\"_blank\" rel=\"noopener\">try it ↗</a>",
+        "body": "\n        <h3>Overview</h3>\n        <p>RoutineRx tracks cardio, bodyweight workouts and body weight. There is no gym or weights tracking, by design. The weekly routine decides what shows up each day, so logging a session is a tick rather than a form.</p>\n        <h3>What it does</h3>\n        <ul>\n        <li><b>Daily check-off:</b> the day's planned routine, ready to mark done.</li>\n        <li><b>Calories:</b> food search across your own custom foods, a built-in table of common Ghanaian foods, and Open Food Facts, because global food databases miss most Ghanaian dishes. The daily target is calculated from your stats (Mifflin-St Jeor) and can be overridden.</li>\n        <li><b>Accounts:</b> email or Google sign-in, with row-level security on every table so each person only ever reads their own data.</li>\n        <li><b>Installable:</b> it is a progressive web app, so it can sit on a phone's home screen like a native app.</li>\n        </ul>\n        <p><a href=\"/web-development/posekit/\">posekit</a> started here: I built it to animate this app's exercise demos, then open-sourced it.</p>\n",
+        "footHtml": "<a href=\"/web-development/\">← all projects</a><a href=\"https://dfourfitness.vercel.app\" target=\"_blank\" rel=\"noopener\">try it ↗</a>",
+        "labNavHtml": "<a href=\"/web-development/med-match/\">← MedMatch Ghana</a><a href=\"/web-development/afahye/\">Afahyɛ →</a>",
+        "heroNoteHtml": "<p style=\"font-family: var(--mono); font-size: 12.5px; color: var(--text-dim); margin-top: 10px;\">Sign up with email. Google sign-in is still limited to test accounts.</p>"
+      }
+    },
+    {
+      "slug": "afahye",
+      "tag": "NEXT.JS · TYPESCRIPT · SUPABASE",
+      "name": "Afahyɛ",
+      "blurb": "A marketplace for Ghanaian event vendors: caterers, decorators, photographers, venues and more. Clients send one brief and get quotes back in a thread. Pre-launch, with demo listings.",
+      "linksHtml": "              <a href=\"/web-development/afahye/\">the overview →</a>\n              <a href=\"https://afahye.vercel.app\" target=\"_blank\" rel=\"noreferrer\">see it →</a>",
+      "detail": {
+        "title": "Afahyɛ",
+        "crumb": "web-development / projects",
+        "description": "Afahyɛ, a Ghana-only marketplace for event vendors: browse by category and region, send a structured brief, receive quotes in a thread. Next.js, TypeScript and Supabase.",
+        "accent": "cyan",
+        "lede": "A Ghana-only marketplace for event vendors. Clients browse by category and region, send a structured brief, and receive quotes in a thread.",
+        "tools": [
+          "Next.js",
+          "TypeScript",
+          "Supabase",
+          "Tailwind CSS",
+          "Zod",
+          "Vitest",
+          "Playwright"
+        ],
+        "heroLinksHtml": "        <a href=\"https://afahye.vercel.app\" target=\"_blank\" rel=\"noopener\">see it ↗</a>",
+        "body": "\n        <h3>Overview</h3>\n        <p>Afahyɛ is Twi for \"festival\". It covers the vendors a Ghanaian event needs: caterers, decorators, photographers, bands, venues, makeup artists, planners and small chops. A client finds vendors by category and region, sends one structured brief, and each vendor answers with a quote in its own thread.</p>\n        <h3>How it is built</h3>\n        <ul>\n        <li><b>Data:</b> Supabase Postgres, auth and storage, with row-level security on everything.</li>\n        <li><b>Server:</b> Next.js server actions, each one validated with Zod.</li>\n        <li><b>Tests:</b> Vitest for units and Playwright for end-to-end runs.</li>\n        <li><b>No AI:</b> a vendor directory does not need a model, so the one the starter template shipped with was removed.</li>\n        </ul>\n",
+        "footHtml": "<a href=\"/web-development/\">← all projects</a><a href=\"https://afahye.vercel.app\" target=\"_blank\" rel=\"noopener\">see it ↗</a>",
+        "labNavHtml": "<a href=\"/web-development/routinerx/\">← RoutineRx</a><a href=\"/web-development/bible-quiz/\">Bible Quiz →</a>",
+        "heroNoteHtml": "<p style=\"font-family: var(--mono); font-size: 12.5px; color: var(--text-dim); margin-top: 10px;\">Pre-launch: the vendor listings are demo data, not real businesses, and it cannot take payments yet.</p>"
       }
     },
     {
@@ -63,7 +118,7 @@
         "heroLinksHtml": "        <a href=\"https://biblequizgame.vercel.app\" target=\"_blank\" rel=\"noopener\">play it ↗</a>\n        <a href=\"https://github.com/dfourmarvel/Bible-quiz\" target=\"_blank\" rel=\"noopener\">github ↗</a>",
         "body": "\n        <h3>Overview</h3>\n        <p>A Bible trivia game wrapped in a board everyone's already played. You answer an entry question and roll a 6 to get on the board; from there, landing on a ladder or a snake triggers a question. Get it right and you climb, get it wrong and you slide. First player to land exactly on 100 wins.</p>\n\n        <figure class=\"lab-fig\"><img src=\"/assets/project-shots/biblequiz-setup.png\" alt=\"The Bible Quiz setup screen: player count, name fields, an avatar picker, and an AI checkbox for each player, with the snakes-and-ladders board visible behind\" loading=\"lazy\"><figcaption><b>Figure 1</b> — Setup: name your players, pick avatars, and tick <em>AI</em> for any seat you want the computer to take. The board waits behind.</figcaption></figure>\n\n        <h3>The goal</h3>\n        <p>Bible knowledge is usually tested in formats that feel like an exam — a quiz sheet, a list of verses to memorise. The bet here is that the format is the problem, not the content. Snakes &amp; Ladders needs no explaining, so the questions arrive while people are already playing rather than while they're being tested.</p>\n\n        <h3>The question bank</h3>\n        <p>The bank behind the game is the part that took the real work. It started from a 1,000-question source and ended at <b>875 unique questions</b> — and getting there meant treating it like data cleaning, not copywriting:</p>\n        <ul>\n          <li><b>50 questions (451–500) were missing from the source</b> entirely — the original document had a placeholder where the content should be, then resumed at 501.</li>\n          <li><b>72 questions were exact duplicates</b> of others elsewhere in the bank. 75 redundant slots were removed, keeping the lowest-numbered instance of each.</li>\n          <li><b>Two answers were wrong or malformed</b> and were corrected against the question content — Q903 was missing its book name (\"32:24-32\" only, corrected to Genesis 32:24-32), and Q38 had a stray clarifying clause trimmed out.</li>\n        </ul>\n        <p>Every surviving question is rendered <b>twice</b> — once as a true/false item and once as multiple choice — which is 1,750 playable items from 875 questions. The multiple-choice distractors are real Bible references pulled from elsewhere in the same bank, matched to the same book where possible and the same testament otherwise. None of them are invented verses, which matters: a plausible-looking fake reference in a Bible game teaches the wrong thing. Each question carries an explanation and cross-reference verses.</p>\n\n        <h3>How it's built</h3>\n        <p>Vanilla HTML, CSS and JavaScript with no framework and no build step — you can open <code>index.html</code> and play. Game state, dice, questions, audio and storage all live in one script. Playwright drives the automated tests.</p>\n        <ul>\n          <li><b>Optional AI players</b> so the board still works with one person in the room.</li>\n          <li><b>Read-aloud support</b> and background music with sound effects.</li>\n          <li><b>A skeleton shimmer loader</b> for the board grid, and a layout that holds from phone to desktop.</li>\n        </ul>\n\n        <div class=\"verdict\"><p class=\"v-label\">what I learned</p><p>I expected the game to be the hard part. It wasn't — it was the 875 questions. Finding that 50 were simply missing from the source, that 72 were quiet duplicates, that an answer was wrong — none of that is glamorous work, and all of it happened before a single line of game logic mattered.</p><p>What stuck with me is how good it felt to refuse the shortcut. I could have generated plausible-looking wrong answers in an afternoon. Pulling every distractor from real verses in the same bank took far longer and nobody playing will ever notice. But I'd know, and a Bible game that teaches a fake verse is worse than no game at all.</p></div>\n",
         "footHtml": "<a href=\"/web-development/\">← all projects</a><a href=\"https://biblequizgame.vercel.app\" target=\"_blank\" rel=\"noopener\">play it ↗</a>",
-        "labNavHtml": "<a href=\"/web-development/med-match/\">← MedMatch Ghana</a><a href=\"/web-development/menstrual-health-game/\">Menstrual Health Game →</a>"
+        "labNavHtml": "<a href=\"/web-development/afahye/\">← Afahyɛ</a><a href=\"/web-development/menstrual-health-game/\">Menstrual Health Game →</a>"
       }
     },
     {
@@ -115,8 +170,81 @@
         "heroLinksHtml": "        <span style=\"color: var(--text-dim); border-bottom: none;\">visit it ↗</span>\n        <a href=\"https://github.com/dfourmarvel/Mothers-Day\" target=\"_blank\" rel=\"noopener\">github ↗</a>\n        <a href=\"/blog/building-a-tribute-site-for-my-mom/\">the write-up →</a>",
         "body": "\n        <h3>Overview</h3>\n        <p>A mobile-first single-page site built as a Mother's Day gift for my mum. It opens on a surprise reveal, then unfolds like a love letter — a family letter, a photo gallery, and a timeline of memories, wrapped in warm golds and oranges with animation guiding you through each section.</p>\n\n        <figure class=\"lab-fig\"><img src=\"/assets/project-shots/mothersday-card.png\" alt=\"The site's welcome card: a cream panel reading 'A family surprise — Mama Joe, this is for you' above a gold 'Open your surprise' button\" loading=\"lazy\"><figcaption><b>Figure 1</b> — The welcome gate. Cormorant Garamond over warm cream and gold, with the reveal held behind a single button. The rest of the site is family photographs, so this is the one frame that is all design and no album.</figcaption></figure>\n\n        <h3>The goal</h3>\n        <p>In my own words from the write-up: <em>\"For a long time, I had a vision of building something truly special for my mom… I wanted to create a digital tribute that went beyond a standard webpage — something immersive, elegant, and deeply personal. However, doing it justice using purely traditional development methods felt out of reach for my current frontend skillset.\"</em></p>\n        <p>So the constraint was real and worth naming: the idea was further along than the hands were.</p>\n\n        <h3>How it was built</h3>\n        <p>The answer was to change roles. Using VS Code with GitHub Copilot and Codex, I shifted from writing every line of syntax to acting as system architect and creative director — prompting the agents, managing the logic, and owning the user experience. That let me ship a polished, production-ready site I could not have coded from scratch at the time.</p>\n        <ul>\n          <li><b>The look:</b> warm gold (<code>#d8a24b</code>) through burnt orange (<code>#d66b34</code>) on cream and soft beige, with Cormorant Garamond over Manrope.</li>\n          <li><b>The experience:</b> an animated welcome reveal, scroll-triggered animations, typing effects, a memories timeline, background music controls, and a photo gallery with full lightbox.</li>\n          <li><b>The engineering underneath:</b> lazy-loaded images, and accessibility taken seriously — semantic markup, ARIA labels, skip links and focus management.</li>\n        </ul>\n\n        <div class=\"verdict\"><p class=\"v-label\">what I learned</p><p>In my own words: <em>\"Building this project taught me that the barrier to entry for software creation has completely shifted. You do not need to be a veteran frontend engineer to bring complex, beautiful ideas to life anymore; you just need a clear vision, strong logical direction, and the ability to effectively collaborate with AI.\"</em></p><p><em>\"Seeing my mom's reaction to a custom digital experience built just for her was the best deployment feeling yet.\"</em></p></div>\n",
         "footHtml": "<a href=\"/web-development/\">← all projects</a><a href=\"/blog/building-a-tribute-site-for-my-mom/\">read the full write-up →</a><span style=\"color: var(--text-dim); border-bottom: none;\">visit it ↗</span>",
-        "labNavHtml": "<a href=\"/web-development/menstrual-health-game/\">← Menstrual Health Game</a><a href=\"/web-development/portfolio-v2/\">This Portfolio (v2) →</a>",
+        "labNavHtml": "<a href=\"/web-development/menstrual-health-game/\">← Menstrual Health Game</a><a href=\"/web-development/posekit/\">posekit →</a>",
         "heroNoteHtml": "<p style=\"font-family: var(--mono); font-size: 12.5px; color: var(--text-dim); margin-top: 10px;\">This site is now private at the family's request.</p>"
+      }
+    },
+    {
+      "slug": "posekit",
+      "tag": "TYPESCRIPT · OPEN SOURCE · NPM",
+      "name": "posekit",
+      "blurb": "Procedural 2D exercise animation. Poses are solved from joint angles at runtime, so range of motion, tempo and load are settings rather than redrawn frames. 36 movement patterns in about 22 KB, with an optional 178-exercise catalogue.",
+      "linksHtml": "              <a href=\"/web-development/posekit/\">the overview →</a>\n              <a href=\"https://dfourmarvel.github.io/posekit/demo/\" target=\"_blank\" rel=\"noreferrer\">live demo →</a>\n              <a href=\"https://github.com/dfourmarvel/posekit\" target=\"_blank\" rel=\"noreferrer\">github →</a>\n              <a href=\"https://www.npmjs.com/package/posekit\" target=\"_blank\" rel=\"noreferrer\">npm →</a>",
+      "detail": {
+        "title": "posekit",
+        "crumb": "web-development / projects",
+        "description": "posekit, an open-source TypeScript library for procedural 2D exercise animation: 178 exercises over 36 movement patterns, about 22 KB gzipped.",
+        "accent": "cyan",
+        "lede": "Exercise animation where range of motion, tempo and load are parameters. A squat to 60% depth is the same movement travelling less far, not a different drawing.",
+        "tools": [
+          "TypeScript",
+          "SVG",
+          "React (optional)",
+          "npm",
+          "AGPL-3.0"
+        ],
+        "heroLinksHtml": "        <a href=\"https://dfourmarvel.github.io/posekit/demo/\" target=\"_blank\" rel=\"noopener\">live demo ↗</a>\n        <a href=\"https://github.com/dfourmarvel/posekit\" target=\"_blank\" rel=\"noopener\">github ↗</a>\n        <a href=\"https://www.npmjs.com/package/posekit\" target=\"_blank\" rel=\"noopener\">npm ↗</a>",
+        "body": "\n        <h3>Overview</h3>\n        <p>I needed exercise demos for <a href=\"/web-development/routinerx/\">RoutineRx</a>. Pre-rendered animation libraries have far more exercises, but every frame is fixed when it is drawn, so none of them can show a shallower squat or a slower tempo. posekit trades coverage for that control: the pose is solved from joint angles at runtime.</p>\n        <ul>\n        <li><b>Coverage:</b> 36 movement patterns, with an optional catalogue of 178 exercises built on them.</li>\n        <li><b>Adjustable:</b> range of motion changes continuously; tempo, load and grip are settings.</li>\n        <li><b>Size:</b> about 22 KB gzipped, against 14–90 MB for pre-rendered sets. That is the difference between working on a slow connection and not.</li>\n        <li><b>No third-party art:</b> adding an exercise means writing keyframes, not commissioning an artist.</li>\n        </ul>\n        <h3>Licence</h3>\n        <p>Published on npm under AGPL-3.0, with a paid commercial exception for closed-source use.</p>\n",
+        "footHtml": "<a href=\"/web-development/\">← all projects</a><a href=\"https://dfourmarvel.github.io/posekit/demo/\" target=\"_blank\" rel=\"noopener\">live demo ↗</a>",
+        "labNavHtml": "<a href=\"/web-development/mothers-day/\">← Mothers-Day</a><a href=\"/web-development/the-panel/\">The Panel →</a>"
+      }
+    },
+    {
+      "slug": "the-panel",
+      "tag": "NEXT.JS · LLM · HACKATHON",
+      "name": "The Panel",
+      "blurb": "An AI interview panel: 9 applicants, 5 seats on a solar installation course, 2 of them with a guaranteed job. The model runs the interviews; a deterministic scoring engine makes every decision.",
+      "linksHtml": "              <a href=\"/web-development/the-panel/\">the overview →</a>\n              <a href=\"https://thepanelbot.vercel.app\" target=\"_blank\" rel=\"noreferrer\">try it →</a>\n              <a href=\"https://github.com/dfourmarvel/the-panel\" target=\"_blank\" rel=\"noreferrer\">github →</a>",
+      "detail": {
+        "title": "The Panel",
+        "crumb": "web-development / projects",
+        "description": "The Panel: an LLM interviews nine applicants for five training seats, and a deterministic rubric makes the allocation. A hackathon submission built with Next.js.",
+        "accent": "cyan",
+        "lede": "Five seats on a solar PV installation course in the Ashanti Region, two with a guaranteed job. Nine people shortlisted. The model interviews them; arithmetic decides.",
+        "tools": [
+          "Next.js",
+          "TypeScript",
+          "Tailwind CSS",
+          "OpenRouter"
+        ],
+        "heroLinksHtml": "        <a href=\"https://thepanelbot.vercel.app\" target=\"_blank\" rel=\"noopener\">try it ↗</a>\n        <a href=\"https://github.com/dfourmarvel/the-panel\" target=\"_blank\" rel=\"noopener\">github ↗</a>",
+        "body": "\n        <h3>Overview</h3>\n        <p>A hackathon submission. Most \"AI decides who gets the thing\" demos put the judgement inside the model. This one does not.</p>\n        <ul>\n        <li><b>The model interviews:</b> it asks follow-ups, probes vague claims and records what each answer actually established.</li>\n        <li><b>A rubric decides:</b> weighted scores and plain arithmetic, with no model call anywhere in the decision path. Every pick traces to specific evidence and specific numbers.</li>\n        <li><b>Two goods, two rubrics:</b> training seats are scored on impact, evidence, ability to finish and reach. The two job placements are then re-ranked inside the winning five on who could not get hired without the guarantee.</li>\n        <li><b>Safe without AI:</b> with no API key it runs on scripted interview trees and produces the same allocation, because the reasoning never lived in the model.</li>\n        </ul>\n",
+        "footHtml": "<a href=\"/web-development/\">← all projects</a><a href=\"https://thepanelbot.vercel.app\" target=\"_blank\" rel=\"noopener\">try it ↗</a>",
+        "labNavHtml": "<a href=\"/web-development/posekit/\">← posekit</a><a href=\"/web-development/the-mediator/\">The Mediator →</a>"
+      }
+    },
+    {
+      "slug": "the-mediator",
+      "tag": "NEXT.JS · LLM · HACKATHON",
+      "name": "The Mediator",
+      "blurb": "An AI mediator for five parties sharing a shrinking community borehole. The model runs the room; a water-balance engine computes every litre and blocks any agreement that does not add up.",
+      "linksHtml": "              <a href=\"/web-development/the-mediator/\">the overview →</a>\n              <a href=\"https://themediatorbot.vercel.app\" target=\"_blank\" rel=\"noreferrer\">try it →</a>\n              <a href=\"https://github.com/dfourmarvel/the-mediator\" target=\"_blank\" rel=\"noreferrer\">github →</a>",
+      "detail": {
+        "title": "The Mediator",
+        "crumb": "web-development / projects",
+        "description": "The Mediator: an LLM mediates five parties over a shrinking borehole while a water-balance engine sets every volume. A hackathon submission built with Next.js.",
+        "accent": "cyan",
+        "lede": "Five parties, one shrinking borehole. The output is a signed agreement in litres per day, and the model running the meeting never computes a single litre.",
+        "tools": [
+          "Next.js",
+          "TypeScript",
+          "Tailwind CSS",
+          "OpenRouter"
+        ],
+        "heroLinksHtml": "        <a href=\"https://themediatorbot.vercel.app\" target=\"_blank\" rel=\"noopener\">try it ↗</a>\n        <a href=\"https://github.com/dfourmarvel/the-mediator\" target=\"_blank\" rel=\"noopener\">github ↗</a>",
+        "body": "\n        <h3>Overview</h3>\n        <p>A hackathon submission, built alongside <a href=\"/web-development/the-panel/\">The Panel</a>. The usual failure of an articulate AI mediator is an agreement that reads well and does not add up. Here the arithmetic lives outside the model.</p>\n        <ul>\n        <li><b>Protected floors:</b> water for drinking, cooking and sanitation is set from headcount and cannot be traded away, so a school that opened this year is protected on the same basis as households that have drawn from the borehole for decades.</li>\n        <li><b>Ceilings on justified use:</b> each party's share is worked out against what its own records justify, not against what it asks for. Asking for more earns nothing.</li>\n        <li><b>Signing is blocked</b> if the volumes exceed what the borehole can sustainably supply, or any floor is breached.</li>\n        <li><b>The agreement:</b> volumes, abstraction windows, sealed meters, levies and a graduated response to overdraw.</li>\n        </ul>\n",
+        "footHtml": "<a href=\"/web-development/\">← all projects</a><a href=\"https://themediatorbot.vercel.app\" target=\"_blank\" rel=\"noopener\">try it ↗</a>",
+        "labNavHtml": "<a href=\"/web-development/the-panel/\">← The Panel</a><a href=\"/web-development/portfolio-v2/\">This Portfolio (v2) →</a>"
       }
     },
     {
@@ -166,7 +294,7 @@
         "heroLinksHtml": "        <a href=\"https://github.com/dfourmarvel/Portfolio_dfour\" target=\"_blank\" rel=\"noopener\">github ↗</a>\n        <a href=\"/\">you're looking at it →</a>",
         "body": "\n        <h3>Overview</h3>\n        <p>A ground-up rebuild of my portfolio. Version 1 worked, but it was visually dull, read as AI-generated, had an empty projects page, and did not reflect the four areas I actually work in. v2 replaced all of it: new architecture, new design, new content model, real projects.</p>\n\n        <h3>The goal</h3>\n        <p>One test, written into the spec before any code: a stranger should leave the homepage able to say <em>\"medical student, serious about cybersecurity, builds websites and designs posters — and the site itself proves he can build.\"</em> That last clause is the whole reason this is a hand-built site rather than a template. A portfolio claiming someone can build is evidence, not a claim.</p>\n\n        <h3>The design</h3>\n        <p>Three animated homepage directions were built as real, running pages and reviewed in the browser rather than as static mockups. The winner — <b>\"Vital Terminal\"</b> — is a fusion of a phosphor-green terminal and a hospital vitals monitor: the ECG strip in the hero, the heartbeat in the nav, the typing prompt. Medicine and cybersecurity in one visual language, which is the actual thesis of the site.</p>\n        <ul>\n          <li><b>Dark only.</b> No light mode and no toggle — the dark theme is the designed theme, not a default.</li>\n          <li><b>Per-domain accents</b> — medicine is rose, cybersecurity green, web-dev cyan, design amber. This page is cyan because it's a web-dev page; the whole system is one CSS variable.</li>\n          <li><b>Hand-built details</b> — custom hover states, intentional asymmetry, and a terminal that types itself out.</li>\n        </ul>\n\n        <h3>How it's built</h3>\n        <p>Vanilla HTML, CSS and JavaScript. GSAP with ScrollTrigger is the single sanctioned dependency, loaded from a CDN — everything else is dependency-free, and there is no build step at all. The nav and footer are deliberately duplicated across every page: the honest cost of having no build, paid knowingly.</p>\n        <p>The rule the animation system is built around: <b>content must never be stuck invisible.</b> Every hidden-until-animated style is gated behind a class that JavaScript only adds after confirming GSAP will actually run. If the CDN fails, the script dies, or a browser refuses — the page is still fully readable. <code>prefers-reduced-motion</code> collapses every decorative animation, and that is treated as non-negotiable rather than a nice-to-have.</p>\n\n        <div class=\"verdict\"><p class=\"v-label\">what I learned</p><p>There is something uniquely exposing about building the thing that is supposed to prove you can build things. Every shortcut I might have taken elsewhere would be sitting right there in the evidence. So the ECG in the hero had to be hand-made, the terminal had to actually type, and the reduced-motion path had to genuinely work rather than merely exist.</p><p>The lesson that stuck was about the boring parts. The animation contract — content never stranded invisible if the CDN dies — is the piece I am quietest about and proudest of. Nobody will ever notice it working. That turns out to be the point: the difference between a site that looks impressive and one that is actually built is entirely made of things nobody notices.</p></div>\n",
         "footHtml": "<a href=\"/web-development/\">← all projects</a><a href=\"https://github.com/dfourmarvel/Portfolio_dfour\" target=\"_blank\" rel=\"noopener\">read the source ↗</a>",
-        "labNavHtml": "<a href=\"/web-development/mothers-day/\">← Mothers-Day</a><a href=\"/web-development/med-match/\">MedMatch Ghana →</a>"
+        "labNavHtml": "<a href=\"/web-development/the-mediator/\">← The Mediator</a><a href=\"/web-development/med-match/\">MedMatch Ghana →</a>"
       }
     }
   ]

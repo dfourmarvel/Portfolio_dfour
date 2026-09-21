@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RoutineRx — Daniel Dela Dzikunu</title>
+  <meta name="description" content="RoutineRx, a fitness tracker PWA: a planned weekly routine drives a daily check-off list, with cardio, bodyweight and calorie logging. Next.js, TypeScript and Supabase.">
+  <link rel="canonical" href="https://danieldeladzikunu.vercel.app/web-development/routinerx/">
+  <meta property="og:title" content="RoutineRx">
+  <meta property="og:description" content="RoutineRx, a fitness tracker PWA: a planned weekly routine drives a daily check-off list, with cardio, bodyweight and calorie logging. Next.js, TypeScript and Supabase.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://danieldeladzikunu.vercel.app/web-development/routinerx/">
+  <meta property="og:image" content="https://danieldeladzikunu.vercel.app/assets/images/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="RoutineRx">
+  <meta name="twitter:description" content="RoutineRx, a fitness tracker PWA: a planned weekly routine drives a daily check-off list, with cardio, bodyweight and calorie logging. Next.js, TypeScript and Supabase.">
+  <meta name="twitter:image" content="https://danieldeladzikunu.vercel.app/assets/images/og.png">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='14' fill='%230a0e0c'/><text x='50' y='68' text-anchor='middle' font-size='52' font-family='monospace' font-weight='bold' fill='%233df5a5'>DD</text></svg>">
+  <link rel="stylesheet" href="/css/main.css">
+</head>
+<body data-ac="cyan">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="wrap">
+    <nav class="site-nav" aria-label="Main navigation">
+      <a class="brand" href="/"><span class="beat" aria-hidden="true">♥</span> daniel@portfolio<span>:~$</span></a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle navigation menu">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-menu" id="nav-menu">
+        <a href="/medicine/">medicine</a>
+        <a href="/cybersecurity/">cybersecurity</a>
+        <a href="/web-development/" aria-current="page">web-dev</a>
+        <a href="/graphic-design/">design</a>
+        <a href="/certifications/">certs</a>
+        <a href="/blog/">blog</a>
+        <a href="/#contact">contact</a>
+        <a class="cv-btn" href="/cv.pdf" target="_blank" rel="noopener">CV ↓</a>
+      </div>
+    </nav>
+
+    <header class="page-hero">
+      <span class="crumb">web-development / projects</span>
+      <h1>RoutineRx</h1>
+      <p class="lede reveal">A fitness tracker where the plan comes first. You set a weekly routine once, and each day opens on a check-off list instead of a blank logbook.</p>
+      <div class="lab-tools reveal"><span class="tool">Next.js</span><span class="tool">TypeScript</span><span class="tool">Supabase</span><span class="tool">Tailwind CSS</span><span class="tool">PWA</span><span class="tool">Vitest</span></div>
+      <div class="feat-links reveal">
+        <a href="https://dfourfitness.vercel.app" target="_blank" rel="noopener">try it ↗</a>
+      </div>
+      <p style="font-family: var(--mono); font-size: 12.5px; color: var(--text-dim); margin-top: 10px;">Sign up with email. Google sign-in is still limited to test accounts.</p>
+    </header>
+
+    <main id="main">
+      <section style="padding-top: 40px;">
+        <article class="lab-body reveal">
+
+        <h3>Overview</h3>
+        <p>RoutineRx tracks cardio, bodyweight workouts and body weight. There is no gym or weights tracking, by design. The weekly routine decides what shows up each day, so logging a session is a tick rather than a form.</p>
+        <h3>What it does</h3>
+        <ul>
+        <li><b>Daily check-off:</b> the day's planned routine, ready to mark done.</li>
+        <li><b>Calories:</b> food search across your own custom foods, a built-in table of common Ghanaian foods, and Open Food Facts, because global food databases miss most Ghanaian dishes. The daily target is calculated from your stats (Mifflin-St Jeor) and can be overridden.</li>
+        <li><b>Accounts:</b> email or Google sign-in, with row-level security on every table so each person only ever reads their own data.</li>
+        <li><b>Installable:</b> it is a progressive web app, so it can sit on a phone's home screen like a native app.</li>
+        </ul>
+        <p><a href="/web-development/posekit/">posekit</a> started here: I built it to animate this app's exercise demos, then open-sourced it.</p>
+
+        </article>
+        <div class="post-foot"><a href="/web-development/">← all projects</a><a href="https://dfourfitness.vercel.app" target="_blank" rel="noopener">try it ↗</a></div>
+        <div class="lab-nav"><a href="/web-development/med-match/">← MedMatch Ghana</a><a href="/web-development/afahye/">Afahyɛ →</a></div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span>© 2026 Daniel Dela Dzikunu</span>
+      <span>built by hand · no template</span>
+    </footer>
+  </div>
+
+  <script src="/assets/vendor/gsap/gsap.min.js"></script>
+  <script src="/assets/vendor/gsap/ScrollTrigger.min.js"></script>
+  <script src="/js/main.js"></script>
+</body>
+</html>

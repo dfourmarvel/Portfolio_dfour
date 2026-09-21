@@ -261,6 +261,11 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://danieldeladzikunu.vercel.app/web-development/afahye/</loc>
+    <lastmod>2026-09-21</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://danieldeladzikunu.vercel.app/web-development/bible-quiz/</loc>
     <lastmod>2026-09-03</lastmod>
     <priority>0.6</priority>
@@ -288,6 +293,26 @@
   <url>
     <loc>https://danieldeladzikunu.vercel.app/web-development/portfolio-v2/</loc>
     <lastmod>2026-09-03</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://danieldeladzikunu.vercel.app/web-development/posekit/</loc>
+    <lastmod>2026-09-21</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://danieldeladzikunu.vercel.app/web-development/routinerx/</loc>
+    <lastmod>2026-09-21</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://danieldeladzikunu.vercel.app/web-development/the-mediator/</loc>
+    <lastmod>2026-09-21</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://danieldeladzikunu.vercel.app/web-development/the-panel/</loc>
+    <lastmod>2026-09-21</lastmod>
     <priority>0.6</priority>
   </url>
 </urlset>

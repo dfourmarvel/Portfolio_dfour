@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Afahyɛ — Daniel Dela Dzikunu</title>
+  <meta name="description" content="Afahyɛ, a Ghana-only marketplace for event vendors: browse by category and region, send a structured brief, receive quotes in a thread. Next.js, TypeScript and Supabase.">
+  <link rel="canonical" href="https://danieldeladzikunu.vercel.app/web-development/afahye/">
+  <meta property="og:title" content="Afahyɛ">
+  <meta property="og:description" content="Afahyɛ, a Ghana-only marketplace for event vendors: browse by category and region, send a structured brief, receive quotes in a thread. Next.js, TypeScript and Supabase.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://danieldeladzikunu.vercel.app/web-development/afahye/">
+  <meta property="og:image" content="https://danieldeladzikunu.vercel.app/assets/images/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Afahyɛ">
+  <meta name="twitter:description" content="Afahyɛ, a Ghana-only marketplace for event vendors: browse by category and region, send a structured brief, receive quotes in a thread. Next.js, TypeScript and Supabase.">
+  <meta name="twitter:image" content="https://danieldeladzikunu.vercel.app/assets/images/og.png">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='14' fill='%230a0e0c'/><text x='50' y='68' text-anchor='middle' font-size='52' font-family='monospace' font-weight='bold' fill='%233df5a5'>DD</text></svg>">
+  <link rel="stylesheet" href="/css/main.css">
+</head>
+<body data-ac="cyan">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="wrap">
+    <nav class="site-nav" aria-label="Main navigation">
+      <a class="brand" href="/"><span class="beat" aria-hidden="true">♥</span> daniel@portfolio<span>:~$</span></a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle navigation menu">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-menu" id="nav-menu">
+        <a href="/medicine/">medicine</a>
+        <a href="/cybersecurity/">cybersecurity</a>
+        <a href="/web-development/" aria-current="page">web-dev</a>
+        <a href="/graphic-design/">design</a>
+        <a href="/certifications/">certs</a>
+        <a href="/blog/">blog</a>
+        <a href="/#contact">contact</a>
+        <a class="cv-btn" href="/cv.pdf" target="_blank" rel="noopener">CV ↓</a>
+      </div>
+    </nav>
+
+    <header class="page-hero">
+      <span class="crumb">web-development / projects</span>
+      <h1>Afahyɛ</h1>
+      <p class="lede reveal">A Ghana-only marketplace for event vendors. Clients browse by category and region, send a structured brief, and receive quotes in a thread.</p>
+      <div class="lab-tools reveal"><span class="tool">Next.js</span><span class="tool">TypeScript</span><span class="tool">Supabase</span><span class="tool">Tailwind CSS</span><span class="tool">Zod</span><span class="tool">Vitest</span><span class="tool">Playwright</span></div>
+      <div class="feat-links reveal">
+        <a href="https://afahye.vercel.app" target="_blank" rel="noopener">see it ↗</a>
+      </div>
+      <p style="font-family: var(--mono); font-size: 12.5px; color: var(--text-dim); margin-top: 10px;">Pre-launch: the vendor listings are demo data, not real businesses, and it cannot take payments yet.</p>
+    </header>
+
+    <main id="main">
+      <section style="padding-top: 40px;">
+        <article class="lab-body reveal">
+
+        <h3>Overview</h3>
+        <p>Afahyɛ is Twi for "festival". It covers the vendors a Ghanaian event needs: caterers, decorators, photographers, bands, venues, makeup artists, planners and small chops. A client finds vendors by category and region, sends one structured brief, and each vendor answers with a quote in its own thread.</p>
+        <h3>How it is built</h3>
+        <ul>
+        <li><b>Data:</b> Supabase Postgres, auth and storage, with row-level security on everything.</li>
+        <li><b>Server:</b> Next.js server actions, each one validated with Zod.</li>
+        <li><b>Tests:</b> Vitest for units and Playwright for end-to-end runs.</li>
+        <li><b>No AI:</b> a vendor directory does not need a model, so the one the starter template shipped with was removed.</li>
+        </ul>
+
+        </article>
+        <div class="post-foot"><a href="/web-development/">← all projects</a><a href="https://afahye.vercel.app" target="_blank" rel="noopener">see it ↗</a></div>
+        <div class="lab-nav"><a href="/web-development/routinerx/">← RoutineRx</a><a href="/web-development/bible-quiz/">Bible Quiz →</a></div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span>© 2026 Daniel Dela Dzikunu</span>
+      <span>built by hand · no template</span>
+    </footer>
+  </div>
+
+  <script src="/assets/vendor/gsap/gsap.min.js"></script>
+  <script src="/assets/vendor/gsap/ScrollTrigger.min.js"></script>
+  <script src="/js/main.js"></script>
+</body>
+</html>
