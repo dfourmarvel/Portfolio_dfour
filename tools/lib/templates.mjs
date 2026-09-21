@@ -109,7 +109,7 @@ export function projectIndex({ projects, page: meta }) {
   const cards = projects
     .map(
       (p) => `          <article class="feat f-web reveal">
-            <span class="tag">${p.tag}</span>
+${p.shot ? `            <img class="card-shot" src="${p.shot.src}" width="${p.shot.width}" height="${p.shot.height}" loading="lazy" alt="${p.shot.alt}">\n` : ''}            <span class="tag">${p.tag}</span>
             <h3>${p.name}</h3>
             <p>${p.blurb}</p>
             <div class="feat-links">

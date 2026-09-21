@@ -8,7 +8,6 @@
     "crumb": "web-dev",
     "heroHtml": "Web <span class=\"accent\">Development</span>",
     "lede": "Websites, apps, and games: vanilla HTML/CSS/JS where it's enough, Next.js/TypeScript where it isn't. Every project runs live: click in and use it.",
-    "secLabel": "projects",
     "secHeading": "Projects"
   },
   "projects": [
@@ -18,6 +17,12 @@
       "name": "med-match",
       "blurb": "App that helps aspiring physicians find their specialty. My biggest build so far.",
       "linksHtml": "              <a href=\"/web-development/med-match/\">the write-up →</a>\n              <a href=\"https://medmatchgh.vercel.app\" target=\"_blank\" rel=\"noreferrer\">live demo →</a>\n              <a href=\"https://github.com/dfourmarvel/med-match-gh\" target=\"_blank\" rel=\"noreferrer\">github →</a>",
+      "shot": {
+        "src": "/assets/project-shots/medmatch-landing.webp",
+        "width": 1280,
+        "height": 640,
+        "alt": "The MedMatch Ghana landing page with a sample specialty match result."
+      },
       "detail": {
         "title": "MedMatch Ghana",
         "crumb": "web-development / projects",
@@ -47,6 +52,12 @@
       "name": "RoutineRx",
       "blurb": "A fitness tracker built around a weekly plan: each day opens on a check-off list, with cardio, bodyweight and body-weight logging, and calorie counting that has room for Ghanaian dishes.",
       "linksHtml": "              <a href=\"/web-development/routinerx/\">the overview →</a>\n              <a href=\"https://dfourfitness.vercel.app\" target=\"_blank\" rel=\"noreferrer\">try it →</a>",
+      "shot": {
+        "src": "/assets/project-shots/routinerx-signin.webp",
+        "width": 800,
+        "height": 522,
+        "alt": "The RoutineRx sign-in screen."
+      },
       "detail": {
         "title": "RoutineRx",
         "crumb": "web-development / projects",
@@ -74,6 +85,12 @@
       "name": "Afahyɛ",
       "blurb": "A marketplace for Ghanaian event vendors: caterers, decorators, photographers, venues and more. Clients send one brief and get quotes back in a thread. Pre-launch, with demo listings.",
       "linksHtml": "              <a href=\"/web-development/afahye/\">the overview →</a>\n              <a href=\"https://afahye.vercel.app\" target=\"_blank\" rel=\"noreferrer\">see it →</a>",
+      "shot": {
+        "src": "/assets/project-shots/afahye-home.webp",
+        "width": 800,
+        "height": 450,
+        "alt": "The Afahyɛ homepage with a vendor search for catering across Ghana."
+      },
       "detail": {
         "title": "Afahyɛ",
         "crumb": "web-development / projects",
@@ -102,6 +119,12 @@
       "name": "Bible Quiz",
       "blurb": "Snakes &amp; Ladders reimagined as Bible trivia: 875 questions, each written as both true/false and multiple choice.",
       "linksHtml": "              <a href=\"/web-development/bible-quiz/\">the write-up →</a>\n              <a href=\"https://biblequizgame.vercel.app\" target=\"_blank\" rel=\"noreferrer\">play it →</a>\n              <a href=\"https://github.com/dfourmarvel/Bible-quiz\" target=\"_blank\" rel=\"noreferrer\">github →</a>",
+      "shot": {
+        "src": "/assets/project-shots/biblequiz-setup.webp",
+        "width": 800,
+        "height": 450,
+        "alt": "The Bible Quiz player setup screen over its snakes and ladders board."
+      },
       "detail": {
         "title": "Bible Quiz",
         "crumb": "web-development / projects",
@@ -127,6 +150,12 @@
       "name": "Menstrual Health Game",
       "blurb": "Snakes &amp; Ladders reimagined to teach menstrual health. Cross-listed under medicine.",
       "linksHtml": "              <a href=\"/web-development/menstrual-health-game/\">the write-up →</a>\n              <a href=\"https://menstrualhealthawareness.vercel.app\" target=\"_blank\" rel=\"noreferrer\">play it →</a>\n              <a href=\"https://github.com/dfourmarvel/Menstrual-health-game\" target=\"_blank\" rel=\"noreferrer\">github →</a>",
+      "shot": {
+        "src": "/assets/project-shots/menstrual-setup.webp",
+        "width": 1280,
+        "height": 900,
+        "alt": "The Menstrual Health Game player setup screen over its snakes and ladders board."
+      },
       "detail": {
         "title": "Menstrual Health Game",
         "crumb": "web-development / projects",
@@ -153,6 +182,12 @@
       "name": "Mothers-Day",
       "blurb": "An interactive tribute site for my mother, built by directing AI coding agents as system architect, not typing every line.",
       "linksHtml": "              <a href=\"/web-development/mothers-day/\">the write-up →</a>\n              <a href=\"https://josephineyabat.vercel.app\" target=\"_blank\" rel=\"noreferrer\">visit it →</a>",
+      "shot": {
+        "src": "/assets/project-shots/mothersday-card.webp",
+        "width": 496,
+        "height": 368,
+        "alt": "The Mothers-Day site welcome card with a button to open the surprise."
+      },
       "detail": {
         "title": "Mothers-Day",
         "crumb": "web-development / projects",
@@ -179,6 +214,12 @@
       "name": "posekit",
       "blurb": "Procedural 2D exercise animation. Poses are solved from joint angles at runtime, so range of motion, tempo and load are settings rather than redrawn frames. 36 movement patterns in about 22 KB, with an optional 178-exercise catalogue.",
       "linksHtml": "              <a href=\"/web-development/posekit/\">the overview →</a>\n              <a href=\"https://dfourmarvel.github.io/posekit/demo/\" target=\"_blank\" rel=\"noreferrer\">live demo →</a>\n              <a href=\"https://github.com/dfourmarvel/posekit\" target=\"_blank\" rel=\"noreferrer\">github →</a>\n              <a href=\"https://www.npmjs.com/package/posekit\" target=\"_blank\" rel=\"noreferrer\">npm →</a>",
+      "shot": {
+        "src": "/assets/project-shots/posekit-demo.webp",
+        "width": 1280,
+        "height": 800,
+        "alt": "The posekit demo page with an animated squat figure and range of motion slider."
+      },
       "detail": {
         "title": "posekit",
         "crumb": "web-development / projects",
@@ -204,6 +245,12 @@
       "name": "The Panel",
       "blurb": "An AI interview panel: 9 applicants, 5 seats on a solar installation course, 2 of them with a guaranteed job. The model runs the interviews; a deterministic scoring engine makes every decision.",
       "linksHtml": "              <a href=\"/web-development/the-panel/\">the overview →</a>\n              <a href=\"https://thepanelbot.vercel.app\" target=\"_blank\" rel=\"noreferrer\">try it →</a>\n              <a href=\"https://github.com/dfourmarvel/the-panel\" target=\"_blank\" rel=\"noreferrer\">github →</a>",
+      "shot": {
+        "src": "/assets/project-shots/the-panel-brief.webp",
+        "width": 800,
+        "height": 450,
+        "alt": "The Panel brief page: nine applicants, five seats, two with a guaranteed job."
+      },
       "detail": {
         "title": "The Panel",
         "crumb": "web-development / projects",
@@ -228,6 +275,12 @@
       "name": "The Mediator",
       "blurb": "An AI mediator for five parties sharing a shrinking community borehole. The model runs the room; a water-balance engine computes every litre and blocks any agreement that does not add up.",
       "linksHtml": "              <a href=\"/web-development/the-mediator/\">the overview →</a>\n              <a href=\"https://themediatorbot.vercel.app\" target=\"_blank\" rel=\"noreferrer\">try it →</a>\n              <a href=\"https://github.com/dfourmarvel/the-mediator\" target=\"_blank\" rel=\"noreferrer\">github →</a>",
+      "shot": {
+        "src": "/assets/project-shots/the-mediator-brief.webp",
+        "width": 800,
+        "height": 450,
+        "alt": "The Mediator brief page describing five parties sharing one borehole."
+      },
       "detail": {
         "title": "The Mediator",
         "crumb": "web-development / projects",
@@ -252,6 +305,12 @@
       "name": "BibleTTS Twi Transcript Repair",
       "blurb": "Found a published open speech dataset silently stripping two Twi vowels from every transcript since 2024. Fixed it and published the repair.",
       "linksHtml": "              <a href=\"/web-development/bibletts-twi-repair/\">the write-up →</a>\n              <a href=\"https://huggingface.co/datasets/danieldzikunuofmarvel/bibletts-asante-twi-repaired\" target=\"_blank\" rel=\"noreferrer\">dataset →</a>",
+      "shot": {
+        "src": "/assets/project-shots/bibletts-dataset.webp",
+        "width": 800,
+        "height": 450,
+        "alt": "The repaired BibleTTS Asante Twi dataset on Hugging Face, showing 21,617 rows."
+      },
       "detail": {
         "title": "BibleTTS Twi Transcript Repair",
         "crumb": "web-development / open source",
@@ -276,6 +335,12 @@
       "name": "This Portfolio",
       "blurb": "The site you're on. Vanilla HTML, CSS and JavaScript, no framework.",
       "linksHtml": "              <a href=\"/web-development/portfolio-v2/\">the write-up →</a>\n              <a href=\"https://github.com/dfourmarvel/Portfolio_dfour\" target=\"_blank\" rel=\"noreferrer\">github →</a>",
+      "shot": {
+        "src": "/assets/project-shots/portfolio-home.webp",
+        "width": 800,
+        "height": 450,
+        "alt": "This site's homepage with the heartbeat trace under the hero."
+      },
       "detail": {
         "title": "This Portfolio (v2)",
         "crumb": "web-development / projects",

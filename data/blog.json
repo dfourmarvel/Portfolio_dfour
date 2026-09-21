@@ -8,7 +8,6 @@
     "crumb": "blog",
     "heroHtml": "<span class=\"accent\">Blog</span>",
     "lede": "The permanent home of what I share on LinkedIn: lab write-ups, project stories, and community health work. Each post links back to the original and to the project it's about.",
-    "secLabel": "posts",
     "secHeading": "All posts"
   },
   "posts": [

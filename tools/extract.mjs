@@ -64,11 +64,16 @@ async function extractBlog() {
       crumb: inner(indexHtml, '<span class="crumb">', '</span>'),
       heroHtml: inner(indexHtml, '<h1>', '</h1>'),
       lede: inner(indexHtml, '<p class="lede reveal">', '</p>'),
-      secLabel: inner(indexHtml, '<p class="sec-label">', '</p>'),
       secHeading: inner(indexHtml, '<h2 class="reveal">', '</h2>'),
     },
     posts,
   };
+}
+
+// The optional note under a project's hero links (e.g. a pre-launch disclaimer).
+function heroNoteOf(heroBlock) {
+  const m = heroBlock.match(/<\/div>\n      (<p [^\n]*<\/p>)\s*$/);
+  return m ? { heroNoteHtml: m[1] } : {};
 }
 
 async function extractProjects() {
@@ -90,6 +95,8 @@ async function extractProjects() {
       blurb: inner(card, '<p>', '</p>'),
       linksHtml,
     };
+    const shot = card.match(/<img class="card-shot" src="([^"]+)" width="(\d+)" height="(\d+)" loading="lazy" alt="([^"]*)">/);
+    if (shot) card_.shot = { src: shot[1], width: Number(shot[2]), height: Number(shot[3]), alt: shot[4] };
 
     if (!slug) {
       projects.push({ ...card_, detail: null });
@@ -116,6 +123,7 @@ async function extractProjects() {
         body: inner(html, '<article class="lab-body reveal">\n', '\n        </article>'),
         footHtml: inner(html, '<div class="post-foot">', '</div>'),
         labNavHtml: labNav,
+        ...heroNoteOf(heroBlock),
       },
     });
   }
@@ -130,7 +138,6 @@ async function extractProjects() {
       crumb: inner(indexHtml, '<span class="crumb">', '</span>'),
       heroHtml: inner(indexHtml, '<h1>', '</h1>'),
       lede: inner(indexHtml, '<p class="lede reveal">', '</p>'),
-      secLabel: inner(indexHtml, '<p class="sec-label">', '</p>'),
       secHeading: inner(indexHtml, '<h2 class="reveal">', '</h2>'),
     },
     projects,

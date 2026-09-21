@@ -368,6 +368,12 @@ h2 { font-size: clamp(28px, 4vw, 40px); font-weight: 800; letter-spacing: -0.02e
 
 /* feature cards */
 .feat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.feat:has(> .card-shot) { overflow: hidden; }
+.card-shot {
+  width: calc(100% + 52px); height: auto; max-width: none; margin: -26px -26px 20px;
+  aspect-ratio: 16 / 9; object-fit: cover; object-position: top left;
+  border-bottom: 1px solid var(--line); background: var(--bg-raise);
+}
 .feat {
   --ac: var(--green);
   background: var(--bg-card); border: 1px solid var(--line); border-radius: 8px; padding: 26px;
