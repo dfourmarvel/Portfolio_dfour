@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Writing, triggering and reading a Suricata rule | Daniel Dela Dzikunu</title>
+  <meta name="description" content="One custom rule, a 200-packet capture, two alerts, and the two logs Suricata writes them to.">
+  <link rel="canonical" href="https://danieldeladzikunu.vercel.app/blog/suricata-alerts-logs/">
+  <meta property="og:title" content="Writing, triggering and reading a Suricata rule">
+  <meta property="og:description" content="One custom rule, a 200-packet capture, two alerts, and the two logs Suricata writes them to.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://danieldeladzikunu.vercel.app/blog/suricata-alerts-logs/">
+  <meta property="og:image" content="https://danieldeladzikunu.vercel.app/assets/images/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Writing, triggering and reading a Suricata rule">
+  <meta name="twitter:description" content="One custom rule, a 200-packet capture, two alerts, and the two logs Suricata writes them to.">
+  <meta name="twitter:image" content="https://danieldeladzikunu.vercel.app/assets/images/og.png">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='14' fill='%230a0e0c'/><text x='50' y='68' text-anchor='middle' font-size='52' font-family='monospace' font-weight='bold' fill='%233df5a5'>DD</text></svg>">
+  <link rel="stylesheet" href="/css/main.css">
+</head>
+<body data-ac="green">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="wrap">
+    <nav class="site-nav" aria-label="Main navigation">
+      <a class="brand" href="/"><span class="beat" aria-hidden="true">♥</span> daniel@portfolio<span>:~$</span></a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle navigation menu">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-menu" id="nav-menu">
+        <a href="/medicine/">medicine</a>
+        <a href="/cybersecurity/">cybersecurity</a>
+        <a href="/web-development/">web-dev</a>
+        <a href="/graphic-design/">design</a>
+        <a href="/certifications/">certs</a>
+        <a href="/blog/" aria-current="page">blog</a>
+        <a href="/#contact">contact</a>
+        <a class="cv-btn" href="/cv.pdf" target="_blank" rel="noopener">CV ↓</a>
+      </div>
+    </nav>
+
+    <header class="page-hero">
+      <span class="crumb">blog</span>
+      <h1>Writing, triggering and reading a Suricata rule</h1>
+      <p class="post-meta">
+        <span>Nov 4, 2026</span>
+        <span class="tag-pill">intrusion detection</span>
+        <span>google cybersecurity certificate lab</span>
+      </p>
+    </header>
+
+    <main id="main">
+      <section style="padding-top: 40px;">
+        <article class="post-body reveal">
+        <p>This week's Google Cybersecurity Certificate lab was Suricata, an open-source intrusion detection system: you give it rules, it checks network traffic against them, and it logs whatever matches. The lab ran in three steps.</p>
+        <p>First, the rule. The supplied custom.rules file held one line: alert http $HOME_NET any -&gt; $EXTERNAL_NET any (msg:"GET on wire"; flow:established,to_server; content:"GET"; http_method; sid:12345; rev:3;). Read left to right, alert is the action, the header limits it to HTTP traffic leaving the home network for anywhere outside, and the options narrow it to client-to-server packets on an open connection whose HTTP method is GET. sid is the rule's ID and rev its revision.</p>
+        <p>Second, running it. sudo suricata -r sample.pcap -S custom.rules -k none replays a recorded 200-packet capture through that one rule, with checksum checks switched off because the traffic is recorded, not live. The log folder went from empty to four files, and fast.log held two alerts, both from 172.21.224.2 on port 80: one to 142.250.1.139 and one to 142.250.1.102. (The sample output in the instructions shows .139 twice; the second is really .102.)</p>
+        <p>Third, eve.json, Suricata's main log. It holds the same two alerts as JSON with a lot more attached: the host (opensource.google.com), the user agent (curl/7.74.0), the server's 301 redirect to HTTPS, packet and byte counts in each direction, and "action": "allowed", since Suricata was only watching here. jq made it readable: jq . to format the file, jq -c with a list of fields to pull out the timestamp, flow_id, signature, protocol and destination, and select(.flow_id==X) to gather every event from one connection.</p>
+        <p>fast.log is the quick check that a rule fired. eve.json is where you find out what it fired on.</p>
+        <p>If you run Suricata day to day, I'd like to know which eve.json fields you look at first.</p>
+        </article>
+        <div class="post-foot">
+          <a href="/blog/">← all write-ups</a>
+          <a href="https://www.linkedin.com/in/dfour/" target="_blank" rel="noreferrer">originally shared on LinkedIn ↗</a>
+          <a href="/labs/suricata-alerts-logs/">read the full lab report →</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span>© 2026 Daniel Dela Dzikunu</span>
+      <span><a href="https://github.com/dfourmarvel" target="_blank" rel="noreferrer">github</a> / <a href="https://www.linkedin.com/in/dfour/" target="_blank" rel="noreferrer">linkedin</a></span>
+    </footer>
+  </div>
+
+  <script src="/assets/vendor/gsap/gsap.min.js"></script>
+  <script src="/assets/vendor/gsap/ScrollTrigger.min.js"></script>
+  <script src="/js/main.js"></script>
+</body>
+</html>

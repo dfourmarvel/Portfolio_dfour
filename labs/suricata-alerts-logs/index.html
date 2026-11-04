@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Suricata Alerts and Logs | Daniel Dela Dzikunu</title>
+  <meta name="description" content="One Suricata rule, a 200-packet capture, and the same two alerts read twice: as one-line entries in fast.log and as full records in eve.json.">
+  <link rel="canonical" href="https://danieldeladzikunu.vercel.app/labs/suricata-alerts-logs/">
+  <meta property="og:title" content="Suricata Alerts and Logs">
+  <meta property="og:description" content="One Suricata rule, a 200-packet capture, and the same two alerts read twice: as one-line entries in fast.log and as full records in eve.json.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://danieldeladzikunu.vercel.app/labs/suricata-alerts-logs/">
+  <meta property="og:image" content="https://danieldeladzikunu.vercel.app/assets/images/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Suricata Alerts and Logs">
+  <meta name="twitter:description" content="One Suricata rule, a 200-packet capture, and the same two alerts read twice: as one-line entries in fast.log and as full records in eve.json.">
+  <meta name="twitter:image" content="https://danieldeladzikunu.vercel.app/assets/images/og.png">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='14' fill='%230a0e0c'/><text x='50' y='68' text-anchor='middle' font-size='52' font-family='monospace' font-weight='bold' fill='%233df5a5'>DD</text></svg>">
+  <link rel="stylesheet" href="/css/main.css">
+</head>
+<body data-ac="green">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="wrap">
+    <nav class="site-nav" aria-label="Main navigation">
+      <a class="brand" href="/"><span class="beat" aria-hidden="true">♥</span> daniel@portfolio<span>:~$</span></a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle navigation menu">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-menu" id="nav-menu">
+        <a href="/medicine/">medicine</a>
+        <a href="/cybersecurity/" aria-current="page">cybersecurity</a>
+        <a href="/web-development/">web-dev</a>
+        <a href="/graphic-design/">design</a>
+        <a href="/certifications/">certs</a>
+        <a href="/blog/">blog</a>
+        <a href="/#contact">contact</a>
+        <a class="cv-btn" href="/cv.pdf" target="_blank" rel="noopener">CV ↓</a>
+      </div>
+    </nav>
+
+    <header class="page-hero">
+      <span class="crumb">cybersecurity / labs</span>
+      <h1>Suricata Alerts and Logs</h1>
+      <p class="lede reveal">One Suricata rule, a 200-packet capture, and the same two alerts read twice: as one-line entries in fast.log and as full records in eve.json.</p>
+      <div class="lab-tools reveal"><span class="tool">Suricata</span><span class="tool">IDS rules</span><span class="tool">jq</span><span class="tool">JSON logs</span><span class="tool">pcap</span></div>
+    </header>
+
+    <main id="main">
+      <section style="padding-top: 40px;">
+        <article class="lab-body reveal">
+        <p>Suricata is an open-source intrusion detection and prevention system: it applies rules to network traffic and decides, packet by packet, whether to alert, drop, reject or let it pass. This lab ran one custom rule against a recorded capture, <code>sample.pcap</code>, then read the alerts it produced in Suricata's two log formats.</p>
+
+        <h2>Task 1: Read the rule</h2>
+        <p>The supplied <code>custom.rules</code> file held a single signature.</p>
+        <div class="code"><div class="code-bar"><i></i><i></i><i></i><span>bash</span></div><pre><span class="pr">$</span> cat custom.rules
+<span class="cm"># alert http $HOME_NET any -&gt; $EXTERNAL_NET any (msg:"GET on wire"; flow:established,to_server; content:"GET"; http_method; sid:12345; rev:3;)</span></pre></div>
+        <figure class="lab-fig"><picture><source srcset="/assets/lab-figures/suricata-01.webp" type="image/webp"><img src="/assets/lab-figures/suricata-01.png" alt="Terminal listing custom.rules and sample.pcap, then printing the GET on wire rule" loading="lazy"></picture><figcaption><b>Figure 1</b>. The rule file holds one alert signature, sid 12345.</figcaption></figure>
+        <p>It reads in three parts. The <b>action</b>, <code>alert</code>, logs a match and lets the traffic continue. The <b>header</b>, <code>http $HOME_NET any -&gt; $EXTERNAL_NET any</code>, limits it to HTTP leaving the home network (<code>172.21.224.0/20</code> in this lab) for anywhere outside. The <b>options</b> narrow it further: <code>flow:established,to_server</code> matches only client-to-server packets on an open connection, and <code>content:"GET"; http_method</code> looks for GET in the HTTP method field, not anywhere in the packet. <code>sid</code> is the rule's ID and <code>rev</code> its revision.</p>
+
+        <h2>Task 2: Trigger it and read fast.log</h2>
+        <p>The log directory was empty before the run. Suricata then replayed the capture through the rule, with <code>-k none</code> switching off checksum checks that recorded traffic doesn't need.</p>
+        <div class="code"><div class="code-bar"><i></i><i></i><i></i><span>bash</span></div><pre><span class="pr">$</span> ls -l /var/log/suricata
+<span class="cm"># total 0</span>
+<span class="pr">$</span> sudo suricata -r sample.pcap -S custom.rules -k none
+<span class="cm"># i: pcap: read 1 file, 200 packets, 54238 bytes</span></pre></div>
+        <figure class="lab-fig"><picture><source srcset="/assets/lab-figures/suricata-02.webp" type="image/webp"><img src="/assets/lab-figures/suricata-02.png" alt="Empty log directory, the suricata run reading 200 packets, then four new log files" loading="lazy"></picture><figcaption><b>Figure 2</b>. Suricata 7.0.10 reads all 200 packets and leaves four files behind: eve.json, fast.log, stats.log and suricata.log.</figcaption></figure>
+        <div class="code"><div class="code-bar"><i></i><i></i><i></i><span>bash</span></div><pre><span class="pr">$</span> cat /var/log/suricata/fast.log</pre></div>
+        <figure class="lab-fig"><picture><source srcset="/assets/lab-figures/suricata-03.webp" type="image/webp"><img src="/assets/lab-figures/suricata-03.png" alt="Two GET on wire alerts in fast.log, to 142.250.1.139 and 142.250.1.102 on port 80" loading="lazy"></picture><figcaption><b>Figure 3</b>. Two alerts from 172.21.224.2, to 142.250.1.139 and 142.250.1.102 on port 80.</figcaption></figure>
+        <p>Two alerts out of 200 packets. Each <code>fast.log</code> line carries the time, <code>[1:12345:3]</code> (generator, signature ID, revision), the message, a priority, and source and destination. The classification is <code>(null)</code> because the rule never set one. The lab brief's sample output shows <code>142.250.1.139</code> twice; this run's second alert went to <code>142.250.1.102</code>.</p>
+
+        <h2>Task 3: The same alerts in eve.json</h2>
+        <p><code>eve.json</code> is Suricata's main log, one JSON object per event. It held the same two alerts, each with far more attached.</p>
+        <div class="code"><div class="code-bar"><i></i><i></i><i></i><span>bash</span></div><pre><span class="pr">$</span> cat /var/log/suricata/eve.json
+<span class="pr">$</span> jq . /var/log/suricata/eve.json | less</pre></div>
+        <figure class="lab-fig"><picture><source srcset="/assets/lab-figures/suricata-04.webp" type="image/webp"><img src="/assets/lab-figures/suricata-04.png" alt="The two raw eve.json alert records followed by the start of the jq-formatted output" loading="lazy"></picture><figcaption><b>Figure 4</b>. Raw eve.json, then <code>jq</code> laying the first record out one field per line.</figcaption></figure>
+        <div class="lab-table-wrap"><table class="lab-table">
+          <thead><tr><th>Field</th><th>fast.log</th><th>eve.json</th></tr></thead>
+          <tbody>
+            <tr><td>Addresses and ports</td><td>yes</td><td>yes</td></tr>
+            <tr><td>Alert action</td><td>no</td><td><code>allowed</code></td></tr>
+            <tr><td>Severity</td><td>as priority 3</td><td><code>3</code></td></tr>
+            <tr><td>HTTP host and URL</td><td>no</td><td><code>opensource.google.com</code>, <code>/</code></td></tr>
+            <tr><td>User agent</td><td>no</td><td><code>curl/7.74.0</code></td></tr>
+            <tr><td>Server response</td><td>no</td><td><code>301</code> to <code>https://opensource.google/</code></td></tr>
+            <tr><td>Flow ID</td><td>no</td><td><code>695533466630039</code>, <code>726728772763892</code></td></tr>
+          </tbody>
+        </table></div>
+        <p><code>jq</code> can also cut the file down to chosen fields, or to every event from one connection. Each flow gets its own <code>flow_id</code> and every event in it shares that ID, which is how related events are pulled together. No screenshot of these two outputs was kept; the flow IDs above come from the raw records in Figure 4.</p>
+        <div class="code"><div class="code-bar"><i></i><i></i><i></i><span>bash</span></div><pre><span class="pr">$</span> jq -c "[.timestamp,.flow_id,.alert.signature,.proto,.dest_ip]" /var/log/suricata/eve.json
+<span class="pr">$</span> jq "select(.flow_id==X)" /var/log/suricata/eve.json</pre></div>
+
+        <div class="verdict"><p class="v-label">key lesson</p><p><code>fast.log</code> answers whether a rule fired and against which addresses, which is enough to count alerts while testing a rule. Everything needed to judge an alert sits only in <code>eve.json</code>: the request behind it, the server's reply, the <code>flow_id</code> that ties it to its connection, and the fact that Suricata marked both alerts <code>allowed</code> because it was running as a detector, not a blocker.</p></div>
+        </article>
+        <div class="post-foot"><a href="/blog/suricata-alerts-logs/">the story behind this lab →</a><a href="/cybersecurity/">all labs →</a></div>
+        <div class="lab-nav"><span></span><a href="/labs/virustotal-pyramid-of-pain/">VirusTotal Malware Investigation →</a></div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span>© 2026 Daniel Dela Dzikunu</span>
+      <span><a href="https://github.com/dfourmarvel" target="_blank" rel="noreferrer">github</a> / <a href="https://www.linkedin.com/in/dfour/" target="_blank" rel="noreferrer">linkedin</a></span>
+    </footer>
+  </div>
+
+  <script src="/assets/vendor/gsap/gsap.min.js"></script>
+  <script src="/assets/vendor/gsap/ScrollTrigger.min.js"></script>
+  <script src="/js/main.js"></script>
+</body>
+</html>

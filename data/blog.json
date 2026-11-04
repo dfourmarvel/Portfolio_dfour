@@ -12,6 +12,23 @@
   },
   "posts": [
     {
+      "slug": "suricata-alerts-logs",
+      "listTitle": "Writing, triggering and reading a Suricata rule",
+      "date": "Nov 4, 2026",
+      "categoryClass": "cat-cyber",
+      "category": "intrusion detection",
+      "title": "Writing, triggering and reading a Suricata rule",
+      "description": "One custom rule, a 200-packet capture, two alerts, and the two logs Suricata writes them to.",
+      "accent": "green",
+      "meta": [
+        "<span>Nov 4, 2026</span>",
+        "<span class=\"tag-pill\">intrusion detection</span>",
+        "<span>google cybersecurity certificate lab</span>"
+      ],
+      "body": "        <p>This week's Google Cybersecurity Certificate lab was Suricata, an open-source intrusion detection system: you give it rules, it checks network traffic against them, and it logs whatever matches. The lab ran in three steps.</p>\n        <p>First, the rule. The supplied custom.rules file held one line: alert http $HOME_NET any -&gt; $EXTERNAL_NET any (msg:\"GET on wire\"; flow:established,to_server; content:\"GET\"; http_method; sid:12345; rev:3;). Read left to right, alert is the action, the header limits it to HTTP traffic leaving the home network for anywhere outside, and the options narrow it to client-to-server packets on an open connection whose HTTP method is GET. sid is the rule's ID and rev its revision.</p>\n        <p>Second, running it. sudo suricata -r sample.pcap -S custom.rules -k none replays a recorded 200-packet capture through that one rule, with checksum checks switched off because the traffic is recorded, not live. The log folder went from empty to four files, and fast.log held two alerts, both from 172.21.224.2 on port 80: one to 142.250.1.139 and one to 142.250.1.102. (The sample output in the instructions shows .139 twice; the second is really .102.)</p>\n        <p>Third, eve.json, Suricata's main log. It holds the same two alerts as JSON with a lot more attached: the host (opensource.google.com), the user agent (curl/7.74.0), the server's 301 redirect to HTTPS, packet and byte counts in each direction, and \"action\": \"allowed\", since Suricata was only watching here. jq made it readable: jq . to format the file, jq -c with a list of fields to pull out the timestamp, flow_id, signature, protocol and destination, and select(.flow_id==X) to gather every event from one connection.</p>\n        <p>fast.log is the quick check that a rule fired. eve.json is where you find out what it fired on.</p>\n        <p>If you run Suricata day to day, I'd like to know which eve.json fields you look at first.</p>",
+      "footHtml": "          <a href=\"/blog/\">← all write-ups</a>\n          <a href=\"https://www.linkedin.com/in/dfour/\" target=\"_blank\" rel=\"noreferrer\">originally shared on LinkedIn ↗</a>\n          <a href=\"/labs/suricata-alerts-logs/\">read the full lab report →</a>"
+    },
+    {
       "slug": "claude-code-deleted-14gb",
       "listTitle": "A tidying script permanently deleted 14 GB",
       "date": "Sep 10, 2026",
