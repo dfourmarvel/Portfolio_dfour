@@ -13,7 +13,7 @@ Daniel Dela Dzikunu's personal portfolio, v2 ("Vital Terminal" design). Vanilla 
 - `mockups/` — phase-1 design explorations; not linked from the site
 - `PRD.md` — the spec for the v2 overhaul; check it before structural changes
 - `sitemap.xml` / `robots.txt` — sitemap is generated, not hand-written (see Conventions)
-- `.vercelignore` — repo-only files (PRD.md, README.md, CLAUDE.md, AGENTS.md, cv-source.html, cv-welo-data.html, cv-welo-data.pdf, mockups/, data/, tools/, package.json, .claude/) stay in git but are never deployed. `vercel.json` also pins `framework: null` with no build or install command, so the root `package.json` can never turn the deploy into a Node build.
+- `.vercelignore` — repo-only files (PRD.md, README.md, CLAUDE.md, AGENTS.md, cv-source.html, mockups/, data/, tools/, package.json, .claude/) stay in git but are never deployed. `vercel.json` also pins `framework: null` with no build or install command, so the root `package.json` can never turn the deploy into a Node build.
 
 ## Commands
 - `npm run admin` — the content admin (see below). Serves the editor at http://localhost:4321/admin/ and the site itself on the same port.
