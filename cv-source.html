@@ -107,15 +107,18 @@ and with writing up exactly how I reached a verdict. Available 15+ hours a week,
 <div class="entry">
   <div class="entry-head"><h3>med-match: specialty quiz for Ghanaian medical students</h3><span class="date">2026</span></div>
   <ul>
-    <li>Web quiz that suggests specialties along the Ghana College of Physicians and Surgeons pathway, not US or UK match data; 21 completed assessments in its first 10 days (Sep 2026).</li>
-    <li>Locked the database so browsers cannot read or write it directly; all saves go through the server.</li>
+    <li>Web quiz built on the Ghana College of Physicians and Surgeons pathway; 21 assessments completed in 10 days.</li>
+    <li>AI-written result explanations (Llama 3.3 70B via OpenRouter, Upstash cache); API keys and database stay on the server.</li>
   </ul>
 </div>
 <div class="entry">
   <div class="entry-head"><h3>Afahyɛ: event-vendor marketplace for Ghana</h3><span class="date">2026 – Present</span></div>
+  <p class="sub">Solo build, pre-launch | Next.js, TypeScript, Supabase (PostgreSQL), Vercel | built with Claude Code | afahye.vercel.app</p>
   <ul>
-    <li>Building solo in Next.js and Supabase: vendor listings, customer briefs, two-sided job completion, saved vendors, admin tools, error monitoring and bot protection.</li>
-    <li>Test each database security rule by signing in as real users of each role before it ships.</li>
+    <li>Designed the backend: 36 database migrations, three account roles, tests on every push, nightly encrypted backups.</li>
+    <li>Put row-level security and database-side checks on every table, proved by hostile test scripts that try to break them (e.g. a vendor showing a rival's photos, a client faking a finished job to post a review).</li>
+    <li>Closed abuse paths before launch: duplicate quotes, spam limits, an upload cap, bot checks and rate-limited sign-in.</li>
+    <li>Audited it against Ghana's Data Protection Act (Act 843); shipped privacy notice, terms, an 18+ record, GPS stripping.</li>
   </ul>
 </div>
 <div class="entry">
