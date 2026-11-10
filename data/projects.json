@@ -51,7 +51,7 @@
       "tag": "NEXT.JS · TYPESCRIPT · SUPABASE · PWA",
       "name": "RoutineRx",
       "blurb": "A fitness tracker built around a weekly plan: each day opens on a check-off list, with cardio, bodyweight and body-weight logging, and calorie counting that has room for Ghanaian dishes.",
-      "linksHtml": "              <a href=\"/web-development/routinerx/\">the overview →</a>\n              <a href=\"https://dfourfitness.vercel.app\" target=\"_blank\" rel=\"noreferrer\">try it →</a>",
+      "linksHtml": "              <a href=\"/web-development/routinerx/\">the overview →</a>\n              <span style=\"font-family: var(--mono); font-size: 12.5px; color: var(--text-dim);\">Archived</span>",
       "shot": {
         "src": "/assets/project-shots/routinerx-posekit-lunge.webp",
         "width": 800,
@@ -72,11 +72,10 @@
           "PWA",
           "Vitest"
         ],
-        "heroLinksHtml": "        <a href=\"https://dfourfitness.vercel.app\" target=\"_blank\" rel=\"noopener\">try it ↗</a>",
+        "heroLinksHtml": "        <span style=\"font-family: var(--mono); font-size: 12.5px; color: var(--text-dim);\">This project was archived in November 2026 and the live demo is offline.</span>",
         "body": "\n        <h3>Overview</h3>\n        <p>RoutineRx tracks cardio, bodyweight workouts and body weight. There is no gym or weights tracking, by design. The weekly routine decides what shows up each day, so logging a session is a tick rather than a form.</p>\n        <h3>What it does</h3>\n        <ul>\n        <li><b>Daily check-off:</b> the day's planned routine, ready to mark done.</li>\n        <li><b>Calories:</b> food search across your own custom foods, a built-in table of common Ghanaian foods, and Open Food Facts, because global food databases miss most Ghanaian dishes. The daily target is calculated from your stats (Mifflin-St Jeor) and can be overridden.</li>\n        <li><b>Accounts:</b> email or Google sign-in, with row-level security on every table so each person only ever reads their own data.</li>\n        <li><b>Installable:</b> it is a progressive web app, so it can sit on a phone's home screen like a native app.</li>\n        </ul>\n        <p><a href=\"/web-development/posekit/\">posekit</a> started here: I built it to animate this app's exercise demos, then open-sourced it.</p>\n",
-        "footHtml": "<a href=\"/web-development/\">← all projects</a><a href=\"https://dfourfitness.vercel.app\" target=\"_blank\" rel=\"noopener\">try it ↗</a>",
-        "labNavHtml": "<a href=\"/web-development/med-match/\">← MedMatch Ghana</a><a href=\"/web-development/afahye/\">Afahyɛ →</a>",
-        "heroNoteHtml": "<p style=\"font-family: var(--mono); font-size: 12.5px; color: var(--text-dim); margin-top: 10px;\">Sign up with email. Google sign-in is still limited to test accounts.</p>"
+        "footHtml": "<a href=\"/web-development/\">← all projects</a>",
+        "labNavHtml": "<a href=\"/web-development/med-match/\">← MedMatch Ghana</a><a href=\"/web-development/afahye/\">Afahyɛ →</a>"
       }
     },
     {
